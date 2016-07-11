@@ -72,12 +72,23 @@ wanthaver.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+
     .state('app.desirelist', {
       url: '/desirelist',
       views: {
         'menuContent': {
           templateUrl: 'templates/desirelist.html',
           controller: 'DesireListCtrl'
+        }
+      }
+    })
+
+    .state('app.chatlist', {
+      url: '/chatlist',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/chatlist.html',
+          controller: 'ChatListCtrl'
         }
       }
     })
