@@ -18,6 +18,15 @@
           </div>
         </div>
 
+        <div class="row desire-info">
+          <div class="col col-50">
+            <span am-time-ago="desire.creation_time"></span>
+          </div>
+          <div class="col col-50 text-align-right">
+              {{desire.distanceToUserPosition | formatKm}}
+          </div>
+        </div>
+
       </ion-item>
     </ion-list>
   </ion-content>
