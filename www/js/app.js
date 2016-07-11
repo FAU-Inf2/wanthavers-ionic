@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 var server = "https://wanthaver.com";
 
-var wanthaver = angular.module('starter', ['ionic', 'starter.controllers']);
+var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment']);
 var controllers = angular.module('starter.controllers', []);
 
 wanthaver.filter('shorten', function($sce) {
@@ -14,6 +14,17 @@ wanthaver.filter('shorten', function($sce) {
     if(val.length > 50)
       return val.substr(0,50)+"..."
     return val
+  };
+});
+
+wanthaver.filter('formatKm', function($sce) {
+  return function(val) {
+    if(val < 1000){
+      return "< 1km";
+    }else{
+      return Math.round(val/1000) + " km"
+    }
+
   };
 });
 
@@ -72,7 +83,6 @@ wanthaver.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
-
     .state('app.desirelist', {
       url: '/desirelist',
       views: {
@@ -82,16 +92,24 @@ wanthaver.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
-
-    .state('app.chatlist', {
-      url: '/chatlist',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/chatlist.html',
-          controller: 'ChatListCtrl'
-        }
-      }
-    });
+      .state('app.chatlist', {
+          url: '/chatlist',
+          views: {
+              'menuContent': {
+                  templateUrl: 'templates/chatlist.html',
+                  controller: 'ChatListCtrl'
+              }
+          }
+      })
+      .state('app.desiredetail', {
+          url: '/desiredetail/:desireId',
+          views: {
+              'menuContent': {
+                  templateUrl: 'templates/desiredetail.html',
+                  controller: 'DesireDetailCtrl'
+              }
+          }
+      });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/desirelist');
 });
