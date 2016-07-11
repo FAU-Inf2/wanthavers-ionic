@@ -5,6 +5,10 @@ wanthaver.factory('Desire', ['$http', function ($http, $scope) {
             return $http.get(server+'/v1/desires');
         },
 
+        getDetail: function (id) {
+            return $http.get(server+'/v1/desires/'+id);
+        },
+
 
 
 

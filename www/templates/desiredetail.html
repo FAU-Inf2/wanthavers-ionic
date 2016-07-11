@@ -1,0 +1,26 @@
+<ion-view view-title="Desire">
+    <ion-content class="desire-detail">
+        <div class="row">
+            <div class="col col-25 desire-detail-image">
+                <div class="desire-img"><img ng-src="{{desire.image.lowRes}}"></div>
+            </div>
+            <div class="col col-75 desire-detail-title">
+                {{desire.title}}
+            </div>
+        </div>
+        <div class="desire-detail-box">
+            <h4>Beschreibung</h4>
+            <p>{{desire.description}}</p>
+        </div>
+
+        <div class="desire-detail-price-box">
+            <h4>Preis</h4>
+            <p>{{desire.price}}{{desire.currency | currency}}</p>
+        </div>
+
+        <div class="desire-detail-box">
+            <h4>Ort</h4>
+            <p>{{desire.dropzone_string}}</p>
+        </div>
+    </ion-content>
+</ion-view>

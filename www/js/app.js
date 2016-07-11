@@ -92,7 +92,16 @@ wanthaver.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
-  ;
+
+      .state('app.desiredetail', {
+          url: '/desiredetail/:desireId',
+          views: {
+              'menuContent': {
+                  templateUrl: 'templates/desiredetail.html',
+                  controller: 'DesireDetailCtrl'
+              }
+          }
+      });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/desirelist');
 });
