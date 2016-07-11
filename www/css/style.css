@@ -35,3 +35,12 @@
 .bar-stable .button.button-clear {
     color: #fff;
 }
+
+.text-align-right{
+    text-align: right;
+}
+
+.desire-info .col {
+    color: #888;
+    font-size: 15px;
+}
