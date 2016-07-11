@@ -1,1 +1,37 @@
-/* Empty. Add your own CSS if you like */
+.desire-img img {
+    width: 100%;
+}
+
+.desire-list-item h1 {
+    font-size: 20px;
+    color: #FF6C17;
+    font-weight: normal;
+}
+
+.desire-description {
+    font-size: 90%;
+}
+
+.item-complex .item-content, .item-radio .item-content {
+    padding: 10px;
+}
+
+.desire-price {
+    font-size: 24px;
+    font-weight: normal;
+    color: #555;
+    padding-top: 20px;
+    width: 50px;
+}
+
+[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
+    background: #FF6C17;
+}
+
+.bar.bar-stable .title {
+    color: #fff;
+}
+
+.bar-stable .button.button-clear {
+    color: #fff;
+}

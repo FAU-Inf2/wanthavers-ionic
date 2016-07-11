@@ -8,3 +8,4 @@ plugins
 *.swo
 *.log
 *.DS_Store
+.idea
