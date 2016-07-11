@@ -1,4 +1,4 @@
-controllers.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+controllers.controller('AppCtrl', function($scope, $ionicModal, $base64) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -30,11 +30,9 @@ controllers.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
     // Perform the login action when the user submits the login form
     $scope.doLogin = function() {
         console.log('Doing login', $scope.loginData);
-
-        // Simulate a login delay. Remove this and replace with your login
-        // code if using a login system
-        $timeout(function() {
-            $scope.closeLogin();
-        }, 1000);
+        
+        window.localStorage.setItem("username", $scope.loginData.username);
+        window.localStorage.setItem("password", $scope.loginData.password);
+        $scope.closeLogin();
     };
 })

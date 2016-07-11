@@ -1,4 +1,4 @@
-wanthaver.factory('Desire', ['$http', function ($http, $scope) {
+wanthaver.factory('Desire', ['$http', 'Auth', function ($http, Auth) {
     return {
 
         list: function(){
@@ -10,6 +10,9 @@ wanthaver.factory('Desire', ['$http', function ($http, $scope) {
         },
 
 
+        test: function(){
+            return $http.get(server+'/v1/chat', Auth.enable());
+        }
 
 
     };

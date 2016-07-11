@@ -4,10 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var server = "https://wanthaver.com";
 
-var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment']);
+var server = "https://wanthaver.com";
+var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment', 'base64']);
 var controllers = angular.module('starter.controllers', []);
+
+
+
 
 wanthaver.filter('shorten', function($sce) {
   return function(val) {
