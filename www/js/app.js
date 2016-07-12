@@ -9,40 +9,6 @@ var server = "https://wanthaver.com";
 var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment', 'base64']);
 var controllers = angular.module('starter.controllers', []);
 
-
-
-
-wanthaver.filter('shorten', function($sce) {
-  return function(val) {
-    if(val.length > 50)
-      return val.substr(0,50)+"..."
-    return val
-  };
-});
-
-wanthaver.filter('formatKm', function($sce) {
-  return function(val) {
-    if(val < 1000){
-      return "< 1km";
-    }else{
-      return Math.round(val/1000) + " km"
-    }
-
-  };
-});
-
-wanthaver.filter('currency', function($sce) {
-  return function(val) {
-    if(val == "EUR")
-        return "€";
-    if(val == "USD")
-        return "$";
-    if(val == "GPB")
-        return "£";
-    return "";
-  };
-});
-
 wanthaver.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

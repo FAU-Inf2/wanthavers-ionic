@@ -4,12 +4,18 @@
       <ion-item class="desire-list-item item-text-wrap row-no-padding" ng-repeat="desire in feed" href="#/app/desiredetail/{{desire.id}}">
 
 
+        <div class="row desire-info row-no-padding">
+          <div class="col col-100 text-align-right">
+            <span>{{desire.creator.name}}</span>
+            <span ng-bind-html="desire.creator.rating | rating | unsafe"></span>
+          </div>
+        </div>
 
-        <div class="row">
+        <div class="row row-no-padding">
           <div class="col col-25">
             <div class="desire-img"><img ng-src="{{desire.image.lowRes}}"></div>
           </div>
-          <div class="col col-60">
+          <div class="col col-60 padding">
             <h1>{{desire.title}}</h1>
             <div class="desire-description">{{desire.description | shorten}}</div>
           </div>
@@ -18,7 +24,7 @@
           </div>
         </div>
 
-        <div class="row desire-info">
+        <div class="row desire-info row-no-padding margin-top">
           <div class="col col-50">
             <span am-time-ago="desire.creation_time"></span>
           </div>
