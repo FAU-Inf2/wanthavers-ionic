@@ -25,7 +25,10 @@ wanthaver.run(function($ionicPlatform) {
   });
 });
 
-wanthaver.config(function($stateProvider, $urlRouterProvider) {
+wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+
+    $ionicConfigProvider.backButton.previousTitleText(false).text('');
+
   $stateProvider
 
     .state('app', {

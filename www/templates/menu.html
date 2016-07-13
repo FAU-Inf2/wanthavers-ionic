@@ -10,8 +10,12 @@
       </ion-nav-buttons>
 
       <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-chatbubbles" ui-sref="app.browse">
+
+        <button ng-repeat="btn in barButtons track by $index" class="button button-icon button-clear {{btn.icon}}" ng-click="btn.action()">
+          {{btn.name}}
         </button>
+
+
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>

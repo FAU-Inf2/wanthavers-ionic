@@ -1,4 +1,4 @@
-controllers.controller('AppCtrl', function($scope, $ionicModal, $base64) {
+controllers.controller('AppCtrl', function($scope, $ionicModal, $state, $timeout) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -6,6 +6,30 @@ controllers.controller('AppCtrl', function($scope, $ionicModal, $base64) {
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
+    $scope.barButtonsMap = [];
+    $scope.barButtons = [];
+    //$scope.hideButtons = false;
+
+    $scope.addButtons = function(arr){
+        //icon: "ion-chatbubbles", name: "test", action: function
+        var tmp = $scope.barButtonsMap[$state.current.name];
+        if(tmp != undefined){
+            return;
+        }
+        $scope.barButtonsMap[$state.current.name] = arr
+
+    }
+
+    $scope.$on('$ionicView.enter', function() {
+            //$scope.barButtons = $scope.barButtonsMap[$state.current.name];
+            //$scope.xxx = $scope.barButtonsMap[$state.current.name][0];
+    });
+
+    $scope.$on('$ionicView.beforeEnter', function(event, data) {
+        if(data.stateName == undefined)
+            return;
+        $scope.barButtons = $scope.barButtonsMap[data.stateName];
+    });
 
     // Form data for the login modal
     $scope.loginData = {};
