@@ -8,6 +8,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $stateParams, Desire
         {
             icon: "ion-android-cancel",
             name: "",
+            show: false,
             action: function(){
                 $state.go("app.browse");
             }
