@@ -55,7 +55,8 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
         }
       }
     })
-    .state('app.desirelist', {
+
+  .state('app.desirelist', {
       url: '/desirelist',
       views: {
         'menuContent': {
@@ -63,17 +64,27 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
           controller: 'DesireListCtrl'
         }
       }
-    })
+  })
 
-      .state('app.desiredetail', {
-          url: '/desiredetail/:desireId',
-          views: {
-              'menuContent': {
-                  templateUrl: 'templates/desiredetail.html',
-                  controller: 'DesireDetailCtrl'
-              }
+  .state('app.login', {
+      url: '/login',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/login.html',
+              controller: 'LoginCtrl'
           }
-      });
+      }
+  })
+
+  .state('app.desiredetail', {
+      url: '/desiredetail/:desireId',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/desiredetail.html',
+              controller: 'DesireDetailCtrl'
+          }
+      }
+  });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/desirelist');
 });

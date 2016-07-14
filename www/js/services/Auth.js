@@ -9,8 +9,13 @@ wanthaver.factory('Auth', ['$base64', function ($base64) {
             return headers;
         },
 
-        enable: function(){
+        getHeaderObject: function(){
             return {headers: this.getHeader()}
+        },
+
+        setCredentials: function(username, password){
+            window.localStorage.setItem("username", username);
+            window.localStorage.setItem("password", password);
         }
 
     };

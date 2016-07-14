@@ -1,4 +1,4 @@
-controllers.controller('AppCtrl', function($scope, $ionicModal, $state, $timeout) {
+controllers.controller('AppCtrl', function($scope, $ionicModal, $state, User) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -8,7 +8,6 @@ controllers.controller('AppCtrl', function($scope, $ionicModal, $state, $timeout
     //});
     $scope.barButtonsMap = [];
     $scope.barButtons = [];
-    //$scope.hideButtons = false;
 
     $scope.addButtons = function(arr){
         //icon: "ion-chatbubbles", name: "test", action: function
@@ -21,9 +20,19 @@ controllers.controller('AppCtrl', function($scope, $ionicModal, $state, $timeout
     }
 
     $scope.$on('$ionicView.enter', function() {
-            //$scope.barButtons = $scope.barButtonsMap[$state.current.name];
-            //$scope.xxx = $scope.barButtonsMap[$state.current.name][0];
+
+       //check login
+        User.getCurrentUser().success(function(data){
+           console.log(data)
+           $scope.currentUser = data;
+        }).error(function(resp){
+            $state.go("app.login");
+        });
     });
+
+    $scope.test = function(){
+        console.log($state.currentUser);
+    }
 
     $scope.$on('$ionicView.beforeEnter', function(event, data) {
         if(data.stateName == undefined)
@@ -31,32 +40,5 @@ controllers.controller('AppCtrl', function($scope, $ionicModal, $state, $timeout
         $scope.barButtons = $scope.barButtonsMap[data.stateName];
     });
 
-    // Form data for the login modal
-    $scope.loginData = {};
 
-    // Create the login modal that we will use later
-    $ionicModal.fromTemplateUrl('templates/login.html', {
-        scope: $scope
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
-
-    // Triggered in the login modal to close it
-    $scope.closeLogin = function() {
-        $scope.modal.hide();
-    };
-
-    // Open the login modal
-    $scope.login = function() {
-        $scope.modal.show();
-    };
-
-    // Perform the login action when the user submits the login form
-    $scope.doLogin = function() {
-        console.log('Doing login', $scope.loginData);
-        
-        window.localStorage.setItem("username", $scope.loginData.username);
-        window.localStorage.setItem("password", $scope.loginData.password);
-        $scope.closeLogin();
-    };
 })
