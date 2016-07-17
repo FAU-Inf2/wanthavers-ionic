@@ -115,26 +115,17 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
               controller: 'DesireDetailCtrl'
           }
       }
+  })
+
+  .state('app.chatlist', {
+    url: '/chatlist',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/chatlist.html',
+        controller: 'ChatListCtrl'
+      }
+    }
   });
-    })
-      .state('app.chatlist', {
-          url: '/chatlist',
-          views: {
-              'menuContent': {
-                  templateUrl: 'templates/chatlist.html',
-                  controller: 'ChatListCtrl'
-              }
-          }
-      })
-      .state('app.desiredetail', {
-          url: '/desiredetail/:desireId',
-          views: {
-              'menuContent': {
-                  templateUrl: 'templates/desiredetail.html',
-                  controller: 'DesireDetailCtrl'
-              }
-          }
-      });
+})
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/desirelist');
-});
