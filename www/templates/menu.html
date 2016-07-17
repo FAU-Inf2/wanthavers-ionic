@@ -8,17 +8,31 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+
+        <button ng-repeat="btn in barButtons track by $index" ng-if="btn.show == undefined || btn.show" class="button button-icon button-clear {{btn.icon}}" ng-click="btn.action()">
+          {{btn.name}}
+        </button>
+
+
+      </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
-    </ion-header-bar>
+
     <ion-content>
+
+      <div class="user-menu-details item-avatar">
+        <img ng-src="{{currentUser.image.mediumRes}}">
+        <span>{{currentUser.name}}</span>
+      </div>
+
+
       <ion-list>
-        <ion-item menu-close ng-click="login()">
+        <ion-item menu-close href="#/app/login">
           Login
         </ion-item>
         <ion-item menu-close href="#/app/search">

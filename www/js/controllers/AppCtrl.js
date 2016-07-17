@@ -1,4 +1,4 @@
-controllers.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+controllers.controller('AppCtrl', function($scope, $ionicModal, $state, User) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -6,35 +6,39 @@ controllers.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
+    $scope.barButtonsMap = [];
+    $scope.barButtons = [];
 
-    // Form data for the login modal
-    $scope.loginData = {};
+    $scope.addButtons = function(arr){
+        //icon: "ion-chatbubbles", name: "test", action: function
+        var tmp = $scope.barButtonsMap[$state.current.name];
+        if(tmp != undefined){
+            return;
+        }
+        $scope.barButtonsMap[$state.current.name] = arr
 
-    // Create the login modal that we will use later
-    $ionicModal.fromTemplateUrl('templates/login.html', {
-        scope: $scope
-    }).then(function(modal) {
-        $scope.modal = modal;
+    }
+
+    $scope.$on('$ionicView.enter', function() {
+
+       //check login
+        User.getCurrentUser().success(function(data){
+           console.log(data)
+           $scope.currentUser = data;
+        }).error(function(resp){
+            $state.go("app.login");
+        });
     });
 
-    // Triggered in the login modal to close it
-    $scope.closeLogin = function() {
-        $scope.modal.hide();
-    };
+    $scope.test = function(){
+        console.log($state.currentUser);
+    }
 
-    // Open the login modal
-    $scope.login = function() {
-        $scope.modal.show();
-    };
+    $scope.$on('$ionicView.beforeEnter', function(event, data) {
+        if(data.stateName == undefined)
+            return;
+        $scope.barButtons = $scope.barButtonsMap[data.stateName];
+    });
 
-    // Perform the login action when the user submits the login form
-    $scope.doLogin = function() {
-        console.log('Doing login', $scope.loginData);
 
-        // Simulate a login delay. Remove this and replace with your login
-        // code if using a login system
-        $timeout(function() {
-            $scope.closeLogin();
-        }, 1000);
-    };
 })

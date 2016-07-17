@@ -4,9 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var server = "https://wanthaver.com";
 
-var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment']);
+var server = "https://wanthaver.com";
+var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment', 'base64']);
 var controllers = angular.module('starter.controllers', []);
 
 wanthaver.filter('shorten', function($sce) {
@@ -56,7 +56,10 @@ wanthaver.run(function($ionicPlatform) {
   });
 });
 
-wanthaver.config(function($stateProvider, $urlRouterProvider) {
+wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+
+    $ionicConfigProvider.backButton.previousTitleText(false).text('');
+
   $stateProvider
 
     .state('app', {
@@ -83,7 +86,8 @@ wanthaver.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
-    .state('app.desirelist', {
+
+  .state('app.desirelist', {
       url: '/desirelist',
       views: {
         'menuContent': {
@@ -91,6 +95,27 @@ wanthaver.config(function($stateProvider, $urlRouterProvider) {
           controller: 'DesireListCtrl'
         }
       }
+  })
+
+  .state('app.login', {
+      url: '/login',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/login.html',
+              controller: 'LoginCtrl'
+          }
+      }
+  })
+
+  .state('app.desiredetail', {
+      url: '/desiredetail/:desireId',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/desiredetail.html',
+              controller: 'DesireDetailCtrl'
+          }
+      }
+  });
     })
       .state('app.chatlist', {
           url: '/chatlist',

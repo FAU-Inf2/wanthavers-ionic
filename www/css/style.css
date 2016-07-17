@@ -1,3 +1,13 @@
+.margin-top{
+    margin-top:5px !important;
+}
+
+.padding{
+    padding:10px !important;
+}
+
+
+
 .desire-img img {
     width: 100%;
 }
@@ -13,8 +23,13 @@
 }
 
 .desire-detail-title {
-    padding-top: 50px;
-    font-size: xx-large;
+    padding-top: 45px;
+    font-size: 30px;
+    line-height: 25px;
+}
+
+.desire-detail-title span{
+
 }
 
 .desire-detail-box {
@@ -67,7 +82,7 @@
     font-size: 24px;
     font-weight: normal;
     color: #555;
-    padding-top: 20px;
+    padding-top: 40px;
     width: 50px;
 }
 
@@ -89,5 +104,41 @@
 
 .desire-info .col {
     color: #888;
-    font-size: 15px;
+    font-size: 14px;
+}
+
+.rating-element {
+    margin-right: 1px;
+}
+
+.user-menu-details span {
+    padding-top: 27px;
+    display: inline-block;
+    color: #fff;
+    font-size: 20px;
+}
+
+.user-menu-details {
+    background: #666;
+    margin-bottom:20px;
+}
+
+.menu-left {
+    background: #444;
+}
+
+ion-side-menu .item, ion-side-menu .item-content {
+    background: #444 !important;
+    color: #f7f7f7;
+    text-transform: uppercase;
+    font-size: 14px;
+    border: none;
+    padding-left:20px;
+}
+
+[nav-bar-transition="ios"] .buttons{
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: color 0 ease-in;
+    transition: none;
 }
