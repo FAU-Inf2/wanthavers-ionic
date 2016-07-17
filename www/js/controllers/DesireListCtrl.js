@@ -11,7 +11,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, $ionic
         icon: "ion-chatbubbles",
         name: "",
         action: function(){
-            $state.go("app.browse");
+            $state.go("app.chatlist");
         }
     }]);
 
