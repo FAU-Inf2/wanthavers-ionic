@@ -16,6 +16,10 @@ wanthaver.factory('Auth', ['$base64', function ($base64) {
         setCredentials: function(username, password){
             window.localStorage.setItem("username", username);
             window.localStorage.setItem("password", password);
+        },
+
+        getEmailOfCurUser: function(){
+            return window.localStorage.getItem("username");
         }
 
     };
