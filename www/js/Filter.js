@@ -18,6 +18,24 @@ wanthaver.filter('formatKm', function($sce) {
     };
 });
 
+wanthaver.filter('desireStatus', function($sce) {
+    return function(val) {
+        switch(val) {
+            case 0:
+                return "DELETED";
+            case 1:
+                return "OPEN";
+            case 2:
+                return "IN PROGRESS";
+            case 3:
+                return "DONE";
+            default:
+                return "";
+        }
+
+    };
+});
+
 wanthaver.filter('unsafe', function($sce) {
     return function(val) {
         return $sce.trustAsHtml(val);

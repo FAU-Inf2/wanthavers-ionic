@@ -1,5 +1,28 @@
 <ion-view view-title="Desire">
     <ion-content class="desire-detail">
+        <div class="row desire-detail-creator">
+            <div class="col col-20">
+                <div class="creator-img"><img ng-src="{{desire.creator.image.lowRes}}"></div>
+            </div>
+            <div class="col col-20">
+                <span>{{desire.creator.name}}</span>
+            </div>
+            <div class="col col-40">
+                <span ng-bind-html="desire.creator.rating | rating | unsafe"></span>
+            </div>
+            <div class="col col-10">
+                <button class="button button-icon ion-ios-star"></button>
+            </div>
+            <div class="col col-10">
+                <button class="button button-icon ion-chatbubbles"></button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-50"><span>{{desire.status | desireStatus}}</span></div>
+            <div align="right" class="col col-50"><span>{{desire.creation_time | date:'dd. MMMM yyyy'}}</span></div>
+        </div>
+
         <div class="row">
             <div class="col col-25 desire-detail-image">
                 <div class="desire-img"><img ng-src="{{desire.image.lowRes}}"></div>

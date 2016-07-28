@@ -3,6 +3,13 @@ controllers.controller('DesireDetailCtrl', function($scope, $stateParams, Desire
         $scope.desire = resp.data;
     });
 
+    $scope.$on('$ionicView.enter', function() {
+        if($scope.currentUser.id == $scope.desire.creator.id) {
+            $scope.userIsCreator = true;
+        } else {
+            $scope.userIsCreator = false;
+        }
+    });
 
     $scope.$parent.addButtons([
         {
@@ -21,8 +28,4 @@ controllers.controller('DesireDetailCtrl', function($scope, $stateParams, Desire
             }
         }
     ]);
-
-
-
-
 })
