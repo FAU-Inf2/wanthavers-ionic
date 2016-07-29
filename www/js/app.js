@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-var server = "https://wanthaver.com";
+var server = "http://dev.wanthaver.com";
 var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment', 'base64']);
 var controllers = angular.module('starter.controllers', []);
 
