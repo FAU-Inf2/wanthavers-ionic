@@ -1,7 +1,7 @@
 <ion-view view-title="Chats">
     <ion-content>
         <ion-list>
-            <ion-item class="list-item item-text-wrap row-no-padding" ng-repeat="chat in feed" href="#/app/messages/{{chat.objectId}}">
+            <ion-item class="list-item item-text-wrap row-no-padding" ng-repeat="chat in feed" ng-if="chat.otherUser != undefined && chat.desire != null" href="#/app/messages/{{chat.objectId}}">
                 <div class="row row-no-padding">
                     <div class="col col-25">
                         <div class="item-image"><img ng-src="{{chat.otherUser.image.lowRes}}"></div>

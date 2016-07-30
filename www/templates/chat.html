@@ -1,0 +1,21 @@
+<ion-view view-title="{{otherUser.name}}">
+  <ion-content delegate-handle="msgList">
+    <ion-list style="margin-bottom:20px;">
+      <ion-item class="chat-message-wrapper item-text-wrap row-no-padding"
+                ng-class="{'from-me-wrapper': msg.from==currentUser.id}"
+                ng-repeat="msg in messages | orderBy:'createdAt'">
+
+          <div class="chat-message" ng-class="{'from-me': msg.from==currentUser.id}">{{msg.body}}</div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar  class="item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-chatbubble placeholder-icon"></i>
+      <input type="search" placeholder="Your Message..." data-ng-model="msg">
+    </label>
+    <button class="button button-positive" ng-click="sendMsg(msg)">
+      <i class="icon ion-paper-airplane"></i>
+    </button>
+  </ion-footer-bar >
+</ion-view>

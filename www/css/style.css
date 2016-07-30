@@ -158,3 +158,55 @@ ion-side-menu .item, ion-side-menu .item-content {
     -o-transition: color 0 ease-in;
     transition: none;
 }
+
+.chat-message {
+    padding: 7px;
+    background: #FF6C17;
+    display: inline-block;
+    margin: 3px;
+    border-radius: 5px;
+    max-width: 70%;
+    color: #fff;
+    text-align: left;
+}
+
+.chat-message-wrapper {
+    border: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.chat-message-wrapper.from-me-wrapper {
+    text-align: right;
+}
+
+.chat-message.from-me {
+    background: #fff;
+    color: #FF6C17;
+    border: 1px solid #FF6C17;
+}
+
+.msg-sending{
+    border: 1px solid #888;
+    color: #888;
+}
+
+.button.button-positive {
+    border-color: transparent;
+    background-color: #FF6C17;
+    color: #fff;
+}
+
+.logo-wrapper{
+    text-align: center;
+}
+
+.logo-wrapper img {
+    width: 80%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.input-label{
+    color: #FF6C17;
+}

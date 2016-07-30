@@ -85,6 +85,16 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
           }
       }
   })
+      
+  .state('app.chatmessages', {
+      url: '/messages/:chatId',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/chat.html',
+              controller: 'ChatMessagesCtrl'
+          }
+      }
+  })
 
   .state('app.chatlist', {
     url: '/chatlist',
@@ -97,6 +107,6 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
   });
     
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/desirelist');
+    $urlRouterProvider.otherwise('/app/login');
 })
 

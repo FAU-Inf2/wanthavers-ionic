@@ -1,6 +1,7 @@
-controllers.controller('DesireListCtrl', function($scope, Desire, $state, $ionicViewService) {
+controllers.controller('DesireListCtrl', function($scope, Desire, $state, $ionicViewService, $ionicNavBarDelegate) {
 
-    $ionicViewService.clearHistory();
+    $scope.$on('$ionicView.enter', function() {
+    });
 
     Desire.list().then(function(resp){
         $scope.feed = resp.data;
