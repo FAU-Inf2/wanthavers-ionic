@@ -1,0 +1,11 @@
+<ion-view view-title="Change Filter">
+    <ion-content>
+        <label class="item item-input">
+            <span class="input-label">Category</span>
+            <input type="tel" placeholder="0" ng-model="filterSetting.category">
+        </label>
+
+        <button ng-click="applyFilter()" >Apply Filter</button>
+        <button ng-click="resetFilter()" >Reset Filter</button>
+    </ion-content>
+</ion-view>

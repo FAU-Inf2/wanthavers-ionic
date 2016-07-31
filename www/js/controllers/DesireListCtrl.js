@@ -12,6 +12,13 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, $ionic
     }
 
     $scope.$parent.addButtons([{
+        icon: "ion-android-funnel",
+        name: "",
+        action: function(){
+            $state.go("app.filtersetting");
+        }
+    },
+    {
         icon: "ion-chatbubbles",
         name: "",
         action: function(){

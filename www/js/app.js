@@ -97,13 +97,23 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
   })
 
   .state('app.chatlist', {
-    url: '/chatlist',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/chatlist.html',
-        controller: 'ChatListCtrl'
+      url: '/chatlist',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/chatlist.html',
+              controller: 'ChatListCtrl'
+          }
       }
-    }
+  })
+
+  .state('app.filtersetting', {
+      url: '/filtersetting',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/filtersetting.html',
+              controller: 'FilterSettingCtrl'
+          }
+      }
   });
     
     // if none of the above states are matched, use this as the fallback
