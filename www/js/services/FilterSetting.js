@@ -1,7 +1,7 @@
 wanthaver.factory('FilterSetting', function() {
     return {
         filterSetting: {},
-        
+
         applyFilter: function(filterSetting){
             //window.localStorage.setItem("filterSetting", JSON.stringify(filterSetting));
             this.filterSetting = filterSetting;
@@ -15,8 +15,12 @@ wanthaver.factory('FilterSetting', function() {
             return this.filterSetting.category;
         },
 
-        setCategory: function(category){
-            this.filterSetting.category = category;
+        getMinPrice: function(){
+            return this.filterSetting.minPrice;
+        },
+
+        getMaxPrice: function(){
+            return this.filterSetting.maxPrice;
         },
     };
 });

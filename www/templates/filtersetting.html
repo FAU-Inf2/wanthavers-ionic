@@ -2,7 +2,12 @@
     <ion-content>
         <label class="item item-input">
             <span class="input-label">Category</span>
-            <input type="tel" placeholder="0" ng-model="filterSetting.category">
+            <input type="tel" placeholder="All Categories" ng-model="filterSetting.category">
+        </label>
+
+        <label class="item item-input">
+            <input type="tel" placeholder="Minimum Price" ng-model="filterSetting.minPrice">
+            <input type="tel" placeholder="Maximum Price" ng-model="filterSetting.maxPrice">
         </label>
 
         <button ng-click="applyFilter()" >Apply Filter</button>

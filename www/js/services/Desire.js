@@ -3,9 +3,13 @@ wanthaver.factory('Desire', ['$http', 'Auth', 'FilterSetting', function ($http, 
 
         list: function(){
             category = FilterSetting.getCategory();
+            minPrice = FilterSetting.getMinPrice();
+            maxPrice = FilterSetting.getMaxPrice();
             return $http.get(server+'/v1/desires', {
                 params: {
-                    category: category
+                    category: category,
+                    minPrice: minPrice,
+                    maxPrice: maxPrice
                 }
             });
         },

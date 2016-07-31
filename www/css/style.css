@@ -23,6 +23,18 @@
     font-weight: normal;
 }
 
+.category-image img {
+    height: 42px;
+    width: 42px;
+    margin: 5px;
+}
+
+.category-name {
+    font-size: 20px;
+    font-weight: normal;
+    margin: 5px;
+}
+
 .desire-detail-image {
     margin-top: 5px;
 }
