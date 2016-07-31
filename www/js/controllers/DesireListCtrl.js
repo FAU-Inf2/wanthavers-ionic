@@ -3,10 +3,13 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, $ionic
     $scope.$on('$ionicView.enter', function() {
     });
 
-    Desire.list().then(function(resp){
-        $scope.feed = resp.data;
-    });
-
+    $scope.loadDesires = function(){
+        Desire.list().then(function(resp){
+            $scope.feed = resp.data;
+            // Stop the ion-refresher from spinning
+            $scope.$broadcast('scroll.refreshComplete');
+        });
+    }
 
     $scope.$parent.addButtons([{
         icon: "ion-chatbubbles",
@@ -16,5 +19,5 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, $ionic
         }
     }]);
 
-
+    $scope.loadDesires();
 })
