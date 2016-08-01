@@ -1,23 +1,26 @@
 <ion-view hide-nav-bar="true">
 
-  <ion-content>
+  <ion-content class="login-content" scroll="false">
 
     <div class="logo-wrapper">
-      <img src="img/logo.png">
+      <img src="img/logo_white.png">
     </div>
 
     <form ng-submit="doLogin()">
       <div class="list login-form">
         <label class="item item-input item-floating-label">
           <span class="input-label">Email</span>
-          <input type="text" ng-model="loginData.username" placeholder="Email">
+          <input type="email" ng-model="loginData.username" placeholder="Email">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Password</span>
           <input type="password" ng-model="loginData.password" placeholder="Password">
         </label>
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
+          <button class="button button-block button-outline button-light" type="submit">Sign In.</button>
+        </label>
+        <label class="item">
+          <button class="button button-clear button-light" type="submit" ui-sref="app.startup">You don't have an account already?</button>
         </label>
       </div>
     </form>

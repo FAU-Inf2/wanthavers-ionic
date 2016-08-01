@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-var server = "http://dev.wanthaver.com";
+var server = "https://wanthaver.com:8443";
 var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment', 'base64']);
 var controllers = angular.module('starter.controllers', []);
 
@@ -38,11 +38,12 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.startup', {
+    url: '/startup',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/startup.html',
+        controller: 'LoginCtrl'
       }
     }
   })
@@ -127,6 +128,6 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
   });
     
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/login');
+    $urlRouterProvider.otherwise('/app/startup');
 })
 

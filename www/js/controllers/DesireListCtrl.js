@@ -1,6 +1,16 @@
-controllers.controller('DesireListCtrl', function($scope, Desire, $state, $ionicViewService, $ionicNavBarDelegate) {
+controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate) {
+
+    $ionicSideMenuDelegate.canDragContent(true);
 
     $scope.$on('$ionicView.enter', function() {
+        $scope.location = "wanthaver";
+        navigator.geolocation.getCurrentPosition(function(pos){
+            console.log(pos);
+            Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function(resp){
+                $scope.location = resp.data.cityName;
+            });
+        });
+
     });
 
     $scope.loadDesires = function(){

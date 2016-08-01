@@ -1,5 +1,7 @@
-controllers.controller('LoginCtrl', function($scope, $state, Auth, User, $rootScope, $ionicHistory) {
+controllers.controller('LoginCtrl', function($scope, $state, Auth, User, $rootScope, $ionicHistory, $ionicPopup, $ionicSideMenuDelegate) {
     $scope.loginData = {};
+
+    $ionicSideMenuDelegate.canDragContent(false);
 
     $scope.doLogin = function() {
         Auth.setCredentials($scope.loginData.username, $scope.loginData.password);
@@ -11,7 +13,10 @@ controllers.controller('LoginCtrl', function($scope, $state, Auth, User, $rootSc
             });
             $state.go("app.desirelist");
         },function(resp){
-
+            $ionicPopup.alert({
+                title: 'Error Signing In',
+                template: 'Wrong password or username'
+            });
         });
     };
 
