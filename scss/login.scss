@@ -1,0 +1,43 @@
+.login-content {
+  background: $primary;
+}
+
+.login-content label.item {
+  border: none;
+  background: none;
+}
+
+.logo-wrapper{
+  text-align: center;
+}
+
+.logo-wrapper img {
+  width: 53%;
+  margin-top: 50px;
+  margin-bottom: 32px;
+}
+
+.input-label{
+  color: #fff;
+}
+
+.login-content input{
+  color:#fff;
+  border-bottom: 1px solid #fff;
+  width: 90%;
+}
+
+.login-content ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #fff;
+}
+.login-content :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #fff;
+  opacity:  1;
+}
+.login-content ::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #fff;
+  opacity:  1;
+}
+.login-content :-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    #fff;
+}

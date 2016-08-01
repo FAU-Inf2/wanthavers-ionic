@@ -15,9 +15,53 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+$primary : #FF6C17;
+$light : #fff !default;
+$positive : $primary !default;
+$bar-stable-text: #FFFFFF !default;
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+@import "startup";
+@import "login";
+@import "desire_list";
+@import "menu";
+@import "chat";
+@import "desire_detail";
 
+
+[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
+  background: $primary;
+}
+
+.bar.bar-stable .title {
+  color: #fff;
+}
+
+button.button.button-outline.button-light, button.button.button-outline.button-light.activated {
+  border-color: #fff;
+  color: #fff;
+  background: none;
+}
+
+.text-align-right{
+  text-align: right;
+}
+
+[nav-bar-transition="ios"] .buttons{
+  -moz-transition: none;
+  -webkit-transition: none;
+  -o-transition: color 0 ease-in;
+  transition: none;
+}
+
+.margin-top{
+  margin-top:5px !important;
+}
+
+.padding{
+  padding:10px !important;
+}
