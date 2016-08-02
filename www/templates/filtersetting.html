@@ -1,16 +1,17 @@
 <ion-view view-title="Change Filter">
     <ion-content>
-        <label class="item item-input">
-            <span class="input-label">Category</span>
-            <input type="tel" placeholder="All Categories" ng-model="filterSetting.category">
-        </label>
-
+        <button class="button button-clear button-positive button-icon ion-edit" ng-click="openModal()">&nbsp;Category</button>
+        <div class="row row-no-padding" ng-show="filterSetting.category != null">
+            <div class="category-image"><img ng-src="{{filterSetting.category.image.lowRes}}"></div>
+            <div class="padding category-name">{{filterSetting.category.name}}</div>
+        </div>
+        
         <label class="item item-input">
             <input type="tel" placeholder="Minimum Price" ng-model="filterSetting.minPrice">
             <input type="tel" placeholder="Maximum Price" ng-model="filterSetting.maxPrice">
         </label>
 
-        <button ng-click="applyFilter()" >Apply Filter</button>
-        <button ng-click="resetFilter()" >Reset Filter</button>
+        <button class="button button-outline button-positive button-full" ng-click="applyFilter()" >Apply Filter</button>
+        <button class="button button-outline button-positive button-full" ng-click="resetFilter()" >Reset Filter</button>
     </ion-content>
 </ion-view>

@@ -116,16 +116,6 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
           }
       }
   })
-
-  .state('app.categorylist', {
-      url: '/categorylist',
-      views: {
-          'menuContent': {
-              templateUrl: 'templates/categorylist.html',
-              controller: 'CategoryListCtrl'
-          }
-      }
-  });
     
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/startup');
