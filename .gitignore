@@ -10,3 +10,4 @@ plugins
 *.DS_Store
 .idea
 *.iml
+www/css/*
