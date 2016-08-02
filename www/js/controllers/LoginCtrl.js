@@ -7,6 +7,7 @@ controllers.controller('LoginCtrl', function($scope, $state, Auth, User, $rootSc
         Auth.setCredentials($scope.loginData.username, $scope.loginData.password);
 
         User.getCurrentUser().then(function(resp){
+            Auth.setUserId(resp.data.id);
             $rootScope.currentUser = resp.data;
             $ionicHistory.nextViewOptions({
                 disableBack: true

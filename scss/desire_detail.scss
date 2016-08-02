@@ -41,7 +41,7 @@
 
 .desire-detail-box {
   margin-top: 20px;
-  background-color: #e8e8e8;
+  background-color: $grey;
   padding-bottom: 10px;
   padding-top: 10px;
 }
@@ -62,13 +62,13 @@
   margin-top: 25px;
   margin-left: 25%;
   margin-right: 25%;
-  background-color: #e8e8e8;
+  background-color: $grey;
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
 .desire-detail-creator {
-  background-color: #e8e8e8;
+  background-color: $grey;
 }
 
 .desire-detail-creator span {
@@ -86,4 +86,41 @@
 .desire-detail-price-box p {
   padding-top: 5px;
   text-align: center;
+}
+
+.haver-img {
+  width:100%;
+  border-radius: 100%;
+}
+
+.desire-detail-havers-box {
+  margin-top: 25px;
+  background-color: $grey;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
+
+.desire-detail-haver-list {
+  background-color: $secondary;
+}
+
+.desire-detail-havers-box .haver-title {
+  padding-top: 10px;
+}
+
+.desire-detail-haver-list .haver-name {
+  color: $primary;
+}
+
+.desire-detail-haver-list .rating-element{
+  color: $primary;
+}
+
+.desire-detail-haver-list .name-wapper{
+  padding-top: 10px;
+}
+
+.haver-row-wrapper{
+  border-bottom: 1px solid #888;
 }

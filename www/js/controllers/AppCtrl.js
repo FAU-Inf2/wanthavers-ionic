@@ -1,4 +1,4 @@
-controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $state, User) {
+controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $state, User, Auth) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -18,6 +18,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $sta
     }
 
     $scope.$on('$ionicView.enter', function() {
+        $rootScope.currentUserId = Auth.getUserId();
         if($rootScope.currentUser == undefined){
             User.getCurrentUser().then(function(resp){
                $rootScope.currentUser = resp.data;

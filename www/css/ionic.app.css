@@ -10035,6 +10035,35 @@ ion-side-menu .item, ion-side-menu .item-content {
   padding-top: 5px;
   text-align: center; }
 
+.haver-img {
+  width: 100%;
+  border-radius: 100%; }
+
+.desire-detail-havers-box {
+  margin-top: 25px;
+  background-color: #e8e8e8;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px; }
+
+.desire-detail-haver-list {
+  background-color: #FFFFFF; }
+
+.desire-detail-havers-box .haver-title {
+  padding-top: 10px; }
+
+.desire-detail-haver-list .haver-name {
+  color: #FF6C17; }
+
+.desire-detail-haver-list .rating-element {
+  color: #FF6C17; }
+
+.desire-detail-haver-list .name-wapper {
+  padding-top: 10px; }
+
+.haver-row-wrapper {
+  border-bottom: 1px solid #888; }
+
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
   background: #FF6C17; }
 

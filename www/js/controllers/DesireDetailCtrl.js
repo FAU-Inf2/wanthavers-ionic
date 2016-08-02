@@ -1,4 +1,4 @@
-controllers.controller('DesireDetailCtrl', function($scope, $stateParams, Desire, $state, $ionicLoading) {
+controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $stateParams, Desire, Haver, $state, $ionicLoading) {
 
     $ionicLoading.show({
         template: 'Loading...'
@@ -6,17 +6,21 @@ controllers.controller('DesireDetailCtrl', function($scope, $stateParams, Desire
     
     Desire.getDetail($stateParams.desireId).then(function(resp){
         $scope.desire = resp.data;
+        $scope.isWanter = $scope.desire.creator.id == $rootScope.currentUserId;
         $ionicLoading.hide();
+    });
+
+    Haver.getAllHavers($stateParams.desireId).then(function(resp) {
+        $scope.list = resp.data;
     });
 
     $scope.$on('$ionicView.enter', function() {
 
-        if($scope.currentUser.id == $scope.desire.creator.id) {
-            $scope.userIsCreator = true;
-        } else {
-            $scope.userIsCreator = false;
-        }
     });
+
+    $scope.cancel = function(){
+        //bbbb
+    }
 
     $scope.$parent.addButtons([
         {
@@ -24,7 +28,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $stateParams, Desire
             name: "",
             show: false,
             action: function(){
-                $state.go("app.browse");
+                $scope.cancel();
             }
         },
         {

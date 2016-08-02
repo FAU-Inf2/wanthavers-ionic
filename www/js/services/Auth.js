@@ -18,6 +18,14 @@ wanthaver.factory('Auth', ['$base64', function ($base64) {
             window.localStorage.setItem("password", password);
         },
 
+        setUserId: function(id) {
+            window.localStorage.setItem("userId", id);
+        },
+
+        getUserId: function() {
+            return parseInt(window.localStorage.getItem("userId"));
+        },
+
         getEmailOfCurUser: function(){
             return window.localStorage.getItem("username");
         }

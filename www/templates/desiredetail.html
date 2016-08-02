@@ -1,6 +1,6 @@
 <ion-view view-title="Desire">
     <ion-content class="desire-detail">
-        <div class="row desire-detail-creator">
+        <div class="row desire-detail-creator" ng-if="!isWanter">
             <div class="col col-20">
                 <div class="creator-img"><img ng-src="{{desire.creator.image.lowRes}}"></div>
             </div>
@@ -45,6 +45,27 @@
         <div class="desire-detail-box">
             <h4>Ort</h4>
             <p>{{desire.dropzone_string}}</p>
+        </div>
+
+        <div class="desire-detail-havers-box" ng-if="isWanter">
+            <h4 class="haver-title">Haver</h4>
+            <div class="desire-detail-haver-list">
+                <div ng-repeat="haver in list">
+                    <div class="row haver-row-wrapper">
+                        <div class="col col-16">
+                            <img class="haver-img" ng-src="{{haver.user.image.lowRes}}">
+                        </div>
+                        <div class="col col-50  name-wapper">
+                            <span class="haver-name">{{haver.user.name}}</span>
+                            <br>
+                            <span ng-bind-html="haver.user.rating | rating | unsafe"></span>
+                        </div>
+                        <div class="col col-34">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </ion-content>
 </ion-view>
