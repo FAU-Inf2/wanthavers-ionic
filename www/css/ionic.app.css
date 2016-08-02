@@ -10060,3 +10060,74 @@ button.button.button-outline.button-light, button.button.button-outline.button-l
 
 .padding {
   padding: 10px !important; }
+
+.create-button-center {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  height: 50px;
+  width: 50px; }
+
+button.button-icon.round-overlay-button {
+  position: absolute;
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  min-height: 56px;
+  padding: 0;
+  border: none;
+  font-size: 33px;
+  background-color: #FF6C17;
+  color: white;
+  transition: all linear 220ms;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden; }
+  button.button-icon.round-overlay-button.energized {
+    background-color: #ffc900;
+    color: white; }
+    button.button-icon.round-overlay-button.energized.activated {
+      background-color: #b38d00; }
+  button.button-icon.round-overlay-button.assertive {
+    background-color: #ef473a;
+    color: white; }
+    button.button-icon.round-overlay-button.assertive.activated {
+      background-color: #cc1e11; }
+  button.button-icon.round-overlay-button.positive {
+    background-color: #FF6C17;
+    color: white; }
+    button.button-icon.round-overlay-button.positive.activated {
+      background-color: #ca4a00; }
+  button.button-icon.round-overlay-button.icon:before {
+    font-size: 24px; }
+  button.button-icon.round-overlay-button.small {
+    height: 40px;
+    width: 40px;
+    min-height: 40px;
+    padding: 0;
+    border: none; }
+    button.button-icon.round-overlay-button.small.icon:before {
+      line-height: 40px; }
+  button.button-icon.round-overlay-button.activated {
+    opacity: 1; }
+  button.button-icon.round-overlay-button.left {
+    left: 1px;
+    top: 16px; }
+  button.button-icon.round-overlay-button.bottom-edge-right {
+    bottom: -24px;
+    right: 16px;
+    z-index: 12; }
+  button.button-icon.round-overlay-button.bottom-right {
+    bottom: 0;
+    margin-bottom: 16px;
+    right: 16px;
+    z-index: 2; }
+    button.button-icon.round-overlay-button.bottom-right.slide-down {
+      transform: translate3d(0, 88px, 0); }
+  button.button-icon.round-overlay-button.bottom-center {
+    bottom: 0;
+    margin-bottom: 5px;
+    margin-right: -24px;
+    right: 50%;
+    z-index: 2; }
+    button.button-icon.round-overlay-button.bottom-center.slide-down {
+      transform: translate3d(0, 88px, 0); }
