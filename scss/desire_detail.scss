@@ -9,7 +9,7 @@
 
 .list-item h1 {
   font-size: 20px;
-  color: #FF6C17;
+  color: $primary;
   font-weight: normal;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .desire-detail h4 {
-  color: #FF6C17;
+  color: $primary;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -79,7 +79,7 @@
 }
 
 .desire-detail-price-box h4 {
-  color: #FF6C17;
+  color: $primary;
   text-align: center;
 }
 

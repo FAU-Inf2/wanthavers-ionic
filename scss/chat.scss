@@ -1,6 +1,6 @@
 .chat-message {
   padding: 7px;
-  background: #FF6C17;
+  background: $primary;
   display: inline-block;
   margin: 3px;
   border-radius: 5px;
@@ -21,8 +21,8 @@
 
 .chat-message.from-me {
   background: #fff;
-  color: #FF6C17;
-  border: 1px solid #FF6C17;
+  color: $primary;
+  border: 1px solid $primary;
 }
 
 .msg-sending{
