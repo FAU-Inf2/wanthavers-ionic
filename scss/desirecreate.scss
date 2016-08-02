@@ -1,0 +1,19 @@
+textarea.create-description {
+  border: 1px solid $grey;
+  height: 160px;
+  width: 90%;
+}
+
+span.desc-char-counter {
+  position: absolute;
+  top: 13px;
+  right: 10%;
+}
+
+.desire-create .item-floating-label{
+  margin-bottom:20px;
+}
+
+.slider {
+  height: 100%;
+}

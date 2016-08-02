@@ -1,0 +1,28 @@
+<ion-view view-title="{{title}}">
+  <ion-content class="desire-create" scroll="false">
+
+
+    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+      <ion-slide>
+        <label class=" item-input item-floating-label">
+          <span class="input-label">Titel</span>
+          <input type="text" maxlength="50" ng-model="desireTitle" placeholder="Titel">
+        </label>
+
+        <label class=" item-input item-floating-label">
+          <span class="input-label">Description</span>
+          <span class="desc-char-counter" ng-class="{'red-font' : desireDescription.length == 300}">
+        ({{(desireDescription == undefined) ? 0 : desireDescription.length }}/300)
+      </span>
+          <textarea ng-model="desireDescription" class="create-description" placeholder="Description (max 300 Characters)" maxlength="300"></textarea>
+        </label>
+      </ion-slide>
+      <ion-slide>
+        <div class="box yellow"><h1>Create Desire: Step 2</h1></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box pink"><h1>Create Desire: Step 3</h1></div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>

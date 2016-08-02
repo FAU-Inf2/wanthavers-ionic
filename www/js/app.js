@@ -116,7 +116,17 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
           }
       }
   })
-    
+
+  .state('app.desirecreate', {
+      url: '/desirecreate',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/desirecreate.html',
+              controller: 'DesireCreateCtrl'
+          }
+      }
+  })
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/startup');
 })

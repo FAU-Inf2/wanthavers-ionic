@@ -33,10 +33,23 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "menu";
 @import "chat";
 @import "desire_detail";
-
+@import "desirecreate";
 
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
   background: $primary;
+}
+
+.red-font{
+  color:#ff0000;
+}
+
+.input-label{
+  color: $primary;
+}
+
+.item-input input{
+  border-bottom: 1px solid $grey;
+  width: 90%;
 }
 
 .bar.bar-stable .title {
