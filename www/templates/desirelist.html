@@ -38,6 +38,10 @@
 
       </ion-item>
     </ion-list>
+    <ion-infinite-scroll
+            on-infinite="loadMore()"
+            distance="1%">
+    </ion-infinite-scroll>
   </ion-content>
 
   <button class="round-overlay-button bottom-center primary button button-icon ion-plus-round light" ui-sref="app.desirecreate"></button>
