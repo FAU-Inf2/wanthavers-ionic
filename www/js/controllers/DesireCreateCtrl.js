@@ -1,6 +1,7 @@
-controllers.controller('DesireCreateCtrl', function($scope, $state) {
+controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,FilterSetting, CategoryList) {
     $scope.title = "Create Desire: Step 1";
     $scope.lastSlide = false;
+    $scope.filterSetting = {};
 
     $scope.slideHasChanged = function (index) {
         $scope.lastSlide = false;
@@ -26,6 +27,28 @@ controllers.controller('DesireCreateCtrl', function($scope, $state) {
         }]);
     }
 
+    $ionicModal.fromTemplateUrl('templates/categorylist.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal = modal;
+        CategoryList.list().then(function(resp){
+            $scope.feed = resp.data;
+        });
+    });
+
+    $scope.openModal = function() {
+        $scope.modal.show();
+    };
+
+    $scope.selectCategory = function(category) {
+        $scope.filterSetting.category = category;
+        $scope.modal.hide();
+    };
+
+    $scope.$on('$destroy', function() {
+        $scope.modal.remove();
+    });
 
 
 })

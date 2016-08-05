@@ -17,12 +17,46 @@
           <textarea ng-model="desireDescription" class="create-description" placeholder="Description (max 300 Characters)" maxlength="300"></textarea>
         </label>
       </ion-slide>
+
       <ion-slide>
-        <div class="box yellow"><h1>Create Desire: Step 2</h1></div>
+
+        <div class="row">
+          <div class="col col-60">
+            <label class=" item-input item-floating-label">
+              <span class="input-label">Price</span>
+              <input type="tel" maxlength = "3" ng-model="desirePrice" placeholder="Price">
+            </label>
+          </div>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+
+            </div>
+            <select>
+              <option>€</option>
+              <option selected>$</option>
+              <option>£</option>
+            </select>
+          </label>
+        </div>
+
+        <button class="button button-clear button-positive button-icon ion-plus-round" ng-click="openModal()">
+          &nbsp;Select a Category
+        </button>
+        <div class="row row-no-padding" ng-show="filterSetting.category != null">
+          <div class="category-image"><img ng-src="{{filterSetting.category.image.lowRes}}"></div>
+          <div class="padding category-name">{{filterSetting.category.name}}</div>
+        </div>
+
+        <div class="desire-img"><img ng-src="{{(filterSetting.category != undefined)? filterSetting.category.image.lowRes : 'img/ionic.png' }}" >
+        </div>
+        </label>
       </ion-slide>
+
       <ion-slide>
-        <div class="box pink"><h1>Create Desire: Step 3</h1></div>
+        <div class="box"><h1>Create Desire: Step 3</h1></div>
       </ion-slide>
+
     </ion-slide-box>
   </ion-content>
 </ion-view>
