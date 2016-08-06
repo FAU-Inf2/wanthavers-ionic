@@ -2,6 +2,8 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.title = "Create Desire: Step 1";
     $scope.lastSlide = false;
     $scope.filterSetting = {};
+    $scope.currency = "Euro";
+    $scope.selectedCurrency = "€";
 
     $scope.slideHasChanged = function (index) {
         $scope.lastSlide = false;
@@ -50,5 +52,19 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
         $scope.modal.remove();
     });
 
+
+    $scope.currencyChanged = function (selectedCurrency) {
+        switch (selectedCurrency) {
+            case "€":
+                $scope.currency = "Euro";
+                break;
+            case "$":
+                $scope.currency = "Dollar";
+                break;
+            case "£":
+                $scope.currency = "Pound";
+                break;
+        }
+    }
 
 })

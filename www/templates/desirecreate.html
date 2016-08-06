@@ -21,23 +21,24 @@
       <ion-slide>
 
         <div class="row">
-          <div class="col col-60">
+          <div class="col col-50">
             <label class=" item-input item-floating-label">
               <span class="input-label">Price</span>
               <input type="tel" maxlength = "3" ng-model="desirePrice" placeholder="Price">
             </label>
           </div>
-
+          <div class="col col-50">
           <label class="item item-input item-select">
             <div class="input-label">
-
+              {{currency}}
             </div>
-            <select>
-              <option>€</option>
-              <option selected>$</option>
+            <select ng-model="selectedCurrency" ng-change="currencyChanged(selectedCurrency)">
+              <option selected>€</option>
+              <option>$</option>
               <option>£</option>
             </select>
           </label>
+          </div>
         </div>
 
         <button class="button button-clear button-positive button-icon ion-plus-round" ng-click="openModal()">
