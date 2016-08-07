@@ -1,8 +1,13 @@
 wanthaver.factory('Chat', ['$http', 'Auth', function ($http, Auth) {
     return {
         
-        getMessagesByChatId: function(id){
-            return $http.get(server+'/v1/chat/'+id, Auth.getHeaderObject());
+        getMessagesByChatId: function(id, last_creation_time){
+            var limit = 20;
+            var getString = "?limit="+limit;
+            if(last_creation_time != undefined) {
+                getString += "&last_creation_time=" + last_creation_time;
+            }
+            return $http.get(server+'/v1/chat/'+id+getString, Auth.getHeaderObject());
         },
 
         sendMessage: function(id, msg){

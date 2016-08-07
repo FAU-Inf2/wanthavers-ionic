@@ -1,9 +1,12 @@
 <ion-view view-title="{{otherUser.name}}">
   <ion-content delegate-handle="msgList">
+    <ion-refresher
+            on-refresh="loadMore()">
+    </ion-refresher>
     <ion-list style="margin-bottom:20px;">
       <ion-item class="chat-message-wrapper item-text-wrap row-no-padding"
                 ng-class="{'from-me-wrapper': msg.from==currentUser.id}"
-                ng-repeat="msg in messages | orderBy:'createdAt'">
+                ng-repeat="msg in messages | unique:'objectId'">
 
           <div class="chat-message" ng-class="{'from-me': msg.from==currentUser.id}">{{msg.body}}</div>
       </ion-item>
