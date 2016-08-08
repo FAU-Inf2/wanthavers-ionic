@@ -8,6 +8,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
         $scope.desire = resp.data;
         $scope.isWanter = $scope.desire.creator.id == $rootScope.currentUserId;
         $scope.showNavBarButtons();
+        $scope.refreshButtons();
         $ionicLoading.hide();
     });
 
@@ -28,18 +29,13 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
     }
 
     $scope.acceptDesire = function() {
-        User.getById($rootScope.currentUser.id).then(function(resp){
-            $scope.currentUser = resp.data;
-        });
-        var appDate = $filter('date')(app.date, "dd/MM/yyyy");
-        haver = new Haver($scope.currentUser, appDate, $scope.desire.id);
-
+        Haver.createHaver($stateParams.desireId);
     }
 
     $scope.showNavBarButtons = function() {
         $scope.$parent.addButtons([
             {
-                icon: "icon ion-trash-b",
+                icon: "icon ion-trash-b myBtn",
                 name: "",
                 show: $scope.isWanter,
                 action: function(){
