@@ -17,6 +17,16 @@ wanthaver.factory('Desire', ['$http', 'Auth', 'FilterSetting', function ($http, 
 
         getDetail: function (id) {
             return $http.get(server+'/v1/desires/'+id);
+        },
+
+        create: function(desire){
+            console.log(desire);
+            return $http.post(server+'/v1/desires',
+                desire,
+                Auth.getHeaderObject()
+
+            );
         }
-    };
+
+};
 }]);

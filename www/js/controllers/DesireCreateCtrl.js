@@ -1,7 +1,8 @@
-controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,FilterSetting, CategoryList) {
+controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,FilterSetting, Desire, CategoryList) {
     $scope.title = "Create Desire: Step 1";
     $scope.lastSlide = false;
     $scope.filterSetting = {};
+    $scope.desire = {};
     $scope.currency = "Euro";
     $scope.selectedCurrency = "€";
 
@@ -44,7 +45,10 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     };
 
     $scope.selectCategory = function(category) {
-        $scope.filterSetting.category = category;
+        $scope.category = category;
+        $scope.desire.categoryId = category.id;
+        $scope.desire.image = category.image;
+        console.log($scope.desire.categoryId);
         $scope.modal.hide();
     };
 
@@ -65,6 +69,11 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
                 $scope.currency = "Pound";
                 break;
         }
+    }
+
+    $scope.create = function(desire) {
+        Desire.create(desire);
+
     }
 
 })

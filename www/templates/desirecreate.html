@@ -6,15 +6,15 @@
       <ion-slide>
         <label class=" item-input item-floating-label">
           <span class="input-label">Titel</span>
-          <input type="text" maxlength="50" ng-model="desireTitle" placeholder="Titel">
+          <input type="text" maxlength="50" ng-model="desire.title" placeholder="Titel">
         </label>
 
         <label class=" item-input item-floating-label">
           <span class="input-label">Description</span>
-          <span class="desc-char-counter" ng-class="{'red-font' : desireDescription.length == 300}">
-        ({{(desireDescription == undefined) ? 0 : desireDescription.length }}/300)
+          <span class="desc-char-counter" ng-class="{'red-font' : desire.description.length == 300}">
+        ({{(desire.description == undefined) ? 0 : desire.description.length }}/300)
       </span>
-          <textarea ng-model="desireDescription" class="create-description" placeholder="Description (max 300 Characters)" maxlength="300"></textarea>
+          <textarea ng-model="desire.description" class="create-description" placeholder="Description (max 300 Characters)" maxlength="300"></textarea>
         </label>
       </ion-slide>
 
@@ -24,7 +24,7 @@
           <div class="col col-50">
             <label class=" item-input item-floating-label">
               <span class="input-label">Price</span>
-              <input type="tel" maxlength = "3" ng-model="desirePrice" placeholder="Price">
+              <input type="tel" maxlength = "3" ng-model="desire.price" placeholder="Price">
             </label>
           </div>
           <div class="col col-50">
@@ -32,7 +32,7 @@
             <div class="input-label">
               {{currency}}
             </div>
-            <select ng-model="selectedCurrency" ng-change="currencyChanged(selectedCurrency)">
+            <select ng-model="desire.currency" ng-change="currencyChanged(desire.currency)">
               <option selected>€</option>
               <option>$</option>
               <option>£</option>
@@ -44,18 +44,21 @@
         <button class="button button-clear button-positive button-icon ion-plus-round" ng-click="openModal()">
           &nbsp;Select a Category
         </button>
-        <div class="row row-no-padding" ng-show="filterSetting.category != null">
-          <div class="category-image"><img ng-src="{{filterSetting.category.image.lowRes}}"></div>
-          <div class="padding category-name">{{filterSetting.category.name}}</div>
+        <div class="row row-no-padding" ng-show="category != null">
+          <div class="category-image"><img ng-src="{{category.image.lowRes}}"></div>
+          <div class="padding category-name">{{category.name}}</div>
         </div>
 
-        <div class="desire-img"><img ng-src="{{(filterSetting.category != undefined)? filterSetting.category.image.lowRes : 'img/ionic.png' }}" >
+        <div class="desire-img"><img ng-src="{{(category != undefined)? category.image.lowRes : 'img/ionic.png' }}" >
         </div>
         </label>
       </ion-slide>
 
       <ion-slide>
         <div class="box"><h1>Create Desire: Step 3</h1></div>
+        <button class="button button-full button-positive" ng-click="create(desire)">
+          Upload Desire
+        </button>
       </ion-slide>
 
     </ion-slide-box>
