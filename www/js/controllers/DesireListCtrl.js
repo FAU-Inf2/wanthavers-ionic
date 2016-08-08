@@ -15,6 +15,12 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
     });
 
+    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+        if (fromState.url == "/filtersetting") {
+            $scope.loadDesires();
+        }
+    })
+
     /** inifinite scroll **/
     $scope.loadMore = function(){
         if($scope.feed == undefined || $scope.reachedEnd){
@@ -55,6 +61,8 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
             $state.go("app.chatlist");
         }
     }]);
+
+
 
     $scope.loadDesires();
 })

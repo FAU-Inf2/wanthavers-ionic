@@ -11,6 +11,11 @@
             <input type="tel" placeholder="Maximum Price" ng-model="filterSetting.maxPrice">
         </label>
 
+        <div class="padding">
+            Minimum Rating
+            <ionic-ratings class="ionic_rating_icon_on" ratingsobj='ratingsObject'></ionic-ratings>
+        </div>
+
         <button class="button button-outline button-positive button-full" ng-click="applyFilter()" >Apply Filter</button>
         <button class="button button-outline button-positive button-full" ng-click="resetFilter()" >Reset Filter</button>
     </ion-content>

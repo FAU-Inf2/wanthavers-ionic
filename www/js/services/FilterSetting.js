@@ -5,6 +5,7 @@ wanthaver.factory('FilterSetting', function() {
         applyFilter: function(filterSetting){
             //window.localStorage.setItem("filterSetting", JSON.stringify(filterSetting));
             this.filterSetting = filterSetting;
+            console.log("Applied filter ", this.filterSetting);
         },
 
         resetFilter: function(){
@@ -12,7 +13,7 @@ wanthaver.factory('FilterSetting', function() {
         },
 
         getCategory: function(){
-            return this.filterSetting.category;
+            return this.filterSetting.category != null ? this.filterSetting.category.id : null;
         },
 
         getMinPrice: function(){
@@ -22,5 +23,9 @@ wanthaver.factory('FilterSetting', function() {
         getMaxPrice: function(){
             return this.filterSetting.maxPrice;
         },
+
+        getMinRating: function(){
+            return this.filterSetting.rating;
+        }
     };
 });

@@ -11,3 +11,5 @@ plugins
 .idea
 *.iml
 www/css/*
+www/lib/*
+bower_components

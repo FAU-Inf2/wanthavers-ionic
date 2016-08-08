@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 
 var server = "https://wanthaver.com:8443";
-var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment', 'base64']);
+var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment', 'base64', 'ionic-ratings']);
 var controllers = angular.module('starter.controllers', []);
 
 wanthaver.run(function($ionicPlatform) {
