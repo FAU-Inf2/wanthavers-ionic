@@ -17,6 +17,14 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $sta
         $scope.barButtonsMap[$state.current.name] = arr
     }
 
+    $scope.removeButtons = function() {
+        var tmp = $scope.barButtonsMap[$state.current.name];
+        if(tmp != undefined){
+            return;
+        }
+        $scope.barButtonsMap[$state.current.name] = [];
+    }
+
     $scope.$on('$ionicView.enter', function() {
         $rootScope.currentUserId = Auth.getUserId();
         if($rootScope.currentUser == undefined){
