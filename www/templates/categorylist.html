@@ -6,8 +6,12 @@
         <ion-list>
             <ion-item class="item-text-wrap row-no-padding" ng-repeat="category in feed">
                 <div class="row row-no-padding" ng-click="selectCategory(category)">
-                    <div class="category-image"><img ng-src="{{category.image.lowRes}}"></div>
-                    <div class="padding category-name">{{category.name}}</div>
+                    <div class="col col-10">
+                       <img class="category-list-image" ng-src="{{category.image.lowRes}}">
+                    </div>
+                    <div class="col col-90">
+                        <div class="padding category-name">{{category.name}}</div>
+                    </div>
                 </div>
             </ion-item>
         </ion-list>
