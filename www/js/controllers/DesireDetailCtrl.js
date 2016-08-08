@@ -3,10 +3,11 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
     $ionicLoading.show({
         template: 'Loading...'
     });
-    
-    Desire.getDetail($stateParams.desireId).then(function(resp){
+
+    Desire.getDetail($stateParams.desireId).then(function (resp) {
         $scope.desire = resp.data;
         $scope.isWanter = $scope.desire.creator.id == $rootScope.currentUserId;
+        $scope.showNavBarButtons();
         $ionicLoading.hide();
     });
 
@@ -18,25 +19,51 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
 
     });
 
-    $scope.cancel = function(){
+    $scope.removeDesire = function(){
         //bbbb
     }
 
-    $scope.$parent.addButtons([
-        {
-            icon: "ion-android-cancel",
-            name: "",
-            show: false,
-            action: function(){
-                $scope.cancel();
+    $scope.reportDesire = function() {
+
+    }
+
+    $scope.acceptDesire = function() {
+        User.getById($rootScope.currentUser.id).then(function(resp){
+            $scope.currentUser = resp.data;
+        });
+        var appDate = $filter('date')(app.date, "dd/MM/yyyy");
+        haver = new Haver($scope.currentUser, appDate, $scope.desire.id);
+
+    }
+
+    $scope.showNavBarButtons = function() {
+        $scope.$parent.addButtons([
+            {
+                icon: "icon ion-trash-b",
+                name: "",
+                show: $scope.isWanter,
+                action: function(){
+                    $scope.removeDesire();
+                }
+            },
+            {
+                icon: "icon ion-alert-circled",
+                name: "",
+                show: !($scope.isWanter),
+                action: function() {
+                    $scope.reportDesire();
+                }
+            },
+            {
+                icon: "icon ion-checkmark-round",
+                name: "",
+                show: !($scope.isWanter),
+                action: function(){
+                    $scope.acceptDesire();
+                }
             }
-        },
-        {
-            icon: "ion-checkmark-round",
-            name: "",
-            action: function(){
-                alert(1);
-            }
-        }
-    ]);
+        ]);
+    }
+
+
 })

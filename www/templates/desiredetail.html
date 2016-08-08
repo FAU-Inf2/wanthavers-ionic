@@ -1,26 +1,39 @@
 <ion-view view-title="Desire">
     <ion-content class="desire-detail">
+
         <div class="row desire-detail-creator" ng-if="!isWanter">
-            <div class="col col-20">
+            <div class="col">
                 <div class="creator-img"><img ng-src="{{desire.creator.image.lowRes}}"></div>
             </div>
-            <div class="col col-20">
-                <span>{{desire.creator.name}}</span>
-            </div>
-            <div class="col col-40">
-                <span ng-bind-html="desire.creator.rating | rating | unsafe"></span>
+            <div class="col col-67">
+                <div class="row">
+                    <div class="col col-50">
+                        <span class="creator-name">{{desire.creator.name}}</span>
+                    </div>
+                    <div class="col col-50">
+                        <span ng-bind-html="desire.creator.rating | rating | unsafe"></span>
+                    </div>
+                </div>
             </div>
             <div class="col col-10">
-                <button class="button button-icon ion-ios-star"></button>
+                <button class="button button-small desire-detail-button">
+                    <i class="icon ion-star rate-icon"></i>
+                </button>
             </div>
             <div class="col col-10">
-                <button class="button button-icon ion-chatbubbles"></button>
+                <button class="button button-small desire-detail-button">
+                    <i class="icon ion-chatbubbles message-icon"></i>
+                </button>
             </div>
         </div>
 
         <div class="row">
-            <div class="col col-50"><span>{{desire.status | desireStatus}}</span></div>
-            <div align="right" class="col col-50"><span>{{desire.creation_time | date:'dd. MMMM yyyy'}}</span></div>
+            <div class="col col-50">
+                <span>{{desire.status | desireStatus}}</span>
+            </div>
+            <div align="right" class="col col-50">
+                <span>{{desire.creation_time | date:'dd. MMMM yyyy'}}</span>
+            </div>
         </div>
 
         <div class="row">
@@ -31,15 +44,15 @@
                 <span>{{desire.title}}</span>
             </div>
         </div>
+
         <div class="desire-detail-box">
             <h4>Beschreibung</h4>
             <p>{{desire.description}}</p>
-            
         </div>
 
         <div class="desire-detail-price-box">
             <h4>Preis</h4>
-            <p>{{desire.price}}{{desire.currency | currency}}</p>
+            <p class="price-note">{{desire.price}}{{desire.currency | currency}}</p>
         </div>
 
         <div class="desire-detail-box">
@@ -47,25 +60,32 @@
             <p>{{desire.dropzone_string}}</p>
         </div>
 
-        <div class="desire-detail-havers-box" ng-if="isWanter">
+        <div class="desire-detail-box" ng-if="isWanter">
             <h4 class="haver-title">Haver</h4>
-            <div class="desire-detail-haver-list">
-                <div ng-repeat="haver in list">
-                    <div class="row haver-row-wrapper">
-                        <div class="col col-16">
-                            <img class="haver-img" ng-src="{{haver.user.image.lowRes}}">
-                        </div>
-                        <div class="col col-50  name-wapper">
-                            <span class="haver-name">{{haver.user.name}}</span>
-                            <br>
-                            <span ng-bind-html="haver.user.rating | rating | unsafe"></span>
-                        </div>
-                        <div class="col col-34">
-
-                        </div>
+            <p ng-show="!list.length">Unfortunately there are no havers yet</p>
+            <div class="desire-detail-haver-list" ng-repeat="haver in list">
+                <div class="row haver-row-wrapper">
+                    <div class="col">
+                        <img class="haver-img" ng-src="{{haver.user.image.lowRes}}">
+                    </div>
+                    <div class="col col-67  name-wapper">
+                        <span class="haver-name">{{haver.user.name}}</span>
+                        <br>
+                        <span ng-bind-html="haver.user.rating | rating | unsafe"></span>
+                    </div>
+                    <div class="col col-10">
+                        <button class="button button-small desire-detail-button">
+                            <i class="icon icon ion-checkmark-round accept-icon"></i>
+                        </button>
+                    </div>
+                    <div class="col col-10">
+                        <button class="button button-small desire-detail-button">
+                            <i class="icon ion-chatbubbles message-icon"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
     </ion-content>
 </ion-view>

@@ -1,10 +1,11 @@
 .desire-img img {
-  width: 100%;
+  width:100%;
+  border-radius: 100%;
 }
 
 .creator-img img {
   width: 100%;
-  height: auto;
+  border-radius: 100%;
 }
 
 .list-item h1 {
@@ -14,18 +15,21 @@
 }
 
 .category-image img {
-  height: 42px;
-  width: 42px;
-  margin: 5px;
+  width: 100%;
+  border-radius: 100%;
 }
 
 .category-name {
   font-size: 20px;
   font-weight: normal;
   margin: 5px;
+  width:100%;
+  border-radius: 100%;
 }
 
 .desire-detail-image {
+  width:100%;
+  border-radius: 100%;
   margin-top: 5px;
 }
 
@@ -35,9 +39,24 @@
   line-height: 25px;
 }
 
-.desire-detail-title span{
-
+.rate-icon {
+  color: $secondary;
 }
+
+.message-icon {
+  color: $secondary;
+}
+
+.accept-icon {
+  color: $secondary;
+}
+
+.desire-detail-button {
+  margin-top: 5px;
+  background-color: $primary;
+  font-size: small;
+}
+
 
 .desire-detail-box {
   margin-top: 20px;
@@ -75,6 +94,15 @@
   alignment: center;
 }
 
+.desire-detail-creator .creator-name {
+  font-size: medium;
+}
+
+.desire-detail-creator .rating-element{
+  color: $primary;
+  font-size: medium;
+}
+
 .desire-detail-creator button {
 }
 
@@ -88,17 +116,13 @@
   text-align: center;
 }
 
+.price-note {
+  font-size: large;
+}
+
 .haver-img {
   width:100%;
   border-radius: 100%;
-}
-
-.desire-detail-havers-box {
-  margin-top: 25px;
-  background-color: $grey;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 15px;
 }
 
 .desire-detail-haver-list {
@@ -118,7 +142,7 @@
 }
 
 .desire-detail-haver-list .name-wapper{
-  padding-top: 10px;
+  padding-top: 5px;
 }
 
 .haver-row-wrapper{
