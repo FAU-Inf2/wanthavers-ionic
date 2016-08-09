@@ -32,7 +32,7 @@
             <div class="input-label">
               {{currency}}
             </div>
-            <select ng-model="desire.currency" ng-change="currencyChanged(desire.currency)">
+            <select ng-model="selectedCurrency" ng-change="currencyChanged(selectedCurrency)">
               <option selected>€</option>
               <option>$</option>
               <option>£</option>
@@ -55,10 +55,14 @@
       </ion-slide>
 
       <ion-slide>
-        <div class="box"><h1>Create Desire: Step 3</h1></div>
-        <button class="button button-full button-positive" ng-click="create(desire)">
+        <div class="box"> <label class=" item-input item-floating-label">
+          <span class="input-label">Location</span>
+          <input type="text" maxlength="50" ng-model="desire.dropzone_string" placeholder="Location">
+        </label>
+        </div>
+        <!--<button class="button button-full button-positive" ng-click="create(desire)">
           Upload Desire
-        </button>
+        </button>-->
       </ion-slide>
 
     </ion-slide-box>
