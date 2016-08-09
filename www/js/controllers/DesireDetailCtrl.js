@@ -1,14 +1,19 @@
-controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $stateParams, Desire, Haver, $state, $ionicLoading) {
+controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $stateParams, Desire, Haver, $state, $ionicLoading, service) {
 
     $ionicLoading.show({
         template: 'Loading...'
     });
 
+    $scope.$parent.removeButtons();
+
     Desire.getDetail($stateParams.desireId).then(function (resp) {
         $scope.desire = resp.data;
         $scope.isWanter = $scope.desire.creator.id == $rootScope.currentUserId;
+        console.log( $scope.desire.creator.id)
+        console.log($rootScope.currentUserId)
+        console.log($scope.isWanter);
         $scope.showNavBarButtons();
-        $scope.refreshButtons();
+        //$scope.refreshButtons();
         $ionicLoading.hide();
     });
 
@@ -17,6 +22,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
     });
 
     $scope.$on('$ionicView.enter', function() {
+
 
     });
 
@@ -33,6 +39,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
     }
 
     $scope.showNavBarButtons = function() {
+
         $scope.$parent.addButtons([
             {
                 icon: "icon ion-trash-b myBtn",

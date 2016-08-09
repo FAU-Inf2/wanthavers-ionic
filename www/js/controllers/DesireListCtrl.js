@@ -1,4 +1,4 @@
-controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate) {
+controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, service) {
 
     $scope.reachedEnd = false;
 
@@ -12,8 +12,9 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
                 $scope.location = resp.data.cityName;
             });
         });
-
     });
+
+    
 
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         if (fromState.url == "/filtersetting") {

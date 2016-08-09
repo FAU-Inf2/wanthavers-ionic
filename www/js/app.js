@@ -129,5 +129,4 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/startup');
-})
-
+});
