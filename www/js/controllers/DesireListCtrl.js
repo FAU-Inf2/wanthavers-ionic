@@ -1,4 +1,4 @@
-controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, service) {
+controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate) {
 
     $scope.reachedEnd = false;
 
@@ -14,7 +14,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
         });
     });
 
-    
+
 
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         if (fromState.url == "/filtersetting") {

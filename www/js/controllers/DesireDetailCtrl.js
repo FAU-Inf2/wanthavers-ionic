@@ -1,4 +1,4 @@
-controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $stateParams, Desire, Haver, $state, $ionicLoading, service) {
+controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $stateParams, Desire, Haver, $state, $ionicLoading) {
 
     $ionicLoading.show({
         template: 'Loading...'
