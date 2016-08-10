@@ -53,3 +53,13 @@
 .terms-check{
   padding-top:35px;
 }
+
+input[type='date']:before {
+  content: attr(placeholder);
+  margin-right: 10px;
+}
+
+.date-not-empty:before{
+  content: "" !important;
+  margin-right: 0px !important;
+}

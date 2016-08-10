@@ -1,6 +1,6 @@
 <ion-view hide-nav-bar="true">
 
-  <ion-content class="login-content"  scroll="false">
+  <ion-content class="login-content" >
 
     <div class="logo-wrapper">
       <img src="img/logo_white.png">
@@ -21,8 +21,8 @@
           <input type="text" ng-model="signupData.name" placeholder="Your Username">
         </label>
         <label class="item item-input item-floating-label">
-
-          <input type="date" ng-model="signupData.birthday">
+          <span class="input-label">Date of Birth</span>
+          <input type="date" ng-model="signupData.birthday" placeholder="Date of Birth" ng-class="{'date-not-empty': signupData.birthday != undefined}">
         </label>
         <label class="item terms-check">
           <ion-checkbox ng-model="agree">I agree with the <a target="_blank" href="http://wanthaver.com/agbs.html">Terms of Use</a></ion-checkbox>
