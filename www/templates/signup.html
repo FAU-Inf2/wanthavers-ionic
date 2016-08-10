@@ -1,26 +1,37 @@
 <ion-view hide-nav-bar="true">
 
-  <ion-content class="login-content" scroll="false">
+  <ion-content class="login-content"  scroll="false">
 
     <div class="logo-wrapper">
       <img src="img/logo_white.png">
     </div>
 
-    <form ng-submit="doLogin()">
+    <form ng-submit="doSignup()" class="signup-form">
       <div class="list login-form">
         <label class="item item-input item-floating-label">
           <span class="input-label">Email</span>
-          <input type="email" ng-model="loginData.username" placeholder="Email">
+          <input type="email" ng-model="signupData.email" placeholder="Email">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password" placeholder="Password">
+          <input type="password" ng-model="signupData.password" placeholder="Password">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="signupData.name" placeholder="Your Username">
+        </label>
+        <label class="item item-input item-floating-label">
+
+          <input type="date" ng-model="signupData.birthday">
+        </label>
+        <label class="item terms-check">
+          <ion-checkbox ng-model="agree">I agree with the <a target="_blank" href="http://wanthaver.com/agbs.html">Terms of Use</a></ion-checkbox>
         </label>
         <label class="item">
-          <button class="button button-block button-outline button-light" type="submit">Sign In.</button>
+          <button ng-disabled="!agree" class="button button-block button-outline button-light" type="submit">Join us.</button>
         </label>
-        <label class="item">
-          <button class="button button-clear button-light" type="submit" ui-sref="app.startup">You don't have an account already?</button>
+        <label class="item no-padding">
+          <button class="button button-clear button-light" type="submit" ui-sref="app.login">Already have an account?</button>
         </label>
       </div>
     </form>

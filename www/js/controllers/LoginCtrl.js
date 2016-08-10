@@ -1,5 +1,7 @@
 controllers.controller('LoginCtrl', function($scope, $state, Auth, User, $rootScope, $ionicHistory, $ionicPopup, $ionicSideMenuDelegate) {
+
     $scope.loginData = {};
+    $scope.signupData = {};
 
     $ionicSideMenuDelegate.canDragContent(false);
 
@@ -12,6 +14,7 @@ controllers.controller('LoginCtrl', function($scope, $state, Auth, User, $rootSc
             $ionicHistory.nextViewOptions({
                 disableBack: true
             });
+            $scope.loginData = {};
             $state.go("app.desirelist");
         },function(resp){
             $ionicPopup.alert({
@@ -21,5 +24,28 @@ controllers.controller('LoginCtrl', function($scope, $state, Auth, User, $rootSc
         });
     };
 
+    $scope.doSignup = function() {
+        User.createUser($scope.signupData).then(function(resp){
+            Auth.setCredentials($scope.signupData.email, $scope.signupData.password);
+            Auth.setUserId(resp.data.id);
+            $rootScope.currentUser = resp.data;
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            $scope.signupData = {};
+            $state.go("app.desirelist");
+        },function(resp){
+            var msg = "Unknown Error";
+            if(resp.status == 409){
+                msg = "Your email address is already in use!"
+            }
+
+            $ionicPopup.alert({
+                title: 'Error Signing Up',
+                template: msg
+            });
+
+        });
+    };
 
 })

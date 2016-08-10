@@ -7,6 +7,10 @@ wanthaver.factory('User', ['$http', 'Auth', function ($http, Auth) {
 
         getById: function(id){
             return $http.get(server+'/v1/users/'+id, Auth.getHeaderObject());
+        },
+
+        createUser: function(user){
+            return $http.post(server+'/v1/users?password='+user.password, user, Auth.getHeaderObject());
         }
 
     };

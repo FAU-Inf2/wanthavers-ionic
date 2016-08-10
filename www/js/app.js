@@ -77,6 +77,16 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
       }
   })
 
+  .state('app.signup', {
+      url: '/signup',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/signup.html',
+              controller: 'LoginCtrl'
+          }
+      }
+  })
+
   .state('app.desiredetail', {
       url: '/desiredetail/:desireId',
       views: {
