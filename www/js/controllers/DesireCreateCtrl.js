@@ -7,6 +7,9 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.selectedCurrency = "€";
     $scope.desire.currency = "EUR";
     $scope.allFieldsFilled = false;
+    $scope.date = {};
+    $scope.expirationDate = null;
+
 
     $scope.slideHasChanged = function (index) {
         $scope.lastSlide = false;
@@ -32,7 +35,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
                     return;
                 }
 
-                Desire.create($scope.desire);
+                $scope.create($scope.desire);
                 $ionicHistory.nextViewOptions({
                     disableBack: true
                 });
@@ -86,7 +89,21 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
         }
     };
 
-    $scope.checkForInput = function(desire){
+    $scope.checkForInput = function(desire) {
+
+        $scope.getExpritionDate($scope.date);
+        desire.expireDate = $scope.expirationDate;
+
+
+        if ($scope.expirationDate!= null && $scope.expirationDate < new Date()){
+            $scope.allFieldsFilled = false;
+            $ionicPopup.alert({
+                title: 'Error Creating a Desire!',
+                template: 'Expiration Date has to be in the future!'
+            });
+            return;
+        }
+
 
         if (desire.title == null){
             $scope.allFieldsFilled = false;
@@ -134,6 +151,27 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
 
     $scope.create = function(desire) {
         Desire.create(desire);
+    };
+
+    $scope.getExpritionDate = function(date){
+        if (date.date != null) {
+            $scope.expirationDate = new Date();
+            $scope.expirationDate.setFullYear(date.date.getFullYear(), date.date.getMonth(), date.date.getDay());
+
+            if (date.time == null) {
+                $scope.expirationDate.setHours(23);
+                $scope.expirationDate.setMinutes(59);
+                $scope.expirationDate.setSeconds(59);
+            } else {
+                $scope.expirationDate.setHours(date.time.getHours());
+                $scope.expirationDate.setMinutes(date.time.getMinutes());
+                $scope.expirationDate.setSeconds(0);
+            }
+
+            console.log($scope.expirationDate);
+        }
+        
+        console.log(new Date());
     }
 
 });
