@@ -1,13 +1,21 @@
 .user-menu-details span {
-  padding-top: 27px;
-  display: inline-block;
+  padding-top: 2px;
   color: #fff;
   font-size: 20px;
+  display: block;
+}
+
+span.menu-user-name {
+  padding-top: 18px;
 }
 
 .user-menu-details {
   background: #666;
   margin-bottom:20px;
+}
+
+span.menu-rating {
+  font-size: 18px;
 }
 
 .menu-left {
@@ -21,4 +29,24 @@ ion-side-menu .item, ion-side-menu .item-content {
   font-size: 14px;
   border: none;
   padding-left:20px;
+}
+
+.menu-list a.item-content {
+  color: #fff;
+}
+
+.user-menu-details img {
+  max-width: 50px !important;
+  margin-left: -3px;
+  max-height: 50px !important;
+  margin-top: -3px;
+}
+
+.chat-list .item-image img {
+  border-radius: 100%;
+  max-width: 65px;
+}
+
+.chat-list h1 {
+  margin-bottom: 5px;
 }

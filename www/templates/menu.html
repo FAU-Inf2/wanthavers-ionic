@@ -28,22 +28,29 @@
 
       <div class="user-menu-details item-avatar">
         <img ng-src="{{currentUser.image.mediumRes}}">
-        <span>{{currentUser.name}}</span>
+        <span class="menu-user-name">{{currentUser.name}}</span>
+        <span class="menu-rating" ng-bind-html="currentUser.rating | rating | unsafe"></span>
       </div>
 
 
-      <ion-list>
-        <ion-item menu-close href="#/app/login">
-          Login
+      <ion-list class="menu-list">
+        <ion-item menu-close href="#/app/desirelist">
+          <i class="ion-ios-browsers"></i>All Desires
         </ion-item>
         <ion-item menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item menu-close href="#/app/desirelist">
-          Desire List
+          <i class="ion-ios-heart"></i>My Desires
         </ion-item>
         <ion-item menu-close href="#/app/desirecreate">
-          Create Desire
+          <i class="ion-ios-plus"></i>Create Desire
+        </ion-item>
+        <ion-item menu-close href="#/app/settings">
+          <i class="ion-ios-gear"></i>Settings
+        </ion-item>
+        <ion-item menu-close href="" ng-click="logout()">
+          <i class="ion-log-out"></i>Logout
+        </ion-item>
+        <ion-item menu-close href="#/app/search">
+          <i class="ion-ios-information"></i>About
         </ion-item>
       </ion-list>
     </ion-content>

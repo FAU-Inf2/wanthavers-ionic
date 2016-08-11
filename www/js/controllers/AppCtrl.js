@@ -42,5 +42,11 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $sta
         $scope.barButtons = $scope.barButtonsMap[data.stateName];
     });
 
+    $scope.logout = function(){
+        Auth.setCredentials(undefined, undefined);
+        Auth.setUserId(undefined);
+        $state.go("app.startup");
+    }
+
 
 })
