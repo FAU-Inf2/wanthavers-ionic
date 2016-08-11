@@ -5,7 +5,7 @@ before_install:
 - export LANG=en_US.UTF-8
 - brew update
 - npm install -g npm@2.14.7
-- npm install -g grunt-cli cordova ionic
+- npm install -g grunt-cli cordova@6.2.0 ionic
 before_script:
 - ls
 script:
