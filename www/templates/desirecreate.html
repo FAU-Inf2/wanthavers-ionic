@@ -16,6 +16,11 @@
       </span>
           <textarea ng-model="desire.description" class="create-description" placeholder="Description (max 300 Characters)" maxlength="300"></textarea>
         </label>
+        <label class="time item-input item-floating-label">
+          <span class="input-label">Expiration Date</span>
+          <input type="date" ng-model="date.date" placeholder="Expiration Date" ng-class="{'date-not-empty': date.date != undefined}">
+          <input type="time" ng-model="date.time">
+        </label>
       </ion-slide>
 
       <ion-slide>
