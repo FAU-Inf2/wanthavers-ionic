@@ -52,6 +52,7 @@
 
 .terms-check{
   padding-top:35px;
+  position: relative;
 }
 
 input[type='date']:before {
@@ -63,3 +64,22 @@ input[type='date']:before {
   content: "" !important;
   margin-right: 0px !important;
 }
+
+.terms-wrapper {
+  position: absolute;
+  top: 51px;
+  left: 190px;
+  font-size: 16px;
+  z-index: 99999;
+}
+
+.out-terms-wrapper{
+  position: relative;
+}
+
+
+.terms-check .disable-pointer-events {
+  pointer-events: none;
+  width: 113px;
+}
+

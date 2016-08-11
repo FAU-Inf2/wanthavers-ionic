@@ -24,9 +24,15 @@
           <span class="input-label">Date of Birth</span>
           <input type="date" ng-model="signupData.birthday" placeholder="Date of Birth" ng-class="{'date-not-empty': signupData.birthday != undefined}">
         </label>
-        <label class="item terms-check">
-          <ion-checkbox ng-model="agree">I agree with the <a target="_blank" href="http://wanthaver.com/agbs.html">Terms of Use</a></ion-checkbox>
-        </label>
+        <div class="out-terms-wrapper">
+          <label class="item terms-check">
+            <ion-checkbox ng-model="agree">I agree with the</ion-checkbox>
+          </label>
+          <div class="terms-wrapper">
+            <a target="_blank" href="" onclick="window.open('http://wanthaver.com/agbs.html', '_system'); return false;">Terms of Use</a>
+          </div>
+        </div>
+
         <label class="item">
           <button ng-disabled="!agree" class="button button-block button-outline button-light" type="submit">Join us.</button>
         </label>
