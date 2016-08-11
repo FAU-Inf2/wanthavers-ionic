@@ -48,4 +48,16 @@ controllers.controller('LoginCtrl', function($scope, $state, Auth, User, $rootSc
         });
     };
 
+    $scope.resetPassword = function(){
+        $ionicPopup.prompt({
+            title: 'Reset Password',
+            template: 'Enter your email address',
+            inputType: 'text',
+            inputPlaceholder: 'Your Email'
+        }).then(function(res) {
+            User.sendResetToken(res);
+        });
+
+    }
+
 })

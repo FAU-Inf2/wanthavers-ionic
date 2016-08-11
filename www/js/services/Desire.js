@@ -10,7 +10,8 @@ wanthaver.factory('Desire', ['$http', 'Auth', 'FilterSetting', function ($http, 
                     price_max:  FilterSetting.getMaxPrice(),
                     rating_min: FilterSetting.getMinRating(),
                     last_desire_id: last_desire_id,
-                    limit : limit
+                    limit : limit,
+                    status: 1
                 }
             });
         },

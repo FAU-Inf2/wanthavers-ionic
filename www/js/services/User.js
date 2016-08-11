@@ -1,4 +1,4 @@
-wanthaver.factory('User', ['$http', 'Auth', function ($http, Auth) {
+wanthaver.factory('User', ['$http', 'Auth', function ($http, Auth, $httpParamSerializerJQLike) {
     return {
     
         getCurrentUser: function(){
@@ -11,6 +11,12 @@ wanthaver.factory('User', ['$http', 'Auth', function ($http, Auth) {
 
         createUser: function(user){
             return $http.post(server+'/v1/users?password='+user.password, user, Auth.getHeaderObject());
+        },
+
+        sendResetToken: function(email){
+            return $http.post(server+'/v1/users/passwordtoken', "email="+email, {headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }});
         }
 
     };

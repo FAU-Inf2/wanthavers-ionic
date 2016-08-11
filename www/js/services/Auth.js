@@ -1,16 +1,19 @@
 wanthaver.factory('Auth', ['$base64', function ($base64) {
     return {
 
-        getHeader: function(){
+        getHeader: function(urlencoded){
             var user = window.localStorage.getItem("username");
             var password = window.localStorage.getItem("password");
             var auth = $base64.encode(user+":"+password);
             var headers = {"Authorization": "Basic " + auth};
+            if(urlencoded){
+                headers["Content-Type"] = "application/x-www-form-urlencoded";
+            }
             return headers;
         },
 
-        getHeaderObject: function(){
-            return {headers: this.getHeader()}
+        getHeaderObject: function(urlencoded){
+            return {headers: this.getHeader(urlencoded)}
         },
 
         setCredentials: function(username, password) {
