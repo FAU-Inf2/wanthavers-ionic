@@ -156,7 +156,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.getExpritionDate = function(date){
         if (date.date != null) {
             $scope.expirationDate = new Date();
-            $scope.expirationDate.setFullYear(date.date.getFullYear(), date.date.getMonth(), date.date.getDay());
+            $scope.expirationDate.setFullYear(date.date.getFullYear(), date.date.getMonth(), date.date.getDate());
 
             if (date.time == null) {
                 $scope.expirationDate.setHours(23);
@@ -170,7 +170,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
 
             console.log($scope.expirationDate);
         }
-        
+
         console.log(new Date());
     }
 
