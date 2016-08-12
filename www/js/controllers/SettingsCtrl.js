@@ -30,6 +30,22 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
             User.sendResetToken(res);
         });
 
+    };
+
+    $scope.changeUserImage = function(){
+      console.log("User Image changed");
+      //TODO
+    };
+
+    $scope.changeUserName = function(){
+      console.log("User Name changed to: ",  $scope.user.name);
+      //TODO
+    };
+
+
+    $scope.changeUserEmail = function(){
+      console.log("User Email changed to: ", $scope.user.email);
+      //TODO
     }
 
 })
