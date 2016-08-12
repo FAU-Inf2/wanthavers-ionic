@@ -25,6 +25,7 @@ controllers.controller('LoginCtrl', function($scope, $state, Auth, User, $rootSc
     };
 
     $scope.doSignup = function() {
+        $scope.signupData.langCode = navigator.language || navigator.userLanguage;
         User.createUser($scope.signupData).then(function(resp){
             Auth.setCredentials($scope.signupData.email, $scope.signupData.password);
             Auth.setUserId(resp.data.id);

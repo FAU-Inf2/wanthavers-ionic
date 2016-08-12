@@ -1,13 +1,13 @@
-controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $state, User, Auth) {
+controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $state, User, Auth, tmhDynamicLocale, amMoment, $translate) {
 
-    // With the new view caching in Ionic, Controllers are only called
-    // when they are recreated or on app start, instead of every page change.
-    // To listen for when this page is active (for example, to refresh data),
-    // listen for the $ionicView.enter event:
-    //$scope.$on('$ionicView.enter', function(e) {
-    //});
     $scope.barButtonsMap = [];
     $scope.barButtons = [];
+
+    $scope.setI18n = function(lang){
+        tmhDynamicLocale.set(lang);
+        amMoment.changeLocale(lang);
+        $translate.use(lang);
+    }
 
     $scope.addButtons = function(arr){
         var tmp = $scope.barButtonsMap[$state.current.name];
@@ -32,6 +32,15 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $sta
         if($rootScope.currentUser == undefined){
             User.getCurrentUser().then(function(resp){
                $rootScope.currentUser = resp.data;
+                if(resp.data.langCode == null){
+                    $scope.setI18n(navigator.language || navigator.userLanguage);
+                }else{
+                    var code = resp.data.langCode;
+                    if(resp.data.langCode.contains("_")){
+                        code = code.split("_")[0];
+                    }
+                    $scope.setI18n(code);
+                }
             });
         }
     });

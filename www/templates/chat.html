@@ -15,7 +15,7 @@
   <ion-footer-bar  class="item-input-inset">
     <label class="item-input-wrapper">
       <i class="icon ion-ios-chatbubble placeholder-icon"></i>
-      <input type="search" placeholder="Your Message..." data-ng-model="msg">
+      <input type="search" placeholder="{{ 'CHAT_YOUR_MESSAGE' | translate }}" data-ng-model="msg">
     </label>
     <button class="button button-positive" ng-click="sendMsg(msg)">
       <i class="icon ion-paper-airplane"></i>

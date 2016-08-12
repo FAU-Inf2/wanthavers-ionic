@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 
 var server = "https://wanthaver.com:8443";
-var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment', 'base64', 'ionic-ratings']);
+var wanthaver = angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment', 'base64', 'ionic-ratings', 'pascalprecht.translate', 'tmh.dynamicLocale']);
 var controllers = angular.module('starter.controllers', []);
 
 wanthaver.run(function($ionicPlatform) {
@@ -22,6 +22,8 @@ wanthaver.run(function($ionicPlatform) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+
   });
 });
 
@@ -161,3 +163,9 @@ wanthaver.directive('stopEvent', function () {
         }
     };
 });
+
+if(!('contains' in String.prototype)) {
+    String.prototype.contains = function(str, startIndex) {
+        return -1 !== String.prototype.indexOf.call(this, str, startIndex);
+    };
+}
