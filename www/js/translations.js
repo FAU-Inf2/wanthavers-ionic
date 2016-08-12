@@ -10,6 +10,23 @@ wanthaver.config(function ($translateProvider) {
 
         /** CHAT **/
         CHAT_YOUR_MESSAGE: 'Your Message...',
+
+        /** SETTINGS**/
+        SETTINGS_NAME: 'Name',
+        SETTINGS_EMAIL: 'Email',
+        SETTINGS_PWRESET_TITLE: 'Password Reset',
+        SETTINGS_PWRESET_MESSAGE:'You will get an email to reset your password.',
+        SETTINGS_PWRESET_BUTTON:'Reset my password',
+
+        /** DESIRE CREATE**/
+        DESIRECREATE_TITLE: 'Titel',
+        DESIRECREATE_DESCRIPTION: 'Description',
+        DESIRECREATE_DESCRIPTION_PLACEGOLDER: 'Description (max 300 Characters)',
+        DESIRECREATE_DATE: 'Expiration Date',
+        DESIRECREATE_PRICE: 'Price',
+        DESIRECREATE_CATEGORY: 'Select a Category',
+
+
     });
     $translateProvider.translations('de', {
         /** MENU **/
@@ -23,6 +40,24 @@ wanthaver.config(function ($translateProvider) {
 
         /** CHAT **/
         CHAT_YOUR_MESSAGE: 'Deine Nachricht...',
+
+
+        /** SETTINGS**/
+        SETTINGS_NAME: 'Name',
+        SETTINGS_EMAIL: 'Email',
+        SETTINGS_PWRESET_TITLE: 'Passwort-Zurücksetzen',
+        SETTINGS_PWRESET_MESSAGE:'Du erhältst eine E-Mail zum Ändern des Passworts.',
+        SETTINGS_PWRESET_BUTTON:'Mein Passwort zurücksetzen',
+
+        /** DESIRE CREATE**/
+        DESIRECREATE_TITLE: 'Titel',
+        DESIRECREATE_DESCRIPTION: 'Beschreibung',
+        DESIRECREATE_DESCRIPTION_PLACEGOLDER: 'Beschreibung (max 300 Zeichen)',
+        DESIRECREATE_DATE: 'Ablaufdatum',
+        DESIRECREATE_PRICE: 'Preis',
+        DESIRECREATE_CATEGORY: 'Wähle eine Kategorie',
+
+
     });
     $translateProvider.preferredLanguage('en');
 });

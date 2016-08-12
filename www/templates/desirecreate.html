@@ -5,20 +5,20 @@
     <ion-slide-box on-slide-changed="slideHasChanged($index)">
       <ion-slide>
         <label class=" item-input item-floating-label">
-          <span class="input-label">Titel</span>
+          <span class="input-label">{{ 'DESIRECREATE_TITLE' | translate }}</span>
           <input type="text" maxlength="50" ng-model="desire.title" placeholder="Titel">
         </label>
 
         <label class=" item-input item-floating-label">
-          <span class="input-label">Description</span>
+          <span class="input-label">{{ 'DESIRECREATE_DESCRIPTION' | translate }}</span>
           <span class="desc-char-counter" ng-class="{'red-font' : desire.description.length == 300}">
         ({{(desire.description == undefined) ? 0 : desire.description.length }}/300)
       </span>
-          <textarea ng-model="desire.description" class="create-description" placeholder="Description (max 300 Characters)" maxlength="300"></textarea>
+          <textarea ng-model="desire.description" class="create-description" placeholder="{{ 'DESIRECREATE_DESCRIPTION_PLACEGOLDER' | translate }}" maxlength="300"></textarea>
         </label>
         <label class="time item-input item-floating-label">
-          <span class="input-label">Expiration Date</span>
-          <input type="date" ng-model="date.date" placeholder="Expiration Date" ng-class="{'date-not-empty': date.date != undefined}">
+          <span class="input-label">{{ 'DESIRECREATE_DATE' | translate }}</span>
+          <input type="date" ng-model="date.date" placeholder="{{ 'DESIRECREATE_DATE' | translate }}" ng-class="{'date-not-empty': date.date != undefined}">
           <input type="time" ng-model="date.time">
         </label>
       </ion-slide>
@@ -28,8 +28,8 @@
         <div class="row">
           <div class="col col-50">
             <label class=" item-input item-floating-label">
-              <span class="input-label">Price</span>
-              <input type="tel" maxlength = "3" ng-model="desire.price" placeholder="Price">
+              <span class="input-label">{{ 'DESIRECREATE_PRICE' | translate }}</span>
+              <input type="tel" maxlength = "3" ng-model="desire.price" placeholder="{{ 'DESIRECREATE_PRICE' | translate }}">
             </label>
           </div>
           <div class="col col-50">
@@ -47,7 +47,7 @@
         </div>
 
         <button class="button button-clear button-positive button-icon ion-plus-round" ng-click="openModal()">
-          &nbsp;Select a Category
+          &nbsp;{{ 'DESIRECREATE_CATEGORY' | translate }}
         </button>
         <div class="row row-no-padding" ng-show="category != null">
           <div class="category-image"><img ng-src="{{category.image.lowRes}}"></div>

@@ -1,4 +1,4 @@
-<ion-view view-title="Settings">
+<ion-view view-title="{{ 'MENU_SETTINGS' | translate }}">
   <ion-content class="settings" scroll="false">
     <div class="user-image">
       <img ng-src="{{user.img.lowRes}}"></div>
@@ -6,17 +6,19 @@
 
       <div class="list reset-form">
         <label class="username item-input item-floating-label">
-          <span class="input-label">Name</span>
+          <span class="input-label">{{ 'SETTINGS_NAME' | translate }}</span>
           <input type="text" ng-model="user.name">
         </label>
         <label class="email item-input item-floating-label">
-          <span class="input-label">Email</span>
+          <span class="input-label">{{ 'SETTINGS_EMAIL' | translate }}</span>
           <input type="email" ng-model="user.email">
         </label>
         <label class="item">
-          <h3 class="title">Password Reset</h3>
-          <h4 class="title">You'll get an email to reset your password.</h4>
-          <button class="button button-block button-positive" type="button" ng-click="resetPw()">Reset my password</button>
+          <h3 class="title">{{ 'SETTINGS_PWRESET_TITLE' | translate }}</h3>
+          <h4 class="title">{{ 'SETTINGS_PWRESET_MESSAGE' | translate }}</h4>
+          <button class="button button-block button-positive" type="button" ng-click="resetPw()">
+            {{ 'SETTINGS_PWRESET_BUTTON' | translate }}
+          </button>
         </label>
       </div>
   </ion-content>
