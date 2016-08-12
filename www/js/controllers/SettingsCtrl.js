@@ -1,16 +1,23 @@
-controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ionicModal, $ionicHistory, $ionicPopup, User, Auth) {
+controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ionicModal, $ionicHistory,
+                                                $ionicPopup, $ionicLoading, User, Auth) {
     $scope.user = {};
+
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
+
 
     $scope.$on('$ionicView.enter', function() {
         $rootScope.currentUserId = Auth.getUserId();
         if($rootScope.currentUser == undefined){
             User.getCurrentUser().then(function(resp){
                 $rootScope.currentUser = resp.data;
-                $scope.user.name = $rootScope.currentUser.name;
-                $scope.user.email = $rootScope.currentUser.email;
-                $scope.user.img = $rootScope.currentUser.image;
             });
         }
+        $scope.user.name = $rootScope.currentUser.name;
+        $scope.user.email = $rootScope.currentUser.email;
+        $scope.user.img = $rootScope.currentUser.image;
+        $ionicLoading.hide();
     });
 
     $scope.resetPw = function(){
