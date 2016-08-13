@@ -6,12 +6,13 @@
 }
 
 span.menu-user-name {
-  padding-top: 18px;
+  padding-top: 28px;
 }
 
 .user-menu-details {
   background: #666;
   margin-bottom:20px;
+  height:90px;
 }
 
 span.menu-rating {
@@ -20,6 +21,7 @@ span.menu-rating {
 
 .menu-left {
   background: #444;
+
 }
 
 ion-side-menu .item, ion-side-menu .item-content {
@@ -40,13 +42,6 @@ ion-side-menu .item, ion-side-menu .item-content {
   margin-left: -3px;
   max-height: 50px !important;
   margin-top: -3px;
+  margin-top:10px;
 }
 
-.chat-list .item-image img {
-  border-radius: 100%;
-  max-width: 65px;
-}
-
-.chat-list h1 {
-  margin-bottom: 5px;
-}

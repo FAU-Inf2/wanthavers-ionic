@@ -1,4 +1,4 @@
-controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate) {
+controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, $ionicModal, $rootScope) {
 
     $scope.reachedEnd = false;
 
@@ -6,14 +6,17 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
     $scope.$on('$ionicView.enter', function() {
         $scope.location = "wanthaver";
-        navigator.geolocation.getCurrentPosition(function(pos){
-            console.log(pos);
-            Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function(resp){
-                $scope.location = resp.data.cityName;
-            });
+        ionic.Platform.ready(function(){
+            navigator.geolocation.getCurrentPosition(function(pos){
+                $rootScope.currentPosition = pos.coords;
+                Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function(resp){
+                    $scope.location = resp.data.cityName;
+                });
+            }, function(error){});
         });
-    });
 
+
+    });
 
 
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -22,7 +25,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
         }
     })
 
-    /** inifinite scroll **/
+    /** infinite scroll **/
     $scope.loadMore = function(){
         if($scope.feed == undefined || $scope.reachedEnd){
             $scope.$broadcast('scroll.infiniteScrollComplete');

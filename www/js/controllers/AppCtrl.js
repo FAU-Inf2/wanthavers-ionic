@@ -1,5 +1,9 @@
 controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $state, User, Auth, tmhDynamicLocale, amMoment, $translate) {
 
+    $rootScope.currentPosition = {};
+    $rootScope.selectedMapPosition = {};
+    $rootScope.mapModal = undefined;
+    
     $scope.barButtonsMap = [];
     $scope.barButtons = [];
 
@@ -55,6 +59,31 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $sta
         Auth.setCredentials(undefined, undefined);
         Auth.setUserId(undefined);
         $state.go("app.startup");
+    }
+
+    $rootScope.showMap = function(){
+        if(typeof plugin == 'undefined'){
+            //use google as default in browser
+            $rootScope.selectedMapPosition.lat = 37.422476;
+            $rootScope.selectedMapPosition.lng = -122.08425;
+            $rootScope.selectedMapPosition.address = "Google, Mountain View";
+            console.log($rootScope.selectedMapPosition);
+            return;
+        }
+
+        if($rootScope.mapModal == undefined){
+            $ionicModal.fromTemplateUrl('templates/map.html', {
+                scope: null,
+                animation: 'none',
+                controller: 'MapCtrl'
+            }).then(function(modal) {
+                $rootScope.mapModal = modal;
+                modal.show();
+            });
+        }else{
+            $rootScope.mapModal.show();
+            $rootScope.readyMap();
+        }
     }
 
 
