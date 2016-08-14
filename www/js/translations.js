@@ -29,6 +29,8 @@ wanthaver.config(function ($translateProvider) {
         /** FILTER SETTING **/
         FILTERSETTING_TITLE: 'Change Filter',
         FILTERSETTING_CATEGORY: 'Category',
+        FILTERSETTING_MINPRICE: 'Minimum price',
+        FILTERSETTING_MAXPRICE: 'Maximum price',
         FILTERSETTING_MINRATING: 'Minimum Rating',
         FILTERSETTING_APPLY: 'Apply Filter',
         FILTERSETTING_RESET: 'Reset Filter',
@@ -71,6 +73,8 @@ wanthaver.config(function ($translateProvider) {
         /** FILTER SETTING **/
         FILTERSETTING_TITLE: 'Filter anpassen',
         FILTERSETTING_CATEGORY: 'Kategorie',
+        FILTERSETTING_MINPRICE: 'Mindestpreis',
+        FILTERSETTING_MAXPRICE: 'Maximalpreis',
         FILTERSETTING_MINRATING: 'Mindestrating',
         FILTERSETTING_APPLY: 'Filter anwenden',
         FILTERSETTING_RESET: 'Filter zurücksetzen',
