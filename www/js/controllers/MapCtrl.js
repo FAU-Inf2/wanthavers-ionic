@@ -1,14 +1,19 @@
-controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScope, $ionicPopup) {
+controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScope, $ionicPopup, $translate) {
     var m = undefined;
     var map = undefined;
     var POS = undefined;
     $scope.address = "";
+    
+    $scope.promptTextTitle = "Custom Location";
+    $translate('MAP_PROMPT_TITLE').then(function (translation) {
+        $scope.translatedText = translation;
+    });
 
     $scope.showConfirm = function(){
         map.setClickable(false);
         $ionicPopup.prompt({
-            title: 'Custom Location',
-            template: 'Enter an address',
+            title: $scope.promptTextTitle,
+            template: '<input ng-model="data.response" type="text" placeholder="{{ placeHolder }}" autofocus>',
             inputType: 'text',
             inputPlaceholder: 'Address'
         }).then(function(res) {
@@ -29,7 +34,7 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
                         m = marker;
                         map.animateCamera({
                             'target': position,
-                            'zoom': 17,
+                            'zoom': 16,
                             'duration': 1000
                         }, function() {
 
@@ -46,14 +51,12 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
     $rootScope.readyMap = function () {
         map.setDiv(document.getElementById("map_canvas"));
         document.getElementById("main").style.display = "none";
+        map.clear();
         map.addMarker({
             'position': POS,
             'flat': true,
             'icon': 'www/img/mapicon.png'
         }, function (marker) {
-            if(m != undefined){
-                m.remove();
-            }
             m = marker;
         });
 
@@ -62,10 +65,10 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
     }
 
     $scope.finish = function(){
+        console.log($rootScope.selectedMapPosition.address);
         document.getElementById("main").style.display = "block";
         map.setDiv(null);
         $rootScope.mapModal.hide();
-        console.log($rootScope.selectedMapPosition.address);
         map.clear();
         //map.setVisible(false);
         map.setClickable(false);
@@ -101,7 +104,7 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
             },
             'camera': {
                 'latLng': POS,
-                    'zoom': 17
+                    'zoom': 16
             }
         });
         map.setMyLocationEnabled(true);

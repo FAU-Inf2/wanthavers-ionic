@@ -1,7 +1,7 @@
 wanthaver.config(function ($translateProvider) {
     $translateProvider.translations('en', {
         /** MENU **/
-        MENU_ALL_DESIRES: 'All Desire',
+        MENU_ALL_DESIRES: 'All Desires',
         MENU_MY_DESIRE: 'My Desires',
         MENU_CREATE_DESIRE: 'CREATE DESIRE',
         MENU_SETTINGS: 'Settings',
@@ -39,7 +39,9 @@ wanthaver.config(function ($translateProvider) {
         CATEGORYLIST_TITLE: 'Select a Category',
         CATEGORYLIST_CANCEL: 'Cancel',
 
-
+        /** MAP **/
+        MAP_PROMPT_TITLE: 'Enter Custom Location',
+        MAP_BUTTON: 'Set As Location',
     });
     $translateProvider.translations('de', {
         /** MENU **/
@@ -83,6 +85,9 @@ wanthaver.config(function ($translateProvider) {
         CATEGORYLIST_TITLE: 'Wähle eine Kategorie',
         CATEGORYLIST_CANCEL: 'Abbrechen',
 
+        /** MAP **/
+        MAP_PROMPT_TITLE: 'Adresse eingeben',
+        MAP_BUTTON: 'Als Ort setzen',
 
     });
     $translateProvider.preferredLanguage('en');
