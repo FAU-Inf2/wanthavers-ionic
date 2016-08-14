@@ -1,6 +1,6 @@
-<ion-view view-title="Change Filter">
+<ion-view view-title="{{ 'FILTERSETTING_TITLE' | translate }}">
     <ion-content>
-        <button class="button button-clear button-positive button-icon ion-edit" ng-click="openModal()">&nbsp;Category</button>
+        <button class="button button-clear button-positive button-icon ion-edit" ng-click="openModal()">&nbsp;{{ 'FILTERSETTING_CATEGORY' | translate }}</button>
         <div class="row row-no-padding" ng-show="filterSetting.category != null">
             <div class="category-image"><img ng-src="{{filterSetting.category.image.lowRes}}"></div>
             <div class="padding category-name">{{filterSetting.category.name}}</div>
@@ -12,11 +12,11 @@
         </label>
 
         <div class="padding">
-            Minimum Rating
+            {{ 'FILTERSETTING_MINRATING' | translate }}
             <ionic-ratings class="ionic_rating_icon_on" ratingsobj='ratingsObject'></ionic-ratings>
         </div>
 
-        <button class="button button-outline button-positive button-full" ng-click="applyFilter()" >Apply Filter</button>
-        <button class="button button-outline button-positive button-full" ng-click="resetFilter()" >Reset Filter</button>
+        <button class="button button-outline button-positive button-full" ng-click="applyFilter()" >{{ 'FILTERSETTING_APPLY' | translate }}</button>
+        <button class="button button-outline button-positive button-full" ng-click="resetFilter()" >{{ 'FILTERSETTING_RESET' | translate }}</button>
     </ion-content>
 </ion-view>

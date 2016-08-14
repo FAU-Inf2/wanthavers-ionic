@@ -37,6 +37,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "filtersetting";
 @import "settings";
 @import "map";
+@import "categorylist";
 
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
   background: $primary;
