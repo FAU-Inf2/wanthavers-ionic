@@ -64,8 +64,9 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
         map.setClickable(true);
     }
 
-    $scope.finish = function(){
-        console.log($rootScope.selectedMapPosition.address);
+    $scope.finish = function(success){
+        $rootScope.selectedMapPosition.success = success;
+        console.log($rootScope.selectedMapPosition.lat);
         document.getElementById("main").style.display = "block";
         map.setDiv(null);
         $rootScope.mapModal.hide();
@@ -91,6 +92,10 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
                 }else{
                     var address = result.extra.lines[0] + ", " + result.extra.lines[1];
                 }
+
+                $rootScope.selectedMapPosition.lat = POS.lat;
+                $rootScope.selectedMapPosition.lng = POS.lng;
+                $rootScope.selectedMapPosition.address = address;
                 if(document.getElementById("searchBox") != null){
                     document.getElementById("searchBox").innerHTML = address;
                 }

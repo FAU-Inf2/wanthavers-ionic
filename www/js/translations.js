@@ -43,6 +43,7 @@ wanthaver.config(function ($translateProvider) {
         MAP_PROMPT_TITLE: 'Enter Custom Location',
         MAP_BUTTON: 'Set As Location',
         MAP_TITLE: 'Choose a Location',
+        MAP_CLOSE_BUTTON: 'Cancel',
     });
     $translateProvider.translations('de', {
         /** MENU **/
@@ -90,6 +91,7 @@ wanthaver.config(function ($translateProvider) {
         MAP_PROMPT_TITLE: 'Adresse eingeben',
         MAP_BUTTON: 'Als Ort setzen',
         MAP_TITLE: 'Ort auswählen',
+        MAP_CLOSE_BUTTON: 'Abbrechen',
     });
     $translateProvider.preferredLanguage('en');
 });
