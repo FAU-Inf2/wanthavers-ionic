@@ -26,6 +26,19 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_PRICE: 'Price',
         DESIRECREATE_CATEGORY: 'Select a Category',
 
+        /** FILTER SETTING **/
+        FILTERSETTING_TITLE: 'Change Filter',
+        FILTERSETTING_CATEGORY: 'Category',
+        FILTERSETTING_MINPRICE: 'Minimum price',
+        FILTERSETTING_MAXPRICE: 'Maximum price',
+        FILTERSETTING_MINRATING: 'Minimum Rating',
+        FILTERSETTING_APPLY: 'Apply Filter',
+        FILTERSETTING_RESET: 'Reset Filter',
+
+        /** CATEGORY_LIST **/
+        CATEGORYLIST_TITLE: 'Select a Category',
+        CATEGORYLIST_CANCEL: 'Cancel',
+
 
     });
     $translateProvider.translations('de', {
@@ -56,6 +69,19 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_DATE: 'Ablaufdatum',
         DESIRECREATE_PRICE: 'Preis',
         DESIRECREATE_CATEGORY: 'Wähle eine Kategorie',
+
+        /** FILTER SETTING **/
+        FILTERSETTING_TITLE: 'Filter anpassen',
+        FILTERSETTING_CATEGORY: 'Kategorie',
+        FILTERSETTING_MINPRICE: 'Mindestpreis',
+        FILTERSETTING_MAXPRICE: 'Maximalpreis',
+        FILTERSETTING_MINRATING: 'Mindestrating',
+        FILTERSETTING_APPLY: 'Filter anwenden',
+        FILTERSETTING_RESET: 'Filter zurücksetzen',
+
+        /** CATEGORY_LIST **/
+        CATEGORYLIST_TITLE: 'Wähle eine Kategorie',
+        CATEGORYLIST_CANCEL: 'Abbrechen',
 
 
     });

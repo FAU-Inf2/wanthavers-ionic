@@ -1,6 +1,7 @@
 <ion-modal-view>
     <ion-header-bar>
-        <h1 class="title">Choose a Category</h1>
+        <h1 class="title category-title">{{ 'CATEGORYLIST_TITLE' | translate }}</h1>
+        <button class="button category-cancel-button" ng-click="modal.hide()">{{ 'CATEGORYLIST_CANCEL' | translate }}</button>
     </ion-header-bar>
     <ion-content>
         <ion-list>
