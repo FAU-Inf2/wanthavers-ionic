@@ -1,6 +1,20 @@
-controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ionicModal, $ionicHistory,
+controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ionicModal, $ionicHistory, $translate,
                                                 $ionicPopup, $ionicLoading, User, Auth) {
     $scope.user = {};
+
+
+    $translate('SETTINGS_PWRESET_POPUP_TITLE').then(function (translation) {
+        $scope.pwresetPopupTitle = translation;
+    });
+
+    $translate('SETTINGS_PWRESET_POPUP_TEXT').then(function (translation) {
+        $scope.pwresetPopupText = translation;
+    });
+
+    $translate('SETTINGS_PWRESET_POPUP_TEXT_FAILED').then(function (translation) {
+        $scope.pwresetPopupTextFailed = translation;
+    });
+
 
     $ionicLoading.show({
         template: 'Loading...'
@@ -21,15 +35,18 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
     });
 
     $scope.resetPw = function(){
-        $ionicPopup.prompt({
-            title: 'Reset Password',
-            template: 'Enter your email address',
-            inputType: 'text',
-            inputPlaceholder: 'Your Email'
-        }).then(function(res) {
-            User.sendResetToken(res);
-        });
+        User.sendResetToken($rootScope.currentUser.email).then(function(){
+             $ionicPopup.alert({
+                  title: $scope.pwresetPopupTitle,
+                 template: $scope.pwresetPopupText
+             });
+        },function () {
+            $ionicPopup.alert({
+                title: $scope.pwresetPopupTitle,
+                template: $scope.pwresetPopupTextFailed
+            });
 
+        });
     };
 
     $scope.changeUserImage = function(){
@@ -37,15 +54,10 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
       //TODO
     };
 
-    $scope.changeUserName = function(){
+    $scope.changeUserNameAndEmail = function(){
       console.log("User Name changed to: ",  $scope.user.name);
-      //TODO
-    };
-
-
-    $scope.changeUserEmail = function(){
       console.log("User Email changed to: ", $scope.user.email);
       //TODO
-    }
+    };
 
 })

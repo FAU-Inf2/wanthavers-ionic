@@ -17,8 +17,14 @@ wanthaver.config(function ($translateProvider) {
         SETTINGS_PWRESET_TITLE: 'Password Reset',
         SETTINGS_PWRESET_MESSAGE:'You will get an email to reset your password.',
         SETTINGS_PWRESET_BUTTON:'Reset my password',
+        SETTINGS_PWRESET_POPUP_TITLE: 'Password reset mail',
+        SETTINGS_PWRESET_POPUP_TEXT: 'Password reset mail was sent successfully!',
+        SETTINGS_PWRESET_POPUP_TEXT_FAILED: 'Sending password reset mail failed!',
 
         /** DESIRE CREATE**/
+        DESIRECREATE_BAR_TITLE1: 'Create Desire: Step 1',
+        DESIRECREATE_BAR_TITLE2: 'Create Desire: Step 2',
+        DESIRECREATE_BAR_TITLE3: 'Create Desire: Step 3',
         DESIRECREATE_TITLE: 'Titel',
         DESIRECREATE_DESCRIPTION: 'Description',
         DESIRECREATE_DESCRIPTION_PLACEGOLDER: 'Description (max 300 Characters)',
@@ -65,8 +71,14 @@ wanthaver.config(function ($translateProvider) {
         SETTINGS_PWRESET_TITLE: 'Passwort-Zurücksetzen',
         SETTINGS_PWRESET_MESSAGE:'Du erhältst eine E-Mail zum Ändern des Passworts.',
         SETTINGS_PWRESET_BUTTON:'Mein Passwort zurücksetzen',
+        SETTINGS_PWRESET_POPUP_TITLE: 'Passwort-Zurücksetzen E-Mail',
+        SETTINGS_PWRESET_POPUP_TEXT: 'Du erhältst eine E-Mail zum Ändern des Passworts',
+        SETTINGS_PWRESET_POPUP_TEXT_FAILED: 'E-Mail zum Zurücksetzen des Passwortes ist fehlgeschlagen!',
 
         /** DESIRE CREATE**/
+        DESIRECREATE_BAR_TITLE1: 'Schritt 1',
+        DESIRECREATE_BAR_TITLE2: 'Schritt 2',
+        DESIRECREATE_BAR_TITLE3: 'Letzter Schritt',
         DESIRECREATE_TITLE: 'Titel',
         DESIRECREATE_DESCRIPTION: 'Beschreibung',
         DESIRECREATE_DESCRIPTION_PLACEGOLDER: 'Beschreibung (max 300 Zeichen)',

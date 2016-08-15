@@ -1,5 +1,6 @@
-controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal, $ionicHistory ,$ionicPopup, FilterSetting, Desire, CategoryList) {
-    $scope.title = "Create Desire: Step 1";
+controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal, $ionicHistory ,$ionicPopup, FilterSetting, Desire, CategoryList, $translate) {
+    $scope.obj = {};
+    $scope.obj.title = "";
     $scope.lastSlide = false;
     $scope.filterSetting = {};
     $scope.desire = {};
@@ -10,18 +11,34 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.date = {};
     $scope.expirationDate = null;
 
+    $translate('DESIRECREATE_BAR_TITLE1').then(function (translation) {
+        $scope.obj.title = translation;
+        $scope.desirecreateBar1 = translation;
+        console.log(translation);
+    });
+
+    $translate('DESIRECREATE_BAR_TITLE2').then(function (translation) {
+        $scope.desirecreateBar2 = translation;
+        console.log(translation);
+    });
+
+    $translate('DESIRECREATE_BAR_TITLE3').then(function (translation) {
+        $scope.desirecreateBar3 = translation;
+        console.log(translation);
+    });
+
 
     $scope.slideHasChanged = function (index) {
         $scope.lastSlide = false;
         switch(index){
             case 0:
-                $scope.title = "Create Desire: Step 1";
+                $scope.obj.title = $scope.desirecreateBar1;
                 break;
             case 1:
-                $scope.title = "Create Desire: Step 2";
+                $scope.obj.title = $scope.desirecreateBar2;
                 break;
             case 2:
-                $scope.title = "Create Desire: Step 3";
+                $scope.obj.title = $scope.desirecreateBar3;
                 $scope.lastSlide = true;
                 break;
         }

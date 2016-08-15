@@ -1,4 +1,5 @@
-<ion-view view-title="{{title}}">
+<ion-view>
+  <ion-nav-title>{{obj.title}}</ion-nav-title>
   <ion-content class="desire-create" scroll="false">
 
 
@@ -46,7 +47,7 @@
           </div>
         </div>
 
-        <button class="button button-clear button-positive button-icon ion-plus-round" ng-click="openModal()">
+        <button class="button button-clear button-positive button-icon ion-plus-round button-select-category" ng-click="openModal()">
           &nbsp;{{ 'DESIRECREATE_CATEGORY' | translate }}
         </button>
         <div class="row row-no-padding" ng-show="category != null">
