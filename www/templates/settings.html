@@ -1,36 +1,26 @@
 <ion-view view-title="{{ 'MENU_SETTINGS' | translate }}">
-  <ion-content class="settings" scroll="false">
+  <ion-content class="settings">
     <div class="user-image" ng-click="changeUserImage()">
       <img ng-src="{{(user.img != undefined)? user.img.lowRes : 'img/ionic.png'}}"></div>
     </div>
 
-      <div class="list reset-form">
-        <div class="row">
-          <div class="col col-90">
-            <label class="username item-input item-floating-label">
-              <span class="input-label">{{ 'SETTINGS_NAME' | translate }}</span>
-              <input type="text" ng-model="user.name">
-            </label>
-          </div>
-          <div class="col col-10">
-            <label class="icon">
-              <button class="button button-icon icon ion-checkmark-round buttoncheck1" ng-click="changeUserName()"></button>
-            </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col col-90">
-            <label class="email item-input item-floating-label">
-              <span class="input-label">{{ 'SETTINGS_EMAIL' | translate }}</span>
-              <input type="email" ng-model="user.email">
-            </label>
-          </div>
-          <div class="col col-10">
-            <label class="icon">
-              <button class="button button-icon icon ion-checkmark-round buttoncheck2" ng-click="changeUserEmail()"></button>
-            </label>
-          </div>
-        </div>
+      <div class="list reset-form padding">
+        <label class="username item-input item-floating-label">
+          <span class="input-label">{{ 'SETTINGS_NAME' | translate }}</span>
+            <input type="text" ng-model="user.name">
+        </label>
+        <label class="email item-input item-floating-label">
+          <span class="input-label">{{ 'SETTINGS_EMAIL' | translate }}</span>
+          <input type="email" ng-model="user.email">
+        </label>
+        <label class="padding item-input changeUserNameAndEmail">
+          <button class="button  button-block icon-left ion-checkmark-round button-positive button-change" ng-click="changeUserNameAndEmail()">
+            Änderungen übernehmen
+          </button>
+        </label>
+      </div>
+
+
         <label class="item">
           <h3 class="title">{{ 'SETTINGS_PWRESET_TITLE' | translate }}</h3>
           <h4 class="title">{{ 'SETTINGS_PWRESET_MESSAGE' | translate }}</h4>

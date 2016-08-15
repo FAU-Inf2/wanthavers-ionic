@@ -21,15 +21,18 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
     });
 
     $scope.resetPw = function(){
-        $ionicPopup.prompt({
-            title: 'Reset Password',
-            template: 'Enter your email address',
-            inputType: 'text',
-            inputPlaceholder: 'Your Email'
-        }).then(function(res) {
-            User.sendResetToken(res);
-        });
+        User.sendResetToken($rootScope.currentUser.email).then(function(){
+             $ionicPopup.alert({
+                  title: 'Password Reset',
+                 template: 'Password was sent successfully'
+             });
+        },function () {
+            $ionicPopup.alert({
+                title: 'Password Reset failed',
+                template: 'Password reset failed! Please try it again later.'
+            });
 
+        });
     };
 
     $scope.changeUserImage = function(){
@@ -37,15 +40,10 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
       //TODO
     };
 
-    $scope.changeUserName = function(){
+    $scope.changeUserNameAndEmail = function(){
       console.log("User Name changed to: ",  $scope.user.name);
-      //TODO
-    };
-
-
-    $scope.changeUserEmail = function(){
       console.log("User Email changed to: ", $scope.user.email);
       //TODO
-    }
+    };
 
 })
