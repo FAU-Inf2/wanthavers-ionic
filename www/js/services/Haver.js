@@ -18,7 +18,7 @@ wanthaver.factory('Haver', ['$http', 'Auth', function ($http, Auth) {
         },
 
         updateHaverStatus: function(desireId, userId, status){
-            return $http.put(server+'/v1/desires/'+desireId+'/havers/'+userId,
+            return $http.put(server+'/v1/desires/'+desireId+'/havers/'+userId+'/status',
                 Auth.getHeaderObject(), {
                     params: {
                         status: status
