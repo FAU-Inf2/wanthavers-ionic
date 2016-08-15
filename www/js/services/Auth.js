@@ -9,6 +9,7 @@ wanthaver.factory('Auth', ['$base64', function ($base64) {
             if(urlencoded){
                 headers["Content-Type"] = "application/x-www-form-urlencoded";
             }
+            console.log(headers);
             return headers;
         },
 

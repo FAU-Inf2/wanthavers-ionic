@@ -21,7 +21,7 @@
                 </button>
             </div>
             <div class="col col-10">
-                <button class="button button-small desire-detail-button">
+                <button class="button button-small desire-detail-button" ng-click="openChat(null)">
                     <i class="icon ion-chatbubbles message-icon"></i>
                 </button>
             </div>
@@ -60,7 +60,7 @@
             <p>{{desire.dropzone_string}}</p>
         </div>
 
-        <div class="desire-detail-box" ng-if="isWanter">
+        <div class="desire-detail-box" ng-if="showList">
             <h4 class="haver-title">Haver</h4>
             <p ng-show="!list.length">Unfortunately there are no havers yet</p>
             <div class="desire-detail-haver-list" ng-repeat="haver in list">
@@ -79,6 +79,35 @@
                         </button>
                     </div>
                     <div class="col col-10">
+                        <button class="button button-small desire-detail-button" ng-click="openChat(haver)">
+                            <i class="icon ion-chatbubbles message-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="desire-detail-box" ng-if="showAcceptedHaver">
+            <h4 class="haver-title">Haver</h4>
+            <div class="desire-detail-accepted-haver" >
+                <div class="row">
+                    <div class="col">
+                        <img class="haver-img" ng-src="{{acceptedHaver.user.image.lowRes}}">
+                    </div>
+                    <div class="col col-67  name-wapper">
+                        <span class="haver-name">{{acceptedHaver.user.name}}</span>
+                        <br>
+                        <span ng-bind-html="acceptedHaver.user.rating | rating | unsafe"></span>
+                    </div>
+                    <div class="col col-10">
+                        <button class="button button-small desire-detail-button" ng-if="desireInProgress">
+                            <i class="icon ion-android-close unaccept-icon"></i>
+                        </button>
+                        <button class="button button-small desire-detail-button" ng-if="desireDone">
+                            <i class="icon ion-android-star rate-icon"></i>
+                        </button>
+                    </div>
+                    <div class="col col-10">
                         <button class="button button-small desire-detail-button">
                             <i class="icon ion-chatbubbles message-icon"></i>
                         </button>
@@ -86,6 +115,7 @@
                 </div>
             </div>
         </div>
+
 
     </ion-content>
 </ion-view>
