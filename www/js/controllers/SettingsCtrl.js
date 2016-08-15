@@ -1,6 +1,20 @@
-controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ionicModal, $ionicHistory,
+controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ionicModal, $ionicHistory, $translate,
                                                 $ionicPopup, $ionicLoading, User, Auth) {
     $scope.user = {};
+
+
+    $translate('SETTINGS_PWRESET_POPUP_TITLE').then(function (translation) {
+        $scope.pwresetPopupTitle = translation;
+    });
+
+    $translate('SETTINGS_PWRESET_POPUP_TEXT').then(function (translation) {
+        $scope.pwresetPopupText = translation;
+    });
+
+    $translate('SETTINGS_PWRESET_POPUP_TEXT_FAILED').then(function (translation) {
+        $scope.pwresetPopupTextFailed = translation;
+    });
+
 
     $ionicLoading.show({
         template: 'Loading...'
@@ -23,13 +37,13 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
     $scope.resetPw = function(){
         User.sendResetToken($rootScope.currentUser.email).then(function(){
              $ionicPopup.alert({
-                  title: 'Password Reset',
-                 template: 'Password was sent successfully'
+                  title: $scope.pwresetPopupTitle,
+                 template: $scope.pwresetPopupText
              });
         },function () {
             $ionicPopup.alert({
-                title: 'Password Reset failed',
-                template: 'Password reset failed! Please try it again later.'
+                title: $scope.pwresetPopupTitle,
+                template: $scope.pwresetPopupTextFailed
             });
 
         });
