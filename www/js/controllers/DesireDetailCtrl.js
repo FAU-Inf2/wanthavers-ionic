@@ -12,6 +12,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
         console.log( $scope.desire.creator.id)
         console.log($rootScope.currentUserId)
         console.log($scope.isWanter);
+        $scope.canRate = ($scope.isWanter && !$scope.desire.creatorHasRated && ($scope.desire.status == 3));
         $scope.showNavBarButtons();
         //$scope.refreshButtons();
         $ionicLoading.hide();
@@ -36,6 +37,12 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
 
     $scope.acceptDesire = function() {
         Haver.createHaver($stateParams.desireId);
+    }
+
+    $scope.acceptHaver = function(haver) {
+        console.log($scope.desire.id)
+        console.log(haver.id)
+        Haver.updateHaverStatus($scope.desire.id, haver.id, 1);
     }
 
     $scope.showNavBarButtons = function() {

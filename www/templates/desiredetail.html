@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="col col-10">
-                <button class="button button-small desire-detail-button">
+                <button class="button button-small desire-detail-button" ng-if="canRate">
                     <i class="icon ion-star rate-icon"></i>
                 </button>
             </div>
@@ -74,7 +74,7 @@
                         <span ng-bind-html="haver.user.rating | rating | unsafe"></span>
                     </div>
                     <div class="col col-10">
-                        <button class="button button-small desire-detail-button">
+                        <button class="button button-small desire-detail-button"  ng-click="acceptHaver(haver)">
                             <i class="icon icon ion-checkmark-round accept-icon"></i>
                         </button>
                     </div>
