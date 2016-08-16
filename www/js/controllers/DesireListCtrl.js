@@ -1,20 +1,31 @@
-controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, $ionicModal, $rootScope) {
+controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, $ionicModal, $rootScope, $translate, $stateParams, Auth) {
 
     $scope.reachedEnd = false;
+    $scope.obj = {};
+    $scope.obj.location = "wanthaver";
 
     $ionicSideMenuDelegate.canDragContent(true);
 
     $scope.$on('$ionicView.enter', function() {
-        $scope.location = "wanthaver";
-        ionic.Platform.ready(function(){
-            navigator.geolocation.getCurrentPosition(function(pos){
-                $rootScope.currentPosition = pos.coords;
-                Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function(resp){
-                    $scope.location = resp.data.cityName;
-                });
-            }, function(error){});
-        });
-
+        if($stateParams.mode == "creator"){
+            $translate('MENU_MY_DESIRE').then(function (translation) {
+                $scope.obj.location = translation;
+            });
+        }else if($stateParams.mode == "haver"){
+            $translate('MENU_MY_TRANSACTIONS').then(function (translation) {
+                $scope.obj.location = translation;
+            });
+        }else{
+            $scope.obj.location = "wanthaver";
+            ionic.Platform.ready(function(){
+                navigator.geolocation.getCurrentPosition(function(pos){
+                    $rootScope.currentPosition = pos.coords;
+                    Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function(resp){
+                        $scope.obj.location = resp.data.cityName;
+                    });
+                }, function(error){});
+            });
+        }
 
     });
 
@@ -32,7 +43,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
             return;
         }
         var last = $scope.feed[$scope.feed.length - 1];
-        Desire.list(last.id).then(function(resp){
+        Desire.list(last.id, $stateParams.mode, Auth.getUserId()).then(function(resp){
             if(resp.data.length == 0){
                 $scope.$broadcast('scroll.infiniteScrollComplete');
                 $scope.reachedEnd = true;
@@ -45,7 +56,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
     /** refresh **/
     $scope.loadDesires = function(){
-        Desire.list(undefined).then(function(resp){
+        Desire.list(undefined, $stateParams.mode, Auth.getUserId()).then(function(resp){
             $scope.feed = resp.data;
             $scope.$broadcast('scroll.refreshComplete');
         });
@@ -54,6 +65,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     $scope.$parent.addButtons([{
         icon: "ion-android-funnel",
         name: "",
+        show: true,
         action: function(){
             $state.go("app.filtersetting");
         }
@@ -61,6 +73,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     {
         icon: "ion-chatbubbles",
         name: "",
+        show: true,
         action: function(){
             $state.go("app.chatlist");
         }

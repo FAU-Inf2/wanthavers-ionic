@@ -62,7 +62,7 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
     })
 
   .state('app.desirelist', {
-      url: '/desirelist',
+      url: '/desirelist/:mode',
       views: {
         'menuContent': {
           templateUrl: 'templates/desirelist.html',

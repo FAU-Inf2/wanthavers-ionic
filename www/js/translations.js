@@ -3,6 +3,7 @@ wanthaver.config(function ($translateProvider) {
         /** MENU **/
         MENU_ALL_DESIRES: 'All Desires',
         MENU_MY_DESIRE: 'My Desires',
+        MENU_MY_TRANSACTIONS: 'My Transactions',
         MENU_CREATE_DESIRE: 'CREATE DESIRE',
         MENU_SETTINGS: 'Settings',
         MENU_LOGOUT: 'Logout',
@@ -63,6 +64,7 @@ wanthaver.config(function ($translateProvider) {
         /** MENU **/
         MENU_ALL_DESIRES: 'Alle Aufträge',
         MENU_MY_DESIRE: 'Meine Aufträge',
+        MENU_MY_TRANSACTIONS: 'Meine Transaktionen',
         MENU_CREATE_DESIRE: 'Neuer Auftrag',
         MENU_SETTINGS: 'Einstellungen',
         MENU_LOGOUT: 'Ausloggen',
