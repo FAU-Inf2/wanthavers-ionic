@@ -1,4 +1,4 @@
-controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $stateParams, Desire, Haver, $state, $ionicLoading) {
+controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHistory, $stateParams, Desire, Haver, $state, $ionicLoading) {
 
     $ionicLoading.show({
         template: 'Loading...'
@@ -8,19 +8,14 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
 
     Desire.getDetail($stateParams.desireId).then(function (resp) {
         $scope.desire = resp.data;
-        $scope.isWanter = $scope.desire.creator.id == $rootScope.currentUserId;
-        $scope.showList = $scope.isWanter && ($scope.desire.status == 1);
-
-        console.log( $scope.desire.creator.id)
-        console.log($rootScope.currentUserId)
-        console.log($scope.isWanter);
-        $scope.canRate = ($scope.isWanter && !$scope.desire.creatorHasRated && ($scope.desire.status == 3));
         $scope.desireOpen = ($scope.desire.status == 1);
         $scope.desireInProgress = ($scope.desire.status == 2);
         $scope.desireDone = ($scope.desire.status == 3);
+
+        $scope.isWanter = $scope.desire.creator.id == $rootScope.currentUserId;
+        $scope.showList = $scope.isWanter && $scope.desireOpen;
+        $scope.canRate = ($scope.isWanter && !$scope.desire.creatorHasRated && $scope.desireDone);
         $scope.showAcceptedHaver = ($scope.isWanter && ($scope.desireInProgress || $scope.desireDone));
-        $scope.showNavBarButtons();
-        $ionicLoading.hide();
         console.log("detail");
     });
 
@@ -30,6 +25,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
             if ($scope.list[i].user.id == $rootScope.currentUserId) {
                 $scope.isHaver = true;
                 $scope.$parent.refreshButtons();
+                console.log("getAll: isHaver");
                 return;
             }
         }
@@ -41,35 +37,57 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
 
     Haver.getAcceptedHaver($stateParams.desireId).then(function(resp) {
         $scope.acceptedHaver = resp.data;
+        console.log("getaccepted");
+        $scope.showNavBarButtons();
+        $ionicLoading.hide();
     });
 
     $scope.$on('$ionicView.enter', function() {
-
 
     });
 
     $scope.removeDesire = function(){
         Desire.updateDesireStatus($stateParams.desireId, 0);
+        $ionicHistory.goBack();
     }
 
     $scope.reportDesire = function() {
-
+        
+        //TODO: reload correct???
+        $state.go($state.current, {}, {reload: true});
     }
 
     $scope.acceptDesire = function() {
         Haver.createHaver($stateParams.desireId);
+        //TODO: reload correct???
+        $state.go($state.current, {}, {reload: true});
     }
 
     $scope.acceptHaver = function(haver) {
         console.log($scope.desire.id);
         console.log(haver.user.id);
         Haver.updateHaverStatus($stateParams.desireId, haver.user.id, 1);
-        //TODO: check this
-        //$state.go($state.current, {}, {reload: true});
+        //TODO: reload correct???
+        $state.go($state.current, {}, {reload: true});
+
+    }
+
+    $scope.deleteHaver = function() {
+        Haver.updateHaverStatus($stateParams.desireId, $rootScope.currentUserId,3);
+        //TODO: reload correct???
+        $state.go($state.current, {}, {reload: true});
+    }
+
+    $scope.finishDesire = function() {
+        Desire.updateDesireStatus($stateParams.desireId, 3);
+        //TODO: reload correct???
+        $state.go($state.current, {}, {reload: true});
     }
 
     $scope.unacceptHaver = function() {
-
+        Haver.updateHaverStatus($stateParams.desireId, $scope.acceptedHaver.user.id, 0);
+        //TODO: reload correct???
+        $state.go($state.current, {}, {reload: true});
     }
 
     $scope.openChat = function(haver) {
@@ -91,7 +109,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
             {
                 icon: "icon ion-trash-b myBtn",
                 name: "",
-                show: $scope.isWanter,
+                show: ($scope.isWanter && !$scope.desireDone),
                 action: function(){
                     $scope.removeDesire();
                 }
@@ -107,7 +125,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
             {
                 icon: "icon ion-checkmark-round",
                 name: "",
-                show: !($scope.isWanter),
+                show: (!($scope.isWanter) && !($scope.isHaver) && $scope.desireOpen),
                 action: function(){
                     $scope.acceptDesire();
                 }
@@ -117,7 +135,20 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $statePa
                 name: "",
                 show: (($scope.desireInProgress || $scope.desireOpen) && $scope.isHaver),
                 action: function(){
-                    $scope.unacceptHaver();
+                    if ($scope.desireInProgress) {
+                        $scope.unacceptHaver();
+                        $scope.deleteHaver();
+                    } else if ($scope.desireOpen) {
+                        $scope.deleteHaver();
+                    }
+                }
+            },
+            {
+                icon: "icon ion-checkmark-round",
+                name: "",
+                show: ($scope.isWanter && $scope.desireInProgress),
+                action: function(){
+                    $scope.finishDesire();
                 }
             }
         ]);

@@ -32,6 +32,14 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_PRICE: 'Price',
         DESIRECREATE_CATEGORY: 'Select a Category',
 
+        /** DESIRE DETAIL **/
+        DESIREDETAIL_BAR_TITLE: 'Desire',
+        DESIREDETAIL_DESCRIPTION: 'Description',
+        DESIREDETAIL_PRICE: 'Price',
+        DESIREDETAIL_LOCATION: 'Location',
+        DESIREDETAIL_HAVER: 'Haver',
+        DESIREDETAIL_NO_HAVER: 'Unfortunately there are no havers yet',
+
         /** FILTER SETTING **/
         FILTERSETTING_TITLE: 'Change Filter',
         FILTERSETTING_CATEGORY: 'Category',
@@ -85,6 +93,14 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_DATE: 'Ablaufdatum',
         DESIRECREATE_PRICE: 'Preis',
         DESIRECREATE_CATEGORY: 'Wähle eine Kategorie',
+
+        /** DESIRE DETAIL **/
+        DESIREDETAIL_BAR_TITLE: 'Auftrag',
+        DESIREDETAIL_DESCRIPTION: 'Beschreibung',
+        DESIREDETAIL_PRICE: 'Bezahlung',
+        DESIREDETAIL_LOCATION: 'Ort',
+        DESIREDETAIL_HAVER: 'Haver',
+        DESIREDETAIL_NO_HAVER: 'Leider noch keine Haver vorhanden',
 
         /** FILTER SETTING **/
         FILTERSETTING_TITLE: 'Filter anpassen',

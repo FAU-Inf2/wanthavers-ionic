@@ -1,4 +1,4 @@
-<ion-view view-title="Desire">
+<ion-view cache-view="false" view-title="{{ 'DESIREDETAIL_BAR_TITLE' | translate }}">
     <ion-content class="desire-detail">
 
         <div class="row desire-detail-creator" ng-if="!isWanter">
@@ -46,23 +46,23 @@
         </div>
 
         <div class="desire-detail-box">
-            <h4>Beschreibung</h4>
+            <h4>{{ 'DESIREDETAIL_DESCRIPTION' | translate }}</h4>
             <p>{{desire.description}}</p>
         </div>
 
         <div class="desire-detail-price-box">
-            <h4>Preis</h4>
+            <h4>{{ 'DESIREDETAIL_PRICE' | translate }}</h4>
             <p class="price-note">{{desire.price}}{{desire.currency | currency}}</p>
         </div>
 
         <div class="desire-detail-box">
-            <h4>Ort</h4>
+            <h4>{{ 'DESIREDETAIL_LOCATION' | translate }}</h4>
             <p>{{desire.dropzone_string}}</p>
         </div>
 
         <div class="desire-detail-box" ng-if="showList">
-            <h4 class="haver-title">Haver</h4>
-            <p ng-show="!list.length">Unfortunately there are no havers yet</p>
+            <h4 class="haver-title">{{ 'DESIREDETAIL_HAVER' | translate }}</h4>
+            <p ng-show="!list.length">{{ 'DESIREDETAIL_NO_HAVER' | translate }}</p>
             <div class="desire-detail-haver-list" ng-repeat="haver in list">
                 <div class="row haver-row-wrapper">
                     <div class="col">
@@ -88,7 +88,7 @@
         </div>
 
         <div class="desire-detail-box" ng-if="showAcceptedHaver">
-            <h4 class="haver-title">Haver</h4>
+            <h4 class="haver-title">{{ 'DESIREDETAIL_HAVER' | translate }}</h4>
             <div class="desire-detail-accepted-haver" >
                 <div class="row">
                     <div class="col">
@@ -100,7 +100,7 @@
                         <span ng-bind-html="acceptedHaver.user.rating | rating | unsafe"></span>
                     </div>
                     <div class="col col-10">
-                        <button class="button button-small desire-detail-button" ng-if="desireInProgress">
+                        <button class="button button-small desire-detail-button" ng-if="desireInProgress" ng-click="unacceptHaver()">
                             <i class="icon ion-android-close unaccept-icon"></i>
                         </button>
                         <button class="button button-small desire-detail-button" ng-if="desireDone">

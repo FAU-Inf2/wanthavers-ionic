@@ -51,6 +51,10 @@
   color: $secondary;
 }
 
+.unaccept-icon {
+  color: $secondary;
+}
+
 .desire-detail-button {
   margin-top: 5px;
   background-color: $primary;
@@ -133,11 +137,11 @@
   padding-top: 10px;
 }
 
-.desire-detail-haver-list .haver-name {
+.haver-name {
   color: $primary;
 }
 
-.desire-detail-haver-list .rating-element{
+.rating-element{
   color: $primary;
 }
 
