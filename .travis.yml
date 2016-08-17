@@ -43,6 +43,8 @@ script:
 - rm -r platforms/ios/wanthaver.xcodeproj #remove generated project and
 - cp -r resources/ios/wanthaver.xcodeproj platforms/ios/wanthaver.xcodeproj # copy configurated (sheme + signing setup)
 - ionic plugin add ionic-plugin-keyboard
+- cordova plugin add cordova-plugin-geolocation
+- cordova plugin add cordova-plugin-camera
 - ionic build ios --device --release
 - cd platforms/ios
 - xcodebuild archive -project wanthaver.xcodeproj -scheme wanthaver -archivePath wanthaver.xcarchive
