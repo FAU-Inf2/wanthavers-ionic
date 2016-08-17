@@ -81,7 +81,9 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.selectCategory = function(category) {
         $scope.category = category;
         $scope.desire.categoryId = category.id;
-        $scope.desire.image = category.image;
+        if(!$scope.hasUploaded){
+            $scope.desire.image = category.image;
+        }
         console.log($scope.desire.categoryId);
         $scope.modal.hide();
     };
@@ -206,13 +208,14 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
                 sheet();
             },
             buttonClicked: function(index) {
+                sheet();
                 var source = Camera.PictureSourceType.CAMERA;
                 if(index == 1){
                     source = Camera.PictureSourceType.PHOTOLIBRARY;
                 }
                 navigator.camera.getPicture(function(imageData){
                     Media.createMedia(encodeURIComponent(imageData),encodeURIComponent("xy.jpeg")).then(function(resp){
-                        $scope.media = resp.data;
+                        $scope.desire.image = resp.data;
                         $scope.hasUploaded = true;
                     });
                 }, function(e){
@@ -225,7 +228,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
                     targetWidth: 1024,
                     targetHeight: 1024
                 });
-                sheet();
+
             }
         });
 

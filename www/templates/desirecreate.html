@@ -57,7 +57,7 @@
 
         <div class="desire-img" ng-click="pickImage()">
           <img ng-if="!hasUploaded" ng-src="{{(category != undefined)? category.image.lowRes : 'img/ionic.png'}}" >
-          <img ng-if="hasUploaded" ng-src="{{media.fullRes}}" >
+          <img ng-if="hasUploaded" ng-src="{{desire.image.fullRes}}" >
         </div>
         </label>
       </ion-slide>
