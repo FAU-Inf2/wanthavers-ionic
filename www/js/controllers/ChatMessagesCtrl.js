@@ -22,14 +22,10 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
             if(jumpBottom){
                 $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
             }
-            for(var i=0;i<resp.data.length;i++){
-                if(resp.data[i].from != $rootScope.currentUser.id){
-                    User.getById(resp.data[i].from).then(function(resp){
-                        $scope.otherUser = resp.data;
-                    });
-                    break;
-                }
-            }
+        });
+
+        Chat.getOtherUserByChatId($stateParams.chatId).then(function(resp){
+            $scope.otherUser = resp.data;
         });
     }
 

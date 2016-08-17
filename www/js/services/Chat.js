@@ -18,6 +18,10 @@ wanthaver.factory('Chat', ['$http', 'Auth', function ($http, Auth) {
             return $http.get(server+'/v1/chat', Auth.getHeaderObject());
         },
 
+        getOtherUserByChatId: function(chatId){
+            return $http.get(server+'/v1/chat/'+chatId+'/otheruser', Auth.getHeaderObject());
+        },
+
         getOtherUser: function (chat) {
             if(chat.userObject1 == null || chat.userObject2 == null){
                 return undefined;
