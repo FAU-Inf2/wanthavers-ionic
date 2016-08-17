@@ -35,6 +35,10 @@ before_script:
 
 script:
 - npm install
+- npm install -g gulp
+- npm install -g ios-sim
+- npm install -g ios-deploy
+- ionic setup sass
 - ionic platform add ios
 - rm -r platforms/ios/wanthaver.xcodeproj #remove generated project and
 - cp -r resources/ios/wanthaver.xcodeproj platforms/ios/wanthaver.xcodeproj # copy configurated (sheme + signing setup)
