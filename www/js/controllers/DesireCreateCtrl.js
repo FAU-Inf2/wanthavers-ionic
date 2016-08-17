@@ -1,4 +1,4 @@
-controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal, $ionicHistory ,$ionicPopup, FilterSetting, Desire, CategoryList, $translate) {
+controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal, $ionicHistory ,$ionicPopup, FilterSetting, Desire, CategoryList, $translate, $ionicActionSheet, Media) {
     $scope.obj = {};
     $scope.obj.title = "";
     $scope.lastSlide = false;
@@ -10,6 +10,8 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.allFieldsFilled = false;
     $scope.date = {};
     $scope.expirationDate = null;
+    $scope.media = {};
+    $scope.hasUploaded = false;
 
     $translate('DESIRECREATE_BAR_TITLE1').then(function (translation) {
         $scope.obj.title = translation;
@@ -189,6 +191,45 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
         }
 
         console.log(new Date());
+    }
+
+    $scope.pickImage = function(){
+
+        var sheet = $ionicActionSheet.show({
+            buttons: [
+                { text: 'Camera' },
+                { text: 'Gallery' }
+            ],
+            titleText: 'Select Photo Source',
+            cancelText: 'Cancel',
+            cancel: function() {
+                sheet();
+            },
+            buttonClicked: function(index) {
+                var source = Camera.PictureSourceType.CAMERA;
+                if(index == 1){
+                    source = Camera.PictureSourceType.PHOTOLIBRARY;
+                }
+                navigator.camera.getPicture(function(imageData){
+                    Media.createMedia(encodeURIComponent(imageData),encodeURIComponent("xy.jpeg")).then(function(resp){
+                        $scope.media = resp.data;
+                        $scope.hasUploaded = true;
+                    });
+                }, function(e){
+                    console.log(e);
+                }, {
+                    sourceType: source,
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    MediaType: Camera.MediaType.PICTURE,
+                    quality: 50,
+                    targetWidth: 1024,
+                    targetHeight: 1024
+                });
+                sheet();
+            }
+        });
+
+
     }
 
 });

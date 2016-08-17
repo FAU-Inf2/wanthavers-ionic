@@ -55,7 +55,9 @@
           <div class="padding category-name">{{category.name}}</div>
         </div>
 
-        <div class="desire-img"><img ng-src="{{(category != undefined)? category.image.lowRes : 'img/ionic.png' }}" >
+        <div class="desire-img" ng-click="pickImage()">
+          <img ng-if="!hasUploaded" ng-src="{{(category != undefined)? category.image.lowRes : 'img/ionic.png'}}" >
+          <img ng-if="hasUploaded" ng-src="{{media.fullRes}}" >
         </div>
         </label>
       </ion-slide>
