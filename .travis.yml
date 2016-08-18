@@ -1,17 +1,61 @@
 language: objective-c
 os: osx
 osx_image: xcode7
+
+env:
+  global:
+    - secure: umyyMwTI5MxImgvgyh7lv/DfrHYjI4e/UZCY6ocfde4r0NyBtKvGj76ax55frb2Uifg7sb3rscAOEx6NODADD2Ru/OfLmRowzfaXiJ8zBMXjpCzXginxrlB92/dJbf2CRxz2m0eiBO7w706CXLrcpMcuFV1Jaece5YZX0ZF2ItWaz13VlCddgeMvQ01df7LZRWPCBlIrsdYmh5Z4iDOAAZOPoypSbH8AHoLO4O3b1Q2hLhNGaVX8i5OWj4dlZkeLjVKLMTGhL4l2Pa9JC+q6yQvXEzGI0l2wmkeWF9w5hBuL0J4I7GA8CP3/MqTEqiuVd+tpC/vJE375NjZibHwheHlPKSLcIo1OAG5GeFcEtsDzkry28mPTuqKtpdJbrA7sExUyq+O+u5A3YNDjp5ezFBbfekPSMxiRj0DkBEttpVG3j/c4vnpfOcz+spqoa2vNkN1n3Ee+nZ8hwmU2N//yxZBa7D8jIlfBM15MToHX/UaSaL/AqRAbwKMPwL2qIcxLTABQUjNw3RJmbuaUbcPJ+6ayUaY+yGD/e2Sq86rHg5bdS8eB+isqPQ4JbPCSqpqEzwWE3x3eoiAkoFuobn+Hsi7K2TOt11SkkmfV4iaV7apMfQKXUFy5c9mNm7HZXfLj/O4R61qgnmYpt21chEdJOJChCt2SrYaAnmLuc0dt2hs=
+    - secure: SWMEbIYwRzOMjqKuuQaYbWpb+DtIYn374CpgseS7DvSJebDaR1inbKZl6a+egKlmHqfH4ctJLL4EZFwUpmYXhiRhlFSzm5Fn+vIAiJcFbYtVYcTIEo8SKs/2Wb+yX5hDBB6f+Ry3hx5guW5yEUgY0CH9DXO8pHiL52kO+35D7W9dObovUi2uWr9EN7eOBsaJ9k8NhCRsU8Wag457cRBZJoGaND5+Ob6zjH6pCxUK+VuRrb/wW8SkHF7ZBvKy8Qh8q9jJiSEXZFvyOB2EO8WhKRhLz8Lua5X16+UkYHVapFWoNAmeBTtqd7Vr4uwmG5ElpQrT0DNK1Y5Y6NzIIzNtW1rzCyWMP8OUUBegnl0thfMuq9/cBgtCuyQcaWlJ2zVDHQpVUq4Ub0ylRdqVlAk5OTuUskpfX56efmdPt+xqB0q5EiKR/VouMICiseeNEgbPGrRlI/+BDgtFY/XWckLw73C0Dc8LMNBLPFDKR0IScTYyd7xWnS9LrsEPp1kk1YtskM/XHwVvLFN9wo0iL1Wh51pknPuBgeAizaAsdbEY+6yVl0hD6FUBkb8ObaUQPmKki1ZzY/QLEBt9CysrWLTlHvyNJ4AGnDIehtNoQaZmmz0CrzIIwN4kCmqWvCcfuHitpeabYPqDzILmGQNo3SSWNXoSduuI2SMnbIBIVqM0Ar8=
+    - secure: OQ2VxvIfpBGbdj3QI+N7qsnnNenrzVQjAUJhBqIgZWVbLqwzdx75mKKIuuqvadnAa3eqglIuvZ2n2QWOXXYCnL157Hi1CIGUdUz1PwwJ6gBK8G+gzRb2xQJaRbHMAkriPap5eBhmbtBOfO/tfChAQdWG1Sko7W5qmrsA9tm13zYo1PSQZ3bmTKA/xEi3BmO2gkOxCeYQD0NOOFSgSi1sICtwTriWHZjQBnoUaEGUGNA3Fl8RwwOLomYDsTWdM+eoiPBjubRJIOiBBw48h+Yc4Ph3QVOKFPIL2FDOh1nUnEPIoqmURrH82vY3t8o/dwLSANQ54C8j4CiPCVkAnyMmkH8PxMim1APzMwLY3AAyiK9WFuTPn/AojQVxV8jCzs8s5oBv2Kxzn9c0/ihTA2Ee9lKozB4RQVK8EvJSQtv/uGGxawtBnd/UhjpKJywOzUKjEpiru7VCWHJq2P5uKCdD9O8RdXfrkgLFTTH59lvZRYErZ6mcosCCvM7XKbn0jA7TQzCVUYsFl9sLdZMnbeB/ayhfNJqhlNqwS/DMbpVQ4mNd5UQd/mY2mlozQdwZZMBMVTXiLO3eEULl9v8CVO25w3MaBz4jP8MTkyKfJoJPN0cACnHC7FN003WNoXxRDNQ7uvaU1RL8ZcUzrAOEfPJKZitkSdFkSo6hv43sANK/d2Y=
+    - secure: KCsXqVSfcyFU9nIOMa6zwbNRKHc6exqxUoDNGgzURTDc3ZJXeKaVWhuu/oUpwu1BCxASWHjBSm6wh1FTjktYoBsFynA5XyI7Mu5sniHDwWOc+Gmcqmz7CqBrstYWyWa9wmvGu9IdWK0ha3YYkzTee2dxlcdwK7Bzz0fWkSD7vlxUKr2+SCBCiAbnY3wR+tJL17uK6o724zizHq8S34oq3/vSe1tiTQJVAxEuKP6qPRk2h/68OBOdDzes7n1uD+NdJ1CMEEv006OoRafDu2tB+af5DkNrZYdNlbG/TeAaI+vo9QTLttP3W39hEsG3iZ8GM+GDBSV5coYTrpmVAY7pSC7BXrWLTu7Y+W2xitCEQCMZEPvPYDuJ1jdGfPwDLwHIocmBTa6zTsl2wez3EexiGZWvN1B+Mei9UZRuKV4FJmgqTAI/kH/GscjKRYebPiWq0klq9bCTvGEoRz5XpXBWgct6z/LqnNMHkZTajKIMueJd0CvzCxzFJZ0+iDIQjGXXzDPk155qUmeDI+RSqwkGERwuG69I0TNcD4pkie7r4PmahkwzCbmm16+IXL9xMyZhhAt5pnaQfT15f/tneC/qiHRl/Q422AP7fQMW1Sz1a9zMTvJtoy75clX+8PYDa+UtLJAlAnBkYCVVh07822hDyJokkKGQNjD/jPK7hpgrv2g=
+
 before_install:
 - export LANG=en_US.UTF-8
 - brew update
 - npm install -g npm@2.14.7
 - npm install -g grunt-cli cordova@6.2.0 ionic
+
+
 before_script:
-- ls
+- cd resources/ios/
+- openssl aes-256-cbc -d -a -in certs.tar.enc -out certs.tar -k $EK -iv $EIV
+- tar xvf certs.tar
+- security create-keychain -p travis ios-build.keychain 
+- security unlock-keychain -p travis ios-build.keychain
+- security default-keychain -s ios-build.keychain 
+- security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain #let keychain be accessable for 1h
+
+- security import dev.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
+- security import dev.p12 -k ~/Library/Keychains/ios-build.keychain  -T /usr/bin/codesign -P $IPW 
+
+- mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+- cp wh.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+- cd ../..
+
+
 script:
 - npm install
+- npm install -g gulp
+- npm install -g ios-sim
+- npm install -g ios-deploy
+- ionic setup sass
 - ionic platform add ios
+- rm -r platforms/ios/wanthaver.xcodeproj #remove generated project and
+- cp -r resources/ios/wanthaver.xcodeproj platforms/ios/wanthaver.xcodeproj # copy configurated (sheme + signing setup)
 - ionic plugin add ionic-plugin-keyboard
+- cordova plugin add cordova-plugin-geolocation
+- cordova plugin add cordova-plugin-camera
 - ionic build ios --device --release
-after_script:
+- cd platforms/ios
+- xcodebuild archive -project wanthaver.xcodeproj -scheme wanthaver -archivePath wanthaver.xcarchive
+- xcodebuild -exportArchive -archivePath wanthaver.xcarchive -exportPath wanthaver -exportFormat ipa -exportProvisioningProfile "MAD WantHaver Development"
+
+after_success:
 - ls -a platforms/ios
+- curl -F "ipa=@wanthaver.ipa" -F "project=de.fau.cs.mad.wanthaver.ios" $UPL 
+
+
+after_script:
+- security delete-keychain ios-build.keychain
+- rm -f "~/Library/MobileDevice/Provisioning Profiles/wh.mobileprovision"
+- rm -f "wh.mobileprovision"

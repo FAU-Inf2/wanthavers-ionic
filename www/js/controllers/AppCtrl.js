@@ -22,8 +22,9 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $sta
 
     $scope.refreshButtons = function(){
         var tmp = $scope.barButtonsMap[$state.current.name];
+        console.log(tmp)
         $scope.barButtonsMap[$state.current.name] = [];
-        $scope.barButtonsMap[$state.current.name] = tmp;
+        //$scope.barButtonsMap[$state.current.name] = tmp;
     }
 
     $scope.removeButtons = function() {

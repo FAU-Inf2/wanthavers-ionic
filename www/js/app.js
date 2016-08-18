@@ -8,7 +8,7 @@
 var server = "https://wanthaver.com:8443";
 var wanthaver = angular.module('starter', ['ionic', 'starter.controllers',
     'angularMoment', 'base64', 'ionic-ratings',
-    'pascalprecht.translate', 'tmh.dynamicLocale', 'uiGmapgoogle-maps']);
+    'pascalprecht.translate', 'tmh.dynamicLocale']);
 var controllers = angular.module('starter.controllers', []);
 
 wanthaver.run(function($ionicPlatform) {
@@ -62,7 +62,7 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
     })
 
   .state('app.desirelist', {
-      url: '/desirelist',
+      url: '/desirelist/:mode',
       views: {
         'menuContent': {
           templateUrl: 'templates/desirelist.html',
@@ -166,16 +166,24 @@ wanthaver.directive('stopEvent', function () {
     };
 });
 
-wanthaver.config(function(uiGmapGoogleMapApiProvider) {
-    uiGmapGoogleMapApiProvider.configure({
-        key: 'AIzaSyBEOZHjo8LFtEyR9ETUkVnVsEXWqwUaMzE',
-        //v: '3.20', //defaults to latest 3.X anyhow
-        libraries: 'weather,geometry,visualization'
-    });
-})
-
 if(!('contains' in String.prototype)) {
     String.prototype.contains = function(str, startIndex) {
         return -1 !== String.prototype.indexOf.call(this, str, startIndex);
     };
 }
+
+wanthaver.directive('preventDrag', function ($ionicGesture, $ionicSlideBoxDelegate) {
+    return {
+        restrict: 'A',
+        link    : function (scope, elem) {
+            var reportEvent = function (e) {
+                console.log(e)
+                if (e.target.tagName.toLowerCase() === 'input') {
+                    $ionicSlideBoxDelegate.enableSlide(false);
+                } else {
+                    $ionicSlideBoxDelegate.enableSlide(true);
+                }
+            };
+            $ionicGesture.on('touch', reportEvent, elem);
+        }
+    }});

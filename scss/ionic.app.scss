@@ -39,12 +39,33 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "map";
 @import "categorylist";
 
+
+@font-face {
+  font-family: Estandar;
+  src: url("../fonts/EstandarRd-Regular.otf") format("opentype");
+}
+
+body, h1, h2, h3, h4, button, input{
+  font-family: "Estandar";
+}
+
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
   background: $primary;
 }
 
+.nav-bar-title img{
+  height:70%;
+  margin-top:10px;
+}
+
 .red-font{
   color:#ff0000;
+}
+
+.currency-symbol {
+  font-family: "Helvetica Neue";
+  display: inline-block;
+  margin-left: 3px;
 }
 
 .input-label{
@@ -58,6 +79,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .bar.bar-stable .title {
   color: #fff;
+  font-size: 21px;
 }
 
 button.button.button-outline.button-light, button.button.button-outline.button-light.activated {

@@ -1,5 +1,6 @@
-controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal, $ionicHistory ,$ionicPopup, FilterSetting, Desire, CategoryList) {
-    $scope.title = "Create Desire: Step 1";
+controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal, $ionicHistory ,$ionicPopup, FilterSetting, Desire, CategoryList, $translate, $ionicActionSheet, Media) {
+    $scope.obj = {};
+    $scope.obj.title = "";
     $scope.lastSlide = false;
     $scope.filterSetting = {};
     $scope.desire = {};
@@ -9,19 +10,44 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.allFieldsFilled = false;
     $scope.date = {};
     $scope.expirationDate = null;
+    $scope.media = {};
+    $scope.hasUploaded = false;
+    $scope.dateSliderDays = 0;
+    $scope.dateSliderHours = 1;
+    $scope.dateSlider = 1;
+    $scope.dateSlider2= 1;
+    $scope.dateName = "Hours";
+    $scope.value = false;
+
+
+    $translate('DESIRECREATE_BAR_TITLE1').then(function (translation) {
+        $scope.obj.title = translation;
+        $scope.desirecreateBar1 = translation;
+        console.log(translation);
+    });
+
+    $translate('DESIRECREATE_BAR_TITLE2').then(function (translation) {
+        $scope.desirecreateBar2 = translation;
+        console.log(translation);
+    });
+
+    $translate('DESIRECREATE_BAR_TITLE3').then(function (translation) {
+        $scope.desirecreateBar3 = translation;
+        console.log(translation);
+    });
 
 
     $scope.slideHasChanged = function (index) {
         $scope.lastSlide = false;
         switch(index){
             case 0:
-                $scope.title = "Create Desire: Step 1";
+                $scope.obj.title = $scope.desirecreateBar1;
                 break;
             case 1:
-                $scope.title = "Create Desire: Step 2";
+                $scope.obj.title = $scope.desirecreateBar2;
                 break;
             case 2:
-                $scope.title = "Create Desire: Step 3";
+                $scope.obj.title = $scope.desirecreateBar3;
                 $scope.lastSlide = true;
                 break;
         }
@@ -62,7 +88,9 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.selectCategory = function(category) {
         $scope.category = category;
         $scope.desire.categoryId = category.id;
-        $scope.desire.image = category.image;
+        if(!$scope.hasUploaded){
+            $scope.desire.image = category.image;
+        }
         console.log($scope.desire.categoryId);
         $scope.modal.hide();
     };
@@ -173,5 +201,60 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
 
         console.log(new Date());
     }
+
+    $scope.pickImage = function(){
+
+        var sheet = $ionicActionSheet.show({
+            buttons: [
+                { text: 'Camera' },
+                { text: 'Gallery' }
+            ],
+            titleText: 'Select Photo Source',
+            cancelText: 'Cancel',
+            cancel: function() {
+                sheet();
+            },
+            buttonClicked: function(index) {
+                sheet();
+                var source = Camera.PictureSourceType.CAMERA;
+                if(index == 1){
+                    source = Camera.PictureSourceType.PHOTOLIBRARY;
+                }
+                navigator.camera.getPicture(function(imageData){
+                    Media.createMedia(encodeURIComponent(imageData),encodeURIComponent("xy.jpeg")).then(function(resp){
+                        $scope.desire.image = resp.data;
+                        $scope.hasUploaded = true;
+                    });
+                }, function(e){
+                    console.log(e);
+                }, {
+                    sourceType: source,
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    MediaType: Camera.MediaType.PICTURE,
+                    quality: 50,
+                    targetWidth: 1024,
+                    targetHeight: 1024
+                });
+
+            }
+        });
+
+
+    };
+
+    $scope.toggleChange = function() {
+        if ($scope.value == false) {
+            $scope.dateName = "Days";
+            $scope.value = true;
+            console.log($scope.dateSlider2);
+
+        } else{
+            $scope.dateName = "Hours";
+            $scope.value = false;
+            console.log($scope.dateSlider2);
+        }
+        console.log('testToggle changed to ' + $scope.value);
+    };
+
 
 });

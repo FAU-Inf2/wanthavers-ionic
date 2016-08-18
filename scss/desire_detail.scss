@@ -14,19 +14,6 @@
   font-weight: normal;
 }
 
-.category-image img {
-  width: 100%;
-  border-radius: 100%;
-}
-
-.category-name {
-  font-size: 20px;
-  font-weight: normal;
-  margin: 5px;
-  width:100%;
-  border-radius: 100%;
-}
-
 .desire-detail-image {
   width:100%;
   border-radius: 100%;
@@ -48,6 +35,10 @@
 }
 
 .accept-icon {
+  color: $secondary;
+}
+
+.unaccept-icon {
   color: $secondary;
 }
 
@@ -133,11 +124,11 @@
   padding-top: 10px;
 }
 
-.desire-detail-haver-list .haver-name {
+.haver-name {
   color: $primary;
 }
 
-.desire-detail-haver-list .rating-element{
+.rating-element{
   color: $primary;
 }
 
@@ -147,4 +138,8 @@
 
 .haver-row-wrapper{
   border-bottom: 1px solid #888;
+}
+
+.desire-detail-accepted-haver {
+  background-color: $secondary;
 }
