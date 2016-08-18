@@ -4,7 +4,7 @@
 
 
     <ion-slide-box on-slide-changed="slideHasChanged($index)">
-      <ion-slide>
+      <ion-slide prevent-drag>
         <label class=" item-input item-floating-label">
           <span class="input-label">{{ 'DESIRECREATE_TITLE' | translate }}</span>
           <input type="text" maxlength="50" ng-model="desire.title" placeholder="Titel">
@@ -13,15 +13,18 @@
         <label class=" item-input item-floating-label">
           <span class="input-label">{{ 'DESIRECREATE_DESCRIPTION' | translate }}</span>
           <span class="desc-char-counter" ng-class="{'red-font' : desire.description.length == 300}">
-        ({{(desire.description == undefined) ? 0 : desire.description.length }}/300)
-      </span>
+            ({{(desire.description == undefined) ? 0 : desire.description.length }}/300)
+          </span>
           <textarea ng-model="desire.description" class="create-description" placeholder="{{ 'DESIRECREATE_DESCRIPTION_PLACEGOLDER' | translate }}" maxlength="300"></textarea>
         </label>
-        <label class="time item-input item-floating-label">
-          <span class="input-label">{{ 'DESIRECREATE_DATE' | translate }}</span>
-          <input type="date" ng-model="date.date" placeholder="{{ 'DESIRECREATE_DATE' | translate }}" ng-class="{'date-not-empty': date.date != undefined}">
-          <input type="time" ng-model="date.time">
-        </label>
+          <div class="item range range-positive">
+              <span class="input-label expiration-label">Expires in {{dateSlider2}} {{dateName}}</span>
+              <input type="range" name="volume" min="1" max="24" ng-model="dateSlider2">
+          </div>
+          <li class="item" style="padding:0;">
+              <ion-radio ng-model="dateName" ng-value="'Hours'">Set in Hours</ion-radio>
+              <ion-radio ng-model="dateName" ng-value="'Days'">Set in Days</ion-radio>
+          </li>
       </ion-slide>
 
       <ion-slide>
@@ -63,36 +66,25 @@
       </ion-slide>
 
       <ion-slide>
-        <div class="box"> <label class=" item-input item-floating-label">
-          <span class="input-label">Location</span>
-          <input type="text" maxlength="50" ng-model="desire.dropzone_string" placeholder="Location">
-        </label>
+        <div class="box">
+            <label class=" item-input item-floating-label">
+                <span class="input-label">Location</span>
+                <input type="text" maxlength="50" ng-model="desire.dropzone_string" placeholder="Location">
+            </label>
         </div>
 
-
-          <div class="list">
-
-              <div class="item range range-positive">
-                  <span class="input-label">{{dateSliderDays}} Days</span>
-                  <input type="range" name="volume" min="0" max="21" ng-model="dateSliderDays">
-              </div>
-              <div class="item range range-positive">
-                  <span class="input-label">{{dateSliderHours}} Hours</span>
-                  <input type="range" name="volume" min="1" max="23" ng-model="dateSliderHours">
-              </div>
-          </div>
-
+        <!--
           <div class="list">
               <div class="item range range-positive">
                   <span class="input-label">{{(dateSlider - (dateSlider%24))/24}} Days {{dateSlider%24}} Hours </span>
                   <input type="range" name="volume" min="1" max="504" ng-model="dateSlider">
               </div>
           </div>
+        -->
 
-
-
+            <!--
           <li class="item item-toggle">
-              Expire Time
+              Expiration in Days
               <label class="toggle toggle-assertive" >
 
                   <input type="checkbox" ng-change="toggleChange()" ng-model="value">
@@ -106,6 +98,10 @@
               <span class="input-label">{{dateSlider2}} {{dateName}}</span>
               <input type="range" name="volume" min="0" max="24" ng-model="dateSlider2">
           </div>
+        -->
+
+
+
 
       </ion-slide>
 

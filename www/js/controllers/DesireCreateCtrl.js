@@ -15,7 +15,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.dateSliderDays = 0;
     $scope.dateSliderHours = 1;
     $scope.dateSlider = 1;
-    $scope.dateSlider2= 0;
+    $scope.dateSlider2= 1;
     $scope.dateName = "Hours";
     $scope.value = false;
 
