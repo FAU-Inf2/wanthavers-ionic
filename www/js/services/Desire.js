@@ -9,6 +9,7 @@ wanthaver.factory('Desire', ['$http', 'Auth', 'FilterSetting', function ($http, 
                     price_min: FilterSetting.getMinPrice(),
                     price_max:  FilterSetting.getMaxPrice(),
                     rating_min: FilterSetting.getMinRating(),
+                    radius: FilterSetting.getRadius(),
                     last_desire_id: last_desire_id,
                     limit : limit,
                     status: 1

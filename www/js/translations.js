@@ -34,6 +34,7 @@ wanthaver.config(function ($translateProvider) {
         FILTERSETTING_MINRATING: 'Minimum Rating',
         FILTERSETTING_APPLY: 'Apply Filter',
         FILTERSETTING_RESET: 'Reset Filter',
+        FILTERSETTING_RADIUS: 'Distance Radius',
 
         /** CATEGORY_LIST **/
         CATEGORYLIST_TITLE: 'Select a Category',
@@ -82,6 +83,7 @@ wanthaver.config(function ($translateProvider) {
         FILTERSETTING_MINRATING: 'Mindestrating',
         FILTERSETTING_APPLY: 'Filter anwenden',
         FILTERSETTING_RESET: 'Filter zurücksetzen',
+        FILTERSETTING_RADIUS: 'Entfernungsradius',
 
         /** CATEGORY_LIST **/
         CATEGORYLIST_TITLE: 'Wähle eine Kategorie',

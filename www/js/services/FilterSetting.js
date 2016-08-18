@@ -12,6 +12,10 @@ wanthaver.factory('FilterSetting', function() {
             this.filterSetting = {};
         },
 
+        getFilterSetting: function(){
+            return this.filterSetting;
+        },
+
         getCategory: function(){
             return this.filterSetting.category != null ? this.filterSetting.category.id : null;
         },
@@ -26,6 +30,10 @@ wanthaver.factory('FilterSetting', function() {
 
         getMinRating: function(){
             return this.filterSetting.rating;
+        },
+
+        getRadius: function(){
+            return this.filterSetting.radius;
         }
     };
 });

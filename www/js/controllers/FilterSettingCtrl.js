@@ -13,6 +13,10 @@ controllers.controller('FilterSettingCtrl', function($scope, $ionicModal, $ionic
         }
     };
 
+    $scope.$on('$ionicView.beforeEnter', function() {
+        $scope.filterSetting = FilterSetting.getFilterSetting();
+    })
+
     $scope.applyFilter = function(){
         FilterSetting.applyFilter($scope.filterSetting);
         $ionicHistory.goBack();

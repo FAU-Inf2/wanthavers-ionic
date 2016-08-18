@@ -16,6 +16,12 @@
             <ionic-ratings class="ionic_rating_icon_on" ratingsobj='ratingsObject'></ionic-ratings>
         </div>
 
+        <span class="padding">{{ 'FILTERSETTING_RADIUS' | translate }}</span>
+        <div class="item range">
+            <input ng-model="filterSetting.radius" type="range" name="filterSetting.radius" min="0" max="100" value="100">
+            <span ng-if="filterSetting.radius != null">{{filterSetting.radius}}km</span>
+        </div>
+
         <button class="button button-outline button-positive button-full" ng-click="applyFilter()" >{{ 'FILTERSETTING_APPLY' | translate }}</button>
         <button class="button button-outline button-positive button-full" ng-click="resetFilter()" >{{ 'FILTERSETTING_RESET' | translate }}</button>
     </ion-content>
