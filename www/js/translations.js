@@ -17,10 +17,11 @@ wanthaver.config(function ($translateProvider) {
         SETTINGS_EMAIL: 'Email',
         SETTINGS_PWRESET_TITLE: 'Password Reset',
         SETTINGS_PWRESET_MESSAGE:'You will get an email to reset your password.',
-        SETTINGS_PWRESET_BUTTON:'Reset my password',
+        SETTINGS_PWRESET_BUTTON:'Reset my Password',
         SETTINGS_PWRESET_POPUP_TITLE: 'Password reset mail',
         SETTINGS_PWRESET_POPUP_TEXT: 'Password reset mail was sent successfully!',
         SETTINGS_PWRESET_POPUP_TEXT_FAILED: 'Sending password reset mail failed!',
+        SETTINGS_SAVE_BUTTON:'Save Changes',
 
         /** DESIRE CREATE**/
         DESIRECREATE_BAR_TITLE1: 'Create Desire: Step 1',
@@ -80,6 +81,7 @@ wanthaver.config(function ($translateProvider) {
         SETTINGS_EMAIL: 'Email',
         SETTINGS_PWRESET_TITLE: 'Passwort-Zurücksetzen',
         SETTINGS_PWRESET_MESSAGE:'Du erhältst eine E-Mail zum Ändern des Passworts.',
+        SETTINGS_SAVE_BUTTON:'Änderungen übernehmen',
         SETTINGS_PWRESET_BUTTON:'Mein Passwort zurücksetzen',
         SETTINGS_PWRESET_POPUP_TITLE: 'Passwort-Zurücksetzen E-Mail',
         SETTINGS_PWRESET_POPUP_TEXT: 'Du erhältst eine E-Mail zum Ändern des Passworts',

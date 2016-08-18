@@ -1,5 +1,5 @@
 <ion-view>
-  <ion-nav-title>{{obj.location}}</ion-nav-title>
+  <ion-nav-title><img ng-if="obj.location == ''" src="img/logo_white.png">{{obj.location}}</ion-nav-title>
   <ion-content>
     <ion-refresher
             on-refresh="loadDesires()">

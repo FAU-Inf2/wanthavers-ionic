@@ -45,12 +45,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   src: url("/fonts/EstandarRd-Regular.otf") format("opentype");
 }
 
-body, h1, h2, h3, h4{
+body, h1, h2, h3, h4, button, input{
   font-family: "Estandar";
 }
 
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
   background: $primary;
+}
+
+.nav-bar-title img{
+  height:70%;
+  margin-top:10px;
 }
 
 .red-font{

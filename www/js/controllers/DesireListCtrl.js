@@ -2,7 +2,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
     $scope.reachedEnd = false;
     $scope.obj = {};
-    $scope.obj.location = "wanthaver";
+    $scope.obj.location = "";
 
     $ionicSideMenuDelegate.canDragContent(true);
 
@@ -19,7 +19,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
             });
         }else{
             $scope.reachedEnd = false;
-            $scope.obj.location = "wanthaver";
+            $scope.obj.location = "";
             ionic.Platform.ready(function(){
                 navigator.geolocation.getCurrentPosition(function(pos){
                     $rootScope.currentPosition = pos.coords;
