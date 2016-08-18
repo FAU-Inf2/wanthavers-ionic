@@ -12,6 +12,13 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.expirationDate = null;
     $scope.media = {};
     $scope.hasUploaded = false;
+    $scope.dateSliderDays = 0;
+    $scope.dateSliderHours = 1;
+    $scope.dateSlider = 1;
+    $scope.dateSlider2= 0;
+    $scope.dateName = "Hours";
+    $scope.value = false;
+
 
     $translate('DESIRECREATE_BAR_TITLE1').then(function (translation) {
         $scope.obj.title = translation;
@@ -233,6 +240,21 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
         });
 
 
-    }
+    };
+
+    $scope.toggleChange = function() {
+        if ($scope.value == false) {
+            $scope.dateName = "Days";
+            $scope.value = true;
+            console.log($scope.dateSlider2);
+
+        } else{
+            $scope.dateName = "Hours";
+            $scope.value = false;
+            console.log($scope.dateSlider2);
+        }
+        console.log('testToggle changed to ' + $scope.value);
+    };
+
 
 });
