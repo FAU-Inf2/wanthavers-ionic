@@ -34,6 +34,14 @@ wanthaver.factory('FilterSetting', function() {
 
         getRadius: function(){
             return this.filterSetting.radius;
+        },
+
+        getLat: function(){
+            return this.filterSetting.lat;
+        },
+
+        getLon: function(){
+            return this.filterSetting.lon;
         }
     };
 });

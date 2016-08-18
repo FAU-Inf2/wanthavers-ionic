@@ -1,4 +1,4 @@
-controllers.controller('FilterSettingCtrl', function($scope, $ionicModal, $ionicHistory, FilterSetting, CategoryList) {
+controllers.controller('FilterSettingCtrl', function($rootScope, $scope, $ionicModal, $ionicHistory, FilterSetting, CategoryList, Location) {
     $scope.filterSetting = {};
 
     $scope.ratingsObject = {
@@ -6,7 +6,7 @@ controllers.controller('FilterSettingCtrl', function($scope, $ionicModal, $ionic
         iconOff: 'ion-ios-star',
         iconOnColor: ' ', // Hacking package: setting color in scss is preferred
         iconOffColor:  ' ',
-        rating: '0',
+        rating: FilterSetting.getMinRating(), // ratingsObject will be parsed before 'beforeEnter' event -> use this to get current selected rating
         minRating: '0',
         callback: function(rating) {
             $scope.filterSetting.rating = rating;
@@ -14,7 +14,10 @@ controllers.controller('FilterSettingCtrl', function($scope, $ionicModal, $ionic
     };
 
     $scope.$on('$ionicView.beforeEnter', function() {
-        $scope.filterSetting = FilterSetting.getFilterSetting();
+        console.log("FilterSetting before", $scope.filterSetting);
+        // We don't want a reference copy -> full copy by parsing JSON
+        $scope.filterSetting = JSON.parse(JSON.stringify(FilterSetting.getFilterSetting()));
+        console.log("FilterSetting after", $scope.filterSetting);
     })
 
     $scope.applyFilter = function(){
@@ -46,8 +49,30 @@ controllers.controller('FilterSettingCtrl', function($scope, $ionicModal, $ionic
         $scope.modal.hide();
     };
 
+    $scope.removeCategory = function() {
+        delete $scope.filterSetting.category;
+    };
+
     $scope.$on('$destroy', function() {
         $scope.modal.remove();
     });
+
+    $scope.selectLocation = function() {
+        $rootScope.showMap();
+        $scope.filterSetting.lat = $rootScope.selectedMapPosition.lat;
+        $scope.filterSetting.lon = $rootScope.selectedMapPosition.lng;
+        $scope.filterSetting.address = $rootScope.selectedMapPosition.address;
+    };
+
+    $scope.removeLocation = function() {
+        delete $scope.filterSetting.lat;
+        delete $scope.filterSetting.lon;
+        delete $scope.filterSetting.address;
+
+    };
+
+    $scope.getLocationString = function() {
+        return Location.getLocationByCoords($scope.filterSetting.lat, $scope.filterSetting.lon);
+    };
 
 })

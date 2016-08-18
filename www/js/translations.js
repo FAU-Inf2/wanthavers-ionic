@@ -51,6 +51,7 @@ wanthaver.config(function ($translateProvider) {
         FILTERSETTING_APPLY: 'Apply Filter',
         FILTERSETTING_RESET: 'Reset Filter',
         FILTERSETTING_RADIUS: 'Distance Radius',
+        FILTERSETTING_LOCATION: 'Location',
 
         /** CATEGORY_LIST **/
         CATEGORYLIST_TITLE: 'Select a Category',
@@ -116,6 +117,7 @@ wanthaver.config(function ($translateProvider) {
         FILTERSETTING_APPLY: 'Filter anwenden',
         FILTERSETTING_RESET: 'Filter zurücksetzen',
         FILTERSETTING_RADIUS: 'Entfernungsradius',
+        FILTERSETTING_LOCATION: 'Standort',
 
         /** CATEGORY_LIST **/
         CATEGORYLIST_TITLE: 'Wähle eine Kategorie',
