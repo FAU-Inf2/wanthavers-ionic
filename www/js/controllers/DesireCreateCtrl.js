@@ -9,15 +9,13 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.desire.currency = "EUR";
     $scope.allFieldsFilled = false;
     $scope.date = {};
-    $scope.expirationDate = null;
+    //$scope.expirationDate = null;
+    $scope.expireTimeSpan = null;
     $scope.media = {};
     $scope.hasUploaded = false;
-    $scope.dateSliderDays = 0;
-    $scope.dateSliderHours = 1;
-    $scope.dateSlider = 1;
-    $scope.dateSlider2= 1;
-    $scope.dateName = "Hours";
-    $scope.value = false;
+    $scope.dateSlider = {};
+    $scope.dateSlider.name = "Hours";
+    $scope.dateSlider.date = 1;
 
 
     $translate('DESIRECREATE_BAR_TITLE1').then(function (translation) {
@@ -119,18 +117,21 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
 
     $scope.checkForInput = function(desire) {
 
-        $scope.getExpritionDate($scope.date);
-        desire.expireDate = $scope.expirationDate;
+        //$scope.getExpritionDate($scope.date);
+        //desire.expireDate = $scope.expirationDate;
+
+        $scope.getExpireTimeSpan($scope.dateSlider.date);
+        desire.expireDate = $scope.expireTimeSpan;
 
 
-        if ($scope.expirationDate!= null && $scope.expirationDate < new Date()){
+        /*if ($scope.expirationDate!= null && $scope.expirationDate < new Date()){
             $scope.allFieldsFilled = false;
             $ionicPopup.alert({
                 title: 'Error Creating a Desire!',
                 template: 'Expiration Date has to be in the future!'
             });
             return;
-        }
+        }*/
 
 
         if (desire.title == null){
@@ -178,10 +179,24 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     };
 
     $scope.create = function(desire) {
+        console.log(desire);
         Desire.create(desire);
     };
 
-    $scope.getExpritionDate = function(date){
+    $scope.getExpireTimeSpan = function(timeSpan){
+        console.log($scope.dateSlider.name);
+        console.log(new Date().getTime());
+        if ($scope.dateSlider.name == 'Days'){
+            $scope.expireTimeSpan = new Date().getTime() + timeSpan *24 * 3600000;
+            console.log($scope.expireTimeSpan);
+
+        }else if ($scope.dateSlider.name == 'Hours'){
+            $scope.expireTimeSpan =new Date().getTime() + timeSpan * 3600000;
+            console.log($scope.expireTimeSpan);
+        }
+    };
+
+    /*$scope.getExpritionDate = function(date){
         if (date.date != null) {
             $scope.expirationDate = new Date();
             $scope.expirationDate.setFullYear(date.date.getFullYear(), date.date.getMonth(), date.date.getDate());
@@ -200,7 +215,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
         }
 
         console.log(new Date());
-    }
+    }*/
 
     $scope.pickImage = function(){
 
@@ -242,7 +257,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
 
     };
 
-    $scope.toggleChange = function() {
+    /*$scope.toggleChange = function() {
         if ($scope.value == false) {
             $scope.dateName = "Days";
             $scope.value = true;
@@ -254,7 +269,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
             console.log($scope.dateSlider2);
         }
         console.log('testToggle changed to ' + $scope.value);
-    };
+    };*/
 
 
 });
