@@ -33,6 +33,10 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_DATE: 'Expiration Date',
         DESIRECREATE_PRICE: 'Price',
         DESIRECREATE_CATEGORY: 'Select a Category',
+        DESIRECREATE_EXPIRE: 'Expires in',
+        DESIRECREATE_EXPIRE_DAYS:'Set in Days',
+        DESIRECREATE_EXPIRE_HOURS: 'Set in Hours',
+
 
         /** DESIRE DETAIL **/
         DESIREDETAIL_BAR_TITLE: 'Desire',
@@ -99,6 +103,9 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_DATE: 'Ablaufdatum',
         DESIRECREATE_PRICE: 'Preis',
         DESIRECREATE_CATEGORY: 'Wähle eine Kategorie',
+        DESIRECREATE_EXPIRE: 'Läuft ab in',
+        DESIRECREATE_EXPIRE_DAYS:'Tage wählen',
+        DESIRECREATE_EXPIRE_HOURS: 'Stunden wählen',
 
         /** DESIRE DETAIL **/
         DESIREDETAIL_BAR_TITLE: 'Auftrag',
