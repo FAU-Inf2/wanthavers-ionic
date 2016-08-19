@@ -25,21 +25,24 @@
         <div>
             <button class="button button-clear button-positive button-icon ion-edit" ng-click="selectLocation()">&nbsp;{{ 'FILTERSETTING_LOCATION' | translate }}</button>
         </div>
-        <span class="padding" ng-show="filterSetting.address != null">
-            <button class="button button-clear button-positive button-close ion-close-circled" ng-click="removeLocation()">
-                <span>{{ filterSetting.address }}</span>&nbsp;
-            </button>
-        </span>
 
-        <label class="item">
-            {{ 'FILTERSETTING_RADIUS' | translate }}
-            <div class="item range range-radius">
-                <input ng-model="filterSetting.radius" type="range" name="filterSetting.radius" min="0" max="100" value="100">
-                <span ng-if="filterSetting.radius != null">{{filterSetting.radius}}km</span>
+        <label>
+            <span class="padding" ng-show="filterSetting.address != null">
+                <button class="button button-clear button-positive button-close ion-close-circled" ng-click="removeLocation()">
+                    <span>{{ filterSetting.address }}</span>&nbsp;
+                </button>
+            </span>
+
+            <div class="item" ng-show="filterSetting.address != null">
+                {{ 'FILTERSETTING_RADIUS' | translate }}
+                <div class="item range range-radius">
+                    <input ng-model="filterSetting.radius" type="range" name="filterSetting.radius" min="0" max="100" value="100">
+                    <span ng-if="filterSetting.radius != null">{{filterSetting.radius}}km</span>
+                </div>
             </div>
         </label>
 
-        <button class="button button-outline button-positive button-full" ng-click="applyFilter()" >{{ 'FILTERSETTING_APPLY' | translate }}</button>
-        <button class="button button-outline button-positive button-full" ng-click="resetFilter()" >{{ 'FILTERSETTING_RESET' | translate }}</button>
+        <button class="button button-positive button-full" ng-click="applyFilter()" >{{ 'FILTERSETTING_APPLY' | translate }}</button>
+        <button class="button button-positive button-full" ng-click="resetFilter()" >{{ 'FILTERSETTING_RESET' | translate }}</button>
     </ion-content>
 </ion-view>
