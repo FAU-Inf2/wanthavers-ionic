@@ -1,12 +1,16 @@
 controllers.controller('FilterSettingCtrl', function($rootScope, $scope, $ionicModal, $ionicHistory, FilterSetting, CategoryList, Location) {
     $scope.filterSetting = {};
 
+    $scope.getRating = function() {
+        return FilterSetting.getMinRating() == null ? '0' : FilterSetting.getMinRating();
+    }
+
     $scope.ratingsObject = {
         iconOn: 'ion-ios-star',
         iconOff: 'ion-ios-star',
         iconOnColor: ' ', // Hacking package: setting color in scss is preferred
         iconOffColor:  ' ',
-        rating: FilterSetting.getMinRating(), // ratingsObject will be parsed before 'beforeEnter' event -> use this to get current selected rating
+        rating: $scope.getRating(), // ratingsObject will be parsed before 'beforeEnter' event -> use this to get current selected rating
         minRating: '0',
         callback: function(rating) {
             $scope.filterSetting.rating = rating;
@@ -68,7 +72,6 @@ controllers.controller('FilterSettingCtrl', function($rootScope, $scope, $ionicM
         delete $scope.filterSetting.lat;
         delete $scope.filterSetting.lon;
         delete $scope.filterSetting.address;
-
     };
 
     $scope.getLocationString = function() {

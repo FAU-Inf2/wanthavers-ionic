@@ -18,10 +18,9 @@
             <input type="tel" ng-model="filterSetting.maxPrice" placeholder="{{ 'FILTERSETTING_MAXPRICE' | translate }}">
         </label>
 
-        <label class="item">
-            {{ 'FILTERSETTING_MINRATING' | translate }}
+        <div class="item">{{ 'FILTERSETTING_MINRATING' | translate }}
             <ionic-ratings class="ionic_rating_icon_on" ratingsobj='ratingsObject'></ionic-ratings>
-        </label>
+        </div>
 
         <div>
             <button class="button button-clear button-positive button-icon ion-edit" ng-click="selectLocation()">&nbsp;{{ 'FILTERSETTING_LOCATION' | translate }}</button>
