@@ -1,4 +1,10 @@
 wanthaver.factory('FilterSetting', function() {
+    /**
+     * Saves all filter settings for desirelist in an object.
+     * If no filter is set for a specific value (e.g. rating), the field should be undefined.
+     * filterSetting object is currently only set/reset by FilterSettingCtrl.
+     * **/
+
     return {
         filterSetting: {},
 

@@ -1,21 +1,14 @@
 controllers.controller('FilterSettingCtrl', function($rootScope, $scope, $ionicModal, $ionicHistory, FilterSetting, CategoryList, Location) {
     $scope.filterSetting = {};
 
-    $scope.getRating = function() {
-        return FilterSetting.getMinRating() == null ? '0' : FilterSetting.getMinRating();
-    }
+    $scope.ratingValues = [1, 2, 3, 4, 5];
 
-    $scope.ratingsObject = {
-        iconOn: 'ion-ios-star',
-        iconOff: 'ion-ios-star',
-        iconOnColor: ' ', // Hacking package: setting color in scss is preferred
-        iconOffColor:  ' ',
-        rating: $scope.getRating(), // ratingsObject will be parsed before 'beforeEnter' event -> use this to get current selected rating
-        minRating: '0',
-        callback: function(rating) {
-            $scope.filterSetting.rating = rating;
-        }
-    };
+    $scope.setRating = function(val) {
+        if(val == $scope.filterSetting.rating)
+            delete $scope.filterSetting.rating;
+        else
+            $scope.filterSetting.rating = val;
+    }
 
     $scope.$on('$ionicView.beforeEnter', function() {
         console.log("FilterSetting before", $scope.filterSetting);
@@ -53,13 +46,13 @@ controllers.controller('FilterSettingCtrl', function($rootScope, $scope, $ionicM
         $scope.modal.hide();
     };
 
-    $scope.removeCategory = function() {
-        delete $scope.filterSetting.category;
-    };
-
     $scope.$on('$destroy', function() {
         $scope.modal.remove();
     });
+
+    $scope.removeCategory = function() {
+        delete $scope.filterSetting.category;
+    };
 
     $scope.selectLocation = function() {
         $rootScope.showMap();
@@ -74,10 +67,6 @@ controllers.controller('FilterSettingCtrl', function($rootScope, $scope, $ionicM
         delete $scope.filterSetting.lon;
         delete $scope.filterSetting.address;
         delete $scope.filterSetting.radius;
-    };
-
-    $scope.getLocationString = function() {
-        return Location.getLocationByCoords($scope.filterSetting.lat, $scope.filterSetting.lon);
     };
 
 })

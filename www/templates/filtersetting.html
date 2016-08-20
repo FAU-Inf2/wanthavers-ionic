@@ -18,7 +18,11 @@
         </label>
 
         <div class="item item-borderless">{{ 'FILTERSETTING_MINRATING' | translate }}
-            <ionic-ratings class="ionic_rating_icon_on" ratingsobj='ratingsObject'></ionic-ratings>
+            <a ng-repeat="r in ratingValues" class="padding">
+                <i class="ion-ios-star" ng-click="setRating(r)"
+                   ng-class="{'ionic_rating_icon_on': r <= filterSetting.rating,
+                   'ionic_rating_icon_off': filterSetting.rating === undefined || r > filterSetting.rating}"></i>
+            </a>
         </div>
 
         <div>
