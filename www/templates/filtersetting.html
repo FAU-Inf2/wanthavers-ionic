@@ -17,12 +17,13 @@
             <input type="tel" ng-model="filterSetting.maxPrice" placeholder="{{ 'FILTERSETTING_MAXPRICE' | translate }}">
         </label>
 
-        <div class="item item-borderless">{{ 'FILTERSETTING_MINRATING' | translate }}
-            <a ng-repeat="r in ratingValues" class="padding">
+        <div class="item item-borderless">{{ 'FILTERSETTING_MINRATING' | translate }}</div>
+        <div class="ratingStars">
+            <span ng-repeat="r in ratingValues" >
                 <i class="ion-ios-star" ng-click="setRating(r)"
                    ng-class="{'ionic_rating_icon_on': r <= filterSetting.rating,
                    'ionic_rating_icon_off': filterSetting.rating === undefined || r > filterSetting.rating}"></i>
-            </a>
+            </span>
         </div>
 
         <div>
