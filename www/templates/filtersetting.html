@@ -13,7 +13,7 @@
             <input type="tel" ng-model="filterSetting.minPrice" placeholder="{{ 'FILTERSETTING_MINPRICE' | translate }}">
         </label>
         <label class="item item-input item-floating-label item-borderless">
-            <span class="input-label black ">{{ 'FILTERSETTING_MAXPRICE' | translate }}</span>
+            <span class="input-label black">{{ 'FILTERSETTING_MAXPRICE' | translate }}</span>
             <input type="tel" ng-model="filterSetting.maxPrice" placeholder="{{ 'FILTERSETTING_MAXPRICE' | translate }}">
         </label>
 
@@ -30,15 +30,15 @@
             <button class="button button-clear button-positive button-close ion-close-circled" ng-click="removeLocation()"></button>
         </span>
 
-        <div class="item item-borderless" ng-show="filterSetting.address != null">
+        <div class="item item-borderless" ng-if="filterSetting.address != null">
             {{ 'FILTERSETTING_RADIUS' | translate }}
-            <div class="item range item-borderless ">
-                <input ng-model="filterSetting.radius" type="range" name="filterSetting.radius" min="0" max="100" value="100">
-                <span ng-if="filterSetting.radius != null">{{filterSetting.radius}}km</span>
+            <div class="item range item-borderless" ng-if="filterSetting.address != null">
+                <input ng-model="filterSetting.radius" type="range" name="filterSetting.radius" min="0" max="100">
+                {{filterSetting.radius}}km
             </div>
         </div>
 
         <button class="button button-positive button-full" ng-click="applyFilter()" >{{ 'FILTERSETTING_APPLY' | translate }}</button>
-        <button class="button button-positive button-full" ng-click="resetFilter()" >{{ 'FILTERSETTING_RESET' | translate }}</button>
+        <button class="button button-positive button-outline button-full" ng-click="resetFilter()" >{{ 'FILTERSETTING_RESET' | translate }}</button>
     </ion-content>
 </ion-view>

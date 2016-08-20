@@ -66,12 +66,14 @@ controllers.controller('FilterSettingCtrl', function($rootScope, $scope, $ionicM
         $scope.filterSetting.lat = $rootScope.selectedMapPosition.lat;
         $scope.filterSetting.lon = $rootScope.selectedMapPosition.lng;
         $scope.filterSetting.address = $rootScope.selectedMapPosition.address;
+        $scope.filterSetting.radius = 100;
     };
 
     $scope.removeLocation = function() {
         delete $scope.filterSetting.lat;
         delete $scope.filterSetting.lon;
         delete $scope.filterSetting.address;
+        delete $scope.filterSetting.radius;
     };
 
     $scope.getLocationString = function() {
