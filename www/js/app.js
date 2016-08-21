@@ -7,7 +7,7 @@
 
 var server = "https://wanthaver.com:8443";
 var wanthaver = angular.module('starter', ['ionic', 'starter.controllers',
-    'angularMoment', 'base64', 'ionic-ratings',
+    'angularMoment', 'base64',
     'pascalprecht.translate', 'tmh.dynamicLocale']);
 var controllers = angular.module('starter.controllers', []);
 
