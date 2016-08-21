@@ -32,8 +32,14 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $sta
         $scope.barButtonsMap[$state.current.name] = [];
     }
 
-    $scope.$on('$ionicView.enter', function() {
+    $scope.$on('$ionicView.beforeEnter', function() {
         $rootScope.currentUserId = Auth.getUserId();
+        if($state.current.name == "app.startup" && Auth.getEmailOfCurUser() != undefined && Auth.getPassword() != undefined){
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            $state.go("app.desirelist");
+        }
         if($rootScope.currentUser == undefined){
             User.getCurrentUser().then(function(resp){
                $rootScope.currentUser = resp.data;

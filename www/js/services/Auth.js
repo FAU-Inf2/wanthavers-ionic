@@ -32,6 +32,10 @@ wanthaver.factory('Auth', ['$base64', function ($base64) {
 
         getEmailOfCurUser: function(){
             return window.localStorage.getItem("username");
+        },
+        
+        getPassword: function(){
+            return window.localStorage.getItem("password");
         }
 
     };

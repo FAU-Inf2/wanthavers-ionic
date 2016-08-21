@@ -45,6 +45,7 @@ script:
 - ionic plugin add ionic-plugin-keyboard
 - cordova plugin add cordova-plugin-geolocation
 - cordova plugin add cordova-plugin-camera
+- cordova plugin add cordova-plugin-inappbrowser
 - ionic build ios --device --release
 - cd platforms/ios
 - xcodebuild archive -project wanthaver.xcodeproj -scheme wanthaver -archivePath wanthaver.xcarchive
