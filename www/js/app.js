@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 
 var server = "https://wanthaver.com:8443";
-var wanthaver = angular.module('starter', ['ionic', 'starter.controllers',
+var wanthaver = angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers',
     'angularMoment', 'base64',
     'pascalprecht.translate', 'tmh.dynamicLocale']);
 var controllers = angular.module('starter.controllers', []);
@@ -25,6 +25,25 @@ wanthaver.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
 
+    Ionic.io();
+
+    var push = new Ionic.Push({
+        "debug": true,
+        "onNotification": function(notification) {
+            var payload = notification.payload;
+            console.log(notification, payload);
+            alert("Recieved Push! ", notification);
+        },
+        "onRegister": function(data) {
+            console.log(data["_token"]);
+            //alert(data["_token"]);
+        }
+    });
+
+    push.register(function(token) {
+      console.log("Device token: ",token);
+      alert("Token is: ", data["_token"]);
+    });
 
   });
 });

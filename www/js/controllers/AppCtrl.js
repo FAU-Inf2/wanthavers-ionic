@@ -1,4 +1,4 @@
-controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $state, User, Auth, tmhDynamicLocale, amMoment, $translate) {
+controllers.controller('AppCtrl', function($scope, $rootScope, $ionicHistory, $ionicModal, $state, User, Auth, tmhDynamicLocale, amMoment, $translate) {
 
     $rootScope.currentPosition = {};
     $rootScope.selectedMapPosition = {};
