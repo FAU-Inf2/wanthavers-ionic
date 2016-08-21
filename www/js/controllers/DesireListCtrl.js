@@ -19,7 +19,9 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
             });
         }else{
             $scope.reachedEnd = false;
-            $scope.obj.location = "";
+            if($rootScope.currentPosition == undefined){
+                $scope.obj.location = "";
+            }
             ionic.Platform.ready(function(){
                 navigator.geolocation.getCurrentPosition(function(pos){
                     $rootScope.currentPosition = pos.coords;
@@ -60,6 +62,9 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     /** refresh **/
     $scope.loadDesires = function(){
         Desire.list(undefined, $stateParams.mode, Auth.getUserId()).then(function(resp){
+            if(resp.data.length == 0){
+                $scope.reachedEnd = true;
+            }
             $scope.feed = resp.data;
             $scope.$broadcast('scroll.refreshComplete');
         });

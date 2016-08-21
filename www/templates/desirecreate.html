@@ -61,7 +61,10 @@
         <div class="desire-img" ng-click="pickImage()">
           <img ng-if="!hasUploaded" ng-src="{{(category != undefined)? category.image.lowRes : 'img/ionic.png'}}" >
           <img ng-if="hasUploaded" ng-src="{{desire.image.fullRes}}" >
+          <ion-spinner ng-show="isUploading" class="spinner-upload-image spinner-positive" icon="android"></ion-spinner>
         </div>
+
+
         </label>
       </ion-slide>
 

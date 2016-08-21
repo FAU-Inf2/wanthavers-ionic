@@ -20,9 +20,17 @@ span.desc-char-counter {
 
 .desire-create .desire-img {
   width: 50%;
-  height: 50%;
   margin-left: 100px;
   margin-top: 70px;
+  position:relative;
+}
+
+.spinner-upload-image {
+  position: absolute;
+  top: 50%;
+  margin-top: -24px;
+  left: 50%;
+  margin-left: -24px;
 }
 
 .desire-create .category-image img {

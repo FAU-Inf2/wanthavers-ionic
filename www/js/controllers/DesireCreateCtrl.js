@@ -236,9 +236,11 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
                     source = Camera.PictureSourceType.PHOTOLIBRARY;
                 }
                 navigator.camera.getPicture(function(imageData){
+                    $scope.isUploading = true;
                     Media.createMedia(encodeURIComponent(imageData),encodeURIComponent("xy.jpeg")).then(function(resp){
                         $scope.desire.image = resp.data;
                         $scope.hasUploaded = true;
+                        $scope.isUploading = false;
                     });
                 }, function(e){
                     console.log(e);
