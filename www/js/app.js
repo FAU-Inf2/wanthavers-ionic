@@ -6,47 +6,28 @@
 // 'starter.controllers' is found in controllers.js
 
 var server = "https://wanthaver.com:8443";
-var wanthaver = angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers',
+var wanthaver = angular.module('starter', ['ionic','ionic.service.core', 'ionic.service.push', 'starter.controllers',
     'angularMoment', 'base64',
     'pascalprecht.translate', 'tmh.dynamicLocale']);
 var controllers = angular.module('starter.controllers', []);
 
-wanthaver.run(function($ionicPlatform) {
+wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, PushNotifications) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-
     }
+
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
 
-    Ionic.io();
-
-    var push = new Ionic.Push({
-        "debug": true,
-        "onNotification": function(notification) {
-            var payload = notification.payload;
-            console.log(notification, payload);
-            alert("Recieved Push! ", notification);
-        },
-        "onRegister": function(data) {
-            console.log(data["_token"]);
-            //alert(data["_token"]);
-        }
-    });
-
-    push.register(function(token) {
-      console.log("Device token: ",token);
-      alert("Token is: ", data["_token"]);
-    });
-
+    PushNotifications.registerToken();
   });
-});
+}]);
 
 wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
 
@@ -119,7 +100,7 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
           }
       }
   })
-      
+
   .state('app.chatmessages', {
       url: '/messages/:chatId',
       views: {
