@@ -30,18 +30,18 @@
       <ion-slide>
 
         <div class="row">
-          <div class="col col-50">
+          <div class="col col-60">
             <label class=" item-input item-floating-label">
               <span class="input-label">{{ 'DESIRECREATE_PRICE' | translate }}</span>
               <input type="tel" maxlength = "3" ng-model="desire.price" placeholder="{{ 'DESIRECREATE_PRICE' | translate }}">
             </label>
           </div>
-          <div class="col col-50">
-          <label class="item item-input item-select">
+          <div class="col col-40">
+          <label class="item item-input item-select" style="border:none">
             <div class="input-label">
               {{currency}}
             </div>
-            <select ng-model="selectedCurrency" ng-change="currencyChanged(selectedCurrency)">
+            <select class="currency-select" ng-model="selectedCurrency" ng-change="currencyChanged(selectedCurrency)">
               <option selected>€</option>
               <option>$</option>
               <option>£</option>
@@ -50,18 +50,22 @@
           </div>
         </div>
 
-        <button class="button button-clear button-positive button-icon ion-plus-round button-select-category" ng-click="openModal()">
-          &nbsp;{{ 'DESIRECREATE_CATEGORY' | translate }}
-        </button>
+        <div class="padding">
+          <button class="button button-block button-outline button-positive" ng-click="openModal()">
+            &nbsp;{{ 'DESIRECREATE_CATEGORY' | translate }}
+          </button>
+        </div>
+
         <div class="row row-no-padding" ng-show="category != null">
           <div class="category-image"><img ng-src="{{category.image.lowRes}}"></div>
           <div class="padding category-name">{{category.name}}</div>
         </div>
 
         <div class="desire-img" ng-click="pickImage()">
-          <img ng-if="!hasUploaded" ng-src="{{(category != undefined)? category.image.lowRes : 'img/ionic.png'}}" >
+          <img ng-if="!hasUploaded" ng-src="{{(category != undefined)? category.image.lowRes : 'img/default.png'}}" >
           <img ng-if="hasUploaded" ng-src="{{desire.image.fullRes}}" >
           <ion-spinner ng-show="isUploading" class="spinner-upload-image spinner-positive" icon="android"></ion-spinner>
+          <div class="desire-image-upload-text" ng-if="!hasUploaded">Tap to change image</div>
         </div>
 
 
@@ -70,40 +74,27 @@
 
       <ion-slide>
         <div class="box">
-            <label class=" item-input item-floating-label">
-                <span class="input-label">Location</span>
-                <input type="text" maxlength="50" ng-model="desire.dropzone_string" placeholder="Location">
-            </label>
+
+
+
+            <div class="item" style="border:none">
+              <span class="input-label expiration-label">{{ 'DESIRECREATE_LOCATION_HEADER' | translate }}</span>
+              <div class="location-list-address" ng-if="locations.length==0">{{ 'DESIRECREATE_NO_LOCATIONS' | translate }}</div>
+            </div>
+
+            <ion-list>
+
+              <ion-radio class="location-check-list" ng-model="locationChoice" ng-value="l" ng-repeat="l in locations">
+                {{l.description}}<br>
+                <span class="location-list-address">{{l.fullAddress}}</span>
+              </ion-radio>
+
+            </ion-list>
+
+            <button class="button button-clear button-positive button-icon ion-plus-round" ng-click="chooseDifferentLocation()">
+              &nbsp;{{ 'DESIRECREATE_DIFFERENT_LOCATION' | translate }}
+            </button>
         </div>
-
-        <!--
-          <div class="list">
-              <div class="item range range-positive">
-                  <span class="input-label">{{(dateSlider - (dateSlider%24))/24}} Days {{dateSlider%24}} Hours </span>
-                  <input type="range" name="volume" min="1" max="504" ng-model="dateSlider">
-              </div>
-          </div>
-        -->
-
-            <!--
-          <li class="item item-toggle">
-              Expiration in Days
-              <label class="toggle toggle-assertive" >
-
-                  <input type="checkbox" ng-change="toggleChange()" ng-model="value">
-                  <div class="track">
-                      <div class="handle">
-                      </div>
-                  </div>
-              </label>
-          </li>
-          <div class="item range range-positive">
-              <span class="input-label">{{dateSlider2}} {{dateName}}</span>
-              <input type="range" name="volume" min="0" max="24" ng-model="dateSlider2">
-          </div>
-        -->
-
-
 
 
       </ion-slide>

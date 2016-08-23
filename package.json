@@ -28,6 +28,11 @@
       "locator": "phonegap-plugin-push",
       "id": "phonegap-plugin-push"
     }
+    "ionic-plugin-keyboard",
+    {
+      "locator": "https://github.com/driftyco/cordova-plugin-wkwebview-engine.git",
+      "id": "plugin.google.maps"
+    }
   ],
   "cordovaPlatforms": [
     "ios"

@@ -43,7 +43,9 @@
             </div>
         </div>
 
-        <button class="button button-positive button-full" ng-click="applyFilter()" >{{ 'FILTERSETTING_APPLY' | translate }}</button>
-        <button class="button button-positive button-outline button-full" ng-click="resetFilter()" >{{ 'FILTERSETTING_RESET' | translate }}</button>
+        <div class="padding">
+            <button class="button button-positive button-full" ng-click="applyFilter()" >{{ 'FILTERSETTING_APPLY' | translate }}</button>
+            <button class="button button-full" ng-click="resetFilter()" >{{ 'FILTERSETTING_RESET' | translate }}</button>
+        </div>
     </ion-content>
 </ion-view>

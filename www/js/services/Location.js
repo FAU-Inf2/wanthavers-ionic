@@ -3,6 +3,14 @@ wanthaver.factory('Location', ['$http', 'Auth', function ($http, Auth) {
         
         getLocationByCoords: function(lat, lon){
             return $http.get(server+'/v1/locations/geocoder?lat='+lat+"&lon="+lon, Auth.getHeaderObject());
+        },
+
+        getUserLocations: function () {
+            return $http.get(server+'/v1/users/locations', Auth.getHeaderObject());
+        },
+
+        createLocation: function(l){
+            return $http.post(server+'/v1/locations', l, Auth.getHeaderObject());
         }
     };
 }]);

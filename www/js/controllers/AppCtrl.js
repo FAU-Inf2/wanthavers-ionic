@@ -1,7 +1,8 @@
-controllers.controller('AppCtrl', function($scope, $rootScope, $ionicHistory, $ionicModal, $state, User, Auth, tmhDynamicLocale, amMoment, $translate) {
+controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, Auth, tmhDynamicLocale, amMoment, $translate, $q, $timeout) {
 
-    $rootScope.currentPosition = {};
+    $rootScope.currentPosition = undefined;
     $rootScope.selectedMapPosition = {};
+    $rootScope.mapDeferred = undefined;
     $rootScope.mapModal = undefined;
     
     $scope.barButtonsMap = [];
@@ -34,7 +35,8 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicHistory, $i
 
     $scope.$on('$ionicView.beforeEnter', function() {
         $rootScope.currentUserId = Auth.getUserId();
-        if($state.current.name == "app.startup" && Auth.getEmailOfCurUser() != undefined && Auth.getPassword() != undefined){
+        console.log(Auth.getPassword() == null);
+        if($state.current.name == "app.startup" && Auth.getEmailOfCurUser() != null && Auth.getPassword() != null){
             $ionicHistory.nextViewOptions({
                 disableBack: true
             });
@@ -63,34 +65,41 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicHistory, $i
     });
 
     $scope.logout = function(){
-        Auth.setCredentials(undefined, undefined);
-        Auth.setUserId(undefined);
+        Auth.clearCredentials();
         $state.go("app.startup");
     }
 
     $rootScope.showMap = function(){
+        $rootScope.mapDeferred = $q.defer();
+
         if(typeof plugin == 'undefined'){
-            //use google as default in browser
-            $rootScope.selectedMapPosition.lat = 37.422476;
-            $rootScope.selectedMapPosition.lng = -122.08425;
-            $rootScope.selectedMapPosition.address = "Google, Mountain View";
-            console.log($rootScope.selectedMapPosition);
-            return;
+            setTimeout(function() {
+                //use google as default in browser
+                var selectedMapPosition = {};
+                selectedMapPosition.lat = 37.422476;
+                selectedMapPosition.lng = -122.08425;
+                selectedMapPosition.address = "Google, Mountain View";
+                console.log(selectedMapPosition);
+                $rootScope.mapDeferred.resolve(selectedMapPosition);
+            }, 100);
+        }else{
+            if($rootScope.mapModal == undefined){
+                $ionicModal.fromTemplateUrl('templates/map.html', {
+                    scope: null,
+                    animation: 'none',
+                    controller: 'MapCtrl'
+                }).then(function(modal) {
+                    $rootScope.mapModal = modal;
+                    modal.show();
+                });
+            }else{
+                $rootScope.mapModal.show();
+                $rootScope.readyMap();
+            }
         }
 
-        if($rootScope.mapModal == undefined){
-            $ionicModal.fromTemplateUrl('templates/map.html', {
-                scope: null,
-                animation: 'none',
-                controller: 'MapCtrl'
-            }).then(function(modal) {
-                $rootScope.mapModal = modal;
-                modal.show();
-            });
-        }else{
-            $rootScope.mapModal.show();
-            $rootScope.readyMap();
-        }
+
+        return $rootScope.mapDeferred.promise;
     }
 
 

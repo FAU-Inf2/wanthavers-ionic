@@ -1,5 +1,7 @@
 wanthaver.config(function ($translateProvider) {
     $translateProvider.translations('en', {
+        CURRENT_LOCATION: 'Current Location',
+
         /** MENU **/
         MENU_ALL_DESIRES: 'All Desires',
         MENU_MY_DESIRE: 'My Desires',
@@ -24,9 +26,9 @@ wanthaver.config(function ($translateProvider) {
         SETTINGS_SAVE_BUTTON:'Save Changes',
 
         /** DESIRE CREATE**/
-        DESIRECREATE_BAR_TITLE1: 'Create Desire: Step 1',
-        DESIRECREATE_BAR_TITLE2: 'Create Desire: Step 2',
-        DESIRECREATE_BAR_TITLE3: 'Create Desire: Step 3',
+        DESIRECREATE_BAR_TITLE1: 'Step 1',
+        DESIRECREATE_BAR_TITLE2: 'Step 2',
+        DESIRECREATE_BAR_TITLE3: 'Step 3',
         DESIRECREATE_TITLE: 'Titel',
         DESIRECREATE_DESCRIPTION: 'Description',
         DESIRECREATE_DESCRIPTION_PLACEGOLDER: 'Description (max 300 Characters)',
@@ -36,6 +38,11 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_EXPIRE: 'Expires in',
         DESIRECREATE_EXPIRE_DAYS:'Set in Days',
         DESIRECREATE_EXPIRE_HOURS: 'Set in Hours',
+        DESIRECREATE_DIFFERENT_LOCATION: 'Choose Location on Map',
+        DESIRECREATE_PUBLISH: 'Publish',
+        DESIRECREATE_LOCATION_HEADER: 'Select Dropzone',
+        DESIRECREATE_NO_LOCATIONS: "You don't have any saved locations.",
+        DESIRECREATE_TAP_CHANGE_IMAGE: 'Tap to change image',
 
 
         /** DESIRE DETAIL **/
@@ -68,6 +75,8 @@ wanthaver.config(function ($translateProvider) {
         MAP_CLOSE_BUTTON: 'Cancel',
     });
     $translateProvider.translations('de', {
+        CURRENT_LOCATION: 'Momentaner Standort',
+
         /** MENU **/
         MENU_ALL_DESIRES: 'Alle Aufträge',
         MENU_MY_DESIRE: 'Meine Aufträge',
@@ -106,6 +115,11 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_EXPIRE: 'Läuft ab in',
         DESIRECREATE_EXPIRE_DAYS:'Tage wählen',
         DESIRECREATE_EXPIRE_HOURS: 'Stunden wählen',
+        DESIRECREATE_DIFFERENT_LOCATION: 'Ort auf Karte auswählen',
+        DESIRECREATE_PUBLISH: 'Veröffentlichen',
+        DESIRECREATE_LOCATION_HEADER: 'Dropzone auswählen',
+        DESIRECREATE_NO_LOCATIONS: "Du hast noch keine gespeicherten Orte.",
+        DESIRECREATE_TAP_CHANGE_IMAGE: 'Tippe um ein anderes Bild zu wählen',
 
         /** DESIRE DETAIL **/
         DESIREDETAIL_BAR_TITLE: 'Auftrag',

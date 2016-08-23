@@ -1,4 +1,4 @@
-controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal, $ionicHistory ,$ionicPopup, FilterSetting, Desire, CategoryList, $translate, $ionicActionSheet, Media) {
+controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, $ionicModal, $ionicHistory ,$ionicPopup, FilterSetting, Desire, CategoryList, $translate, $ionicActionSheet, Media, Location, Auth) {
     $scope.obj = {};
     $scope.obj.title = "";
     $scope.lastSlide = false;
@@ -14,8 +14,9 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     $scope.media = {};
     $scope.hasUploaded = false;
     $scope.dateSlider = {};
-    $scope.dateSlider.name = "Hours";
+    $scope.dateSlider.name = 'Hours';
     $scope.dateSlider.date = 1;
+    $scope.locations = [];
 
 
     $translate('DESIRECREATE_BAR_TITLE1').then(function (translation) {
@@ -34,6 +35,9 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
         console.log(translation);
     });
 
+    $scope.newLocation = function(){
+        
+    }
 
     $scope.slideHasChanged = function (index) {
         $scope.lastSlide = false;
@@ -50,8 +54,8 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
                 break;
         }
         $scope.$parent.addButtons([{
-            icon: "ion-checkmark",
-            name: "",
+            icon: "",
+            name: "Publish",
             show: $scope.lastSlide,
             action: function(){
                 $scope.checkForInput($scope.desire);
@@ -63,8 +67,8 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
                 $ionicHistory.nextViewOptions({
                     disableBack: true
                 });
-                $ionicHistory.goBack();
-                //$state.go("app.desirelist");
+                //$ionicHistory.goBack();
+                $state.go("app.desirelist");
             }
         }]);
     };
@@ -166,7 +170,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
             });
             return;
         }
-        if (desire.dropzone_string == null){
+        if ($scope.locationChoice == undefined){
             $scope.allFieldsFilled = false;
             $ionicPopup.alert({
                 title: 'Error Creating a Desire!',
@@ -179,6 +183,10 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
     };
 
     $scope.create = function(desire) {
+        desire.dropzone_string = $scope.locationChoice.fullAddress;
+        desire.dropzone_lat = $scope.locationChoice.lat;
+        desire.dropzone_lon = $scope.locationChoice.long;
+
         console.log(desire);
         Desire.create(desire);
     };
@@ -256,22 +264,57 @@ controllers.controller('DesireCreateCtrl', function($scope, $state, $ionicModal,
             }
         });
 
-
     };
 
-    /*$scope.toggleChange = function() {
-        if ($scope.value == false) {
-            $scope.dateName = "Days";
-            $scope.value = true;
-            console.log($scope.dateSlider2);
 
-        } else{
-            $scope.dateName = "Hours";
-            $scope.value = false;
-            console.log($scope.dateSlider2);
-        }
-        console.log('testToggle changed to ' + $scope.value);
-    };*/
+    $scope.$on('$ionicView.enter', function() {
+        Location.getUserLocations().then(function(resp){
+            $scope.locations = resp.data;
+
+            if($rootScope.currentPosition != undefined){
+                POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
+                var request = {
+                    'position': POS
+                };
+
+                plugin.google.maps.Geocoder.geocode(request, function(results) {
+                    if (results.length) {
+                        var result = results[0];
+                        if(result.extra.lines[0] == undefined || result.extra.lines[0].length==0){
+                            var address = result.extra.lines[1];
+                        }else{
+                            var address = result.extra.lines[0] + ", " + result.extra.lines[1];
+                        }
+
+                        $translate('CURRENT_LOCATION').then(function (translation) {
+                            var loc = {};
+                            loc.description = translation;
+                            loc.fullAddress = address;
+                            loc.lat = $rootScope.currentPosition.latitude;
+                            loc.lon = $rootScope.currentPosition.longitude;
+                            loc.userId = Auth.getUserId();
+                            $scope.locations.push(loc);
+                            $scope.locationChoice = loc;
+                        });
+
+                    }
+                });
+            }
+        });
+    });
+
+    $scope.chooseDifferentLocation = function(){
+        $rootScope.showMap().then(function(resp){
+            var loc = {};
+            loc.description = "Custom";
+            loc.fullAddress = resp.address;
+            loc.lat = resp.latitude;
+            loc.lon = resp.longitude;
+            loc.userId = Auth.getUserId();
+            $scope.locations.push(loc);
+            $scope.locationChoice = loc;
+        });
+    }
 
 
 });

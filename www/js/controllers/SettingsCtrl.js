@@ -54,6 +54,7 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
       //TODO
     };
 
+
     $scope.changeUserNameAndEmail = function(){
       console.log("User Name changed to: ",  $scope.user.name);
       console.log("User Email changed to: ", $scope.user.email);

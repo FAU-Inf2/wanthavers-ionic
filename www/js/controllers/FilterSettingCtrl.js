@@ -55,11 +55,13 @@ controllers.controller('FilterSettingCtrl', function($rootScope, $scope, $ionicM
     };
 
     $scope.selectLocation = function() {
-        $rootScope.showMap();
-        $scope.filterSetting.lat = $rootScope.selectedMapPosition.lat;
-        $scope.filterSetting.lon = $rootScope.selectedMapPosition.lng;
-        $scope.filterSetting.address = $rootScope.selectedMapPosition.address;
-        $scope.filterSetting.radius = 100;
+        $rootScope.showMap().then(function(resp){
+            console.log(resp)
+            $scope.filterSetting.lat = resp.lat;
+            $scope.filterSetting.lon = resp.lng;
+            $scope.filterSetting.address = resp.address;
+            $scope.filterSetting.radius = 100;
+        });
     };
 
     $scope.removeLocation = function() {

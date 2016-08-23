@@ -66,6 +66,7 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
 
     $scope.finish = function(success){
         $rootScope.selectedMapPosition.success = success;
+        $rootScope.mapDeferred.resolve($rootScope.selectedMapPosition);
         console.log($rootScope.selectedMapPosition.lat);
         document.getElementById("main").style.display = "block";
         map.setDiv(null);
@@ -77,7 +78,7 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
 
     ionic.DomUtil.ready(function() {
 
-        if($rootScope.currentPosition.latitude == undefined){
+        if($rootScope.currentPosition == undefined){
             POS = new plugin.google.maps.LatLng(37.422476, -122.08425);
         }else{
             POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);

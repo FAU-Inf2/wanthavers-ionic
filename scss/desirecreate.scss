@@ -8,6 +8,16 @@ span.desc-char-counter {
   position: absolute;
   top: 13px;
   right: 10%;
+  color: #888;
+}
+
+.location-check-list i.radio-icon.disable-pointer-events.icon.ion-checkmark{
+  top:0px;
+}
+
+.location-list-address{
+  color:#888;
+  font-size:80%;
 }
 
 .desire-create .item-floating-label{
@@ -41,7 +51,8 @@ span.desc-char-counter {
   margin-top: 20px;
   width: 135px;
   height: 50px;
-  margin-left: -18px
+  margin-left: -18px;
+  font-size: 130%;
 }
 
 
@@ -69,4 +80,13 @@ i.radio-icon.disable-pointer-events.icon.ion-checkmark {
 
 .desire-create .range{
   margin-top: 50px;
+}
+
+.currency-select {
+
+}
+
+.desire-image-upload-text{
+  text-align: center;
+  color: #888;
 }

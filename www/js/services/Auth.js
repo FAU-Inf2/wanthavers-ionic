@@ -22,6 +22,12 @@ wanthaver.factory('Auth', ['$base64', function ($base64) {
             window.localStorage.setItem("password", password);
         },
 
+        clearCredentials: function(){
+            window.localStorage.removeItem("username");
+            window.localStorage.removeItem("password");
+            window.localStorage.removeItem("userId");
+        },
+
         setUserId: function(id) {
             window.localStorage.setItem("userId", id);
         },
