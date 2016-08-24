@@ -5,14 +5,14 @@ wanthaver.factory('PushNotifications', ['$ionicPush', '$state', '$ionicPopup', '
       registerToken: function() {
          $ionicPush.init({
             'debug': true,
-            'onNotification': (notification) => {
+            'onNotification': (function(notification) {
                var payload = notification.text; // TODO: change this to actual payload
                console.log('notification', notification);
                console.log('Notification handle function', this[payload]);
 
                // Call function of PushNotifications with name in variable payload
                this[payload](notification);
-            },
+            }).bind(this),
             'onRegister': this.createToken
          });
 
@@ -30,14 +30,12 @@ wanthaver.factory('PushNotifications', ['$ionicPush', '$state', '$ionicPopup', '
          //chatId = payload[CloudMessageSubject.NEWMESSAGE_CHATID];
 
          chatId = 'Ck7J1x0xpA';
-         Chat.getMessagesByChatId(chatId);
+         //Chat.getMessagesByChatId(chatId);
 
          confirmPopup = $ionicPopup.confirm({
             title: 'New Chat Message',
             template: 'Open Chat?'
-         });
-
-         confirmPopup.then(function(res) {
+         }).then(function(res) {
             if(res) {
                $state.go('app.chatmessages', {chatId: chatId});
             }

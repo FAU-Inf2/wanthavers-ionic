@@ -11,7 +11,7 @@ var wanthaver = angular.module('starter', ['ionic','ionic.service.core', 'ionic.
     'pascalprecht.translate', 'tmh.dynamicLocale']);
 var controllers = angular.module('starter.controllers', []);
 
-wanthaver.run(['$ionicPlatform', function($ionicPlatform) {
+wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, PushNotifications) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -25,7 +25,7 @@ wanthaver.run(['$ionicPlatform', function($ionicPlatform) {
       StatusBar.styleDefault();
     }
 
-    //PushNotifications.registerToken();
+    PushNotifications.registerToken();
   });
 }]);
 
