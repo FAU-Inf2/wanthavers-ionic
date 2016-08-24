@@ -17,6 +17,8 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $scope.dateSlider.name = 'Hours';
     $scope.dateSlider.date = 1;
     $scope.locations = [];
+    $scope.reverseBidding= {};
+    $scope.reverseBidding.allowed = false;
 
 
     $translate('DESIRECREATE_BAR_TITLE1').then(function (translation) {
@@ -34,6 +36,15 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
         $scope.desirecreateBar3 = translation;
         console.log(translation);
     });
+
+    $translate('DESIRECREATE_REVERSEDBIDDING_POPUP_TITLE').then(function (translation) {
+        $scope.reverseBiddingTitle = translation;
+    });
+
+    $translate('DESIRECREATE_REVERSEDBIDDING_POPUP_TEXT').then(function (translation) {
+        $scope.reverseBiddingText = translation;
+    });
+
 
     $scope.newLocation = function(){
         
@@ -186,6 +197,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
         desire.dropzone_string = $scope.locationChoice.fullAddress;
         desire.dropzone_lat = $scope.locationChoice.lat;
         desire.dropzone_lon = $scope.locationChoice.long;
+        desire.biddingAllowed = $scope.reverseBidding.allowed;
 
         console.log(desire);
         Desire.create(desire);
@@ -314,6 +326,16 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
             $scope.locations.push(loc);
             $scope.locationChoice = loc;
         });
+    }
+
+    $scope.showReversedBiddingInfo = function(){
+        if ($scope.reverseBidding.allowed == true){
+
+            $ionicPopup.alert({
+                title: $scope.reverseBiddingTitle,
+                template: $scope.reverseBiddingText
+            });
+        }
     }
 
 

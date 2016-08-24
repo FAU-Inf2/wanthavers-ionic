@@ -43,6 +43,9 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_LOCATION_HEADER: 'Select Dropzone',
         DESIRECREATE_NO_LOCATIONS: "You don't have any saved locations.",
         DESIRECREATE_TAP_CHANGE_IMAGE: 'Tap to change image',
+        DESIRECREATE_REVERSEDBIDDING_POPUP_TITLE: 'About Reversed Bidding in WantHaver',
+        DESIRECREATE_REVERSEDBIDDING_POPUP_TEXT: 'Reversed Bidding text ...//TODO. For further infromation also see: www.wanthaver.com',
+
 
 
         /** DESIRE DETAIL **/
@@ -120,6 +123,8 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_LOCATION_HEADER: 'Dropzone auswählen',
         DESIRECREATE_NO_LOCATIONS: "Du hast noch keine gespeicherten Orte.",
         DESIRECREATE_TAP_CHANGE_IMAGE: 'Tippe um ein anderes Bild zu wählen',
+        DESIRECREATE_REVERSEDBIDDING_POPUP_TITLE: 'Über Reversed Bidding in WantHaver',
+        DESIRECREATE_REVERSEDBIDDING_POPUP_TEXT: 'Reversed Bidding text ...//TODO. Für weite Informationen siehe: www.wanthaver.com',
 
         /** DESIRE DETAIL **/
         DESIREDETAIL_BAR_TITLE: 'Auftrag',
