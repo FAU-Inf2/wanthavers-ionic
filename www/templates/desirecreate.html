@@ -29,8 +29,19 @@
 
       <ion-slide>
 
-        <div class="row">
-          <div class="col col-60">
+        <!--
+        <div class="item" style="border:none">
+          <span class="input-label expiration-label">Pricing</span>
+        </div>
+        -->
+
+        <ion-checkbox  ng-model="reverseBidding.allowed">
+          {{'DESIRECREATE_REVERSE_BIDDING' | translate}}<br>
+          <span class="location-list-address">{{'DESIRECREATE_REVERSE_BIDDING_DESC' | translate}}</span>
+        </ion-checkbox>
+
+        <div class="row item row-no-padding" ng-show="!reverseBidding.allowed" style="position:relative">
+          <div class="col col-60" style="padding:0">
             <label class=" item-input item-floating-label">
               <span class="input-label">{{ 'DESIRECREATE_PRICE' | translate }}</span>
               <input type="tel" maxlength = "3" ng-model="desire.price" placeholder="{{ 'DESIRECREATE_PRICE' | translate }}">
@@ -50,24 +61,25 @@
           </div>
         </div>
 
-        <ion-checkbox  ng-model="reverseBidding.allowed" ng-click="showReversedBiddingInfo()">Reverse Bidding</ion-checkbox>
-
-        <div class="padding">
-          <button class="button button-block button-outline button-positive" ng-click="openModal()">
+        <div class="padding" style="margin-top:30px" ng-show="category == null">
+          <button class="button button-block button-outline button-positive"   ng-click="openModal()">
             &nbsp;{{ 'DESIRECREATE_CATEGORY' | translate }}
           </button>
         </div>
 
-        <div class="row row-no-padding" ng-show="category != null">
+        <div class="row row-no-padding" ng-show="category != null"  ng-click="openModal()" style="margin-top:20px">
           <div class="category-image"><img ng-src="{{category.image.lowRes}}"></div>
-          <div class="padding category-name">{{category.name}}</div>
+          <div class="category-name">
+            {{category.name}}
+            <span style="font-size:80%;color:#888"><br>{{'DESIRECREATE_CATEGORY_CHANGE' | translate}}</span>
+          </div>
         </div>
 
         <div class="desire-img" ng-click="pickImage()">
           <img ng-if="!hasUploaded" ng-src="{{(category != undefined)? category.image.lowRes : 'img/default.png'}}" >
           <img ng-if="hasUploaded" ng-src="{{desire.image.fullRes}}" >
           <ion-spinner ng-show="isUploading" class="spinner-upload-image spinner-positive" icon="android"></ion-spinner>
-          <div class="desire-image-upload-text" ng-if="!hasUploaded">Tap to change image</div>
+          <div class="desire-image-upload-text" ng-if="!hasUploaded">{{'DESIRECREATE_TAP_CHANGE_IMAGE' | translate}}</div>
         </div>
 
 

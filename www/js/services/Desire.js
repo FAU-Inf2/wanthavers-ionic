@@ -17,11 +17,8 @@ wanthaver.factory('Desire', ['$http', 'Auth', 'FilterSetting', function ($http, 
                 status: 1
             };
 
-            if(mode == "creator"){
+            if(mode == "my"){
                 p.creator_id = user_id;
-            }
-
-            if(mode == "haver"){
                 p.haver_id = user_id;
             }
 

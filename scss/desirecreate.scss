@@ -31,7 +31,7 @@ span.desc-char-counter {
 .desire-create .desire-img {
   width: 50%;
   margin-left: 100px;
-  margin-top: 70px;
+  margin-top: 20px;
   position:relative;
 }
 
@@ -62,7 +62,7 @@ span.desc-char-counter {
 }
 
 .desire-create .category-name{
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .desire-create .button-select-category{
@@ -91,7 +91,18 @@ i.radio-icon.disable-pointer-events.icon.ion-checkmark {
   color: #888;
 }
 
+/*
 .desire-create .item-checkbox{
   margin-top: 5px;
   margin-bottom: 30px;
+}*/
+
+.disable-wrapper{
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15);
 }

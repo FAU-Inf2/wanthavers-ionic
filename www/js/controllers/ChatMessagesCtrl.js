@@ -2,9 +2,7 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
     $scope.messages = [];
 
     $scope.$on('$ionicView.enter', function() {
-        console.log($rootScope.currentUser);
         $scope.pollMessages(true);
-
     });
 
     $scope.loadMore = function(){
@@ -12,6 +10,7 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
     }
 
     $scope.pollMessages = function(jumpBottom){
+        console.log($stateParams.chatId)
         var lastId = undefined;
         if($scope.messages.length > 0){
             lastId = $scope.messages[0].createdAt;

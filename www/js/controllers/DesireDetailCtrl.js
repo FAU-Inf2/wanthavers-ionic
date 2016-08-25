@@ -93,11 +93,11 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
     $scope.openChat = function(haver) {
         if ($scope.isWanter) {
             Desire.getChat($stateParams.desireId, haver.user.id).then(function(resp) {
-                $state.go("app.chatmessages", {chatId: resp.data.id});
+                $state.go("app.chatmessages", {chatId: resp.data.objectId});
             });
         } else {
             Desire.getChat($stateParams.desireId, $scope.desire.creator.id).then(function(resp) {
-                $state.go("app.chatmessages", {chatId: resp.data.id});
+                $state.go("app.chatmessages", {chatId: resp.data.objectId});
             });
         }
 

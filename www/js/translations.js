@@ -35,6 +35,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_DATE: 'Expiration Date',
         DESIRECREATE_PRICE: 'Price',
         DESIRECREATE_CATEGORY: 'Select a Category',
+        DESIRECREATE_CATEGORY_CHANGE: '(Tap to change)',
         DESIRECREATE_EXPIRE: 'Expires in',
         DESIRECREATE_EXPIRE_DAYS:'Set in Days',
         DESIRECREATE_EXPIRE_HOURS: 'Set in Hours',
@@ -45,6 +46,8 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_TAP_CHANGE_IMAGE: 'Tap to change image',
         DESIRECREATE_REVERSEDBIDDING_POPUP_TITLE: 'About Reversed Bidding in WantHaver',
         DESIRECREATE_REVERSEDBIDDING_POPUP_TEXT: 'Reversed Bidding text ...//TODO. For further infromation also see: www.wanthaver.com',
+        DESIRECREATE_REVERSE_BIDDING: 'Reverse Bidding',
+        DESIRECREATE_REVERSE_BIDDING_DESC: 'This means that Havers must suggest a price.',
 
 
 
@@ -115,6 +118,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_DATE: 'Ablaufdatum',
         DESIRECREATE_PRICE: 'Preis',
         DESIRECREATE_CATEGORY: 'Wähle eine Kategorie',
+        DESIRECREATE_CATEGORY_CHANGE: '(tippen um zu ändern)',
         DESIRECREATE_EXPIRE: 'Läuft ab in',
         DESIRECREATE_EXPIRE_DAYS:'Tage wählen',
         DESIRECREATE_EXPIRE_HOURS: 'Stunden wählen',
@@ -125,6 +129,8 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_TAP_CHANGE_IMAGE: 'Tippe um ein anderes Bild zu wählen',
         DESIRECREATE_REVERSEDBIDDING_POPUP_TITLE: 'Über Reversed Bidding in WantHaver',
         DESIRECREATE_REVERSEDBIDDING_POPUP_TEXT: 'Reversed Bidding text ...//TODO. Für weite Informationen siehe: www.wanthaver.com',
+        DESIRECREATE_REVERSE_BIDDING: 'Bieten',
+        DESIRECREATE_REVERSE_BIDDING_DESC: 'Haver müssen einen Preis vorschlagen.',
 
         /** DESIRE DETAIL **/
         DESIREDETAIL_BAR_TITLE: 'Auftrag',

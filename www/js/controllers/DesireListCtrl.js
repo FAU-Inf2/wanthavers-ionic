@@ -7,16 +7,16 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     $ionicSideMenuDelegate.canDragContent(true);
 
     $scope.$on('$ionicView.enter', function() {
-        if($stateParams.mode == "creator"){
+        if($stateParams.mode == "my"){
             $scope.reachedEnd = false;
             $translate('MENU_MY_DESIRE').then(function (translation) {
                 $scope.obj.location = translation;
             });
-        }else if($stateParams.mode == "haver"){
+           /*} else if($stateParams.mode == "haver"){
             $scope.reachedEnd = false;
             $translate('MENU_MY_TRANSACTIONS').then(function (translation) {
                 $scope.obj.location = translation;
-            });
+            });*/
         }else{
             $scope.reachedEnd = false;
             if($rootScope.currentPosition == undefined){
