@@ -1,47 +1,58 @@
-wanthaver.factory('PushNotifications', ['$ionicPush', '$state', '$ionicPopup', 'CloudMessageSubject', 'Chat', function ($ionicPush, $state, $ionicPopup, CloudMessageSubject, Chat) {
+wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state', '$ionicPopup', '$http', 'CloudMessageSubject', 'Chat',
+   function ($rootScope, $cordovaPushV5, $state, $ionicPopup, $http, CloudMessageSubject, Chat) {
 
     return {
-
-      registerToken: function() {
-         $ionicPush.init({
-            'debug': true,
-            'onNotification': (function(notification) {
-               var payload = notification.text; // TODO: change this to actual payload
-               console.log('notification', notification);
-               console.log('Notification handle function', this[payload]);
-
-               // Call function of PushNotifications with name in variable payload
-               this[payload](notification);
-            }).bind(this),
-            'onRegister': this.createToken
-         });
-
-         $ionicPush.register();
+      options: {
+         android: {},
+         ios: {
+            alert: "true",
+            badge: "true",
+            sound: "true"
+         },
+         windows: {},
+         browser: {
+            pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+         }
       },
 
-      createToken: function(token) {
-         console.log('createToken', token._token);
+      registerToken: function() {
+         $cordovaPushV5.initialize(this.options).then(function() {
+            // Start listening
+            $cordovaPushV5.onNotification();
+            $cordovaPushV5.onError();
+
+            $cordovaPushV5.register().then(function(tokenID) {
+               this.createToken(tokenID);
+            });
+         });
+
+         $rootScope.$on('$cordovaPushV5:notificationReceived', function(event, data) {
+            this[data.additionalData.subject](data.additionalData);
+            alert(data);
+            $cordovaPushV5.finish(); //for iOS
+         });
+         $rootScope.$on('$cordovaPushV5:errorOcurred', function(event, e) {
+            console.err(e);
+         });
+      },
+
+      createToken: function(tokenID) {
+         console.log('createToken', tokenID);
          //return $http.post(server+'/v1/users/tokens', {token: token}, Auth.getHeaderObject());
       },
 
       /** For handle functions see CloudMessageSubject **/
       // CloudMessageSubject.NEWMESSAGE
-      NewMessage: function(notification) {
-         //chatId = payload[CloudMessageSubject.NEWMESSAGE_CHATID];
+      NewMessage: function(data) {
+         chatId = data[CloudMessageSubject.NEWMESSAGE_CHATID];
 
-         chatId = 'Ck7J1x0xpA';
-         //Chat.getMessagesByChatId(chatId);
-
-         confirmPopup = $ionicPopup.confirm({
-            title: 'New Chat Message',
-            template: 'Open Chat?'
-         }).then(function(res) {
-            if(res) {
-               $state.go('app.chatmessages', {chatId: chatId});
-            }
-         });
-
-         //alert("OnNewMessage");
+         // Check if notification was recieved while app was in foreground
+         if(data.additionalData.foreground)
+            //TODO: change buttons
+            console.log("Recieved new message on foreground");
+         else
+            // Open chat
+            $state.go('app.chatmessages', {chatId: chatId});
       },
 
       // CloudMessageSubject.DESIRECOMPLETE

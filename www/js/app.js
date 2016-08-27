@@ -6,9 +6,9 @@
 // 'starter.controllers' is found in controllers.js
 
 var server = "https://wanthaver.com:8443";
-var wanthaver = angular.module('starter', ['ionic','ionic.service.core', 'ionic.service.push', 'starter.controllers',
+var wanthaver = angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers',
     'angularMoment', 'base64',
-    'pascalprecht.translate', 'tmh.dynamicLocale']);
+    'pascalprecht.translate', 'tmh.dynamicLocale', 'ngCordova']);
 var controllers = angular.module('starter.controllers', []);
 
 wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, PushNotifications) {
