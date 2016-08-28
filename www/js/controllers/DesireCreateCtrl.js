@@ -136,7 +136,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
         //desire.expireDate = $scope.expirationDate;
 
         $scope.getExpireTimeSpan($scope.dateSlider.date);
-        desire.expireDate = $scope.expireTimeSpan;
+        desire.validTimespan = $scope.expireTimeSpan;
 
 
         /*if ($scope.expirationDate!= null && $scope.expirationDate < new Date()){
@@ -207,11 +207,11 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
         console.log($scope.dateSlider.name);
         console.log(new Date().getTime());
         if ($scope.dateSlider.name == 'Days'){
-            $scope.expireTimeSpan = new Date().getTime() + timeSpan *24 * 3600000;
+            $scope.expireTimeSpan = timeSpan *24 * 3600000;
             console.log($scope.expireTimeSpan);
 
         }else if ($scope.dateSlider.name == 'Hours'){
-            $scope.expireTimeSpan =new Date().getTime() + timeSpan * 3600000;
+            $scope.expireTimeSpan = timeSpan * 3600000;
             console.log($scope.expireTimeSpan);
         }
     };
