@@ -51,6 +51,12 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_REVERSEDBIDDING_POPUP_TEXT: 'Reversed Bidding text ...//TODO. For further infromation also see: www.wanthaver.com',
         DESIRECREATE_REVERSE_BIDDING: 'Reverse Bidding',
         DESIRECREATE_REVERSE_BIDDING_DESC: 'This means that Havers must suggest a price.',
+        DESIRECREATE_MISSING_INPUT_TITLE: 'Error Creating a Desire!',
+        DESIRECREATE_MISSING_INPUT_TEXT_TITLE: 'Please Enter a Title',
+        DESIRECREATE_MISSING_INPUT_TEXT_DESCRIPTION: 'Please Select a Description',
+        DESIRECREATE_MISSING_INPUT_TEXT_PRICE: 'Please Select a Price',
+        DESIRECREATE_MISSING_INPUT_TEXT_CATEGORY: 'Please Select a Category',
+        DESIRECREATE_MISSING_INPUT_TEXT_DROPZONE: 'Please Select a Dropzone',
 
 
 
@@ -137,6 +143,12 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_REVERSEDBIDDING_POPUP_TEXT: 'Reversed Bidding text ...//TODO. Für weite Informationen siehe: www.wanthaver.com',
         DESIRECREATE_REVERSE_BIDDING: 'Bieten',
         DESIRECREATE_REVERSE_BIDDING_DESC: 'Haver müssen einen Preis vorschlagen.',
+        DESIRECREATE_MISSING_INPUT_TITLE: 'Desire konnte nicht erstellt werden!',
+        DESIRECREATE_MISSING_INPUT_TEXT_TITLE: 'Gib einen Titel an',
+        DESIRECREATE_MISSING_INPUT_TEXT_DESCRIPTION: 'Gib eine Beschreibung an',
+        DESIRECREATE_MISSING_INPUT_TEXT_PRICE: 'Gib einen Preis an',
+        DESIRECREATE_MISSING_INPUT_TEXT_CATEGORY: 'Wähle eine Kategorie',
+        DESIRECREATE_MISSING_INPUT_TEXT_DROPZONE: 'Wähle einen Ort',
 
         /** DESIRE DETAIL **/
         DESIREDETAIL_BAR_TITLE: 'Auftrag',

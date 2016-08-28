@@ -45,6 +45,31 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
         $scope.reverseBiddingText = translation;
     });
 
+    $translate('DESIRECREATE_MISSING_INPUT_TITLE').then(function (translation) {
+        $scope.missingInputTitle = translation;
+    });
+
+    $translate('DESIRECREATE_MISSING_INPUT_TEXT_TITLE').then(function (translation) {
+        $scope.missingInputTextTitle = translation;
+    });
+
+    $translate('DESIRECREATE_MISSING_INPUT_TEXT_DESCRIPTION').then(function (translation) {
+        $scope.missingInputTextDescription = translation;
+    });
+
+    $translate('DESIRECREATE_MISSING_INPUT_TEXT_PRICE').then(function (translation) {
+        $scope.missingInputTextPrice = translation;
+    });
+
+    $translate('DESIRECREATE_MISSING_INPUT_TEXT_CATEGORY').then(function (translation) {
+        $scope.missingInputCategory = translation;
+    });
+
+    $translate('DESIRECREATE_MISSING_INPUT_TEXT_DROPZONE').then(function (translation) {
+        $scope.missingInputDropzone = translation;
+    });
+
+
 
     $scope.newLocation = function(){
         
@@ -152,40 +177,40 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
         if (desire.title == null){
             $scope.allFieldsFilled = false;
             $ionicPopup.alert({
-                title: 'Error Creating a Desire!',
-                template: 'Please Enter a Title'
+                title: $scope.missingInputTitle,
+                template: $scope.missingInputTextTitle
             });
             return;
         }
         if (desire.description == null){
             $scope.allFieldsFilled = false;
             $ionicPopup.alert({
-                title: 'Error Creating a Desire!',
-                template: 'Please Select a Description'
+                title: $scope.missingInputTitle,
+                template: $scope.missingInputTextDescription
             });
             return;
         }
         if (desire.price == null && !$scope.reverseBidding.allowed){
             $scope.allFieldsFilled = false;
             $ionicPopup.alert({
-                title: 'Error Creating a Desire!',
-                template: 'Please Select a Price'
+                title: $scope.missingInputTitle,
+                template: $scope.missingInputTextPrice
             });
             return;
         }
         if (desire.categoryId == null){
             $scope.allFieldsFilled = false;
             $ionicPopup.alert({
-                title: 'Error Creating a Desire!',
-                template: 'Please Select a Category'
+                title: $scope.missingInputTitle,
+                template: $scope.missingInputCategory
             });
             return;
         }
         if ($scope.locationChoice == undefined){
             $scope.allFieldsFilled = false;
             $ionicPopup.alert({
-                title: 'Error Creating a Desire!',
-                template: 'Please Enter a Dropzone'
+                title: $scope.missingInputTitle,
+                template: $scope.missingInputDropzone
             });
             return;
         }
