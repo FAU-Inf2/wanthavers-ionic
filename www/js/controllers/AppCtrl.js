@@ -1,4 +1,4 @@
-controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, Auth, tmhDynamicLocale, amMoment, $translate, $q, $timeout) {
+controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, Auth, tmhDynamicLocale, amMoment, $translate, $q, $ionicActionSheet, Media) {
 
     $rootScope.currentPosition = undefined;
     $rootScope.selectedMapPosition = {};
@@ -69,6 +69,46 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
         $state.go("app.startup");
     }
 
+
+    $rootScope.showImagePicker = function(func_success, func_error){
+        var sheet = $ionicActionSheet.show({
+            buttons: [
+                { text: 'Camera' },
+                { text: 'Gallery' }
+            ],
+            titleText: 'Select Photo Source',
+            cancelText: 'Cancel',
+            cancel: function() {
+                sheet();
+            },
+            buttonClicked: function(index) {
+                sheet();
+                var source = Camera.PictureSourceType.CAMERA;
+                if(index == 1){
+                    source = Camera.PictureSourceType.PHOTOLIBRARY;
+                }
+                navigator.camera.getPicture(function(imageData){
+                    $rootScope.isUploading = true;
+                    Media.createMedia(encodeURIComponent(imageData),encodeURIComponent("xy.jpeg")).then(function(resp){
+                        $rootScope.isUploading = false;
+                        func_success(resp);
+                    });
+                }, function(e){
+                    if(func_success != undefined)
+                        func_error(e);
+                }, {
+                    sourceType: source,
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    MediaType: Camera.MediaType.PICTURE,
+                    quality: 50,
+                    targetWidth: 1024,
+                    targetHeight: 1024
+                });
+
+            }
+        });
+    }
+
     $rootScope.showMap = function(){
         $rootScope.mapDeferred = $q.defer();
 
@@ -97,7 +137,6 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
                 $rootScope.readyMap();
             }
         }
-
 
         return $rootScope.mapDeferred.promise;
     }

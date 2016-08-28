@@ -1,4 +1,4 @@
-controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, $ionicModal, $ionicHistory ,$ionicPopup, FilterSetting, Desire, CategoryList, $translate, $ionicActionSheet, Media, Location, Auth) {
+controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, $ionicModal, $ionicHistory ,$ionicPopup, FilterSetting, Desire, CategoryList, $translate, Media, Location, Auth) {
     $scope.obj = {};
     $scope.obj.title = "";
     $scope.lastSlide = false;
@@ -165,7 +165,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
             });
             return;
         }
-        if (desire.price == null){
+        if (desire.price == null && !$scope.reverseBidding.allowed){
             $scope.allFieldsFilled = false;
             $ionicPopup.alert({
                 title: 'Error Creating a Desire!',
@@ -238,44 +238,10 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     }*/
 
     $scope.pickImage = function(){
-
-        var sheet = $ionicActionSheet.show({
-            buttons: [
-                { text: 'Camera' },
-                { text: 'Gallery' }
-            ],
-            titleText: 'Select Photo Source',
-            cancelText: 'Cancel',
-            cancel: function() {
-                sheet();
-            },
-            buttonClicked: function(index) {
-                sheet();
-                var source = Camera.PictureSourceType.CAMERA;
-                if(index == 1){
-                    source = Camera.PictureSourceType.PHOTOLIBRARY;
-                }
-                navigator.camera.getPicture(function(imageData){
-                    $scope.isUploading = true;
-                    Media.createMedia(encodeURIComponent(imageData),encodeURIComponent("xy.jpeg")).then(function(resp){
-                        $scope.desire.image = resp.data;
-                        $scope.hasUploaded = true;
-                        $scope.isUploading = false;
-                    });
-                }, function(e){
-                    console.log(e);
-                }, {
-                    sourceType: source,
-                    destinationType: Camera.DestinationType.DATA_URL,
-                    MediaType: Camera.MediaType.PICTURE,
-                    quality: 50,
-                    targetWidth: 1024,
-                    targetHeight: 1024
-                });
-
-            }
+        $rootScope.showImagePicker(function(resp){
+            $scope.desire.image = resp.data;
+            $scope.hasUploaded = true;
         });
-
     };
 
 

@@ -9,6 +9,8 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     $scope.$on('$ionicView.enter', function() {
         if($stateParams.mode == "my"){
             $scope.reachedEnd = false;
+            $scope.loadDesires();
+
             $translate('MENU_MY_DESIRE').then(function (translation) {
                 $scope.obj.location = translation;
             });
@@ -18,18 +20,20 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
                 $scope.obj.location = translation;
             });*/
         }else{
+            console.log("XXX");
             $scope.reachedEnd = false;
             if($rootScope.currentPosition == undefined){
                 $scope.obj.location = "";
             }
-            ionic.Platform.ready(function(){
+            //ionic.Platform.ready(function(){
                 navigator.geolocation.getCurrentPosition(function(pos){
                     $rootScope.currentPosition = pos.coords;
+                    $scope.loadDesires();
                     Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function(resp){
                         $scope.obj.location = resp.data.cityName;
                     });
                 }, function(error){});
-            });
+            //});
         }
 
     });
@@ -88,6 +92,4 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     }]);
 
 
-
-    $scope.loadDesires();
 })

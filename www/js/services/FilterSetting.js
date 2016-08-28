@@ -1,4 +1,4 @@
-wanthaver.factory('FilterSetting', function() {
+wanthaver.factory('FilterSetting', ['$rootScope', function($rootScope) {
     /**
      * Saves all filter settings for desirelist in an object.
      * If no filter is set for a specific value (e.g. rating), the field should be undefined.
@@ -43,11 +43,19 @@ wanthaver.factory('FilterSetting', function() {
         },
 
         getLat: function(){
-            return this.filterSetting.lat;
+            if(this.filterSetting.lat == undefined){
+                return $rootScope.currentPosition.latitude;
+            }else{
+                return this.filterSetting.lat;
+            }
         },
 
         getLon: function(){
-            return this.filterSetting.lon;
+            if(this.filterSetting.lat == undefined){
+                return $rootScope.currentPosition.longitude;
+            }else{
+                return this.filterSetting.lon;
+            }
         }
     };
-});
+}]);

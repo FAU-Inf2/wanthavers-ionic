@@ -15,23 +15,25 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
         $scope.pwresetPopupTextFailed = translation;
     });
 
+    $translate('SETTINGS_SAVE_POPUPSUCCESS').then(function (translation) {
+        $scope.savepopupsuccess = translation;
+    });
 
+    $translate('SETTINGS_SAVE_POPUPFAIL').then(function (translation) {
+        $scope.savepopupfail = translation;
+    });
+    
     $ionicLoading.show({
         template: 'Loading...'
     });
 
 
     $scope.$on('$ionicView.enter', function() {
-        $rootScope.currentUserId = Auth.getUserId();
-        if($rootScope.currentUser == undefined){
-            User.getCurrentUser().then(function(resp){
-                $rootScope.currentUser = resp.data;
-            });
-        }
-        $scope.user.name = $rootScope.currentUser.name;
-        $scope.user.email = $rootScope.currentUser.email;
-        $scope.user.img = $rootScope.currentUser.image;
-        $ionicLoading.hide();
+        User.getCurrentUser().then(function(resp){
+            $rootScope.currentUser = resp.data;
+            $scope.user = resp.data;
+            $ionicLoading.hide();
+        });
     });
 
     $scope.resetPw = function(){
@@ -50,15 +52,26 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
     };
 
     $scope.changeUserImage = function(){
-      console.log("User Image changed");
-      //TODO
+        $rootScope.showImagePicker(function(resp){
+            $scope.user.image = resp.data;
+            User.updateUser($scope.user).then(function(resp){});
+        });
     };
 
 
     $scope.changeUserNameAndEmail = function(){
-      console.log("User Name changed to: ",  $scope.user.name);
-      console.log("User Email changed to: ", $scope.user.email);
-      //TODO
+        User.updateUser($scope.user).then(function(resp){
+            $rootScope.currentUser = resp.data;
+            $ionicPopup.alert({
+                title: "",
+                template: $scope.savepopupsuccess
+            });
+        }, function(){
+            $ionicPopup.alert({
+                title: "Error",
+                template: $scope.savepopupfail
+            });
+        });
     };
 
 })

@@ -1,6 +1,7 @@
 wanthaver.config(function ($translateProvider) {
     $translateProvider.translations('en', {
         CURRENT_LOCATION: 'Current Location',
+        BIDDING: 'Bidding',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'All Desires',
@@ -24,6 +25,8 @@ wanthaver.config(function ($translateProvider) {
         SETTINGS_PWRESET_POPUP_TEXT: 'Password reset mail was sent successfully!',
         SETTINGS_PWRESET_POPUP_TEXT_FAILED: 'Sending password reset mail failed!',
         SETTINGS_SAVE_BUTTON:'Save Changes',
+        SETTINGS_SAVE_POPUPFAIL: 'An error occurred while saving your changes.',
+        SETTINGS_SAVE_POPUPSUCCESS: 'Saved your changes successfully!',
 
         /** DESIRE CREATE**/
         DESIRECREATE_BAR_TITLE1: 'Step 1',
@@ -82,6 +85,7 @@ wanthaver.config(function ($translateProvider) {
     });
     $translateProvider.translations('de', {
         CURRENT_LOCATION: 'Momentaner Standort',
+        BIDDING: 'Bieten',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'Alle Aufträge',
@@ -107,6 +111,8 @@ wanthaver.config(function ($translateProvider) {
         SETTINGS_PWRESET_POPUP_TITLE: 'Passwort-Zurücksetzen E-Mail',
         SETTINGS_PWRESET_POPUP_TEXT: 'Du erhältst eine E-Mail zum Ändern des Passworts',
         SETTINGS_PWRESET_POPUP_TEXT_FAILED: 'E-Mail zum Zurücksetzen des Passwortes ist fehlgeschlagen!',
+        SETTINGS_SAVE_POPUPFAIL: 'Beim Speichern deiner Änderungen ist ein Fehler aufgetreten!',
+        SETTINGS_SAVE_POPUPSUCCESS: 'Deine Änderungen wurden erfolgreich gespeichert.',
 
         /** DESIRE CREATE**/
         DESIRECREATE_BAR_TITLE1: 'Schritt 1',

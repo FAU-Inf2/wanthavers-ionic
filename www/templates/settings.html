@@ -1,33 +1,34 @@
 <ion-view view-title="{{ 'MENU_SETTINGS' | translate }}">
-  <ion-content class="settings">
-    <div class="user-image" ng-click="changeUserImage()">
-      <img ng-src="{{(user.img != undefined)? user.img.lowRes : 'img/ionic.png'}}"></div>
-    </div>
+    <ion-content class="settings">
+        <div class="user-image" ng-click="changeUserImage()">
+            <img ng-src="{{(user.image != undefined)? user.image.lowRes : 'img/default.png'}}">
+            <ion-spinner ng-show="isUploading" class="spinner-upload-image spinner-positive" icon="android"></ion-spinner>
+            <div class="desire-image-upload-text" ng-if="!hasUploaded">{{'DESIRECREATE_TAP_CHANGE_IMAGE' | translate}}</div>
+        </div>
 
-      <div class="list reset-form padding">
-        <label class="username item-input item-floating-label">
-          <span class="input-label">{{ 'SETTINGS_NAME' | translate }}</span>
-            <input type="text" ng-model="user.name">
-        </label>
-        <label class="email item-input item-floating-label">
-          <span class="input-label">{{ 'SETTINGS_EMAIL' | translate }}</span>
-          <input type="email" ng-model="user.email">
-        </label>
-        <label class="padding item-input changeUserNameAndEmail">
-          <button class="button  button-block button-positive button-change" ng-click="changeUserNameAndEmail()">
-            {{ 'SETTINGS_SAVE_BUTTON' | translate }}
-          </button>
-        </label>
-      </div>
+        <div class="list reset-form padding">
+            <label class="username item-input item-floating-label">
+                <span class="input-label">{{ 'SETTINGS_NAME' | translate }}</span>
+                <input type="text" ng-model="user.name">
+            </label>
+            <label class="email item-input item-floating-label">
+                <span class="input-label">{{ 'SETTINGS_EMAIL' | translate }}</span>
+                <input type="email" ng-model="user.email">
+            </label>
+            <label class="padding item-input changeUserNameAndEmail">
+                <button class="button  button-block button-positive button-change" ng-click="changeUserNameAndEmail()">
+                    {{ 'SETTINGS_SAVE_BUTTON' | translate }}
+                </button>
+            </label>
+        </div>
 
 
         <label class="item">
-          <h3 class="title">{{ 'SETTINGS_PWRESET_TITLE' | translate }}</h3>
-          <h4 class="title">{{ 'SETTINGS_PWRESET_MESSAGE' | translate }}</h4>
-          <button class="button button-block button-positive" type="button" ng-click="resetPw()">
-            {{ 'SETTINGS_PWRESET_BUTTON' | translate }}
-          </button>
+            <h3 class="title">{{ 'SETTINGS_PWRESET_TITLE' | translate }}</h3>
+            <h4 class="title">{{ 'SETTINGS_PWRESET_MESSAGE' | translate }}</h4>
+            <button class="button button-block button-positive" type="button" ng-click="resetPw()">
+                {{ 'SETTINGS_PWRESET_BUTTON' | translate }}
+            </button>
         </label>
-      </div>
-  </ion-content>
+    </ion-content>
 </ion-view>

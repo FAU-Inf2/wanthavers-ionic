@@ -17,6 +17,10 @@ wanthaver.factory('User', ['$http', 'Auth', function ($http, Auth, $httpParamSer
             return $http.post(server+'/v1/users/passwordtoken', "email="+email, {headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }});
+        },
+
+        updateUser: function(user){
+            return $http.put(server+'/v1/users', user, Auth.getHeaderObject());
         }
 
     };
