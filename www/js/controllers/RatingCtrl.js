@@ -44,7 +44,7 @@ controllers.controller('RatingCtrl', function($rootScope, $scope, $stateParams, 
             name: "",
             show: true,
             action: function(){
-                if ($scope.rating != 0) {
+                if ($scope.rating != 0 && $scope.rating != undefined) {
                     $scope.submitRating();
                 } else {
                     $ionicPopup.alert({

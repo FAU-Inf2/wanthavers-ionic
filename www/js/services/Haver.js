@@ -1,8 +1,8 @@
 wanthaver.factory('Haver', ['$http', 'Auth', function ($http, Auth) {
     return {
 
-        createHaver: function(desireId) {
-            return $http.post(server+'/v1/desires/'+desireId+'/havers', {status:0, desireId: desireId}, Auth.getHeaderObject());
+        createHaver: function(desireId, requestedPrice) {
+            return $http.post(server+'/v1/desires/'+desireId+'/havers', {status:0, desireId: desireId, requestedPrice: requestedPrice}, Auth.getHeaderObject());
         },
 
         getAllHavers: function(desireId){
@@ -15,6 +15,10 @@ wanthaver.factory('Haver', ['$http', 'Auth', function ($http, Auth) {
 
         getHaverByUserId: function(desireId, userId){
             return $http.get(server+'/v1/desires/'+desireId+'/havers/'+userId);
+        },
+
+        updateRequestedPrice: function(desireId, userId, requestedPrice) {
+            return $http.put(server +'/v1/desires/'+desireId+'/havers/'+userId+'/requestedprice?requestedprice='+requestedPrice, {}, Auth.getHeaderObject(true));
         },
 
         updateHaverStatus: function(desireId, userId, status){

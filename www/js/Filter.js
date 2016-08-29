@@ -71,6 +71,8 @@ wanthaver.filter('currency', function($sce) {
             return "$";
         if(val == "GPB")
             return "£";
+        if(val == "CHF")
+            return "CHF";
         return "";
     };
 });
