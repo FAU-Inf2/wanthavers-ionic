@@ -46,12 +46,17 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
             });
             $state.go("app.desirelist");
         }
+
         if($rootScope.currentUser == undefined){
             User.getCurrentUser().then(function(resp){
-                console.log(resp.data.langCode);
+                console.log("-->"+resp.data.langCode);
                 $rootScope.currentUser = resp.data;
                 if(resp.data.langCode == null){
-                    $scope.setI18n(navigator.language || navigator.userLanguage);
+                    code = navigator.language || navigator.userLanguage;
+                    if(code.contains("-")){
+                        code = code.split("-")[0];
+                    }
+                    $scope.setI18n(code);
                 }else{
                     var code = resp.data.langCode;
                     if(resp.data.langCode.contains("_")){
