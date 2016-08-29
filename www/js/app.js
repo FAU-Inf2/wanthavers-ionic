@@ -141,6 +141,17 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
       }
   })
 
+  .state('app.rating', {
+      url: '/rating',
+      params: { desire: null, haver: null },
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/rating.html',
+              controller: 'RatingCtrl'
+          }
+      }
+  })
+
   .state('app.settings', {
        url: '/settings',
        views: {

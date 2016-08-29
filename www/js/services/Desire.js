@@ -20,6 +20,7 @@ wanthaver.factory('Desire', ['$http', 'Auth', 'FilterSetting', function ($http, 
             if(mode == "my"){
                 p.creator_id = user_id;
                 p.haver_id = user_id;
+                p.status = [1,2,3];
             }
 
             return $http.get(server+'/v1/desires', {

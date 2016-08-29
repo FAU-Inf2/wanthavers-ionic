@@ -1,0 +1,85 @@
+.rating-input-box {
+  background-color: $grey;
+  margin-top: 20px;
+  height: 120px;
+}
+
+.rating-desire-details {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.ionic_rating_icon_on {
+  font-size: 35px;
+  color: $primary;
+}
+
+.ionic_rating_icon_off {
+  font-size: 35px;
+  color: $light;
+}
+
+.rating .description {
+  text-align: center;
+  font-size: 20px;
+}
+
+.rating .desire-img {
+  margin: auto;
+  width: 35%;
+  border-radius: 100%;
+}
+
+.rating .row {
+  text-align: center;
+}
+
+.rating .creator-img img {
+  width: 35%;
+  border-radius: 100%;
+}
+
+.rating .haver-img img {
+  width: 35%;
+  border-radius: 100%;
+}
+
+.rating .header {
+  text-align:center;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.rating .ratingheader {
+  padding-top: 20px;
+  text-align:center;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+.rating h1 {
+  overflow: hidden;
+  text-align: center;
+  font-size:20px;
+  text-transform: uppercase;
+}
+
+.rating h1:before,
+.rating h1:after {
+  background-color: $black;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.rating h1:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+.rating h1:after {
+  left: 0.5em;
+  margin-right: -50%;
+}

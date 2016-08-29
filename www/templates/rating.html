@@ -1,0 +1,36 @@
+<ion-view view-title="{{ 'RATING_BAR_TITLE' | translate }}">
+    <ion-content class="rating">
+
+        <div>
+            <h4 class="header">{{ 'RATING_SUBTITLE' | translate }}</h4>
+            <div class="rating-desire-details">
+                <p class="description">{{desire.creation_time | date:'dd. MMMM yyyy'}}</p>
+                <div class="desire-img"><img ng-src="{{desire.image.lowRes}}"></div>
+                <p class="description">{{desire.title}}</p>
+                <p class="description">{{desire.price}}<span class="currency-symbol">{{desire.currency | currency}}</span></p>
+            </div>
+            <h1> {{ 'RATING_SUMMARY' | translate }} </h1>
+        </div>
+
+        <div class="row">
+            <div class="col col-50">
+                <div class="creator-img"><img ng-src="{{desire.creator.image.lowRes}}"></div>
+            </div>
+            <div class="col col-50">
+                <div class="haver-img"><img ng-src="{{haver.user.image.lowRes}}"></div>
+            </div>
+        </div>
+
+        <div class="rating-input-box">
+            <h4 class="ratingheader">{{ 'RATING_TITLE' | translate }}</h4>
+            <div class="ratingStars">
+            <span ng-repeat="r in ratingValues" >
+                <i class="ion-ios-star" ng-click="setRating(r)"
+                   ng-class="{'ionic_rating_icon_on': r <= rating,
+                   'ionic_rating_icon_off': rating === undefined || r > rating}"></i>
+            </span>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

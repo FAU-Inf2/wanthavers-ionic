@@ -1,0 +1,28 @@
+<ion-modal-view style="width: 80%; height: 50%; min-height: 0; max-height: 210px; top: 30%; left: 10%; right: 10%; bottom: 20%;">
+    <ion-header-bar class="reporttitlebar">
+        <h1 class="reporttitle">{{ 'DESIRE_DETAIL_REPORT_TITLE' | translate }}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <label class="item item-input item-select">
+            <div class="input-label reason">
+                {{ 'DESIRE_DETAIL_REPORT_REASON' | translate }}
+            </div>
+            <select id="scripts" name="scripts">
+                <option selected value="INAPPROPRIATE">{{ 'DESIRE_DETAIL_REPORT_REASON_1' | translate }}</option>
+                <option value="IMPOSSIBLE">{{ 'DESIRE_DETAIL_REPORT_REASON_2' | translate }}</option>
+                <option value="SPAM">{{ 'DESIRE_DETAIL_REPORT_REASON_3' | translate }}</option>
+            </select>
+        </label>
+        <label class="item item-input">
+            <textarea id="reportcomment" placeholder="{{ 'DESIRE_DETAIL_COMMENT' | translate }}"></textarea>
+        </label>
+        <div class="row">
+            <div class="col col-50">
+                <button type="submit" class="button button-block button-positive" ng-click="submitReport()">{{ 'DESIRE_DETAIL_SUBMIT' | translate }}</button>
+            </div>
+            <div align="right" class="col col-50">
+                <button type="cancel" class="button button-block button-positive" ng-click="closePopover()">{{ 'DESIRE_DETAIL_CANCEL' | translate }}</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

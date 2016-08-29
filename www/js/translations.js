@@ -67,6 +67,30 @@ wanthaver.config(function ($translateProvider) {
         DESIREDETAIL_LOCATION: 'Location',
         DESIREDETAIL_HAVER: 'Haver',
         DESIREDETAIL_NO_HAVER: 'Unfortunately there are no havers yet',
+        DESIRE_DETAIL_HAVER_UNACCEPT_POPUP_TITLE: 'Cancel desire?',
+        DESIRE_DETAIL_HAVER_UNACCEPT_POPUP_SUBTITLE: 'Do you really want to cancel this desire?',
+        DESIRE_DETAIL_HAVER_UNACCEPT_POPUP_WARNING: 'Do you really want to cancel this desire? You are an accepted haver. \n(Attention: You will be flagged for cancelling transactions as accepted haver!)',
+        DESIRE_DETAIL_DELETION_POPUP_TITLE: 'Delete Desire',
+        DESIRE_DETAIL_DELETION_POPUP_SUBTITLE: 'Do you really want to delete this desire?',
+        DESIRE_DETAIL_WANTER_UNACCEPT_POPUP_TITLE: 'Cancel desire?',
+        DESIRE_DETAIL_WANTER_UNACCEPT_POPUP_SUBTITLE: 'Do you really want to cancel this desire? You have already accepted a haver.',
+        DESIRE_DETAIL_SUBMIT: 'Submit',
+        DESIRE_DETAIL_CANCEL: 'Cancel',
+        DESIRE_DETAIL_REPORT_TITLE: 'Report Desire',
+        DESIRE_DETAIL_REPORT_REASON: 'Reason',
+        DESIRE_DETAIL_REPORT_REASON_1: 'Inappropriate',
+        DESIRE_DETAIL_REPORT_REASON_2: 'Impossible',
+        DESIRE_DETAIL_REPORT_REASON_3: 'Spam',
+        DESIRE_DETAIL_COMMENT: 'Leave a comment',
+
+
+        /** RATING **/
+        RATING_BAR_TITLE: 'Rating',
+        RATING_SUBTITLE: 'Your transaction',
+        RATING_SUMMARY: 'Transaction summary',
+        RATING_TITLE: 'Your Rating',
+        RATING_POPUP_TITLE: 'Rating not finished!',
+        RATING_POPUP_SUBTITLE: 'You have to rate with at least one star',
 
         /** FILTER SETTING **/
         FILTERSETTING_TITLE: 'Change Filter',
@@ -157,6 +181,30 @@ wanthaver.config(function ($translateProvider) {
         DESIREDETAIL_LOCATION: 'Ort',
         DESIREDETAIL_HAVER: 'Haver',
         DESIREDETAIL_NO_HAVER: 'Leider noch keine Haver vorhanden',
+        DESIRE_DETAIL_HAVER_UNACCEPT_POPUP_TITLE: 'Transaktion abbrechen',
+        DESIRE_DETAIL_HAVER_UNACCEPT_POPUP_SUBTITLE: 'Willst du die Transaktion wirklich abbrechen?',
+        DESIRE_DETAIL_HAVER_UNACCEPT_POPUP_WARNING: 'Willst du die Transaktion wirklich abbrechen? Du bist akzeptierter Haver \n(Warnung: Bei wiederholtem Abbruch als akzeptierter Haver wird dies vermerkt!)',
+        DESIRE_DETAIL_DELETION_POPUP_TITLE: 'Desire löschen',
+        DESIRE_DETAIL_DELETION_POPUP_SUBTITLE: 'Willst du dein Desire wirklich löschen?',
+        DESIRE_DETAIL_WANTER_UNACCEPT_POPUP_TITLE: 'Willst du die Transaktion wirklich abbrechen?',
+        DESIRE_DETAIL_WANTER_UNACCEPT_POPUP_SUBTITLE: 'Willst du die Transaktion wirklich abbrechen? Du hast bereits einen Haver akzeptiert.',
+        DESIRE_DETAIL_SUBMIT: 'Abschließen',
+        DESIRE_DETAIL_CANCEL: 'Abbruch',
+        DESIRE_DETAIL_REPORT_TITLE: 'Desire melden',
+        DESIRE_DETAIL_REPORT_REASON: 'Grund',
+        DESIRE_DETAIL_REPORT_REASON_1: 'Unangemessen',
+        DESIRE_DETAIL_REPORT_REASON_2: 'Unmöglich',
+        DESIRE_DETAIL_REPORT_REASON_3: 'Spam',
+        DESIRE_DETAIL_COMMENT: 'Verfasse einen Kommentar',
+
+
+        /** RATING **/
+        RATING_BAR_TITLE: 'Bewertung',
+        RATING_SUBTITLE: 'Deine Transaktion',
+        RATING_SUMMARY: 'Transaktion - Zusammenfassung',
+        RATING_TITLE: 'Deine Bewertung',
+        RATING_POPUP_TITLE: 'Bewertung nicht abgeschlossen!',
+        RATING_POPUP_SUBTITLE: 'Es muss mit mindestens einem stern bewertet werden.',
 
         /** FILTER SETTING **/
         FILTERSETTING_TITLE: 'Filter anpassen',

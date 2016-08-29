@@ -48,6 +48,12 @@
   font-size: small;
 }
 
+.inactive-desire-detail-button {
+  margin-top: 5px;
+  background-color: $darkgrey;
+  font-size: small;
+}
+
 
 .desire-detail-box {
   margin-top: 20px;
@@ -142,4 +148,13 @@
 
 .desire-detail-accepted-haver {
   background-color: $secondary;
+}
+
+.reporttitlebar {
+  background-color: $primary;
+}
+
+.reporttitle {
+  color: $light;
+  font-size: 20px;
 }
