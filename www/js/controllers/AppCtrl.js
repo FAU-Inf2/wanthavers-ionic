@@ -11,7 +11,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     //$translate.use("en");
 
     $scope.setI18n = function(lang){
-        return;
+        //return;
         tmhDynamicLocale.set(lang);
         amMoment.changeLocale(lang);
         $translate.use(lang);
@@ -48,13 +48,17 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
         }
         if($rootScope.currentUser == undefined){
             User.getCurrentUser().then(function(resp){
-               $rootScope.currentUser = resp.data;
+                console.log(resp.data.langCode);
+                $rootScope.currentUser = resp.data;
                 if(resp.data.langCode == null){
                     $scope.setI18n(navigator.language || navigator.userLanguage);
                 }else{
                     var code = resp.data.langCode;
                     if(resp.data.langCode.contains("_")){
                         code = code.split("_")[0];
+                    }
+                    if(resp.data.langCode.contains("-")){
+                        code = code.split("-")[0];
                     }
                     $scope.setI18n(code);
                 }
@@ -70,6 +74,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
 
     $scope.logout = function(){
         Auth.clearCredentials();
+        $rootScope.currentUser = {};
         $state.go("app.startup");
     }
 
