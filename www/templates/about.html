@@ -1,0 +1,20 @@
+<ion-view>
+
+  <ion-nav-title><img src="img/logo_white.png"></ion-nav-title>
+  <ion-content>
+
+
+    <ul class="list">
+      <li class="item" onclick="cordova.InAppBrowser.open('http://wanthaver.com', '_system'); return false;">
+        Webseite www.wanthaver.com
+      </li>
+      <li class="item" onclick="cordova.InAppBrowser.open('http://wanthaver.com/agbs.html', '_blank', 'location=no'); return false;">
+        ABG
+      </li>
+      <li class="item" ui-sref="app.licenses">
+        Software-Lizenzen
+      </li>
+    </ul>
+
+  </ion-content>
+</ion-view>

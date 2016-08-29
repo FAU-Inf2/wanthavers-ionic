@@ -1,4 +1,4 @@
-controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, Auth, tmhDynamicLocale, amMoment, $translate, $q, $ionicActionSheet, Media) {
+controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, Auth, tmhDynamicLocale, amMoment, $translate, $q, $ionicActionSheet, Media, $ionicLoading) {
 
     $rootScope.currentPosition = undefined;
     $rootScope.selectedMapPosition = {};
@@ -139,6 +139,21 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
         }
 
         return $rootScope.mapDeferred.promise;
+    }
+
+    $rootScope.showLoading = function(){
+        $ionicLoading.show({
+            template: '<ion-spinner icon="ripple" class="spinner-positive spinner-desire"></ion-spinner>',
+            content: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: false,
+            maxWidth: 400,
+            showDelay: 0
+        });
+    }
+
+    $rootScope.hideLoading = function(){
+        $ionicLoading.hide();
     }
 
 

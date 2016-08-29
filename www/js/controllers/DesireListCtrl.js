@@ -1,4 +1,4 @@
-controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, $ionicModal, $rootScope, $translate, $stateParams, Auth) {
+controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, $ionicModal, $rootScope, $translate, $stateParams, Auth, $timeout, $ionicLoading, $ionicPopup) {
 
     $scope.reachedEnd = false;
     $scope.obj = {};
@@ -7,6 +7,9 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     $ionicSideMenuDelegate.canDragContent(true);
 
     $scope.$on('$ionicView.enter', function() {
+
+        $rootScope.showLoading();
+
         if($stateParams.mode == "my"){
             $scope.reachedEnd = false;
             $scope.loadDesires();
@@ -24,19 +27,39 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
             $scope.reachedEnd = false;
             if($rootScope.currentPosition == undefined){
                 $scope.obj.location = "";
+                $scope.getPosition(true)
+            }else{
+                $scope.loadDesires();
+                $scope.getPosition();
             }
-            //ionic.Platform.ready(function(){
-                navigator.geolocation.getCurrentPosition(function(pos){
-                    $rootScope.currentPosition = pos.coords;
-                    $scope.loadDesires();
-                    Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function(resp){
-                        $scope.obj.location = resp.data.cityName;
-                    });
-                }, function(error){});
-            //});
+
+
         }
 
     });
+
+    $scope.getPosition = function(loadDesires){
+        navigator.geolocation.getCurrentPosition(function(pos){
+            $rootScope.currentPosition = pos.coords;
+            if(loadDesires){
+                $scope.loadDesires();
+            }
+
+            Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function(resp){
+                $timeout(function(){
+                    $scope.obj.location = resp.data.cityName;
+                }, 2000);
+            });
+        }, function(error){
+            console.log(error)
+            $scope.loadDesires();
+            $ionicPopup.alert({
+                title: 'Location Error',
+                template: 'Could not get your location, please allow access to your location to show desires nearby.'
+            });
+
+        });
+    }
 
 
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -71,6 +94,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
             }
             $scope.feed = resp.data;
             $scope.$broadcast('scroll.refreshComplete');
+            $rootScope.hideLoading();
         });
     }
 
