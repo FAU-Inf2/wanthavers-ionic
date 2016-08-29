@@ -6,7 +6,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $scope.desire = {};
     $scope.currency = "Euro";
     $scope.selectedCurrency = "€";
-    $scope.desire.currency = "EUR";
+    $scope.desire.currency = " ";
     $scope.allFieldsFilled = false;
     $scope.date = {};
     //$scope.expirationDate = null;
@@ -141,17 +141,22 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $scope.currencyChanged = function (selectedCurrency) {
         switch (selectedCurrency) {
             case "€":
-                $scope.currency = "Euro";
+                $scope.currency = " ";
                 $scope.desire.currency = "EUR";
                 break;
             case "$":
-                $scope.currency = "Dollar";
+                $scope.currency = " ";
                 $scope.desire.currency = "USD";
                 break;
             case "£":
-                $scope.currency = "Pound";
+                $scope.currency = " ";
                 $scope.desire.currency = "GBP";
                 break;
+            case "CHF":
+                $scope.currency = " ";
+                $scope.desire.currency = "CHF";
+                break;
+
         }
     };
 
