@@ -161,6 +161,22 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
            }
        }
   })
+  .state('app.about', {
+      url: '/about',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/about.html'
+          }
+      }
+  })
+  .state('app.licenses', {
+      url: '/licenses',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/licenses.html'
+          }
+      }
+  })
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/startup');

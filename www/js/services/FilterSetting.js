@@ -44,7 +44,12 @@ wanthaver.factory('FilterSetting', ['$rootScope', function($rootScope) {
 
         getLat: function(){
             if(this.filterSetting.lat == undefined){
-                return $rootScope.currentPosition.latitude;
+                if($rootScope.currentPosition == undefined){
+                    return undefined;
+                }else{
+                    return $rootScope.currentPosition.latitude;
+                }
+
             }else{
                 return this.filterSetting.lat;
             }
@@ -52,7 +57,12 @@ wanthaver.factory('FilterSetting', ['$rootScope', function($rootScope) {
 
         getLon: function(){
             if(this.filterSetting.lat == undefined){
-                return $rootScope.currentPosition.longitude;
+                if($rootScope.currentPosition == undefined){
+                    return undefined;
+                }else{
+                    return $rootScope.currentPosition.longitude;
+                }
+
             }else{
                 return this.filterSetting.lon;
             }
