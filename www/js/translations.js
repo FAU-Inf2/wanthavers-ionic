@@ -228,6 +228,7 @@ wanthaver.config(function ($translateProvider) {
         MAP_CLOSE_BUTTON: 'Abbrechen',
     });
     $translateProvider.preferredLanguage('en');
+    $translateProvider.forceAsyncReload(true);
 });
 
 wanthaver.config(function(tmhDynamicLocaleProvider) {

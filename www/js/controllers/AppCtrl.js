@@ -8,10 +8,14 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     $scope.barButtonsMap = [];
     $scope.barButtons = [];
 
+    //$translate.use("en");
+
     $scope.setI18n = function(lang){
+        return;
         tmhDynamicLocale.set(lang);
         amMoment.changeLocale(lang);
         $translate.use(lang);
+        //console.log(lang);
     }
 
     $scope.addButtons = function(arr){
