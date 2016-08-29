@@ -82,6 +82,10 @@ wanthaver.config(function ($translateProvider) {
         DESIRE_DETAIL_REPORT_REASON_2: 'Impossible',
         DESIRE_DETAIL_REPORT_REASON_3: 'Spam',
         DESIRE_DETAIL_COMMENT: 'Leave a comment',
+        DESIREDETAIL_BID: 'Your bid',
+        DESIRE_DETAIL_REV_BIDDING_TITLE: 'Accept desire',
+        DESIRE_DETAIL_REV_BIDDING_SUBTITLE: 'Make your bid',
+        DESIRE_DETAIL_REV_BIDDING_MODIFY_TITLE: 'Modify your bid',
 
 
         /** RATING **/
@@ -196,7 +200,10 @@ wanthaver.config(function ($translateProvider) {
         DESIRE_DETAIL_REPORT_REASON_2: 'Unmöglich',
         DESIRE_DETAIL_REPORT_REASON_3: 'Spam',
         DESIRE_DETAIL_COMMENT: 'Verfasse einen Kommentar',
-
+        DESIREDETAIL_BID: 'Dein Angebot',
+        DESIRE_DETAIL_REV_BIDDING_TITLE: 'Desire annehmen',
+        DESIRE_DETAIL_REV_BIDDING_SUBTITLE: 'Erstelle dein Angebot',
+        DESIRE_DETAIL_REV_BIDDING_MODIFY_TITLE: 'Angebot ändern',
 
         /** RATING **/
         RATING_BAR_TITLE: 'Bewertung',

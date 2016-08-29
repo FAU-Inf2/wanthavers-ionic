@@ -139,7 +139,7 @@
 }
 
 .desire-detail-haver-list .name-wapper{
-  padding-top: 5px;
+  padding-bottom: 10px;
 }
 
 .haver-row-wrapper{
@@ -157,4 +157,10 @@
 .reporttitle {
   color: $light;
   font-size: 20px;
+}
+
+.desire-detail .bid {
+  padding-left: 100px;
+  padding-top: 50px;
+  color: $primary;
 }

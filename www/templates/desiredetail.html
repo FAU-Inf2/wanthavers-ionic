@@ -53,9 +53,14 @@
             <p>{{desire.description}}</p>
         </div>
 
-        <div class="desire-detail-price-box">
+        <div class="desire-detail-price-box" ng-if="!desire.biddingAllowed">
             <h4>{{ 'DESIREDETAIL_PRICE' | translate }}</h4>
             <p class="price-note">{{desire.price}}<span class="currency-symbol">{{desire.currency | currency}}</span></p>
+        </div>
+
+        <div class="desire-detail-price-box" ng-if="(isHaver || isAcceptedHaver) && desire.biddingAllowed" ng-disable="!desireOpen" ng-click="updateRequestedPrice()">
+            <h4>{{ 'DESIREDETAIL_BID' | translate }}</h4>
+            <p class="price-note">{{bidder.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></p>
         </div>
 
         <div class="desire-detail-box">
@@ -73,6 +78,9 @@
                     </div>
                     <div class="col col-67  name-wapper">
                         <span class="haver-name">{{haver.user.name}}</span>
+                        <span class="bid" ng-if="desire.biddingAllowed">
+                            <span class="price-note">{{haver.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></span>
+                        </span>
                         <br>
                         <span ng-bind-html="haver.user.rating | rating | unsafe"></span>
                     </div>
@@ -99,6 +107,9 @@
                     </div>
                     <div class="col col-67  name-wapper">
                         <span class="haver-name">{{acceptedHaver.user.name}}</span>
+                        <span class="bid" ng-if="desire.biddingAllowed">
+                            <span class="price-note">{{acceptedHaver.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></span>
+                        </span>
                         <br>
                         <span ng-bind-html="acceptedHaver.user.rating | rating | unsafe"></span>
                     </div>

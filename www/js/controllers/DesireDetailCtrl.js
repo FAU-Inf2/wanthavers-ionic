@@ -28,6 +28,8 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
             if ($scope.list[i].user.id == $rootScope.currentUserId) {
                 $scope.isHaver = true;
                 $scope.$parent.refreshButtons();
+                $scope.bidder = $scope.list[i];
+                console.log($scope.bidder);
                 console.log("getAll: isHaver");
                 return;
             }
@@ -67,8 +69,8 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
         $state.go($state.current, {}, {reload: true});
     }
 
-    $scope.acceptDesire = function() {
-        Haver.createHaver($stateParams.desireId);
+    $scope.acceptDesire = function(bid) {
+        Haver.createHaver($stateParams.desireId, bid);
         //TODO: reload correct???
         $state.go($state.current, {}, {reload: true});
     }
@@ -80,6 +82,36 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
         //TODO: reload correct???
         $state.go($state.current, {}, {reload: true});
 
+    }
+
+    $translate('DESIRE_DETAIL_REV_BIDDING_MODIFY_TITLE').then(function (translation) {
+        $scope.revBiddingModifyTitle = translation;
+    });
+
+    $scope.updateRequestedPrice = function() {
+        $scope.data = {};
+
+        var myPopup = $ionicPopup.show({
+            template: '<input type="number" maxlength="3"  ng-model="data.bid">',
+            title: $scope.revBiddingModifyTitle,
+            subTitle: $scope.revBiddingSubtitle,
+            scope: $scope,
+            buttons: [
+                { text: $scope.cancelBid},
+                {
+                    text: $scope.submitBid,
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        if (!$scope.data.bid) {
+                            //don't allow the user to close unless he enters bid
+                            e.preventDefault();
+                        } else {
+                            Haver.updateRequestedPrice($stateParams.desireId, $rootScope.currentUserId, $scope.data.bid);
+                        }
+                    }
+                }
+            ]
+        });
     }
 
     $scope.deleteHaver = function() {
@@ -135,6 +167,53 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
         $scope.popover = popover;
     });
 
+    $translate('DESIRE_DETAIL_REV_BIDDING_TITLE').then(function (translation) {
+        $scope.revBiddingTitle = translation;
+    });
+
+    $translate('DESIRE_DETAIL_REV_BIDDING_SUBTITLE').then(function (translation) {
+        $scope.revBiddingSubtitle = translation;
+    });
+
+    $translate('DESIRE_DETAIL_CANCEL').then(function (translation) {
+        $scope.cancelBid = translation;
+    });
+
+    $translate('DESIRE_DETAIL_SUBMIT').then(function (translation) {
+        $scope.submitBid = translation;
+    });
+
+    $scope.showBidPopup = function() {
+        $scope.data = {};
+
+        var myPopup = $ionicPopup.show({
+            template: '<input type="number" ng-model="data.bid">',
+            title: $scope.revBiddingTitle,
+            subTitle: $scope.revBiddingSubtitle,
+            scope: $scope,
+            buttons: [
+                { text: $scope.cancelBid},
+                {
+                    text: $scope.submitBid,
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        if (!$scope.data.bid) {
+                            //don't allow the user to close unless he enters bid
+                            e.preventDefault();
+                        } else {
+                            $scope.acceptDesire($scope.data.bid);
+                            //Haver.updateRequestedPrice($stateParams.desireId, $rootScope.currentUserId, $scope.data.bid);
+                            console.log($scope.data.bid);
+                        }
+                    }
+                }
+            ]
+        });
+
+        myPopup.then(function(res) {
+            console.log('Tapped!', res);
+        });
+    };
 
     $scope.openPopover = function($event) {
         $scope.popover.show($event);
@@ -151,8 +230,9 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
         }
         console.log(opt.value);
         console.log(document.getElementById('reportcomment').value);
-        //TODO
-        Desire.flagDesire($stateParams.desireId, opt.value);
+        var flagReason = opt.value;
+        var comment = document.getElementById('reportcomment').value;
+        Desire.flagDesire($stateParams.desireId, flagReason, comment);
         $scope.closePopover();
     }
 
@@ -277,7 +357,11 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
                 name: "",
                 show: (!($scope.isWanter) && !($scope.isHaver) && $scope.desireOpen),
                 action: function(){
-                    $scope.acceptDesire();
+                    if ($scope.desire.biddingAllowed) {
+                        $scope.showBidPopup();
+                    } else {
+                        $scope.acceptDesire(0);
+                    }
                 }
             },
             {

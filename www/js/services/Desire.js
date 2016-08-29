@@ -45,8 +45,8 @@ wanthaver.factory('Desire', ['$http', 'Auth', 'FilterSetting', function ($http, 
             return $http.delete(server+'/v1/desires/'+id, Auth.getHeaderObject());
         },
 
-        flagDesire: function(id, desireFlag) {
-            return $http.post(server+'/v1/desires/'+id+'/flags'+desireFlag, Auth.getHeaderObject());
+        flagDesire: function(desireId, desireFlag, comment) {
+            return $http.post(server+'/v1/desires/'+desireId+'/flags', {desireId: desireId, flagReason: desireFlag, comment: comment}, Auth.getHeaderObject());
         },
 
         getChat: function(id, user2) {
