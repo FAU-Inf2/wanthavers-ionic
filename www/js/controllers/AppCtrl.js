@@ -49,7 +49,6 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
 
         if($rootScope.currentUser == undefined){
             User.getCurrentUser().then(function(resp){
-                console.log("-->"+resp.data.langCode);
                 $rootScope.currentUser = resp.data;
                 if(resp.data.langCode == null){
                     code = navigator.language || navigator.userLanguage;
