@@ -28,7 +28,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
          $rootScope.$on('$cordovaPushV5:notificationReceived', function(event, data) {
             this[data.additionalData.subject](data.additionalData);
-            alert(data);
+            alert(data); //TODO: remove debug output
             $cordovaPushV5.finish(); //for iOS
          });
          $rootScope.$on('$cordovaPushV5:errorOcurred', function(event, e) {
@@ -38,7 +38,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
       createToken: function(tokenID) {
          console.log('createToken', tokenID);
-         //return $http.post(server+'/v1/users/tokens', {token: token}, Auth.getHeaderObject());
+         //return $http.post(server+'/v1/users/tokens', {userId: $rootScope.currentUserId, token: token, tokenType: "iOS"}, Auth.getHeaderObject());
       },
 
       /** For handle functions see CloudMessageSubject **/
@@ -57,22 +57,47 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
       // CloudMessageSubject.DESIRECOMPLETE
       DesireComplete: function(notification) {
+         desireId = data[CloudMessageSubject.DESIRECOMPLETE_DESIREID];
 
+         if(data.additionalData.foreground)
+            //TODO: change buttons
+            console.log("Recieved desire complete on foreground");
+         else
+            // Open desire
+            $state.go('app.desiredetail', {desireId: desireId});
       },
 
       // CloudMessageSubject.HAVERACCEPTED
       HaverAccepted: function(notification) {
+         desireId = data[CloudMessageSubject.HAVERACCEPTED_DESIREID];
 
+         if(data.additionalData.foreground)
+            //TODO: change buttons
+            console.log("Recieved haver accepted on foreground");
+         else
+            // Open desire
+            $state.go('app.desiredetail', {desireId: desireId});
       },
 
       // CloudMessageSubject.HAVERREJECTED
       HaverRejected: function(notification) {
+         desireId = data[CloudMessageSubject.HAVERREJECTED_DESIREID];
 
+         if(data.additionalData.foreground)
+            //TODO: change buttons
+            console.log("Recieved desire complete on foreground");
       },
 
       // CloudMessageSubject.NEWHAVER
       NewHaver: function(notification) {
+         desireId = data[CloudMessageSubject.NEWHAVER_DESIREID];
 
+         if(data.additionalData.foreground)
+            //TODO: change buttons
+            console.log("Recieved new haver on foreground");
+         else
+            // Open desire
+            $state.go('app.desiredetail', {desireId: desireId});
       }
 
    };

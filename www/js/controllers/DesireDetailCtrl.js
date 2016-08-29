@@ -2,7 +2,8 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
                                                     Haver, $state, $ionicLoading, $ionicPopup, $translate, $ionicPopover) {
 
     $ionicLoading.show({
-        template: 'Loading...'
+        template: 'Loading...',
+        delay: 1000
     });
 
     $scope.$parent.removeButtons();
@@ -62,7 +63,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
     }
 
     $scope.reportDesire = function() {
-        
+
         //TODO: reload correct???
         $state.go($state.current, {}, {reload: true});
     }
