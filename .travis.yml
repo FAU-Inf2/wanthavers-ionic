@@ -48,6 +48,7 @@ script:
 - cordova plugin add cordova-plugin-camera
 - cordova plugin add cordova-plugin-inappbrowser
 # - cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_IOS="$mapsKey"
+- cordova plugin add https://github.com/phonegap-googlemaps-plugin/cordova-plugin-googlemaps --variable API_KEY_FOR_IOS="$mapsKey"
 - ionic build ios --device --release
 - cd platforms/ios
 - xcodebuild archive -project wanthaver.xcodeproj -scheme wanthaver -archivePath wanthaver.xcarchive
