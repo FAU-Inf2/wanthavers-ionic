@@ -63,3 +63,11 @@
 .chat-textfield-wrapper button i{
   font-size: 12px;
 }
+
+.chat-textfield-wrapper textarea{
+  background: rgba(0,0,0,0);
+  width:100%;
+  min-height:35px;
+  padding-top:10px;
+  max-height:200px;
+}

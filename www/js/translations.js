@@ -2,6 +2,7 @@ wanthaver.config(function ($translateProvider) {
     $translateProvider.translations('en', {
         CURRENT_LOCATION: 'Current Location',
         BIDDING: 'Bidding',
+        CUSTOM: 'Custom',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'All Desires',
@@ -120,6 +121,7 @@ wanthaver.config(function ($translateProvider) {
     $translateProvider.translations('de', {
         CURRENT_LOCATION: 'Momentaner Standort',
         BIDDING: 'Bieten',
+        CUSTOM: 'Benutzerdefinierter Ort',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'Alle Aufträge',
