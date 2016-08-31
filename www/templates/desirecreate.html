@@ -4,8 +4,8 @@
 
 
     <ion-slide-box on-slide-changed="slideHasChanged($index)">
-      <ion-slide prevent-drag>
-        <label class=" item-input item-floating-label">
+      <ion-slide class="first-slide" prevent-drag>
+        <label class="item-input item-floating-label">
           <span class="input-label">{{ 'DESIRECREATE_TITLE' | translate }}</span>
           <input type="text" maxlength="50" ng-model="desire.title" placeholder="Titel">
         </label>

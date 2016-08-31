@@ -141,19 +141,19 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $scope.currencyChanged = function (selectedCurrency) {
         switch (selectedCurrency) {
             case "€":
-                $scope.currency = " ";
+                $scope.currency = "Euro";
                 $scope.desire.currency = "EUR";
                 break;
             case "$":
-                $scope.currency = " ";
+                $scope.currency = "Dollar";
                 $scope.desire.currency = "USD";
                 break;
             case "£":
-                $scope.currency = " ";
+                $scope.currency = "Pound";
                 $scope.desire.currency = "GBP";
                 break;
             case "CHF":
-                $scope.currency = " ";
+                $scope.currency = "CHF";
                 $scope.desire.currency = "CHF";
                 break;
 

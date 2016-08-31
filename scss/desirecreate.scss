@@ -1,13 +1,23 @@
 textarea.create-description {
   border: 1px solid $grey;
   height: 160px;
-  width: 90%;
+  width: 100%;
+  margin-right: 10px;
+  -webkit-appearance: none;
+}
+
+.first-slide .item-input{
+  padding: 10px;
+}
+
+.first-slide .item-input input{
+  width: 100%;
 }
 
 span.desc-char-counter {
   position: absolute;
   top: 13px;
-  right: 10%;
+  right: 10px;
   color: #888;
 }
 
@@ -49,9 +59,7 @@ span.desc-char-counter {
 
 .desire-create .item-select{
   margin-top: 20px;
-  width: 140px;
   height: 50px;
-  margin-left: -50px;
   font-size: 130%;
 }
 
