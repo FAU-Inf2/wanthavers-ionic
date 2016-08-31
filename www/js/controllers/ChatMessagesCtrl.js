@@ -2,8 +2,10 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
     $scope.messages = [];
 
     window.addEventListener('native.keyboardshow', function(){
-        Focus("input");
-        console.log("show");
+        $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
+    });
+    window.addEventListener('native.keyboardhide', function(){
+        $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
     });
 
     $scope.$on('$ionicView.enter', function() {
@@ -24,7 +26,7 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
             $scope.$broadcast('scroll.refreshComplete');
             $scope.messages = resp.data.reverse().concat($scope.messages);
             if(jumpBottom){
-                //$ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
+                $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
             }
         });
 
