@@ -1,4 +1,6 @@
-<ion-view cache-view="false" view-title="{{ 'DESIREDETAIL_BAR_TITLE' | translate }}">
+<ion-view cache-view="false">
+
+    <ion-nav-title>{{desire.title}}</ion-nav-title>
     <ion-content class="desire-detail">
 
         <div class="row desire-detail-creator" ng-if="!isWanter">
@@ -16,21 +18,22 @@
                 </div>
             </div>
             <div class="col col-10">
-                <button class="button button-small desire-detail-button" ng-if="haverCanRate" ng-click="openRating(desire, acceptedHaver)">
+                <button class="button button-small desire-detail-button button-outline button-light" ng-if="haverCanRate" ng-click="openRating(desire, acceptedHaver)">
                     <i class="icon ion-android-star rate-icon"></i>
                 </button>
+                <!--
                 <button class="button button-small inactive-desire-detail-button" ng-if="!haverCanRate">
                     <i class="icon ion-android-star rate-icon"></i>
-                </button>
+                </button>-->
             </div>
             <div class="col col-10">
-                <button class="button button-small desire-detail-button" ng-click="openChat(null)">
+                <button class="button button-small desire-detail-button button-outline button-light" ng-click="openChat(null)">
                     <i class="icon ion-chatbubbles message-icon"></i>
                 </button>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row desire-detail-info">
             <div class="col col-50">
                 <span>{{desire.status | desireStatus}}</span>
             </div>
@@ -39,6 +42,7 @@
             </div>
         </div>
 
+        <!--
         <div class="row">
             <div class="col col-25 desire-detail-image">
                 <div class="desire-img"><img ng-src="{{desire.image.lowRes}}"></div>
@@ -46,28 +50,81 @@
             <div class="col col-75 desire-detail-title">
                 <span>{{desire.title}}</span>
             </div>
+        </div>-->
+
+        <div class="desire-detail-title">
+            <div class="desire-img"><img ng-src="{{desire.image.lowRes}}"></div>
+            <span>{{desire.title}}</span>
         </div>
 
+        <!--
         <div class="desire-detail-box">
             <h4>{{ 'DESIREDETAIL_DESCRIPTION' | translate }}</h4>
             <p>{{desire.description}}</p>
+        </div>-->
+
+        <div class="card">
+            <div class="item item-divider">
+                {{ 'DESIREDETAIL_DESCRIPTION' | translate }}
+            </div>
+            <div class="item item-text-wrap">
+                <span>{{desire.description}}</span>
+            </div>
         </div>
 
+        <!--
         <div class="desire-detail-price-box" ng-if="!desire.biddingAllowed">
             <h4>{{ 'DESIREDETAIL_PRICE' | translate }}</h4>
             <p class="price-note">{{desire.price}}<span class="currency-symbol">{{desire.currency | currency}}</span></p>
+        </div>-->
+
+
+        <div class="card" ng-show="!desire.biddingAllowed">
+            <div class="item item-divider">
+                {{ 'DESIREDETAIL_PRICE' | translate }}
+            </div>
+            <div class="item item-text-wrap">
+                {{desire.price}}<span class="currency-symbol">{{desire.currency | currency}}</span>
+            </div>
         </div>
 
+        <!--
         <div class="desire-detail-price-box" ng-if="(isHaver || isAcceptedHaver) && desire.biddingAllowed" ng-disable="!desireOpen" ng-click="updateRequestedPrice()">
             <h4>{{ 'DESIREDETAIL_BID' | translate }}</h4>
             <p class="price-note">{{bidder.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></p>
         </div>
+        -->
 
+        <div class="card" ng-show="(isHaver || isAcceptedHaver) && desire.biddingAllowed" ng-disable="!desireOpen" ng-click="updateRequestedPrice()">
+            <div class="item item-divider">
+                {{ 'DESIREDETAIL_BID' | translate }}
+            </div>
+            <div class="item item-text-wrap">
+                <b>{{bidder.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></b>
+                <span class="desire-image-upload-text">&nbsp;&nbsp;({{ 'DESIRE_DETAIL_REV_BIDDING_MODIFY_TITLE' | translate }})</span>
+
+            </div>
+        </div>
+
+        <!--
         <div class="desire-detail-box">
             <h4>{{ 'DESIREDETAIL_LOCATION' | translate }}</h4>
             <p>{{desire.dropzone_string}}</p>
+        </div>-->
+
+        <div class="card">
+            <div class="item item-divider">
+                {{ 'DESIREDETAIL_LOCATION' | translate }}
+            </div>
+            <div class="item item-text-wrap">
+                {{desire.dropzone_string}}
+            </div>
         </div>
 
+
+        <!-- HAVER LIST -->
+
+        <!--
         <div class="desire-detail-box" ng-if="showList">
             <h4 class="haver-title">{{ 'DESIREDETAIL_HAVER' | translate }}</h4>
             <p ng-show="!list.length">{{ 'DESIREDETAIL_NO_HAVER' | translate }}</p>
@@ -97,8 +154,44 @@
                 </div>
             </div>
         </div>
+        -->
 
-        <div class="desire-detail-box" ng-if="showAcceptedHaver">
+        <div class="card" ng-show="showList">
+            <div class="item item-divider">
+                {{ 'DESIREDETAIL_HAVER' | translate }}
+            </div>
+            <div class="item item-text-wrap">
+                <p ng-show="!list.length">{{ 'DESIREDETAIL_NO_HAVER' | translate }}</p>
+                <div class="desire-detail-haver-list" ng-repeat="haver in list">
+                    <div class="row haver-row-wrapper">
+                        <div class="col">
+                            <img class="haver-img" ng-src="{{haver.user.image.lowRes}}">
+                        </div>
+                        <div class="col col-67  name-wapper">
+                            <span class="haver-name">{{haver.user.name}}</span>
+                        <span class="bid" ng-if="desire.biddingAllowed">
+                            <span class="price-note">{{haver.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></span>
+                        </span>
+                            <br>
+                            <span ng-bind-html="haver.user.rating | rating | unsafe"></span>
+                        </div>
+                        <div class="col col-10">
+                            <button class="button button-small desire-detail-button"  ng-click="acceptHaver(haver)">
+                                <i class="icon icon ion-checkmark-round accept-icon"></i>
+                            </button>
+                        </div>
+                        <div class="col col-10">
+                            <button class="button button-small desire-detail-button" ng-click="openChat(haver)">
+                                <i class="icon ion-chatbubbles message-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        <div class="desire-detail-box" ng-show="showAcceptedHaver">
             <h4 class="haver-title">{{ 'DESIREDETAIL_HAVER' | translate }}</h4>
             <div class="desire-detail-accepted-haver" >
                 <div class="row">
@@ -131,6 +224,53 @@
                     </div>
                 </div>
             </div>
+        </div>
+        -->
+
+        <div class="card">
+            <div class="item item-divider">
+                {{ 'DESIREDETAIL_HAVER_ACCEPTED' | translate }}
+            </div>
+            <div class="item item-text-wrap">
+                <div class="desire-detail-accepted-haver" >
+                    <div class="row">
+                        <div class="col">
+                            <img class="haver-img" ng-src="{{acceptedHaver.user.image.lowRes}}">
+                        </div>
+                        <div class="col col-67  name-wapper">
+                            <span class="haver-name">{{acceptedHaver.user.name}}</span>
+                        <span class="bid" ng-if="desire.biddingAllowed">
+                            <span class="price-note">{{acceptedHaver.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></span>
+                        </span>
+                            <br>
+                            <span ng-bind-html="acceptedHaver.user.rating | rating | unsafe"></span>
+                        </div>
+                        <div class="col col-10">
+                            <button class="button button-small desire-detail-button" ng-if="desireInProgress" ng-click="showWanterUnacceptPopup()">
+                                <i class="icon ion-android-close unaccept-icon"></i>
+                            </button>
+                            <button class="button button-small desire-detail-button" ng-if="wanterCanRate" ng-click="openRating(desire, acceptedHaver)">
+                                <i class="icon ion-android-star rate-icon"></i>
+                            </button>
+                            <button class="button button-small inactive-desire-detail-button" ng-if="!wanterCanRate && desireDone">
+                                <i class="icon ion-android-star rate-icon"></i>
+                            </button>
+                        </div>
+                        <div class="col col-10">
+                            <button class="button button-small desire-detail-button">
+                                <i class="icon ion-chatbubbles message-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="padding" ng-show="(!isWanter && !isHaver && desireOpen)">
+            <button class="button button-block button-positive" ng-click="acceptDesireButton()">
+                {{ 'DESIRE_DETAIL_REV_BIDDING_TITLE' | translate }}
+            </button>
         </div>
 
 

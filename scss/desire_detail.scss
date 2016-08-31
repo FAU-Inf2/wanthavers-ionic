@@ -1,8 +1,24 @@
-.desire-img img {
-  width:100%;
-  border-radius: 100%;
+.desire-detail-title{
+  width: 40%;
+  margin: 0 auto;
+  text-align:center;
+  color: #444;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 45px;
 }
 
+.desire-detail-info{
+  color: #888;
+}
+
+.desire-img img {
+  width: 100%;
+  border-radius: 100%;
+  margin-bottom: 10px;
+  /*border: 1px solid #ccc;*/
+  padding: 5px;
+}
 .creator-img img {
   width: 100%;
   border-radius: 100%;
@@ -20,11 +36,6 @@
   margin-top: 5px;
 }
 
-.desire-detail-title {
-  margin-top: 30px;
-  font-size: 30px;
-  line-height: 25px;
-}
 
 .rate-icon {
   color: $secondary;
@@ -60,6 +71,7 @@
   background-color: $grey;
   padding-bottom: 10px;
   padding-top: 10px;
+
 }
 
 .desire-detail h4 {
@@ -84,7 +96,10 @@
 }
 
 .desire-detail-creator {
-  background-color: $grey;
+  background-color: $primary;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 10px;
 }
 
 .desire-detail-creator span {
@@ -93,10 +108,12 @@
 
 .desire-detail-creator .creator-name {
   font-size: medium;
+  font-size: 20px;
+  color: #fff;
 }
 
 .desire-detail-creator .rating-element{
-  color: $primary;
+  color: $light;
   font-size: medium;
 }
 
@@ -143,7 +160,7 @@
 }
 
 .haver-row-wrapper{
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid #ccc;
 }
 
 .desire-detail-accepted-haver {
@@ -163,4 +180,9 @@
   padding-left: 100px;
   padding-top: 50px;
   color: $primary;
+}
+
+.item.item-divider {
+  color: #fff;
+  background: $primary;
 }

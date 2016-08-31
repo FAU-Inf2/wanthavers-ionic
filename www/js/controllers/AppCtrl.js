@@ -92,10 +92,10 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
             titleText: 'Select Photo Source',
             cancelText: 'Cancel',
             cancel: function() {
-                sheet();
+                return true;
             },
             buttonClicked: function(index) {
-                sheet();
+
                 var source = Camera.PictureSourceType.CAMERA;
                 if(index == 1){
                     source = Camera.PictureSourceType.PHOTOLIBRARY;
@@ -117,6 +117,8 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
                     targetWidth: 1024,
                     targetHeight: 1024
                 });
+
+                return true;
 
             }
         });

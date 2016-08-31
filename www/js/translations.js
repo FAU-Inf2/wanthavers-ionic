@@ -3,6 +3,8 @@ wanthaver.config(function ($translateProvider) {
         CURRENT_LOCATION: 'Current Location',
         BIDDING: 'Bidding',
         CUSTOM: 'Custom',
+        CANCEL: 'Cancel',
+        IMAGE: 'Image',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'All Desires',
@@ -67,6 +69,7 @@ wanthaver.config(function ($translateProvider) {
         DESIREDETAIL_PRICE: 'Price',
         DESIREDETAIL_LOCATION: 'Location',
         DESIREDETAIL_HAVER: 'Haver',
+        DESIREDETAIL_HAVER_ACCEPTED: 'Accepted Haver',
         DESIREDETAIL_NO_HAVER: 'Unfortunately there are no havers yet',
         DESIRE_DETAIL_HAVER_UNACCEPT_POPUP_TITLE: 'Cancel desire?',
         DESIRE_DETAIL_HAVER_UNACCEPT_POPUP_SUBTITLE: 'Do you really want to cancel this desire?',
@@ -87,6 +90,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRE_DETAIL_REV_BIDDING_TITLE: 'Accept desire',
         DESIRE_DETAIL_REV_BIDDING_SUBTITLE: 'Make your bid',
         DESIRE_DETAIL_REV_BIDDING_MODIFY_TITLE: 'Modify your bid',
+        DESIRE_DETAIL_RATE_WANTER: 'Rate Creator',
 
 
         /** RATING **/
@@ -122,6 +126,8 @@ wanthaver.config(function ($translateProvider) {
         CURRENT_LOCATION: 'Momentaner Standort',
         BIDDING: 'Bieten',
         CUSTOM: 'Benutzerdefinierter Ort',
+        CANCEL: 'Abbrechen',
+        IMAGE: 'Bild',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'Alle Aufträge',
@@ -186,6 +192,7 @@ wanthaver.config(function ($translateProvider) {
         DESIREDETAIL_PRICE: 'Bezahlung',
         DESIREDETAIL_LOCATION: 'Ort',
         DESIREDETAIL_HAVER: 'Haver',
+        DESIREDETAIL_HAVER_ACCEPTED: 'Akzeptierter Haver',
         DESIREDETAIL_NO_HAVER: 'Leider noch keine Haver vorhanden',
         DESIRE_DETAIL_HAVER_UNACCEPT_POPUP_TITLE: 'Transaktion abbrechen',
         DESIRE_DETAIL_HAVER_UNACCEPT_POPUP_SUBTITLE: 'Willst du die Transaktion wirklich abbrechen?',
@@ -206,6 +213,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRE_DETAIL_REV_BIDDING_TITLE: 'Desire annehmen',
         DESIRE_DETAIL_REV_BIDDING_SUBTITLE: 'Erstelle dein Angebot',
         DESIRE_DETAIL_REV_BIDDING_MODIFY_TITLE: 'Angebot ändern',
+        DESIRE_DETAIL_RATE_WANTER: 'Ersteller bewerten',
 
         /** RATING **/
         RATING_BAR_TITLE: 'Bewertung',

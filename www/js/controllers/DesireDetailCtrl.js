@@ -1,10 +1,27 @@
 controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHistory, $stateParams, Desire,
-                                                    Haver, $state, $ionicLoading, $ionicPopup, $translate, $ionicPopover) {
+                                                    Haver, $state, $ionicLoading, $ionicPopup, $translate, $ionicPopover, $ionicActionSheet) {
+
+    $scope.DESIRE_DETAIL_REPORT_TITLE = "";
+    $scope.DESIRE_DETAIL_RATE_WANTER = "";
+    $scope.CANCEL = "";
 
     $ionicLoading.show({
         template: 'Loading...',
         delay: 1000
     });
+
+    $translate('DESIRE_DETAIL_REPORT_TITLE').then(function (translation) {
+        $scope.DESIRE_DETAIL_REPORT_TITLE = translation;
+    });
+
+    $translate('DESIRE_DETAIL_RATE_WANTER').then(function (translation) {
+        $scope.DESIRE_DETAIL_RATE_WANTER = translation;
+    });
+
+    $translate('CANCEL').then(function (translation) {
+        $scope.CANCEL = translation;
+    });
+
 
     $scope.$parent.removeButtons();
 
@@ -334,13 +351,56 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
 
     };
 
+    $scope.acceptDesireButton = function(){
+        if ($scope.desire.biddingAllowed) {
+            $scope.showBidPopup();
+        } else {
+            $scope.acceptDesire(0);
+        }
+    }
+
     $scope.showNavBarButtons = function() {
 
+        var btns = [{ text: $scope.DESIRE_DETAIL_REPORT_TITLE }];
+
+        if($scope.haverCanRate){
+            btns.push({ text: $scope.DESIRE_DETAIL_RATE_WANTER });
+        }
+
         $scope.$parent.addButtons([
+
+            {
+                icon: "ion-ios-more",
+                name: "",
+                show: true,
+                action: function(){
+                    $ionicActionSheet.show({
+                        buttons: btns,
+                        titleText: '',
+                        cancelText: $scope.CANCEL,
+                        cancel: function() {
+                            return true;
+                        },
+                        buttonClicked: function(index) {
+
+                            if(index == 0){
+                                $scope.openPopover(null);
+                            }
+
+                            if(index == 1 ){
+                                $scope.openRating($scope.desire, $scope.acceptedHaver);
+                            }
+
+                            return true;
+                        }
+                    });
+                }
+            },
+
             {
                 icon: "icon ion-trash-b myBtn",
                 name: "",
-                show: ($scope.isWanter && !$scope.desireDone),
+                show: false, //($scope.isWanter && !$scope.desireDone),
                 action: function(){
                     $scope.showDeletionPopup();
                 }
@@ -348,15 +408,15 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
             {
                 icon: "icon ion-alert-circled",
                 name: "",
-                show: !($scope.isWanter),
+                show: false, // !($scope.isWanter),
                 action: function() {
                     $scope.openPopover(null);
                 }
             },
             {
-                icon: "icon ion-checkmark-round",
-                name: "",
-                show: (!($scope.isWanter) && !($scope.isHaver) && $scope.desireOpen),
+                icon: "",
+                name: "Annehmen",
+                show: false, //(!($scope.isWanter) && !($scope.isHaver) && $scope.desireOpen),
                 action: function(){
                     if ($scope.desire.biddingAllowed) {
                         $scope.showBidPopup();
@@ -368,7 +428,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
             {
                 icon: "icon ion-close-round",
                 name: "",
-                show: (($scope.desireInProgress || $scope.desireOpen) && $scope.isHaver),
+                show: false, //(($scope.desireInProgress || $scope.desireOpen) && $scope.isHaver),
                 action: function(){
                     $scope.showHaverUnacceptPopup();
                 }
@@ -376,7 +436,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
             {
                 icon: "icon ion-checkmark-round",
                 name: "",
-                show: ($scope.isWanter && $scope.desireInProgress),
+                show: false, // ($scope.isWanter && $scope.desireInProgress),
                 action: function(){
                     $scope.finishDesire();
                 }
