@@ -34,11 +34,14 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
                 $scope.loadDesires();
                 $scope.getPosition();
             }
-
-
         }
-
     }
+
+    $scope.$on('$ionicView.enter', function () {
+        if($stateParams.mode == "my"){
+            $scope.init();
+        }
+    });
 
     $scope.getPosition = function(loadDesires){
         $rootScope.cordovaReady(function() {

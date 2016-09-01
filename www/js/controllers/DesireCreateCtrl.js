@@ -226,7 +226,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $scope.create = function(desire) {
         desire.dropzone_string = $scope.locationChoice.fullAddress;
         desire.dropzone_lat = $scope.locationChoice.lat;
-        desire.dropzone_lon = $scope.locationChoice.long;
+        desire.dropzone_long = $scope.locationChoice.long;
         desire.biddingAllowed = $scope.reverseBidding.allowed;
 
         console.log(desire);
