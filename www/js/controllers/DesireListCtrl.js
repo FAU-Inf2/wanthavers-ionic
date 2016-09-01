@@ -1,4 +1,4 @@
-controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, $ionicModal, $rootScope, $translate, $stateParams, Auth, $timeout, $ionicLoading, $ionicPopup) {
+controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, $ionicModal, $rootScope, $translate, $stateParams, Auth, $timeout, $ionicLoading, $ionicPopup, $ionicPlatform) {
 
     $scope.reachedEnd = false;
     $scope.obj = {};
@@ -41,25 +41,27 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     }
 
     $scope.getPosition = function(loadDesires){
-        navigator.geolocation.getCurrentPosition(function(pos){
-            $rootScope.currentPosition = pos.coords;
-            if(loadDesires){
+        $ionicPlatform.ready(function() {
+            navigator.geolocation.getCurrentPosition(function (pos) {
+                $rootScope.currentPosition = pos.coords;
+                if (loadDesires) {
+                    $scope.loadDesires();
+                }
+
+                Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function (resp) {
+                    $timeout(function () {
+                        $scope.obj.location = resp.data.cityName;
+                    }, 2000);
+                });
+            }, function (error) {
+                console.log(error)
                 $scope.loadDesires();
-            }
+                $ionicPopup.alert({
+                    title: 'Location Error',
+                    template: 'Could not get your location, please allow access to your location to show desires nearby.'
+                });
 
-            Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function(resp){
-                $timeout(function(){
-                    $scope.obj.location = resp.data.cityName;
-                }, 2000);
             });
-        }, function(error){
-            console.log(error)
-            $scope.loadDesires();
-            $ionicPopup.alert({
-                title: 'Location Error',
-                template: 'Could not get your location, please allow access to your location to show desires nearby.'
-            });
-
         });
     }
 
