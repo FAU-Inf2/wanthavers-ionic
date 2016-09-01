@@ -1,11 +1,18 @@
 .desire-detail-title{
-  width: 40%;
+  width: 100%;
   margin: 0 auto;
   text-align:center;
   color: #444;
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 45px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+
+.desire-detail-title .desire-img {
+  width: 40%;
+  margin: 0 auto;
 }
 
 .desire-detail-info{
@@ -160,7 +167,7 @@
 }
 
 .haver-row-wrapper{
-  border-bottom: 1px solid #ccc;
+  /*border-bottom: 1px solid #ccc;*/
 }
 
 .desire-detail-accepted-haver {
@@ -183,6 +190,7 @@
 }
 
 .item.item-divider {
-  color: #fff;
-  background: $primary;
+  color: $primary;
+  background: #eee;
+  text-transform: uppercase;
 }

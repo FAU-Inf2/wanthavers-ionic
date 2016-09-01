@@ -163,7 +163,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
             animation: 'fade-in',
             showBackdrop: false,
             maxWidth: 400,
-            showDelay: 0
+            showDelay: 1000
         });
     }
 

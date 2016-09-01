@@ -6,7 +6,9 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
     $ionicSideMenuDelegate.canDragContent(true);
 
-    $scope.$on('$ionicView.enter', function() {
+    //$scope.$on('$ionicView.enter',
+
+    $scope.init = function() {
 
         $rootScope.showLoading();
 
@@ -36,7 +38,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
         }
 
-    });
+    }
 
     $scope.getPosition = function(loadDesires){
         navigator.geolocation.getCurrentPosition(function(pos){
@@ -114,6 +116,8 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
             $state.go("app.chatlist");
         }
     }]);
+
+    $scope.init();
 
 
 })

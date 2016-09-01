@@ -91,7 +91,10 @@ wanthaver.config(function ($translateProvider) {
         DESIRE_DETAIL_REV_BIDDING_SUBTITLE: 'Make your bid',
         DESIRE_DETAIL_REV_BIDDING_MODIFY_TITLE: 'Modify your bid',
         DESIRE_DETAIL_RATE_WANTER: 'Rate Creator',
-
+        DESIRE_DETAIL_REGISTERED: "You're registered as Haver! You will get notified as soon as the creator accepts you.",
+        DESIRE_DETAIL_ACCEPTEDHAVER: "Congratulations, you've been accepted by the creator.",
+        DESIRE_DETAIL_FINISH_INFO: "Has your Desire been fulfilled?",
+        DESIRE_DETAIL_FINISH: "Finish Desire",
 
         /** RATING **/
         RATING_BAR_TITLE: 'Rating',
@@ -214,6 +217,10 @@ wanthaver.config(function ($translateProvider) {
         DESIRE_DETAIL_REV_BIDDING_SUBTITLE: 'Erstelle dein Angebot',
         DESIRE_DETAIL_REV_BIDDING_MODIFY_TITLE: 'Angebot ändern',
         DESIRE_DETAIL_RATE_WANTER: 'Ersteller bewerten',
+        DESIRE_DETAIL_REGISTERED: 'Du bist als Haver registriert! Du wirst benachrichtigt, sobald dich der Ersteller akzeptiert.',
+        DESIRE_DETAIL_ACCEPTEDHAVER: "Glückwunsch, du wurdest vom Ersteller akzeptiert!",
+        DESIRE_DETAIL_FINISH_INFO: "Wurde dein Auftrag erfüllt?",
+        DESIRE_DETAIL_FINISH: "Auftrag abschließen",
 
         /** RATING **/
         RATING_BAR_TITLE: 'Bewertung',

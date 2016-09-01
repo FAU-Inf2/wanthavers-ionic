@@ -4,10 +4,26 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
     $scope.DESIRE_DETAIL_REPORT_TITLE = "";
     $scope.DESIRE_DETAIL_RATE_WANTER = "";
     $scope.CANCEL = "";
+    $scope.DESIRE_DETAIL_DELETION_POPUP_TITLE = "";
 
     $ionicLoading.show({
         template: 'Loading...',
         delay: 1000
+    });
+
+    $scope.$on('$ionicView.beforeEnter', function () {
+        $scope.isWanter = undefined;
+        $scope.showList = undefined;
+        $scope.wanterCanRate = undefined;
+        $scope.showAcceptedHaver = undefined;
+        $scope.desire = undefined;
+        $scope.desireOpen = undefined;
+        $scope.desireInProgress = undefined;
+        $scope.desireDone = undefined;
+        $scope.isHaver = undefined;
+        $scope.bidder = undefined;
+        $scope.isAcceptedHaver = undefined;
+        $scope.haverCanRate = undefined;;
     });
 
     $translate('DESIRE_DETAIL_REPORT_TITLE').then(function (translation) {
@@ -20,6 +36,10 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
 
     $translate('CANCEL').then(function (translation) {
         $scope.CANCEL = translation;
+    });
+
+    $translate('DESIRE_DETAIL_DELETION_POPUP_TITLE').then(function (translation) {
+        $scope.DESIRE_DETAIL_DELETION_POPUP_TITLE = translation;
     });
 
 
@@ -88,17 +108,17 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
     }
 
     $scope.acceptDesire = function(bid) {
-        Haver.createHaver($stateParams.desireId, bid);
-        //TODO: reload correct???
-        $state.go($state.current, {}, {reload: true});
+        Haver.createHaver($stateParams.desireId, bid).then(function(){
+            $state.go($state.current, {}, {reload: true});
+        });
     }
 
     $scope.acceptHaver = function(haver) {
         console.log($scope.desire.id);
         console.log(haver.user.id);
-        Haver.updateHaverStatus($stateParams.desireId, haver.user.id, 1);
-        //TODO: reload correct???
-        $state.go($state.current, {}, {reload: true});
+        Haver.updateHaverStatus($stateParams.desireId, haver.user.id, 1).then(function(){
+            $state.go($state.current, {}, {reload: true});
+        })
 
     }
 
@@ -133,21 +153,21 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
     }
 
     $scope.deleteHaver = function() {
-        Haver.updateHaverStatus($stateParams.desireId, $rootScope.currentUserId,3);
-        //TODO: reload correct???
-        $state.go($state.current, {}, {reload: true});
+        Haver.updateHaverStatus($stateParams.desireId, $rootScope.currentUserId,3).then(function(){
+            $state.go($state.current, {}, {reload: true});
+        });
     }
 
     $scope.finishDesire = function() {
-        Desire.updateDesireStatus($stateParams.desireId, 3);
-        //TODO: reload correct???
-        $state.go($state.current, {}, {reload: true});
+        Desire.updateDesireStatus($stateParams.desireId, 3).then(function(){
+            $state.go($state.current, {}, {reload: true});
+        });
     }
 
     $scope.unacceptHaver = function() {
-        Haver.updateHaverStatus($stateParams.desireId, $scope.acceptedHaver.user.id, 0);
-        //TODO: reload correct???
-        $state.go($state.current, {}, {reload: true});
+        Haver.updateHaverStatus($stateParams.desireId, $scope.acceptedHaver.user.id, 0).then(function(){
+            $state.go($state.current, {}, {reload: true});
+        });
     }
 
     $scope.openChat = function(haver) {
@@ -367,6 +387,36 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
             btns.push({ text: $scope.DESIRE_DETAIL_RATE_WANTER });
         }
 
+        var options = {
+            buttons: btns,
+            titleText: '',
+            cancelText: $scope.CANCEL,
+            cancel: function() {
+                return true;
+            },
+            buttonClicked: function(index) {
+
+
+                if(index == 0){
+                    $scope.openPopover(null);
+                }
+
+                if(index == 1 ){
+                    $scope.openRating($scope.desire, $scope.acceptedHaver);
+                }
+
+                return true;
+            },
+            destructiveButtonClicked: function(){
+                $scope.showDeletionPopup();
+                return true;
+            }
+        };
+
+        if(($scope.isWanter && !$scope.desireDone)){
+            options.destructiveText = $scope.DESIRE_DETAIL_DELETION_POPUP_TITLE;
+        }
+
         $scope.$parent.addButtons([
 
             {
@@ -374,29 +424,11 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
                 name: "",
                 show: true,
                 action: function(){
-                    $ionicActionSheet.show({
-                        buttons: btns,
-                        titleText: '',
-                        cancelText: $scope.CANCEL,
-                        cancel: function() {
-                            return true;
-                        },
-                        buttonClicked: function(index) {
-
-                            if(index == 0){
-                                $scope.openPopover(null);
-                            }
-
-                            if(index == 1 ){
-                                $scope.openRating($scope.desire, $scope.acceptedHaver);
-                            }
-
-                            return true;
-                        }
-                    });
+                    $ionicActionSheet.show(options);
                 }
             },
 
+            /*
             {
                 icon: "icon ion-trash-b myBtn",
                 name: "",
@@ -409,7 +441,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
                 icon: "icon ion-alert-circled",
                 name: "",
                 show: false, // !($scope.isWanter),
-                action: function() {
+                action: function() {  //DONE
                     $scope.openPopover(null);
                 }
             },
@@ -417,7 +449,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
                 icon: "",
                 name: "Annehmen",
                 show: false, //(!($scope.isWanter) && !($scope.isHaver) && $scope.desireOpen),
-                action: function(){
+                action: function(){ //DONE
                     if ($scope.desire.biddingAllowed) {
                         $scope.showBidPopup();
                     } else {
@@ -430,7 +462,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
                 name: "",
                 show: false, //(($scope.desireInProgress || $scope.desireOpen) && $scope.isHaver),
                 action: function(){
-                    $scope.showHaverUnacceptPopup();
+                    $scope.showHaverUnacceptPopup(); //DONE
                 }
             },
             {
@@ -440,7 +472,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
                 action: function(){
                     $scope.finishDesire();
                 }
-            }
+            }*/
         ]);
     }
 
