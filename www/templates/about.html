@@ -6,13 +6,13 @@
 
     <ul class="list">
       <li class="item" onclick="cordova.InAppBrowser.open('http://wanthaver.com', '_system'); return false;">
-        Webseite www.wanthaver.com
+        {{'ABOUT_WEBSITE' | translate}}
       </li>
       <li class="item" onclick="cordova.InAppBrowser.open('http://wanthaver.com/agbs.html', '_blank', 'location=no'); return false;">
-        ABG
+        {{'ABOUT_AGB' | translate}}
       </li>
       <li class="item" ui-sref="app.licenses">
-        Software-Lizenzen
+        {{'ABOUT_LICENSES' | translate}}
       </li>
     </ul>
 

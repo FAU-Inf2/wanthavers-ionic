@@ -124,6 +124,11 @@ wanthaver.config(function ($translateProvider) {
         MAP_BUTTON: 'Set As Location',
         MAP_TITLE: 'Choose a Location',
         MAP_CLOSE_BUTTON: 'Cancel',
+
+        /** ABOUT **/
+        ABOUT_WEBSITE: 'Our Website www.wanthaver.com',
+        ABOUT_AGB: 'Terms of Use',
+        ABOUT_LICENSES: 'Software-Licenses'
     });
     $translateProvider.translations('de', {
         CURRENT_LOCATION: 'Momentaner Standort',
@@ -250,6 +255,12 @@ wanthaver.config(function ($translateProvider) {
         MAP_BUTTON: 'Als Ort setzen',
         MAP_TITLE: 'Ort auswählen',
         MAP_CLOSE_BUTTON: 'Abbrechen',
+
+
+        /** ABOUT **/
+        ABOUT_WEBSITE: 'Unsere Webseite www.wanthaver.com',
+        ABOUT_AGB: 'AGB',
+        ABOUT_LICENSES: 'Software-Lizenzen'
     });
     $translateProvider.preferredLanguage('en');
     $translateProvider.forceAsyncReload(true);
