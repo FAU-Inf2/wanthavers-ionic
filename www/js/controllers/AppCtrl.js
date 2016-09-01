@@ -171,5 +171,12 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
         $ionicLoading.hide();
     }
 
+    $rootScope.cordovaReady = function(func){
+        if(window.cordovaReady == undefined){
+            window.cordovaReady = func;
+        }else{
+            func();
+        }
+    }
 
 })

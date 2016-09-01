@@ -41,7 +41,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     }
 
     $scope.getPosition = function(loadDesires){
-        $ionicPlatform.ready(function() {
+        $rootScope.cordovaReady(function() {
             navigator.geolocation.getCurrentPosition(function (pos) {
                 $rootScope.currentPosition = pos.coords;
                 if (loadDesires) {

@@ -27,7 +27,16 @@ wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, P
       StatusBar.styleDefault();
     }
 
+      console.log("HI!!!")
+      if(window.cordovaReady != undefined){
+          window.cordovaReady();
+      }else{
+          window.cordovaReady = {};
+      }
+      
     PushNotifications.registerToken();
+
+
   });
 }]);
 
@@ -216,12 +225,3 @@ wanthaver.directive('preventDrag', function ($ionicGesture, $ionicSlideBoxDelega
             $ionicGesture.on('touch', reportEvent, elem);
         }
     }});
-
-wanthaver.factory('Focus',function($timeout){
-    return function(id) {
-        $timeout(function(){
-            var element=document.getElementById(id);
-            if (element) element.focus();
-        },0)
-    }
-})
