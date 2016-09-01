@@ -1,4 +1,4 @@
-controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, User, $stateParams, $ionicScrollDelegate, Focus) {
+controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, User, $stateParams, $ionicScrollDelegate) {
     $scope.messages = [];
 
     window.addEventListener('native.keyboardshow', function(){
