@@ -14,11 +14,12 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $scope.media = {};
     $scope.hasUploaded = false;
     $scope.dateSlider = {};
-    $scope.dateSlider.name = 'Hours';
-    $scope.dateSlider.date = 1;
+    $scope.dateSlider.date = 3;
+    $scope.dateSlider.number = 14;
     $scope.locations = [];
     $scope.reverseBidding= {};
     $scope.reverseBidding.allowed = false;
+    $scope.hourInMilliseconds = 3600000;
 
 
     $translate('DESIRECREATE_BAR_TITLE1').then(function (translation) {
@@ -68,6 +69,34 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $translate('DESIRECREATE_MISSING_INPUT_TEXT_DROPZONE').then(function (translation) {
         $scope.missingInputDropzone = translation;
     });
+
+    $translate('DESIRECREATE_EXPIRE_INPUT_DAY').then(function (translation) {
+        $scope.expireInputDay = translation;
+    });
+
+    $translate('DESIRECREATE_EXPIRE_INPUT_DAYS').then(function (translation) {
+        $scope.expireInputDays = translation;
+    });
+
+    $translate('DESIRECREATE_EXPIRE_INPUT_WEEK').then(function (translation) {
+        $scope.expireInputWeek = translation;
+    });
+
+    $translate('DESIRECREATE_EXPIRE_INPUT_WEEKS').then(function (translation) {
+        $scope.expireInputWeeks = translation;
+        $scope.dateSlider.name = $scope.expireInputWeeks;
+    });
+
+
+    $translate('DESIRECREATE_EXPIRE_INPUT_HOUR').then(function (translation) {
+        $scope.expireInputHour = translation;
+    });
+
+    $translate('DESIRECREATE_EXPIRE_INPUT_HOURS').then(function (translation) {
+        $scope.expireInputHours = translation;
+    });
+
+    //$scope.dateSlider.name = $scope.expireInputWeeks;
 
 
 
@@ -165,7 +194,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
         //$scope.getExpritionDate($scope.date);
         //desire.expireDate = $scope.expirationDate;
 
-        $scope.getExpireTimeSpan($scope.dateSlider.date);
+        $scope.getExpireTimeSpan($scope.dateSlider);
         desire.validTimespan = $scope.expireTimeSpan;
 
 
@@ -236,14 +265,86 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $scope.getExpireTimeSpan = function(timeSpan){
         console.log($scope.dateSlider.name);
         console.log(new Date().getTime());
-        if ($scope.dateSlider.name == 'Days'){
-            $scope.expireTimeSpan = timeSpan *24 * 3600000;
+
+        switch (timeSpan.number) {
+
+            //1h 2h 3h 5h 10h 15h 1d 2d 3d 5d 1w 2w 1w
+            case "1":
+                //1h
+                $scope.expireTimeSpan = $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "2":
+                //2h
+                $scope.expireTimeSpan = 2 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "3":
+                //3h
+                $scope.expireTimeSpan = 3 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "4":
+                //5h
+                $scope.expireTimeSpan = 5 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "5":
+                //10h
+                $scope.expireTimeSpan = 10 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "6":
+                //15h
+                $scope.expireTimeSpan = 15 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "7":
+                //1d
+                $scope.expireTimeSpan = 24 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "8":
+                //2d
+                $scope.expireTimeSpan = 2 * 24 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "9":
+                //3d
+                $scope.expireTimeSpan = 3 * 24 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "10":
+                //5d
+                $scope.expireTimeSpan = 5 * 24 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "11":
+                //1w
+                $scope.expireTimeSpan = 7 * 24 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "12":
+                //2w
+                $scope.expireTimeSpan = 2 * 7 * 24 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+            case "13":
+                //3w
+                $scope.expireTimeSpan = 3 * 7 * 24 * $scope.hourInMilliseconds;
+                console.log($scope.expireTimeSpan);
+                break;
+
+            }
+
+        /*if ($scope.dateSlider.name == 'Days'){
+            $scope.expireTimeSpan = timeSpan.number *24 * 3600000;
             console.log($scope.expireTimeSpan);
 
         }else if ($scope.dateSlider.name == 'Hours'){
-            $scope.expireTimeSpan = timeSpan * 3600000;
+            $scope.expireTimeSpan = timeSpan.number * 3600000;
             console.log($scope.expireTimeSpan);
-        }
+        }*/
     };
 
     /*$scope.getExpritionDate = function(date){
@@ -333,6 +434,93 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
             });
         }
     }
+
+
+    $scope.validTimespanChanged = function () {
+
+        switch ($scope.dateSlider.number) {
+            //1h 2h 3h 5h 10h 15h 1d 2d 3d 5d 1w 2w 1w
+            case "1":
+                //1h
+                $scope.dateSlider.name = $scope.expireInputHour;
+                $scope.dateSlider.date = 1;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "2":
+                //2h
+                $scope.dateSlider.name = $scope.expireInputHours;
+                $scope.dateSlider.date = 2;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "3":
+                //3h
+                $scope.dateSlider.name = $scope.expireInputHours;
+                $scope.dateSlider.date = 3;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "4":
+                //5h
+                $scope.dateSlider.name = $scope.expireInputHours;
+                $scope.dateSlider.date = 5;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "5":
+                //10h
+                $scope.dateSlider.name = $scope.expireInputHours;
+                $scope.dateSlider.date = 10;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "6":
+                //15h
+                $scope.dateSlider.name = $scope.expireInputHours;
+                $scope.dateSlider.date = 15;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "7":
+                //1d
+                $scope.dateSlider.name = $scope.expireInputDay;
+                $scope.dateSlider.date = 1;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "8":
+                //2d
+                $scope.dateSlider.name = $scope.expireInputDays;
+                $scope.dateSlider.date = 2;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "9":
+                //3d
+                $scope.dateSlider.name = $scope.expireInputDays;
+                $scope.dateSlider.date = 3;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "10":
+                //5d
+                $scope.dateSlider.name = $scope.expireInputDays;
+                $scope.dateSlider.date = 5;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "11":
+                //1w
+                $scope.dateSlider.name = $scope.expireInputWeek;
+                $scope.dateSlider.date = 1;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "12":
+                //2w
+                $scope.dateSlider.name = $scope.expireInputWeeks;
+                $scope.dateSlider.date = 2;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+            case "13":
+                //3w
+                $scope.dateSlider.name = $scope.expireInputWeeks;
+                $scope.dateSlider.date = 3;
+                console.log( $scope.dateSlider.date + " " + $scope.dateSlider.name);
+                break;
+
+        }
+    };
 
 
 });

@@ -87,7 +87,14 @@ i.radio-icon.disable-pointer-events.icon.ion-checkmark {
 }
 
 .desire-create .range{
+  margin-top: 5px;
+}
+
+.desire-create .desire-validTimespan{
   margin-top: 50px;
+  margin-left: 10px;
+  color: $primary;
+  font-size: medium;
 }
 
 .currency-select {

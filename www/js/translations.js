@@ -60,6 +60,12 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_MISSING_INPUT_TEXT_PRICE: 'Please Select a Price',
         DESIRECREATE_MISSING_INPUT_TEXT_CATEGORY: 'Please Select a Category',
         DESIRECREATE_MISSING_INPUT_TEXT_DROPZONE: 'Please Select a Dropzone',
+        DESIRECREATE_EXPIRE_INPUT_DAY: "day",
+        DESIRECREATE_EXPIRE_INPUT_DAYS: "days",
+        DESIRECREATE_EXPIRE_INPUT_WEEK: "week",
+        DESIRECREATE_EXPIRE_INPUT_WEEKS: "weeks",
+        DESIRECREATE_EXPIRE_INPUT_HOUR: "hour",
+        DESIRECREATE_EXPIRE_INPUT_HOURS: "hours",
 
 
 
@@ -193,6 +199,12 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_MISSING_INPUT_TEXT_PRICE: 'Gib einen Preis an',
         DESIRECREATE_MISSING_INPUT_TEXT_CATEGORY: 'Wähle eine Kategorie',
         DESIRECREATE_MISSING_INPUT_TEXT_DROPZONE: 'Wähle einen Ort',
+        DESIRECREATE_EXPIRE_INPUT_DAY: "Tag",
+        DESIRECREATE_EXPIRE_INPUT_DAYS: "Tage",
+        DESIRECREATE_EXPIRE_INPUT_WEEK: "Woche",
+        DESIRECREATE_EXPIRE_INPUT_WEEKS: "Wochen",
+        DESIRECREATE_EXPIRE_INPUT_HOUR: "Stunde",
+        DESIRECREATE_EXPIRE_INPUT_HOURS: "Stunden",
 
         /** DESIRE DETAIL **/
         DESIREDETAIL_BAR_TITLE: 'Auftrag',
