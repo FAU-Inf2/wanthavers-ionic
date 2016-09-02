@@ -52,7 +52,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
       removeToken: function() {
          console.log('removeToken', this.token);
-         if(token == "")
+         if(this.token == "")
             return;
          return $http.delete(server+'/v1/users/tokens/'+this.token, {}, Auth.getHeaderObject());
       },
