@@ -18,16 +18,20 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       },
 
       registerToken: function() {
-         $cordovaPushV5.initialize(this.options).then(function() {
-            // Start listening
-            $cordovaPushV5.onNotification();
-            $cordovaPushV5.onError();
+         try {
+            $cordovaPushV5.initialize(this.options).then(function() {
+               // Start listening
+               $cordovaPushV5.onNotification();
+               $cordovaPushV5.onError();
 
-            $cordovaPushV5.register().then(function(tokenID) {
-               this.createToken(tokenID);
-               this.token = tokenID;
+               $cordovaPushV5.register().then(function(tokenID) {
+                  this.createToken(tokenID);
+                  this.token = tokenID;
+               });
             });
-         });
+         } catch(err) {
+            alert(err);
+         }
 
          $rootScope.$on('$cordovaPushV5:notificationReceived', function(event, data) {
             this[data.additionalData.subject](data.additionalData);
@@ -42,6 +46,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
       createToken: function(tokenID) {
          console.log('createToken', tokenID);
+         alert('createToken', tokenID);
          return $http.post(server+'/v1/users/tokens', {userId: $rootScope.currentUserId, token: token, tokenType: "iOS"}, Auth.getHeaderObject());
       },
 
