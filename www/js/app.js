@@ -27,12 +27,36 @@ wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, P
       StatusBar.styleDefault();
     }
 
-      console.log("HI!!!")
+
+
       if(window.cordovaReady != undefined){
-          window.cordovaReady();
-      }else{
-          window.cordovaReady = {};
+          for(var i=0;i<window.cordovaReady.length;i++){
+              window.cordovaReady[i]();
+          }
       }
+      window.cordovaReady = "FIRED";
+
+
+
+      /** FIXING MAP BUG: START */
+
+      plugin.google.maps.Map.getMap({
+          'controls': {
+              'myLocationButton': true
+          },
+          'camera': {
+              'zoom': 16
+          }
+      });
+
+      var request = {
+          'position': new plugin.google.maps.LatLng(37.422476, -122.08425)
+      };
+
+      plugin.google.maps.Geocoder.geocode(request, function (results) {});
+
+
+      /** FIXING MAP BUG: END */
 
     PushNotifications.registerToken();
 

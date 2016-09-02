@@ -2,7 +2,7 @@ wanthaver.config(function ($translateProvider) {
     $translateProvider.translations('en', {
         CURRENT_LOCATION: 'Current Location',
         BIDDING: 'Bidding',
-        CUSTOM: 'Custom',
+        CUSTOM_LOCATION: 'Custom Location',
         CANCEL: 'Cancel',
         IMAGE: 'Image',
 
@@ -139,7 +139,7 @@ wanthaver.config(function ($translateProvider) {
     $translateProvider.translations('de', {
         CURRENT_LOCATION: 'Momentaner Standort',
         BIDDING: 'Bieten',
-        CUSTOM: 'Benutzerdefinierter Ort',
+        CUSTOM_LOCATION: 'Benutzerdefinierter Ort',
         CANCEL: 'Abbrechen',
         IMAGE: 'Bild',
 

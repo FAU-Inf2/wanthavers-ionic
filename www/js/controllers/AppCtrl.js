@@ -177,11 +177,15 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     }
 
     $rootScope.cordovaReady = function(func){
-        if(window.cordovaReady == undefined){
-            window.cordovaReady = func;
-        }else{
+        if(window.cordovaReady == "FIRED"){
             func();
+            return;
         }
+        if(window.cordovaReady == undefined){
+            window.cordovaReady = [];
+        }
+
+        window.cordovaReady.push(func);
     }
 
 })

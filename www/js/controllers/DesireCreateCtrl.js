@@ -21,11 +21,17 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $scope.reverseBidding.allowed = false;
     $scope.hourInMilliseconds = 3600000;
 
+    $scope.CUSTOM_LOCATION = "";
+
 
     $translate('DESIRECREATE_BAR_TITLE1').then(function (translation) {
         $scope.obj.title = translation;
         $scope.desirecreateBar1 = translation;
         console.log(translation);
+    });
+
+    $translate('CUSTOM_LOCATION').then(function (translation) {
+        $scope.CUSTOM_LOCATION = translation;
     });
 
     $translate('DESIRECREATE_BAR_TITLE2').then(function (translation) {
@@ -378,45 +384,53 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
 
 
     $scope.$on('$ionicView.enter', function() {
+        $scope.locations = [];
+
         Location.getUserLocations().then(function(resp){
-            $scope.locations = resp.data;
-
-            if($rootScope.currentPosition != undefined){
-                POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
-                var request = {
-                    'position': POS
-                };
-
-                plugin.google.maps.Geocoder.geocode(request, function(results) {
-                    if (results.length) {
-                        var result = results[0];
-                        if(result.extra.lines[0] == undefined || result.extra.lines[0].length==0){
-                            var address = result.extra.lines[1];
-                        }else{
-                            var address = result.extra.lines[0] + ", " + result.extra.lines[1];
-                        }
-
-                        $translate('CURRENT_LOCATION').then(function (translation) {
-                            var loc = {};
-                            loc.description = translation;
-                            loc.fullAddress = address;
-                            loc.lat = $rootScope.currentPosition.latitude;
-                            loc.lon = $rootScope.currentPosition.longitude;
-                            loc.userId = Auth.getUserId();
-                            $scope.locations.push(loc);
-                            $scope.locationChoice = loc;
-                        });
-
-                    }
-                });
-            }
+            $scope.locations.concat(resp.data);
         });
+
+        console.log("currenPos: "+$rootScope.currentPosition);
+        if($rootScope.currentPosition != undefined){
+            console.log("lat: "+$rootScope.currentPosition.latitude);
+            console.log("lng: "+$rootScope.currentPosition.longitude);
+            POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
+            var request = {
+                'position': POS
+            };
+
+            plugin.google.maps.Geocoder.geocode(request, function(results) {
+                console.log("GEOCODER returns ->")
+                if (results.length) {
+                    var result = results[0];
+                    if(result.extra.lines[0] == undefined || result.extra.lines[0].length==0){
+                        var address = result.extra.lines[1];
+                    }else{
+                        var address = result.extra.lines[0] + ", " + result.extra.lines[1];
+                    }
+
+                    console.log(address);
+
+                    $translate('CURRENT_LOCATION').then(function (translation) {
+                        var loc = {};
+                        loc.description = translation;
+                        loc.fullAddress = address;
+                        loc.lat = $rootScope.currentPosition.latitude;
+                        loc.lon = $rootScope.currentPosition.longitude;
+                        loc.userId = Auth.getUserId();
+                        $scope.locations.push(loc);
+                        $scope.locationChoice = loc;
+                    });
+
+                }
+            }, function(error){console.log(error);});
+        }
     });
 
     $scope.chooseDifferentLocation = function(){
         $rootScope.showMap().then(function(resp){
             var loc = {};
-            loc.description = "Custom";
+            loc.description = $scope.CUSTOM_LOCATION;
             loc.fullAddress = resp.address;
             loc.lat = resp.lat;
             loc.lon = resp.lng;
