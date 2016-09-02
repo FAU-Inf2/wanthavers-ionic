@@ -3,7 +3,11 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
     var map = undefined;
     var POS = undefined;
     $scope.address = "";
-    
+    var mapReady = false;
+
+    console.log(plugin.google.maps);
+
+
     $scope.promptTextTitle = "Custom Location";
     $translate('MAP_PROMPT_TITLE').then(function (translation) {
         $scope.translatedText = translation;
@@ -49,6 +53,7 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
     }
 
     $rootScope.readyMap = function (lat, lng) {
+        mapReady = true;
         if(lat != undefined && lng != undefined){
             POS = new plugin.google.maps.LatLng(lat, lng);
         }
@@ -81,14 +86,17 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
     }
 
     ionic.DomUtil.ready(function() {
-
+        console.log("READY DOM UTIL!!!");
         if($rootScope.currentPosition == undefined){
             POS = new plugin.google.maps.LatLng(37.422476, -122.08425);
         }else{
             POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
         }
 
+        console.log("GEOCODER START");
+
         plugin.google.maps.Geocoder.geocode({'position': POS}, function(results) {
+            console.log("GEOCODER RETURNS");
             if (results.length) {
                 var result = results[0];
 
@@ -121,8 +129,25 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
         //map.setVisible(true);
 
         map.on(plugin.google.maps.event.CAMERA_CHANGE, function(pos){
+            if(!mapReady || m == undefined){
+                return;
+            }
             var tmp  = new plugin.google.maps.LatLng(pos.target.lat, pos.target.lng);
             m.setPosition(tmp);
+
+            var request = {
+                'position': tmp
+            };
+
+        });
+
+
+        map.on(plugin.google.maps.event.CAMERA_IDLE, function(pos){
+            if(!mapReady){
+                return;
+            }
+
+            var tmp  = new plugin.google.maps.LatLng(pos.target.lat, pos.target.lng);
 
             var request = {
                 'position': tmp
@@ -143,6 +168,7 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
             });
 
         });
+
 
         map.addEventListener(plugin.google.maps.event.MAP_READY, $rootScope.readyMap);
     });

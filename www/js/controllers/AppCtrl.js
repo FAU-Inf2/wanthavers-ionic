@@ -10,6 +10,10 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
 
     //$translate.use("en");
 
+    $rootScope.getMapLicense = function(){
+        return plugin.google.maps.Map.getMap().getLicenseInfo();
+    }
+    
     $scope.setI18n = function(lang){
         //return;
         tmhDynamicLocale.set(lang);

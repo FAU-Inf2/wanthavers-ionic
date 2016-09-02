@@ -33,7 +33,7 @@ wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, P
       }else{
           window.cordovaReady = {};
       }
-      
+
     PushNotifications.registerToken();
 
 
