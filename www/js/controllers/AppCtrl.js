@@ -1,10 +1,10 @@
-controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, Auth, tmhDynamicLocale, amMoment, $translate, $q, $ionicActionSheet, Media, $ionicLoading) {
+controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, Auth, tmhDynamicLocale, amMoment, $translate, $q, $ionicActionSheet, Media, $ionicLoading, PushNotifications) {
 
     $rootScope.currentPosition = undefined;
     $rootScope.selectedMapPosition = {};
     $rootScope.mapDeferred = undefined;
     $rootScope.mapModal = undefined;
-    
+
     $scope.barButtonsMap = [];
     $scope.barButtons = [];
 
@@ -13,7 +13,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     $rootScope.getMapLicense = function(){
         return plugin.google.maps.Map.getMap().getLicenseInfo();
     }
-    
+
     $scope.setI18n = function(lang){
         //return;
         tmhDynamicLocale.set(lang);
@@ -83,6 +83,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     $scope.logout = function(){
         Auth.clearCredentials();
         $rootScope.currentUser = {};
+        PushNotifications.removeToken();
         $state.go("app.startup");
     }
 

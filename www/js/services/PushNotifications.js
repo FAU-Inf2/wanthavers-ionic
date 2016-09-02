@@ -2,6 +2,8 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
    function ($rootScope, $cordovaPushV5, $state, $ionicPopup, $http, CloudMessageSubject, Chat) {
 
     return {
+      token: "",
+
       options: {
          android: {},
          ios: {
@@ -23,6 +25,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
             $cordovaPushV5.register().then(function(tokenID) {
                this.createToken(tokenID);
+               this.token = tokenID;
             });
          });
 
@@ -33,13 +36,21 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          });
          $rootScope.$on('$cordovaPushV5:errorOcurred', function(event, e) {
             console.err(e);
+            alert(e);
          });
       },
 
       createToken: function(tokenID) {
          console.log('createToken', tokenID);
-         //return $http.post(server+'/v1/users/tokens', {userId: $rootScope.currentUserId, token: token, tokenType: "iOS"}, Auth.getHeaderObject());
+         return $http.post(server+'/v1/users/tokens', {userId: $rootScope.currentUserId, token: token, tokenType: "iOS"}, Auth.getHeaderObject());
       },
+
+      removeToken: function() {
+         console.log('removeToken', this.token);
+         if(token == "")
+            return;
+         return $http.delete(server+'/v1/users/tokens/'+this.token, {}, Auth.getHeaderObject());
+      }
 
       /** For handle functions see CloudMessageSubject **/
       // CloudMessageSubject.NEWMESSAGE
