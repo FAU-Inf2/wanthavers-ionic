@@ -50,7 +50,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          if(token == "")
             return;
          return $http.delete(server+'/v1/users/tokens/'+this.token, {}, Auth.getHeaderObject());
-      }
+      },
 
       /** For handle functions see CloudMessageSubject **/
       // CloudMessageSubject.NEWMESSAGE
