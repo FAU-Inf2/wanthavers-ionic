@@ -18,11 +18,13 @@
           <textarea ng-model="desire.description" class="create-description" placeholder="{{ 'DESIRECREATE_DESCRIPTION_PLACEGOLDER' | translate }}" maxlength="300"></textarea>
         </label>
 
-        <div class="desire-validTimespan" >{{ 'DESIRECREATE_DATE' | translate }}</div>
+
+        <div class="desire-validTimespan" >{{'DESIRECREATE_DATE' | translate}} <span>{{ 'DESIRECREATE_EXPIRE' | translate }} {{dateSlider.date}} {{dateSlider.name}}</span></div>
         <div class="item range range-positive">
-          <span class="input-label expiration-label">{{ 'DESIRECREATE_EXPIRE' | translate }} {{dateSlider.date}} {{dateSlider.name}}</span>
           <input type="range" name="volume" min="1" max="13" ng-model="dateSlider.number" ng-change="validTimespanChanged()">
         </div>
+
+
           <!--<li class="item" style="padding:0;">
               <ion-radio ng-model="dateSlider.name" ng-value="'Hours'">{{ 'DESIRECREATE_EXPIRE_HOURS' | translate }}</ion-radio>
               <ion-radio ng-model="dateSlider.name" ng-value="'Days'">{{ 'DESIRECREATE_EXPIRE_DAYS' | translate }}</ion-radio>

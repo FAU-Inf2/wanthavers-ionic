@@ -124,7 +124,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
         });
     }
 
-    $rootScope.showMap = function(){
+    $rootScope.showMap = function(lat, lng){
         $rootScope.mapDeferred = $q.defer();
 
         if(typeof plugin == 'undefined'){
@@ -149,7 +149,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
                 });
             }else{
                 $rootScope.mapModal.show();
-                $rootScope.readyMap();
+                $rootScope.readyMap(lat, lng);
             }
         }
 

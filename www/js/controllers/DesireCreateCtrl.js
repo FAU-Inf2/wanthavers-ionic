@@ -253,9 +253,10 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     };
 
     $scope.create = function(desire) {
+        console.log("--->"+$scope.locationChoice.lat + "   "+ $scope.locationChoice.lon)
         desire.dropzone_string = $scope.locationChoice.fullAddress;
         desire.dropzone_lat = $scope.locationChoice.lat;
-        desire.dropzone_long = $scope.locationChoice.long;
+        desire.dropzone_long = $scope.locationChoice.lon;
         desire.biddingAllowed = $scope.reverseBidding.allowed;
 
         console.log(desire);
@@ -417,8 +418,8 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
             var loc = {};
             loc.description = "Custom";
             loc.fullAddress = resp.address;
-            loc.lat = resp.latitude;
-            loc.lon = resp.longitude;
+            loc.lat = resp.lat;
+            loc.lon = resp.lng;
             loc.userId = Auth.getUserId();
             $scope.locations.push(loc);
             $scope.locationChoice = loc;

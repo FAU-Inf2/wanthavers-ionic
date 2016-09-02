@@ -43,7 +43,10 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
     });
 
 
-    $scope.$parent.removeButtons();
+    $scope.showAddress = function(){
+        console.log($scope.desire.dropzone_lat)
+        $rootScope.showMap($scope.desire.dropzone_lat, $scope.desire.dropzone_long);
+    }
 
     Desire.getDetail($stateParams.desireId).then(function (resp) {
         $scope.desire = resp.data;

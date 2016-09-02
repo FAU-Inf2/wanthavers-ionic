@@ -48,7 +48,11 @@ controllers.controller('MapCtrl', function($scope, $state, Auth, User, $rootScop
         });
     }
 
-    $rootScope.readyMap = function () {
+    $rootScope.readyMap = function (lat, lng) {
+        if(lat != undefined && lng != undefined){
+            POS = new plugin.google.maps.LatLng(lat, lng);
+        }
+
         map.setDiv(document.getElementById("map_canvas"));
         document.getElementById("main").style.display = "none";
         map.clear();
