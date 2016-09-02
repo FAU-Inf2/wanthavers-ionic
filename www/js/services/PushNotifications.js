@@ -30,7 +30,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
                });
             });
          } catch(err) {
-            alert(err);
+            console.err(err);
          }
 
          $rootScope.$on('$cordovaPushV5:notificationReceived', function(event, data) {
