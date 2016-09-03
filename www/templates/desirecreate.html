@@ -105,7 +105,7 @@
 
             <ion-list>
 
-              <ion-radio class="location-check-list" ng-model="locationChoice" ng-value="l" ng-repeat="l in locations">
+              <ion-radio class="location-check-list" ng-model="obj.locationChoice" ng-value="l" ng-repeat="l in locations" ng-change="debug()">
                 {{l.description}}<br>
                 <span class="location-list-address">{{l.fullAddress}}</span>
               </ion-radio>

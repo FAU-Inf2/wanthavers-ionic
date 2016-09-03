@@ -16,6 +16,9 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
 
     $scope.onTextFieldFocus= function(){
         map.setClickable(false);
+        setTimeout(function() {
+            document.getElementById("searchBox").setSelectionRange(0, 9999);
+        }, 1);
     }
 
     $scope.onTextFieldBlur = function(){
@@ -105,6 +108,8 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
         mapReady = true;
         if (lat != undefined && lng != undefined) {
             POS = new plugin.google.maps.LatLng(lat, lng);
+        }else{
+            POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
         }
 
         map.setDiv(document.getElementById("map_canvas"));
@@ -140,20 +145,14 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
 
     ionic.DomUtil.ready(function () {
         $rootScope.cordovaReady(function () {
-            console.log("READY DOM UTIL!!!");
             if ($rootScope.currentPosition == undefined) {
                 POS = new plugin.google.maps.LatLng(37.422476, -122.08425);
             } else {
                 POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
             }
 
-            console.log("X: "+$rootScope.currentPosition.latitude);
-            console.log("Y: "+$rootScope.currentPosition.longitude);
-
-            console.log("GEOCODER START");
 
             plugin.google.maps.Geocoder.geocode({'position': POS}, function (results) {
-                console.log("GEOCODER RETURNS");
                 if (results.length) {
                     var result = results[0];
 

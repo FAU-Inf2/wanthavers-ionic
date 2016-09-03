@@ -149,7 +149,7 @@ wanthaver.config(function ($translateProvider) {
         IMAGE: 'Bild',
         LOADING_DESIRES: 'Suche nach Aufträgen in deiner Umgebung',
         NO_DESIRES_TITLE: 'Oops, nichts gefunden',
-        NO_DESIRES_DESC: 'Sei der erste und erstelle einen Auftrag oder ändere deinen Ort in den Filtereinstellungen. ',
+        NO_DESIRES_DESC: 'Sei der Erste und erstelle einen Auftrag oder ändere deinen Ort in den Filtereinstellungen. ',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'Alle Aufträge',

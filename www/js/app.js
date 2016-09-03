@@ -250,13 +250,20 @@ wanthaver.directive('preventDrag', function ($ionicGesture, $ionicSlideBoxDelega
         }
     }});
 
-wanthaver.directive('prettySubmit', function () {
-    return function (scope, element, attr) {
-        var textFields = $(element).children('input');
-
-        $(element).submit(function(event) {
-            event.preventDefault();
-            textFields.blur();
-        });
+wanthaver.directive('selectOnClick', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element) {
+            var focusedElement;
+            element.on('click', function () {
+                if (focusedElement != this) {
+                    this.select();
+                    focusedElement = this;
+                }
+            });
+            element.on('blur', function () {
+                focusedElement = null;
+            });
+        }
     };
 })
