@@ -3,6 +3,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     $scope.reachedEnd = false;
     $scope.obj = {};
     $scope.obj.location = "";
+    $scope.showLoadingAnimation = false;
 
     $ionicSideMenuDelegate.canDragContent(true);
 
@@ -10,7 +11,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
     $scope.init = function() {
 
-        $rootScope.showLoading();
+        $scope.showLoading();
 
         if($stateParams.mode == "my"){
             $scope.reachedEnd = false;
@@ -101,7 +102,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
             }
             $scope.feed = resp.data;
             $scope.$broadcast('scroll.refreshComplete');
-            $rootScope.hideLoading();
+            $scope.hideLoading();
         });
     }
 
@@ -121,6 +122,17 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
             $state.go("app.chatlist");
         }
     }]);
+
+    $scope.showLoading = function(){
+        $scope.showLoadingAnimation = true;
+    }
+
+    $scope.hideLoading = function(){
+        $scope.showLoadingAnimation = false;
+    }
+
+
+    /** INIT **/
 
     $scope.init();
 

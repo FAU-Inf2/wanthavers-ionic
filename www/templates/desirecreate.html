@@ -5,18 +5,19 @@
 
     <ion-slide-box on-slide-changed="slideHasChanged($index)">
       <ion-slide class="first-slide" prevent-drag>
-        <label class="item-input item-floating-label">
+
+        <div class="item-input item-floating-label">
           <span class="input-label">{{ 'DESIRECREATE_TITLE' | translate }}</span>
           <input type="text" maxlength="50" ng-model="desire.title" placeholder="Titel">
-        </label>
+        </div>
 
-        <label class=" item-input item-floating-label">
+        <div class=" item-input item-floating-label">
           <span class="input-label">{{ 'DESIRECREATE_DESCRIPTION' | translate }}</span>
           <span class="desc-char-counter" ng-class="{'red-font' : desire.description.length == 300}">
             ({{(desire.description == undefined) ? 0 : desire.description.length }}/300)
           </span>
           <textarea ng-model="desire.description" class="create-description" placeholder="{{ 'DESIRECREATE_DESCRIPTION_PLACEGOLDER' | translate }}" maxlength="300"></textarea>
-        </label>
+        </div>
 
 
         <div class="desire-validTimespan" >{{'DESIRECREATE_DATE' | translate}} <span>{{ 'DESIRECREATE_EXPIRE' | translate }} {{dateSlider.date}} {{dateSlider.name}}</span></div>
@@ -98,6 +99,7 @@
 
             <div class="item" style="border:none">
               <span class="input-label expiration-label">{{ 'DESIRECREATE_LOCATION_HEADER' | translate }}</span>
+              <div class="location-list-address">{{'DESIRECREATE_DROPZONE_DESC' | translate}}</div>
               <div class="location-list-address" ng-if="locations.length==0">{{ 'DESIRECREATE_NO_LOCATIONS' | translate }}</div>
             </div>
 

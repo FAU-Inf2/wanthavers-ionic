@@ -387,7 +387,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
         $scope.locations = [];
 
         Location.getUserLocations().then(function(resp){
-            $scope.locations.concat(resp.data);
+            $scope.locations = $scope.locations.concat(resp.data);
         });
 
         console.log("currenPos: "+$rootScope.currentPosition);

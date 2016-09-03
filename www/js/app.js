@@ -249,3 +249,14 @@ wanthaver.directive('preventDrag', function ($ionicGesture, $ionicSlideBoxDelega
             $ionicGesture.on('touch', reportEvent, elem);
         }
     }});
+
+wanthaver.directive('prettySubmit', function () {
+    return function (scope, element, attr) {
+        var textFields = $(element).children('input');
+
+        $(element).submit(function(event) {
+            event.preventDefault();
+            textFields.blur();
+        });
+    };
+})

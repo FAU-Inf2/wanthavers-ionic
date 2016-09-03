@@ -8,10 +8,16 @@
     <ion-content scroll="false">
 
         <div id="map_canvas">
-            <div class="map-inner-wrapper" ng-click="showConfirm()">
+            <div class="map-inner-wrapper"> <!--ng-click="showConfirm()"-->
+            <form action="." ng-submit="$event.preventDefault();onEnter()">
+              <input id="searchBox" type="search" ng-keypress="checkIfEnterKeyWasPressed($event)" ng-focus="onTextFieldFocus()" ng-focus="onTextFieldBlur()">
+            </form>
+
+
+                <!--
                 <div id="searchBox">
-                    no location
-                </div>
+                    No Location
+                </div>-->
             </div>
 
             <button class="button button-positive map-btn-location" ng-click="finish(true)">
