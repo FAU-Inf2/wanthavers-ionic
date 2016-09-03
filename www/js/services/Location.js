@@ -11,6 +11,10 @@ wanthaver.factory('Location', ['$http', 'Auth', function ($http, Auth) {
 
         createLocation: function(l){
             return $http.post(server+'/v1/locations', l, Auth.getHeaderObject());
+        },
+
+        deleteLocation: function(l){
+            return $http.delete(server+'/v1/locations/'+l.id, Auth.getHeaderObject(true));
         }
     };
 }]);

@@ -239,11 +239,31 @@ button.button-icon.round-overlay-button {
   font-weight: bold;
 }
 
-.loading-container .loading {
-  background: none;
-}
 
 .spinner-desire svg {
   width: 64px;
   height: 64px;
+}
+
+.loading-wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  margin-left:-30%;
+  margin-top:-20%;
+  text-align: center;
+}
+
+.loading-wrapper span{
+  display:inline-block;
+  font-size: 16px;
+  color: #888;
+
+}
+
+.loading-wrapper h1{
+  color: $primary;
+
 }

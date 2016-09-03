@@ -48,4 +48,14 @@
 
   <button class="round-overlay-button bottom-center primary button button-icon ion-plus-round light" ui-sref="app.desirecreate"></button>
 
+  <div class="loading-wrapper" ng-show="showLoadingAnimation">
+    <ion-spinner icon="ripple" class="spinner-positive spinner-desire"></ion-spinner>
+    <span>{{'LOADING_DESIRES' | translate}}</span>
+  </div>
+
+  <div class="loading-wrapper" ng-show="feed.length == 0">
+    <h1>{{'NO_DESIRES_TITLE' | translate}}</h1>
+    <span>{{'NO_DESIRES_DESC' | translate}}</span>
+  </div>
+
 </ion-view>

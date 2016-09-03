@@ -9,7 +9,7 @@
 }
 
 .map-inner-wrapper{
-  width: 60%;
+  width: 70%;
   padding-top: 20px;
   margin: 0 auto;
 }
@@ -18,9 +18,15 @@
   border-radius: 2px;
   width: 100%;
   background: #fff;
-  padding: 5px;
-  color: #000;
-  border: 1px solid #888;
+  padding: 4px;
+
+  line-height: normal;
+
+  color: #333;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  -webkit-appearance: none;
+  text-align: center;
 }
 
 .map-btn-location{

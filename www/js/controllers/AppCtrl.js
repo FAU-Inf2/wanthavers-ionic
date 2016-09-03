@@ -1,4 +1,4 @@
-controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, Auth, tmhDynamicLocale, amMoment, $translate, $q, $ionicActionSheet, Media, $ionicLoading, PushNotifications) {
+controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, Auth, tmhDynamicLocale, amMoment, $translate, $q, $ionicActionSheet, Media, PushNotifications) {
 
     $rootScope.currentPosition = undefined;
     $rootScope.selectedMapPosition = {};
@@ -15,7 +15,6 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     }
 
     $scope.setI18n = function(lang){
-        //return;
         tmhDynamicLocale.set(lang);
         amMoment.changeLocale(lang);
         $translate.use(lang);
@@ -83,7 +82,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     $scope.logout = function(){
         Auth.clearCredentials();
         $rootScope.currentUser = {};
-        PushNotifications.removeToken();
+        //PushNotifications.removeToken();
         $state.go("app.startup");
     }
 
@@ -161,20 +160,6 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
         return $rootScope.mapDeferred.promise;
     }
 
-    $rootScope.showLoading = function(){
-        $ionicLoading.show({
-            template: '<ion-spinner icon="ripple" class="spinner-positive spinner-desire"></ion-spinner>',
-            content: 'Loading',
-            animation: 'fade-in',
-            showBackdrop: false,
-            maxWidth: 400,
-            showDelay: 1000
-        });
-    }
-
-    $rootScope.hideLoading = function(){
-        $ionicLoading.hide();
-    }
 
     $rootScope.cordovaReady = function(func){
         if(window.cordovaReady == "FIRED"){

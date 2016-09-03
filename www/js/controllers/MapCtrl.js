@@ -13,11 +13,60 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
         $scope.translatedText = translation;
     });
 
+
+    $scope.onTextFieldFocus= function(){
+        map.setClickable(false);
+    }
+
+    $scope.onTextFieldBlur = function(){
+        map.setClickable(true);
+    }
+
+    $scope.checkIfEnterKeyWasPressed = function($event){
+        var keyCode = $event.which || $event.keyCode;
+        if (keyCode === 13) {
+            map.setClickable(true);
+            cordova.plugins.Keyboard.close();
+            $scope.onEnter();
+        }
+    };
+
+    $scope.onEnter = function(){
+        var request = {
+            'address': document.getElementById("searchBox").value
+        };
+        plugin.google.maps.Geocoder.geocode(request, function (results) {
+            if (results.length) {
+                var result = results[0];
+                var position = result.position;
+                map.clear();
+                map.addMarker({
+                    'position': position,
+                    'flat': true,
+                    'icon': 'www/img/mapicon.png'
+                }, function (marker) {
+                    m = marker;
+                    map.animateCamera({
+                        'target': position,
+                        'zoom': 16,
+                        'duration': 1000
+                    }, function () {
+
+                    });
+
+                });
+            } else {
+                alert("Not found");
+            }
+        });
+    }
+
     $scope.showConfirm = function () {
         map.setClickable(false);
+
         $ionicPopup.prompt({
             title: $scope.promptTextTitle,
-            template: '<input ng-model="data.response" type="text" placeholder="{{ placeHolder }}" autofocus>',
+            template: '<input ng-model="data.response" type="text" autofocus>',
             inputType: 'text',
             inputPlaceholder: 'Address'
         }).then(function (res) {
@@ -75,7 +124,11 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
 
     $scope.finish = function (success) {
         $rootScope.selectedMapPosition.success = success;
-        $rootScope.mapDeferred.resolve($rootScope.selectedMapPosition);
+        if(success){
+            $rootScope.mapDeferred.resolve($rootScope.selectedMapPosition);
+        }else{
+            $rootScope.mapDeferred.reject(new Error("canceled by user"));
+        }
         console.log($rootScope.selectedMapPosition.lat);
         document.getElementById("main").style.display = "block";
         map.setDiv(null);
@@ -114,7 +167,7 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
                     $rootScope.selectedMapPosition.lng = POS.lng;
                     $rootScope.selectedMapPosition.address = address;
                     if (document.getElementById("searchBox") != null) {
-                        document.getElementById("searchBox").innerHTML = address;
+                        document.getElementById("searchBox").value = address;
                     }
                 }
             });
@@ -170,7 +223,7 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
                         }
                         $rootScope.selectedMapPosition = pos.target;
                         $rootScope.selectedMapPosition.address = address;
-                        document.getElementById("searchBox").innerHTML = address;
+                        document.getElementById("searchBox").value = address;
                     }
                 });
 

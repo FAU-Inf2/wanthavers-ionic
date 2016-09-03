@@ -5,6 +5,9 @@ wanthaver.config(function ($translateProvider) {
         CUSTOM_LOCATION: 'Custom Location',
         CANCEL: 'Cancel',
         IMAGE: 'Image',
+        LOADING_DESIRES: 'Searching for Desires nearby',
+        NO_DESIRES_TITLE: 'Whoops, nothing found',
+        NO_DESIRES_DESC: 'Be the first to create a desire or change your location in the filter settings.',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'All Desires',
@@ -53,7 +56,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_REVERSEDBIDDING_POPUP_TITLE: 'About Reversed Bidding in WantHaver',
         DESIRECREATE_REVERSEDBIDDING_POPUP_TEXT: 'Reversed Bidding text ...//TODO. For further infromation also see: www.wanthaver.com',
         DESIRECREATE_REVERSE_BIDDING: 'Reverse Bidding',
-        DESIRECREATE_REVERSE_BIDDING_DESC: 'This means that Havers must suggest a price.',
+        DESIRECREATE_REVERSE_BIDDING_DESC: 'Havers must suggest a price.',
         DESIRECREATE_MISSING_INPUT_TITLE: 'Error Creating a Desire!',
         DESIRECREATE_MISSING_INPUT_TEXT_TITLE: 'Please Enter a Title',
         DESIRECREATE_MISSING_INPUT_TEXT_DESCRIPTION: 'Please Select a Description',
@@ -66,7 +69,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_EXPIRE_INPUT_WEEKS: "weeks",
         DESIRECREATE_EXPIRE_INPUT_HOUR: "hour",
         DESIRECREATE_EXPIRE_INPUT_HOURS: "hours",
-
+        DESIRECREATE_DROPZONE_DESC: 'desired drop-off location or place of delivery',
 
 
         /** DESIRE DETAIL **/
@@ -120,6 +123,8 @@ wanthaver.config(function ($translateProvider) {
         FILTERSETTING_RESET: 'Reset Filter',
         FILTERSETTING_RADIUS: 'Distance Radius',
         FILTERSETTING_LOCATION: 'Location',
+        FILTERSETTING_FAVORITE_LOCATIONS: 'Favorite Locations',
+        SETTINGS_SAVE_LOCATION_POPUP: 'Name for Location',
 
         /** CATEGORY_LIST **/
         CATEGORYLIST_TITLE: 'Select a Category',
@@ -142,6 +147,9 @@ wanthaver.config(function ($translateProvider) {
         CUSTOM_LOCATION: 'Benutzerdefinierter Ort',
         CANCEL: 'Abbrechen',
         IMAGE: 'Bild',
+        LOADING_DESIRES: 'Suche nach Aufträgen in deiner Umgebung',
+        NO_DESIRES_TITLE: 'Oops, nichts gefunden',
+        NO_DESIRES_DESC: 'Sei der erste und erstelle einen Auftrag oder ändere deinen Ort in den Filtereinstellungen. ',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'Alle Aufträge',
@@ -205,6 +213,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_EXPIRE_INPUT_WEEKS: "Wochen",
         DESIRECREATE_EXPIRE_INPUT_HOUR: "Stunde",
         DESIRECREATE_EXPIRE_INPUT_HOURS: "Stunden",
+        DESIRECREATE_DROPZONE_DESC: 'Übergabe oder Lieferort',
 
         /** DESIRE DETAIL **/
         DESIREDETAIL_BAR_TITLE: 'Auftrag',
@@ -257,6 +266,8 @@ wanthaver.config(function ($translateProvider) {
         FILTERSETTING_RESET: 'Filter zurücksetzen',
         FILTERSETTING_RADIUS: 'Entfernungsradius',
         FILTERSETTING_LOCATION: 'Standort',
+        FILTERSETTING_FAVORITE_LOCATIONS: 'Lieblingsorte',
+        SETTINGS_SAVE_LOCATION_POPUP: 'Ort benennen',
 
         /** CATEGORY_LIST **/
         CATEGORYLIST_TITLE: 'Wähle eine Kategorie',
