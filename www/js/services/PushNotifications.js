@@ -18,36 +18,30 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       },
 
       registerToken: function() {
-         try {
-            $cordovaPushV5.initialize(this.options).then(function() {
-               // Start listening
-               $cordovaPushV5.onNotification();
-               $cordovaPushV5.onError();
+         $cordovaPushV5.initialize(this.options).then((function() {
+            // Start listening
+            $cordovaPushV5.onNotification();
+            $cordovaPushV5.onError();
 
-               $cordovaPushV5.register().then(function(tokenID) {
-                  this.createToken(tokenID);
-                  this.token = tokenID;
-               });
-            });
-         } catch(err) {
-            console.err(err);
-         }
+            $cordovaPushV5.register().then((function(tokenID) {
+               this.createToken(tokenID);
+               this.token = tokenID;
+            }).bind(this));
+         }).bind(this));
 
-         $rootScope.$on('$cordovaPushV5:notificationReceived', function(event, data) {
+         $rootScope.$on('$cordovaPushV5:notificationReceived', (function(event, data) {
             this[data.additionalData.subject](data.additionalData);
-            alert(data); //TODO: remove debug output
+            console.log("Recieved push", data);
             $cordovaPushV5.finish(); //for iOS
-         });
-         $rootScope.$on('$cordovaPushV5:errorOcurred', function(event, e) {
-            console.err(e);
-            alert(e);
-         });
+         }).bind(this));
+         $rootScope.$on('$cordovaPushV5:errorOcurred', (function(event, e) {
+            console.error(e);
+         }).bind(this));
       },
 
-      createToken: function(tokenID) {
-         console.log('createToken', tokenID);
-         alert('createToken', tokenID);
-         return $http.post(server+'/v1/users/tokens', {userId: $rootScope.currentUserId, token: token, tokenType: "iOS"}, Auth.getHeaderObject());
+      createToken: function(token) {
+         console.log('createToken', token);
+         //return $http.post(server+'/v1/users/tokens', {userId: $rootScope.currentUserId, token: token, tokenType: "iOS"}, Auth.getHeaderObject());
       },
 
       removeToken: function() {
@@ -63,7 +57,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          chatId = data[CloudMessageSubject.NEWMESSAGE_CHATID];
 
          // Check if notification was recieved while app was in foreground
-         if(data.additionalData.foreground)
+         if(data.foreground)
             //TODO: change buttons
             console.log("Recieved new message on foreground");
          else
@@ -72,10 +66,10 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       },
 
       // CloudMessageSubject.DESIRECOMPLETE
-      DesireComplete: function(notification) {
+      DesireComplete: function(data) {
          desireId = data[CloudMessageSubject.DESIRECOMPLETE_DESIREID];
 
-         if(data.additionalData.foreground)
+         if(data.foreground)
             //TODO: change buttons
             console.log("Recieved desire complete on foreground");
          else
@@ -84,10 +78,10 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       },
 
       // CloudMessageSubject.HAVERACCEPTED
-      HaverAccepted: function(notification) {
+      HaverAccepted: function(data) {
          desireId = data[CloudMessageSubject.HAVERACCEPTED_DESIREID];
 
-         if(data.additionalData.foreground)
+         if(data.foreground)
             //TODO: change buttons
             console.log("Recieved haver accepted on foreground");
          else
@@ -96,19 +90,19 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       },
 
       // CloudMessageSubject.HAVERREJECTED
-      HaverRejected: function(notification) {
+      HaverRejected: function(data) {
          desireId = data[CloudMessageSubject.HAVERREJECTED_DESIREID];
 
-         if(data.additionalData.foreground)
+         if(data.foreground)
             //TODO: change buttons
             console.log("Recieved desire complete on foreground");
       },
 
       // CloudMessageSubject.NEWHAVER
-      NewHaver: function(notification) {
+      NewHaver: function(data) {
          desireId = data[CloudMessageSubject.NEWHAVER_DESIREID];
 
-         if(data.additionalData.foreground)
+         if(data.foreground)
             //TODO: change buttons
             console.log("Recieved new haver on foreground");
          else
