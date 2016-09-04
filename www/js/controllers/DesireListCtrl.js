@@ -4,6 +4,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     $scope.obj = {};
     $scope.obj.location = "";
     $scope.showLoadingAnimation = false;
+    $scope.isMy = false;
 
     $ionicSideMenuDelegate.canDragContent(true);
 
@@ -26,7 +27,6 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
                 $scope.obj.location = translation;
             });*/
         }else{
-            console.log("XXX");
             $scope.reachedEnd = false;
             if($rootScope.currentPosition == undefined){
                 $scope.obj.location = "";
@@ -40,7 +40,10 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
     $scope.$on('$ionicView.enter', function () {
         if($stateParams.mode == "my"){
+            $scope.isMy = true;
             $scope.init();
+        }else{
+            $scope.isMy = false;
         }
     });
 
@@ -107,7 +110,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     }
 
     $scope.$parent.addButtons([{
-        icon: "ion-android-funnel",
+        icon: "ion-ios-settings-strong",
         name: "",
         show: true,
         action: function(){

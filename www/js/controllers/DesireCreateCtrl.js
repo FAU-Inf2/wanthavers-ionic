@@ -419,7 +419,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
                         loc.lon = $rootScope.currentPosition.longitude;
                         loc.userId = Auth.getUserId();
                         $scope.locations.push(loc);
-                        $scope.locationChoice = loc;
+                        $scope.obj.locationChoice = loc;
                     });
 
                 }
@@ -436,7 +436,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
             loc.lon = resp.lng;
             loc.userId = Auth.getUserId();
             $scope.locations.push(loc);
-            //$scope.locationChoice = loc;
+            $scope.obj.locationChoice = loc;
         });
     }
 
@@ -536,10 +536,6 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
 
         }
     };
-
-    $scope.debug = function(){
-        console.log($scope.obj.locationChoice);
-    }
 
 
 });

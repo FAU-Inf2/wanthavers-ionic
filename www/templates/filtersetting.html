@@ -1,23 +1,42 @@
 <ion-view view-title="{{ 'FILTERSETTING_TITLE' | translate }}">
     <ion-content>
-        <button class="button button-clear button-positive button-icon ion-edit ion-close-circled" ng-click="openModal()">&nbsp;{{ 'FILTERSETTING_CATEGORY' | translate }}&nbsp;</button>
 
-        <div class="row row-no-padding" ng-show="filterSetting.category != null">
-            <div class="category-image"><img ng-src="{{filterSetting.category.image.lowRes}}"></div>
-            <div class="padding category-name">{{filterSetting.category.name}}</div>
-            <button class="button button-clear button-positive button-icon ion-close-circled cancel-filter" ng-click="removeCategory()">&nbsp;</button>
+        <span class="padding input-label expiration-label">{{ 'FILTERSETTING_CATEGORY' | translate }}</span>
+
+        <div class="padding" ng-show="filterSetting.category == null">
+            <button class="button button-block button-outline button-positive"   ng-click="openModal()">
+                &nbsp;{{ 'DESIRECREATE_CATEGORY' | translate }}
+            </button>
         </div>
 
-        <label class="item item-input item-floating-label item-borderless">
-            <span class="input-label black">{{ 'FILTERSETTING_MINPRICE' | translate }}</span>
-            <input type="tel" ng-model="filterSetting.minPrice" placeholder="{{ 'FILTERSETTING_MINPRICE' | translate }}">
-        </label>
-        <label class="item item-input item-floating-label item-borderless">
-            <span class="input-label black">{{ 'FILTERSETTING_MAXPRICE' | translate }}</span>
-            <input type="tel" ng-model="filterSetting.maxPrice" placeholder="{{ 'FILTERSETTING_MAXPRICE' | translate }}">
-        </label>
+        <div class="row row-no-padding" ng-show="filterSetting.category != null"  ng-click="openModal()" style="margin-top:20px">
+            <div class="category-image"><img ng-src="{{filterSetting.category.image.lowRes}}"></div>
+            <div class="category-name">
+                {{filterSetting.category.name}}
+                <span style="font-size:80%;color:#888"><br>{{'DESIRECREATE_CATEGORY_CHANGE' | translate}}</span>
+            </div>
+        </div>
 
-        <div class="item item-borderless">{{ 'FILTERSETTING_MINRATING' | translate }}</div>
+
+        <span class="padding input-label expiration-label">{{ 'DESIRECREATE_PRICE' | translate }}</span>
+
+        <div class="row">
+
+            <div class="col col-50">
+                <label class="item item-input  item-borderless">
+                    <input type="tel" ng-model="filterSetting.minPrice" placeholder="{{ 'FILTERSETTING_MINPRICE' | translate }}">
+                </label>
+            </div>
+            <div class="col">
+                <label class="item item-input  item-borderless">
+                    <input type="tel" ng-model="filterSetting.maxPrice" placeholder="{{ 'FILTERSETTING_MAXPRICE' | translate }}">
+                </label>
+            </div>
+        </div>
+
+
+
+        <span class="padding input-label expiration-label">{{ 'FILTERSETTING_MINRATING' | translate }}</span>
         <div class="ratingStars">
             <span ng-repeat="r in ratingValues" >
                 <i class="ion-ios-star" ng-click="setRating(r)"
@@ -26,22 +45,34 @@
             </span>
         </div>
 
-        <div>
-            <button class="button button-clear button-positive button-icon ion-edit" ng-click="selectLocation()">&nbsp;{{ 'FILTERSETTING_LOCATION' | translate }}</button>
-        </div>
 
-        <span class="padding" ng-show="filterSetting.address != null">
-            <span class="button button-clear button-positive button-close black">{{ filterSetting.address }}</span>
-            <button class="button button-clear button-positive button-close ion-close-circled" ng-click="removeLocation()"></button>
-        </span>
 
-        <div class="item item-borderless" ng-if="filterSetting.address != null">
-            {{ 'FILTERSETTING_RADIUS' | translate }}
-            <div class="item range item-borderless" ng-if="filterSetting.address != null">
-                <input ng-model="filterSetting.radius" type="range" name="filterSetting.radius" min="0" max="100">
-                {{filterSetting.radius}}km
+        <div style="padding-top:10px"></div>
+            <span class="padding input-label expiration-label">{{ 'FILTERSETTING_LOCATION' | translate }}</span>
+            <div class="padding location-list-address" ng-if="obj.locations.length==0">{{ 'DESIRECREATE_NO_LOCATIONS' | translate }}</div>
+
+            <ion-list>
+                <ion-radio class="location-check-list" ng-model="obj.locationChoice" ng-value="l" ng-repeat="l in obj.locations">
+                    {{l.description}}<br>
+                    <span class="location-list-address">{{l.fullAddress}}</span>
+                </ion-radio>
+            </ion-list>
+
+            <button class="button button-clear button-positive button-icon ion-plus-round" ng-click="chooseDifferentLocation()">
+                &nbsp;{{ 'DESIRECREATE_DIFFERENT_LOCATION' | translate }}
+            </button>
+
+            <div class="item item-borderless" ng-if="obj.locationChoice != undefined">
+                {{ 'FILTERSETTING_RADIUS' | translate }}
+                <div class="item range item-borderless">
+                    <input ng-model="filterSetting.radius" ng-init="filterSetting.radius=50" type="range" name="filterSetting.radius" min="0" max="100">
+                    {{filterSetting.radius}}km
+                </div>
             </div>
+
         </div>
+
+
 
         <div class="padding">
             <button class="button button-positive button-full" ng-click="applyFilter()" >{{ 'FILTERSETTING_APPLY' | translate }}</button>

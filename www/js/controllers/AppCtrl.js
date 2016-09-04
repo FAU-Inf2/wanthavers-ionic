@@ -7,17 +7,16 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
 
     $scope.barButtonsMap = [];
     $scope.barButtons = [];
-
-    //$translate.use("en");
+    
 
     $rootScope.getMapLicense = function(){
-        return plugin.google.maps.Map.getMap().getLicenseInfo();
+       return window.mapLicense;
     }
 
     $scope.setI18n = function(lang){
         tmhDynamicLocale.set(lang);
         amMoment.changeLocale(lang);
-        $translate.use(lang);
+        $translate.use("de");
         //console.log(lang);
     }
 
