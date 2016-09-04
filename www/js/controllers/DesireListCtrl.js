@@ -1,4 +1,4 @@
-controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, $ionicModal, $rootScope, $translate, $stateParams, Auth, $timeout, $ionicLoading, $ionicPopup, $ionicPlatform) {
+controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, $ionicModal, $rootScope, $translate, $stateParams, Auth, $timeout, $ionicLoading, $ionicPopup, $ionicPlatform, PushNotifications) {
 
     $scope.reachedEnd = false;
     $scope.obj = {};
@@ -45,6 +45,10 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
         }else{
             $scope.isMy = false;
         }
+    });
+
+    $scope.$on('$ionicView.afterEnter', function () {
+        PushNotifications.registerToken();
     });
 
     $scope.getPosition = function(loadDesires){
