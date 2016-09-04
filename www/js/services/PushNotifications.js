@@ -31,14 +31,9 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          }).bind(this));
 
          $rootScope.$on('$cordovaPushV5:notificationReceived', (function(event, data) {
-            try {
-               this[data.additionalData.subject](data.additionalData);
-               console.log("Recieved push", data);
-               $cordovaPushV5.finish(); //for iOS
-            } catch (err) {
-               alert(err);
-            }
-
+            this[data.additionalData.subject](data.additionalData);
+            console.log("Recieved push", data);
+            $cordovaPushV5.finish(); //for iOS
          }).bind(this));
          $rootScope.$on('$cordovaPushV5:errorOcurred', (function(event, e) {
             console.error(e);
@@ -53,25 +48,20 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       removeToken: function() {
          if(this.token == "") return;
          console.log('removeToken', this.token);
-         return $http.delete(server+'/v1/users/tokens/'+this.token, {}, Auth.getHeaderObject());
+         return $http.delete(server+'/v1/users/tokens/'+this.token, Auth.getHeaderObject());
       },
 
       /** For handle functions see CloudMessageSubject **/
       // CloudMessageSubject.NEWMESSAGE
       NewMessage: function(data) {
-         try {
-            chatId = data[CloudMessageSubject.NEWMESSAGE_CHATID];
+         chatId = data[CloudMessageSubject.NEWMESSAGE_CHATID];
 
-            // Check if notification was recieved while app was in foreground
-            if(data.foreground)
-               //TODO: change buttons
-               alert("Recieved new message on foreground");
-            else
-               // Open chat
-               $state.go('app.chatmessages', {chatId: chatId});
-         } catch(err) {
-            alert(err);
-         }
+         // Check if notification was recieved while app was in foreground
+         if(data.foreground)
+            //TODO: change buttons
+            alert("Recieved new message on foreground");
+         else // Open chat
+            $state.go('app.chatmessages', {chatId: chatId});
       },
 
       // CloudMessageSubject.DESIRECOMPLETE

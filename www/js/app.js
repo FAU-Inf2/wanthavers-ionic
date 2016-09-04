@@ -61,10 +61,6 @@ wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, P
 
 
       /** FIXING MAP BUG: END */
-
-    PushNotifications.registerToken();
-
-
   });
 }]);
 

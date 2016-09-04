@@ -7,7 +7,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
 
     $scope.barButtonsMap = [];
     $scope.barButtons = [];
-    
+
 
     $rootScope.getMapLicense = function(){
        return window.mapLicense;
@@ -79,9 +79,9 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     });
 
     $scope.logout = function(){
+        PushNotifications.removeToken()
         Auth.clearCredentials();
         $rootScope.currentUser = {};
-        //PushNotifications.removeToken();
         $state.go("app.startup");
     }
 
