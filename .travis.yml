@@ -21,13 +21,13 @@ before_script:
 - cd resources/ios/
 - openssl aes-256-cbc -d -a -in certs.tar.enc -out certs.tar -k $EK -iv $EIV
 - tar xvf certs.tar
-- security create-keychain -p travis ios-build.keychain 
+- security create-keychain -p travis ios-build.keychain
 - security unlock-keychain -p travis ios-build.keychain
-- security default-keychain -s ios-build.keychain 
+- security default-keychain -s ios-build.keychain
 - security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain #let keychain be accessable for 1h
 
 - security import dev.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-- security import dev.p12 -k ~/Library/Keychains/ios-build.keychain  -T /usr/bin/codesign -P $IPW 
+- security import dev.p12 -k ~/Library/Keychains/ios-build.keychain  -T /usr/bin/codesign -P $IPW
 
 - mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 - cp wh.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
@@ -49,6 +49,7 @@ script:
 - cordova plugin add cordova-plugin-inappbrowser
 # - cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_IOS="$mapsKey"
 - cordova plugin add https://github.com/phonegap-googlemaps-plugin/cordova-plugin-googlemaps --variable API_KEY_FOR_IOS="$mapsKey"
+- cordova plugin add cordova-phonegap-plugin-push --variable SENDER_ID="X" --save
 - ionic build ios --device --release
 - cd platforms/ios
 - xcodebuild archive -project wanthaver.xcodeproj -scheme wanthaver -archivePath wanthaver.xcarchive
@@ -56,7 +57,7 @@ script:
 
 after_success:
 - ls -a platforms/ios
-- curl -F "ipa=@wanthaver.ipa" -F "project=de.fau.cs.mad.wanthaver.ios" $UPL 
+- curl -F "ipa=@wanthaver.ipa" -F "project=de.fau.cs.mad.wanthaver.ios" $UPL
 
 
 after_script:
