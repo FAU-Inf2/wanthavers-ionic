@@ -8,6 +8,7 @@ wanthaver.config(function ($translateProvider) {
         LOADING_DESIRES: 'Searching for Desires nearby',
         NO_DESIRES_TITLE: 'Whoops, nothing found',
         NO_DESIRES_DESC: 'Be the first to create a desire or change your location in the filter settings.',
+        NO_MY_DESIRES_DESC: "Create or fulfill your first desire and you'll find it here",
 
         /** MENU **/
         MENU_ALL_DESIRES: 'All Desires',
@@ -114,12 +115,13 @@ wanthaver.config(function ($translateProvider) {
         RATING_POPUP_SUBTITLE: 'You have to rate with at least one star',
 
         /** FILTER SETTING **/
-        FILTERSETTING_TITLE: 'Change Filter',
+        FILTERSETTING_TITLE: 'Filter',
         FILTERSETTING_CATEGORY: 'Category',
         FILTERSETTING_MINPRICE: 'Minimum price',
         FILTERSETTING_MAXPRICE: 'Maximum price',
         FILTERSETTING_MINRATING: 'Minimum Rating',
         FILTERSETTING_APPLY: 'Apply Filter',
+        FILTERSETTING_APPLY_HEADER: 'Apply',
         FILTERSETTING_RESET: 'Reset Filter',
         FILTERSETTING_RADIUS: 'Distance Radius',
         FILTERSETTING_LOCATION: 'Location',
@@ -150,6 +152,7 @@ wanthaver.config(function ($translateProvider) {
         LOADING_DESIRES: 'Suche nach Aufträgen in deiner Umgebung',
         NO_DESIRES_TITLE: 'Oops, nichts gefunden',
         NO_DESIRES_DESC: 'Sei der Erste und erstelle einen Auftrag oder ändere deinen Ort in den Filtereinstellungen. ',
+        NO_MY_DESIRES_DESC: 'Erstelle oder erfülle deinen ersten Auftrag und du findest ihn hier wieder.',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'Alle Aufträge',
@@ -257,12 +260,13 @@ wanthaver.config(function ($translateProvider) {
         RATING_POPUP_SUBTITLE: 'Es muss mit mindestens einem stern bewertet werden.',
 
         /** FILTER SETTING **/
-        FILTERSETTING_TITLE: 'Filter anpassen',
+        FILTERSETTING_TITLE: 'Filtern',
         FILTERSETTING_CATEGORY: 'Kategorie',
         FILTERSETTING_MINPRICE: 'Mindestpreis',
         FILTERSETTING_MAXPRICE: 'Maximalpreis',
         FILTERSETTING_MINRATING: 'Mindestrating',
         FILTERSETTING_APPLY: 'Filter anwenden',
+        FILTERSETTING_APPLY_HEADER: 'Anwenden',
         FILTERSETTING_RESET: 'Filter zurücksetzen',
         FILTERSETTING_RADIUS: 'Entfernungsradius',
         FILTERSETTING_LOCATION: 'Standort',

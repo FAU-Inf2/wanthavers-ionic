@@ -45,3 +45,10 @@ ion-side-menu .item, ion-side-menu .item-content {
   margin-top:10px;
 }
 
+.menu-button-right{
+  margin-left: 5px;
+}
+
+.menu-button-right:before {
+  font-size: 27px !important;
+}

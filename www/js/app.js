@@ -40,13 +40,17 @@ wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, P
 
       /** FIXING MAP BUG: START */
 
-      plugin.google.maps.Map.getMap({
+      var map = plugin.google.maps.Map.getMap({
           'controls': {
               'myLocationButton': true
           },
           'camera': {
               'zoom': 16
           }
+      });
+
+      map.getLicenseInfo(function(txt, txt1) {
+          window.mapLicense = txt;
       });
 
       var request = {

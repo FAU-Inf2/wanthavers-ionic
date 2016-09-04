@@ -267,3 +267,10 @@ button.button-icon.round-overlay-button {
   color: $primary;
 
 }
+
+.platform-ios {
+  .title.title-center.header-item {
+    left: 49px!important;
+    right: 49px!important;
+  }
+}
