@@ -78,3 +78,9 @@
 .chat-footer{
   height: auto;
 }
+
+.overflow-scroll {
+  &.keyboard-up:not(.keyboard-up-confirm) {
+    overflow: hidden;
+  }
+}
