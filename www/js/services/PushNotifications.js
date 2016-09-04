@@ -9,7 +9,8 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          ios: {
             alert: "true",
             badge: "true",
-            sound: "true"
+            sound: "true",
+            clearBadge: "true"
          },
          windows: {},
          browser: {
@@ -18,22 +19,19 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       },
 
       registerToken: function() {
-         try {
-            $cordovaPushV5.initialize(this.options).then((function() {
-               // Start listening
-               $cordovaPushV5.onNotification();
-               $cordovaPushV5.onError();
+         $cordovaPushV5.initialize(this.options).then((function() {
+            // Start listening
+            $cordovaPushV5.onNotification();
+            $cordovaPushV5.onError();
 
-               $cordovaPushV5.register().then((function(tokenID) {
-                  this.createToken(tokenID);
-                  this.token = tokenID;
-               }).bind(this));
+            $cordovaPushV5.register().then((function(tokenID) {
+               this.createToken(tokenID);
+               this.token = tokenID;
             }).bind(this));
-         } catch (err) {
-            alert(err);
-         }
+         }).bind(this));
 
          $rootScope.$on('$cordovaPushV5:notificationReceived', (function(event, data) {
+            $cordovaPushV5.clearAllNotifications();
             this[data.additionalData.subject](data.additionalData);
             console.log("Recieved push", data);
             $cordovaPushV5.finish(); //for iOS
@@ -49,9 +47,8 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       },
 
       removeToken: function() {
+         if(this.token == "") return;
          console.log('removeToken', this.token);
-         if(this.token == "")
-            return;
          return $http.delete(server+'/v1/users/tokens/'+this.token, {}, Auth.getHeaderObject());
       },
 
