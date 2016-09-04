@@ -109,7 +109,8 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
         Location.deleteLocation(l).then(function(){
             var pos = -1;
             for(var i=0;i<$scope.locations.length;i++){
-             pos = i;
+                pos = i;
+                break;
             }
             if(pos >= 0){
                 $scope.locations.splice(pos, 1);

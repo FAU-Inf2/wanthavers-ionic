@@ -20,6 +20,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $scope.reverseBidding= {};
     $scope.reverseBidding.allowed = false;
     $scope.hourInMilliseconds = 3600000;
+    $scope.obj.locationChoice = undefined;
 
     $scope.CUSTOM_LOCATION = "";
 
@@ -246,7 +247,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
             });
             return;
         }
-        if ($scope.locationChoice == undefined){
+        if ($scope.obj.locationChoice == undefined){
             $scope.allFieldsFilled = false;
             $ionicPopup.alert({
                 title: $scope.missingInputTitle,
@@ -259,10 +260,9 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     };
 
     $scope.create = function(desire) {
-        console.log("--->"+$scope.locationChoice.lat + "   "+ $scope.locationChoice.lon)
-        desire.dropzone_string = $scope.locationChoice.fullAddress;
-        desire.dropzone_lat = $scope.locationChoice.lat;
-        desire.dropzone_long = $scope.locationChoice.lon;
+        desire.dropzone_string = $scope.obj.locationChoice.fullAddress;
+        desire.dropzone_lat = $scope.obj.locationChoice.lat;
+        desire.dropzone_long = $scope.obj.locationChoice.lon;
         desire.biddingAllowed = $scope.reverseBidding.allowed;
 
         console.log(desire);
@@ -388,9 +388,9 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
 
         Location.getUserLocations().then(function(resp){
             $scope.locations = $scope.locations.concat(resp.data);
+            console.log($scope.locations);
         });
 
-        console.log("currenPos: "+$rootScope.currentPosition);
         if($rootScope.currentPosition != undefined){
             console.log("lat: "+$rootScope.currentPosition.latitude);
             console.log("lng: "+$rootScope.currentPosition.longitude);
@@ -436,7 +436,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
             loc.lon = resp.lng;
             loc.userId = Auth.getUserId();
             $scope.locations.push(loc);
-            $scope.locationChoice = loc;
+            //$scope.locationChoice = loc;
         });
     }
 
@@ -536,6 +536,10 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
 
         }
     };
+
+    $scope.debug = function(){
+        console.log($scope.obj.locationChoice);
+    }
 
 
 });

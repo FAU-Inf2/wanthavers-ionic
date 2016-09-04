@@ -10,7 +10,7 @@
         <div id="map_canvas">
             <div class="map-inner-wrapper"> <!--ng-click="showConfirm()"-->
             <form action="." ng-submit="$event.preventDefault();onEnter()">
-              <input id="searchBox" type="search" ng-keypress="checkIfEnterKeyWasPressed($event)" ng-focus="onTextFieldFocus()" ng-focus="onTextFieldBlur()">
+              <input id="searchBox" type="search" ng-keypress="checkIfEnterKeyWasPressed($event)" ng-focus="onTextFieldFocus()" ng-blur="onTextFieldBlur()">
             </form>
 
 
