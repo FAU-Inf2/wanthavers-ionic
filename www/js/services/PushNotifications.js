@@ -59,7 +59,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          // Check if notification was recieved while app was in foreground
          if(data.foreground)
             //TODO: change buttons
-            console.log("Recieved new message on foreground");
+            alert("Recieved new message on foreground");
          else
             // Open chat
             $state.go('app.chatmessages', {chatId: chatId});
