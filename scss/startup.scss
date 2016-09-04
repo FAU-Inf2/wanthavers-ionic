@@ -1,7 +1,5 @@
-video.bgvideo {
-  /* width: 100%; */
-  height: 100%;
-  z-index: 0;
+.bgvideo {
+  -webkit-filter: blur(2px);
 }
 
 .logo-startup{
