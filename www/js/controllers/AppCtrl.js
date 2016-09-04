@@ -82,7 +82,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     $scope.logout = function(){
         Auth.clearCredentials();
         $rootScope.currentUser = {};
-        //PushNotifications.removeToken();
+        PushNotifications.removeToken();
         $state.go("app.startup");
     }
 
