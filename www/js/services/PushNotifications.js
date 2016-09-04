@@ -31,7 +31,6 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          }).bind(this));
 
          $rootScope.$on('$cordovaPushV5:notificationReceived', (function(event, data) {
-            $cordovaPushV5.clearAllNotifications();
             this[data.additionalData.subject](data.additionalData);
             console.log("Recieved push", data);
             $cordovaPushV5.finish(); //for iOS
