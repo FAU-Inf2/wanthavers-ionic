@@ -79,6 +79,7 @@
   height: auto;
 }
 
+/*
 // iOS 9 fixes
 .platform-ios {
   .scroll-content {
@@ -91,4 +92,13 @@
 .overflow-scroll,
 .overflow-scroll.pane {
   overflow-y: auto !important;
+}
+*/
+
+.keyboard-open ion-footer-bar.chat-footer.bar.bar-footer{
+  bottom: auto;
+}
+
+.keyboard-open ion-content.chat-list.scroll-content.ionic-scroll.has-header.has-footer{
+  bottom: auto;
 }
