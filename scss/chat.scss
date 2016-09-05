@@ -79,8 +79,16 @@
   height: auto;
 }
 
-.overflow-scroll {
-  &.keyboard-up:not(.keyboard-up-confirm) {
-    overflow: hidden;
+// iOS 9 fixes
+.platform-ios {
+  .scroll-content {
+    > .scroll {
+      min-height: 101%;
+    }
   }
+}
+
+.overflow-scroll,
+.overflow-scroll.pane {
+  overflow-y: auto !important;
 }
