@@ -2,6 +2,8 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
     $scope.messages = [];
 
     window.addEventListener('native.keyboardshow', function(){
+        document.body.scrollTop = 0;
+        cordova.plugins.Keyboard.disableScroll(true);
         $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
     });
     window.addEventListener('native.keyboardhide', function(){
@@ -9,12 +11,23 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
     });
 
     $scope.$on('$ionicView.enter', function() {
+        document.body.scrollTop = 0;
+        cordova.plugins.Keyboard.disableScroll(true);
         $scope.pollMessages(true);
     });
 
     $scope.loadMore = function(){
         $scope.pollMessages(false);
     }
+
+    /*
+    $scope.$on('$ionicView.enter', function() {
+        cordova.plugins.Keyboard.disableScroll(true);
+    });
+
+    $scope.$on('$ionicView.leave', function() {
+        cordova.plugins.Keyboard.disableScroll(false);
+    });*/
 
     $scope.pollMessages = function(jumpBottom){
         console.log($stateParams.chatId)

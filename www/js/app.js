@@ -18,7 +18,6 @@ wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, P
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
-        alert("keyboard init");
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
     }
@@ -214,8 +213,13 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
       }
   })
 
-    // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/startup');
+
+    if(window.localStorage.getItem("username") == null){
+        $urlRouterProvider.otherwise('/app/startup');
+    }else{
+        $urlRouterProvider.otherwise('/app/desirelist/');
+    }
+
 });
 
 wanthaver.directive('stopEvent', function () {
