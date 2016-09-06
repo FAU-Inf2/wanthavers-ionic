@@ -107,7 +107,31 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          else
             // Open desire
             $state.go('app.desiredetail', {desireId: desireId});
-      }
+      },
+
+      // CloudMessageSubject.HAVERUNACCEPTED
+      HaverUnaccepted: function(data) {
+         desireId = data.additionalData[CloudMessageSubject.HAVERUNACCEPTED_DESIREID];
+
+         if(data.foreground)
+            //TODO: change buttons
+            console.log("Recieved new haver on foreground");
+         else
+            // Open desire
+            $state.go('app.desiredetail', {desireId: desireId});
+      },
+
+      // CloudMessageSubject.HAVERUNACCEPTED
+      HaverUnaccepted: function(data) {
+         desireId = data.additionalData[CloudMessageSubject.WANTERUNACCEPTED_DESIREID];
+
+         if(data.foreground)
+            //TODO: change buttons
+            console.log("Recieved new haver on foreground");
+         else
+            // Open desire
+            $state.go('app.desiredetail', {desireId: desireId});
+      },
 
    };
 }]);
