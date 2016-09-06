@@ -7,8 +7,10 @@
       <ion-item class="chat-message-wrapper item-text-wrap row-no-padding"
                 ng-class="{'from-me-wrapper': msg.from==currentUser.id}"
                 ng-repeat="msg in messages | unique:'objectId'">
-
-          <div class="chat-message" ng-class="{'from-me': msg.from==currentUser.id}"><pre>{{msg.body}}</pre></div>
+          <ion-spinner class="chat-spinner spinner-positive" icon="spiral" ng-show="msg.sending"></ion-spinner>
+          <div class="chat-message" ng-class="{'from-me': msg.from==currentUser.id}">
+            <pre>{{msg.body}}</pre>
+          </div>
       </ion-item>
     </ion-list>
 
@@ -19,12 +21,9 @@
   <ion-footer-bar align-title="left" class="chat-footer" keyboard-attach>
     <div class="item-input-inset chat-textfield-wrapper" style="z-index:9999">
       <label class="item-input-wrapper">
-
         <textarea id="input" rows="1" msd-elastic ng-model="msg" placeholder="{{ 'CHAT_YOUR_MESSAGE' | translate }}"></textarea>
-
       </label>
       <button class="button button-positive button-clear" ng-click="sendMsg(msg)" data-tap-disabled="true" >
-
         Send
       </button>
     </div>

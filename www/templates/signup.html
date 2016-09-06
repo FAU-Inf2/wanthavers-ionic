@@ -16,10 +16,22 @@
           <span class="input-label">Password</span>
           <input type="password" ng-model="signupData.password" placeholder="Password">
         </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Your Firstname</span>
-          <input type="text" ng-model="signupData.name" placeholder="Your Firstname">
-        </label>
+
+        <div class="row" style="padding:0;padding-right:20px" >
+          <div class="col col-50" style="padding:0">
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Your Firstname</span>
+              <input type="text" ng-model="signupData.firstName" placeholder="Your Firstname">
+            </label>
+          </div>
+          <div class="col col-50" style="padding:0">
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Your Lastname</span>
+              <input type="text" ng-model="signupData.lastName" placeholder="Your Lastname">
+            </label>
+          </div>
+        </div>
+
         <label class="item item-input item-floating-label">
           <span class="input-label">Date of Birth</span>
           <input type="date" ng-model="signupData.birthday" placeholder="Date of Birth" ng-class="{'date-not-empty': signupData.birthday != undefined}">

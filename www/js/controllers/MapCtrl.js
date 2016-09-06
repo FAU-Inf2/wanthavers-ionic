@@ -4,6 +4,7 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
     var POS = undefined;
     $scope.address = "";
     var mapReady = false;
+    $scope.showButtons = true;
 
     console.log(plugin.google.maps);
 
@@ -108,13 +109,35 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
         mapReady = true;
         if (lat != undefined && lng != undefined) {
             POS = new plugin.google.maps.LatLng(lat, lng);
+            $scope.showButtons = false;
         }else{
-            POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
+            console.log("xxx"+$rootScope.currentPosition.lat);
+            if($rootScope.currentPosition != undefined){
+                POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
+                $scope.showButtons = true;
+            }
         }
+
+        var request = {
+            'position': POS
+        };
+
+        plugin.google.maps.Geocoder.geocode(request, function (results) {
+            if (results.length) {
+                var result = results[0];
+                if (result.extra.lines[0] == undefined || result.extra.lines[0].length == 0) {
+                    var address = result.extra.lines[1];
+                } else {
+                    var address = result.extra.lines[0] + ", " + result.extra.lines[1];
+                }
+                document.getElementById("searchBox").value = address;
+            }
+        });
 
         map.setDiv(document.getElementById("map_canvas"));
         document.getElementById("main").style.display = "none";
         map.clear();
+        map.setZoom(16);
         map.addMarker({
             'position': POS,
             'flat': true,
@@ -188,7 +211,7 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
             //map.setVisible(true);
 
             map.on(plugin.google.maps.event.CAMERA_CHANGE, function (pos) {
-                if (!mapReady || m == undefined) {
+                if (!mapReady || m == undefined || !$scope.showButtons) {
                     return;
                 }
                 var tmp = new plugin.google.maps.LatLng(pos.target.lat, pos.target.lng);
@@ -202,7 +225,7 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
 
 
             map.on(plugin.google.maps.event.CAMERA_IDLE, function (pos) {
-                if (!mapReady) {
+                if (!mapReady || !$scope.showButtons) {
                     return;
                 }
 

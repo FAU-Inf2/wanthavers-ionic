@@ -1,4 +1,4 @@
-controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, $ionicModal, $rootScope, $translate, $stateParams, Auth, $timeout, $ionicLoading, $ionicPopup, $ionicPlatform, PushNotifications) {
+controllers.controller('DesireListCtrl', function($scope, Desire, $state, Location, $ionicSideMenuDelegate, FilterSetting, $ionicModal, $rootScope, $translate, $stateParams, Auth, $timeout, $ionicLoading, $ionicPopup, $ionicPlatform, PushNotifications) {
 
     $scope.reachedEnd = false;
     $scope.obj = {};
@@ -16,6 +16,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
         if($stateParams.mode == "my"){
             $scope.reachedEnd = false;
+            FilterSetting.resetFilter();
             $scope.loadDesires();
 
             $translate('MENU_MY_DESIRE').then(function (translation) {
@@ -54,6 +55,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     $scope.getPosition = function(loadDesires){
         $rootScope.cordovaReady(function() {
             navigator.geolocation.getCurrentPosition(function (pos) {
+                console.log(pos.coords.lat);
                 $rootScope.currentPosition = pos.coords;
                 if (loadDesires) {
                     $scope.loadDesires();

@@ -50,13 +50,15 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
 
 
     $scope.sendMsg = function(msg){
-        
+        if(msg == undefined || msg.length == 0 || msg.replace(/ /g,"").length == 0){
+            return;
+        }
         var newMsg = {from: $rootScope.currentUser.id, body: msg, sending:true, objectId: new Date()};
         $scope.messages.push(newMsg);
         $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
         $scope.msg = "";
         Chat.sendMessage($stateParams.chatId, msg).then(function(resp){
-            //newMsg.sending = false;
+            newMsg.sending = false;
         });
     }
 

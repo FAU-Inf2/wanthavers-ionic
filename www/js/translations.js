@@ -39,7 +39,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_BAR_TITLE1: 'Step 1',
         DESIRECREATE_BAR_TITLE2: 'Step 2',
         DESIRECREATE_BAR_TITLE3: 'Step 3',
-        DESIRECREATE_TITLE: 'Titel',
+        DESIRECREATE_TITLE: 'Title',
         DESIRECREATE_DESCRIPTION: 'Description',
         DESIRECREATE_DESCRIPTION_PLACEGOLDER: 'Description (max 300 Characters)',
         DESIRECREATE_DATE: 'Expiration Date',

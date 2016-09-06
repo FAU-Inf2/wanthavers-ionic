@@ -4,7 +4,7 @@
             <ion-item class="list-item item-text-wrap row-no-padding chat-list" ng-repeat="chat in feed" ng-if="chat.otherUser != undefined && chat.desire != null" href="#/app/messages/{{chat.objectId}}">
                 <div class="row row-no-padding">
                     <div class="col col-25 ">
-                        <div class="item-image"><img ng-src="{{chat.otherUser.image.lowRes}}"></div>
+                        <div class="item-image"><img hires="{{chat.otherUser.image.lowRes}}" ng-src="img/default.png"></div>
                     </div>
                     <div class="col col-60 padding">
                         <h1>{{chat.otherUser.name}}</h1>

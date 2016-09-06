@@ -79,19 +79,8 @@
   height: auto;
 }
 
-/*
-// iOS 9 fixes
-.platform-ios {
-  .scroll-content {
-    > .scroll {
-      min-height: 101%;
-    }
-  }
+.chat-spinner svg{
+  color: $primary;
+  width: 15px;
+  height: 15px;
 }
-
-.overflow-scroll,
-.overflow-scroll.pane {
-  overflow-y: auto !important;
-}
-*/
-
