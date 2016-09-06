@@ -55,7 +55,7 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     $scope.getPosition = function(loadDesires){
         $rootScope.cordovaReady(function() {
             navigator.geolocation.getCurrentPosition(function (pos) {
-                console.log(pos.coords.lat);
+                console.log(pos.coords.latitude);
                 $rootScope.currentPosition = pos.coords;
                 if (loadDesires) {
                     $scope.loadDesires();

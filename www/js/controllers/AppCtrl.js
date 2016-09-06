@@ -148,8 +148,9 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
                     controller: 'MapCtrl'
                 }).then(function(modal) {
                     $rootScope.mapModal = modal;
+                    $rootScope.pos.lat = lat;
+                    $rootScope.pos.lng = lng;
                     modal.show();
-                    $rootScope.readyMap();
                 });
             }else{
                 $rootScope.mapModal.show();

@@ -5,6 +5,7 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
     $scope.address = "";
     var mapReady = false;
     $scope.showButtons = true;
+    $rootScope.pos = {};
 
     console.log(plugin.google.maps);
 
@@ -107,12 +108,19 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
 
     $rootScope.readyMap = function (lat, lng) {
         mapReady = true;
-        if (lat != undefined && lng != undefined) {
+        if ((lat != undefined && lng != undefined) || ($rootScope.pos.lng != undefined && $rootScope.pos.lat != undefined) ) {
+
+            if(lat == undefined || lng == undefined){
+                lat = $rootScope.pos.lat;
+                lng = $rootScope.pos.lng;
+            }
+            $rootScope.pos = {};
             POS = new plugin.google.maps.LatLng(lat, lng);
             $scope.showButtons = false;
         }else{
-            console.log("xxx"+$rootScope.currentPosition.lat);
+
             if($rootScope.currentPosition != undefined){
+                console.log("YYYY"+ $rootScope.currentPosition)
                 POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
                 $scope.showButtons = true;
             }
