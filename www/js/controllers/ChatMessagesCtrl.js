@@ -20,6 +20,13 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
         $scope.pollMessages(false);
     }
 
+   $rootScope.loadMessages = function(){
+      Chat.getMessagesByChatId($stateParams.chatId, undefined).then(function(resp){
+          $scope.messages = resp.data.reverse();
+          $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
+      });
+   }
+
     /*
     $scope.$on('$ionicView.enter', function() {
         cordova.plugins.Keyboard.disableScroll(true);

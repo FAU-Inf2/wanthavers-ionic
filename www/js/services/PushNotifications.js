@@ -57,21 +57,30 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          chatId = data.additionalData[CloudMessageSubject.NEWMESSAGE_CHATID];
 
          // Check if notification was recieved while app was in foreground
-         if(data.foreground)
-            //TODO: change buttons
-            alert("Recieved new message on foreground");
-         else // Open chat
+         //alert("Recieved new message on foreground");
+
+
+         if(data.additionalData.foreground){
+            if($state.current.name == "app.chatmessages"){
+               console.log("polling");
+               $rootScope.loadMessages();
+            }
+         }else{
             $state.go('app.chatmessages', {chatId: chatId});
+         }
+
       },
 
       // CloudMessageSubject.DESIRECOMPLETE
       DesireComplete: function(data) {
          desireId = data.additionalData[CloudMessageSubject.DESIRECOMPLETE_DESIREID];
 
-         if(data.foreground)
-            //TODO: change buttons
-            console.log("Recieved desire complete on foreground");
-         else
+         if(data.additionalData.foreground){
+            if($state.current.name == "app.desiredetail"){
+               console.log("polling");
+               $rootScope.loadMessages();
+            }
+         }else
             // Open desire
             $state.go('app.desiredetail', {desireId: desireId});
       },
@@ -80,10 +89,12 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       HaverAccepted: function(data) {
          desireId = data.additionalData[CloudMessageSubject.HAVERACCEPTED_DESIREID];
 
-         if(data.foreground)
-            //TODO: change buttons
-            console.log("Recieved haver accepted on foreground");
-         else
+         if(data.additionalData.foreground){
+            if($state.current.name == "app.desiredetail"){
+               console.log("polling");
+               $rootScope.loadMessages();
+            }
+         }else
             // Open desire
             $state.go('app.desiredetail', {desireId: desireId});
       },
@@ -92,19 +103,26 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       HaverRejected: function(data) {
          desireId = data.additionalData[CloudMessageSubject.HAVERREJECTED_DESIREID];
 
-         if(data.foreground)
-            //TODO: change buttons
-            console.log("Recieved desire complete on foreground");
+         if(data.additionalData.foreground){
+            if($state.current.name == "app.desiredetail"){
+               console.log("polling");
+               $rootScope.loadMessages();
+            }
+         }else
+            // Open desire
+            $state.go('app.desiredetail', {desireId: desireId});
       },
 
       // CloudMessageSubject.NEWHAVER
       NewHaver: function(data) {
          desireId = data.additionalData[CloudMessageSubject.NEWHAVER_DESIREID];
 
-         if(data.foreground)
-            //TODO: change buttons
-            console.log("Recieved new haver on foreground");
-         else
+         if(data.additionalData.foreground){
+            if($state.current.name == "app.desiredetail"){
+               console.log("polling");
+               $rootScope.loadMessages();
+            }
+         }else
             // Open desire
             $state.go('app.desiredetail', {desireId: desireId});
       },
@@ -113,10 +131,12 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       HaverUnaccepted: function(data) {
          desireId = data.additionalData[CloudMessageSubject.HAVERUNACCEPTED_DESIREID];
 
-         if(data.foreground)
-            //TODO: change buttons
-            console.log("Recieved new haver on foreground");
-         else
+         if(data.additionalData.foreground){
+            if($state.current.name == "app.desiredetail"){
+               console.log("polling");
+               $rootScope.loadMessages();
+            }
+         }else
             // Open desire
             $state.go('app.desiredetail', {desireId: desireId});
       },
@@ -125,10 +145,12 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       HaverUnaccepted: function(data) {
          desireId = data.additionalData[CloudMessageSubject.WANTERUNACCEPTED_DESIREID];
 
-         if(data.foreground)
-            //TODO: change buttons
-            console.log("Recieved new haver on foreground");
-         else
+         if(data.additionalData.foreground){
+            if($state.current.name == "app.desiredetail"){
+               console.log("polling");
+               $rootScope.loadMessages();
+            }
+         }else
             // Open desire
             $state.go('app.desiredetail', {desireId: desireId});
       },
