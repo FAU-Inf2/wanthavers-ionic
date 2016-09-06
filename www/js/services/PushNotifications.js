@@ -31,7 +31,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          }).bind(this));
 
          $rootScope.$on('$cordovaPushV5:notificationReceived', (function(event, data) {
-            this[data.additionalData.subject](data.additionalData);
+            this[data.additionalData.subject](data);
             console.log("Recieved push", data);
             $cordovaPushV5.finish(); //for iOS
          }).bind(this));
@@ -54,7 +54,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
       /** For handle functions see CloudMessageSubject **/
       // CloudMessageSubject.NEWMESSAGE
       NewMessage: function(data) {
-         chatId = data[CloudMessageSubject.NEWMESSAGE_CHATID];
+         chatId = data.additionalData[CloudMessageSubject.NEWMESSAGE_CHATID];
 
          // Check if notification was recieved while app was in foreground
          if(data.foreground)
@@ -66,7 +66,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
       // CloudMessageSubject.DESIRECOMPLETE
       DesireComplete: function(data) {
-         desireId = data[CloudMessageSubject.DESIRECOMPLETE_DESIREID];
+         desireId = data.additionalData[CloudMessageSubject.DESIRECOMPLETE_DESIREID];
 
          if(data.foreground)
             //TODO: change buttons
@@ -78,7 +78,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
       // CloudMessageSubject.HAVERACCEPTED
       HaverAccepted: function(data) {
-         desireId = data[CloudMessageSubject.HAVERACCEPTED_DESIREID];
+         desireId = data.additionalData[CloudMessageSubject.HAVERACCEPTED_DESIREID];
 
          if(data.foreground)
             //TODO: change buttons
@@ -90,7 +90,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
       // CloudMessageSubject.HAVERREJECTED
       HaverRejected: function(data) {
-         desireId = data[CloudMessageSubject.HAVERREJECTED_DESIREID];
+         desireId = data.additionalData[CloudMessageSubject.HAVERREJECTED_DESIREID];
 
          if(data.foreground)
             //TODO: change buttons
@@ -99,7 +99,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
       // CloudMessageSubject.NEWHAVER
       NewHaver: function(data) {
-         desireId = data[CloudMessageSubject.NEWHAVER_DESIREID];
+         desireId = data.additionalData[CloudMessageSubject.NEWHAVER_DESIREID];
 
          if(data.foreground)
             //TODO: change buttons
