@@ -1,5 +1,5 @@
 wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state', '$ionicPopup', '$http', '$stateParams', 'CloudMessageSubject', 'Chat', 'Auth',
-   function ($rootScope, $cordovaPushV5, $state, $ionicPopup, $http, CloudMessageSubject, Chat, Auth) {
+   function ($rootScope, $cordovaPushV5, $state, $ionicPopup, $http, CloudMessageSubject, Chat, Auth, $stateParams) {
 
     return {
       token: "",

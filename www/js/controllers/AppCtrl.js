@@ -23,7 +23,7 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
         }, 2000);
     }
 
-    $rootScope.showNotification("Jon Doe", "Hi dies ist eine Nachricht", "img/default.png");
+    //$rootScope.showNotification("Jon Doe", "Hi dies ist eine Nachricht", "img/default.png");
 
     $rootScope.getMapLicense = function(){
        return window.mapLicense;

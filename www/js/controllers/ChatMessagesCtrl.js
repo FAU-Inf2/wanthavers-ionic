@@ -10,24 +10,23 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
         $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
     });
 
+    $rootScope.loadMessages = function(){
+        Chat.getMessagesByChatId($stateParams.chatId, undefined).then(function(resp){
+            $scope.messages = resp.data.reverse();
+            $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
+        });
+    }
+
     $scope.$on('$ionicView.enter', function() {
         document.body.scrollTop = 0;
         cordova.plugins.Keyboard.disableScroll(true);
-        $scope.pollMessages(true);
-
-        console.log($state.current)
+        $rootScope.loadMessages();
     });
 
     $scope.loadMore = function(){
         $scope.pollMessages(false);
     }
 
-   $rootScope.loadMessages = function(){
-      Chat.getMessagesByChatId($stateParams.chatId, undefined).then(function(resp){
-          $scope.messages = resp.data.reverse();
-          $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
-      });
-   }
 
     /*
     $scope.$on('$ionicView.enter', function() {

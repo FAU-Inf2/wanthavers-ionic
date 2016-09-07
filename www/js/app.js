@@ -13,7 +13,7 @@ var wanthaver = angular.module('starter', ['ionic','ionic.service.core', 'starte
     'monospaced.elastic']);
 var controllers = angular.module('starter.controllers', []);
 
-wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, PushNotifications) {
+wanthaver.run(['$ionicPlatform', 'PushNotifications', '$rootScope', function($ionicPlatform, PushNotifications, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -61,6 +61,11 @@ wanthaver.run(['$ionicPlatform', 'PushNotifications', function($ionicPlatform, P
 
 
       /** FIXING MAP BUG: END */
+
+
+      document.addEventListener("resume", function() {
+          $rootScope.$broadcast( "$ionicView.enter" );
+      }, false);
   });
 }]);
 
