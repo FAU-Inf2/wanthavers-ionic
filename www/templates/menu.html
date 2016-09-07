@@ -57,3 +57,15 @@
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
+
+<div class="notification-banner slide-in" ng-show="notification.show">
+  <div class="row">
+    <div class="col col-20">
+      <img class="notification-img" ng-src="{{notification.img}}">
+    </div>
+    <div class="col col-80">
+      <div class="notification-header">{{notification.header}}</div>
+      <div class="notification-msg">{{notification.msg}}</div>
+    </div>
+  </div>
+</div>

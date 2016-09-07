@@ -14,6 +14,8 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
         document.body.scrollTop = 0;
         cordova.plugins.Keyboard.disableScroll(true);
         $scope.pollMessages(true);
+
+        console.log($state.current)
     });
 
     $scope.loadMore = function(){

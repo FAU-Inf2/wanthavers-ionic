@@ -1,4 +1,4 @@
-wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state', '$ionicPopup', '$http', 'CloudMessageSubject', 'Chat', 'Auth',
+wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state', '$ionicPopup', '$http', '$stateParams', 'CloudMessageSubject', 'Chat', 'Auth',
    function ($rootScope, $cordovaPushV5, $state, $ionicPopup, $http, CloudMessageSubject, Chat, Auth) {
 
     return {
@@ -61,9 +61,17 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
 
 
          if(data.additionalData.foreground){
-            if($state.current.name == "app.chatmessages"){
-               console.log("polling");
-               $rootScope.loadMessages();
+            if($state.current.name == "app.chatmessages" && $stateParams.chatId == chatId){
+                $rootScope.loadMessages();
+            }else{
+                User.getById(data.additionalData[CloudMessageSubject.NEWMESSAGE_SENDERID]).then(function(resp){
+                    var msg = data.message;
+                    var tmp = msg.split(" ");
+                    if(tmp.length > 0){
+                        msg = msg.replace(tmp[0]+": ","");
+                    }
+                    $rootScope.showNotification(data.additionalData[CloudMessageSubject.NEWMESSAGE_SENDER], msg, resp.data.image.lowRes);
+                });
             }
          }else{
             $state.go('app.chatmessages', {chatId: chatId});

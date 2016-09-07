@@ -1,4 +1,4 @@
-controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, Auth, tmhDynamicLocale, amMoment, $translate, $q, $ionicActionSheet, Media, PushNotifications) {
+controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ionicHistory, $state, User, $timeout, Auth, tmhDynamicLocale, amMoment, $translate, $q, $ionicActionSheet, Media, PushNotifications) {
 
     $rootScope.currentPosition = undefined;
     $rootScope.selectedMapPosition = {};
@@ -8,6 +8,22 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     $scope.barButtonsMap = [];
     $scope.barButtons = [];
 
+
+    $scope.notification = {};
+
+
+
+    $rootScope.showNotification = function(header, msg, img){
+        $scope.notification.header = header;
+        $scope.notification.msg = msg;
+        $scope.notification.img = img;
+        $scope.notification.show = true;
+        $timeout(function(){
+            $scope.notification.show = false;
+        }, 2000);
+    }
+
+    $rootScope.showNotification("Jon Doe", "Hi dies ist eine Nachricht", "img/default.png");
 
     $rootScope.getMapLicense = function(){
        return window.mapLicense;
