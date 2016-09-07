@@ -80,10 +80,11 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
 
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-        if (fromState.url == "/filtersetting") {
+        if (fromState.url == "/filtersetting" || fromState.url == "/desirecreate") {
             $scope.loadDesires();
         }
     })
+
 
     /** infinite scroll **/
     $scope.loadMore = function(){

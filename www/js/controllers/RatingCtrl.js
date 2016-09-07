@@ -14,6 +14,10 @@ controllers.controller('RatingCtrl', function($rootScope, $scope, $stateParams, 
         $scope.desire = $stateParams.desire;
         $scope.haver = $stateParams.haver;
         $scope.rating = 0;
+
+        if($scope.desire.biddingAllowed){
+            $scope.desire.price = $scope.haver.requestedPrice;
+        }
     })
 
     $scope.ratingValues = [1, 2, 3, 4, 5];

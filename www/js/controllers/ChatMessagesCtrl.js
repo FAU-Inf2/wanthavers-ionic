@@ -15,6 +15,10 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
             $scope.messages = resp.data.reverse();
             $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
         });
+
+        Chat.getOtherUserByChatId($stateParams.chatId).then(function(resp){
+            $scope.otherUser = resp.data;
+        });
     }
 
     $scope.$on('$ionicView.enter', function() {
@@ -51,9 +55,6 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
             }
         });
 
-        Chat.getOtherUserByChatId($stateParams.chatId).then(function(resp){
-            $scope.otherUser = resp.data;
-        });
     }
 
 

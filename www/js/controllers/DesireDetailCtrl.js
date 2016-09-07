@@ -1,5 +1,5 @@
 controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHistory, $stateParams, Desire,
-                                                    Haver, $state, $ionicLoading, $ionicPopup, $translate, $ionicPopover, $ionicActionSheet) {
+                                                    Haver, $state, $ionicLoading, $ionicPopup, $translate, $ionicPopover, $ionicActionSheet, $timeout) {
 
     $scope.DESIRE_DETAIL_REPORT_TITLE = "";
     $scope.DESIRE_DETAIL_RATE_WANTER = "";
@@ -164,6 +164,9 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
     $scope.finishDesire = function() {
         Desire.updateDesireStatus($stateParams.desireId, 3).then(function(){
             $state.go($state.current, {}, {reload: true});
+            $timeout(function(){
+                $scope.openRating($scope.desire, $scope.acceptedHaver);
+            }, 1500);
         });
     }
 
