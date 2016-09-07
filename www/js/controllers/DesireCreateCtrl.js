@@ -6,7 +6,7 @@ controllers.controller('DesireCreateCtrl', function($scope, $rootScope, $state, 
     $scope.desire = {};
     $scope.currency = "Euro";
     $scope.selectedCurrency = "€";
-    $scope.desire.currency = " ";
+    $scope.desire.currency = "EUR";
     $scope.allFieldsFilled = false;
     $scope.date = {};
     //$scope.expirationDate = null;

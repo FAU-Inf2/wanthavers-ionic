@@ -93,9 +93,9 @@
                         </div>
                         <div class="col col-67  name-wapper">
                             <span class="haver-name">{{haver.user.name}}</span>
-                        <span class="bid" ng-if="desire.biddingAllowed">
-                            <span class="price-note">{{haver.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></span>
-                        </span>
+                            <span class="bid" ng-if="desire.biddingAllowed" >
+                                <span class="price-note">{{haver.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></span>
+                            </span>
                             <br>
                             <span ng-bind-html="haver.user.rating | rating | unsafe"></span>
                         </div>

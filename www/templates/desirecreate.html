@@ -45,9 +45,10 @@
           <span class="location-list-address">{{'DESIRECREATE_REVERSE_BIDDING_DESC' | translate}}</span>
         </ion-checkbox>
 
-        <div class="row item row-no-padding" ng-show="!reverseBidding.allowed" style="position:relative">
-          <div class="col col-60" style="padding:0">
-            <label class=" item-input item-floating-label">
+        <div class="row item row-no-padding" style="position:relative">
+          <div class="col col-60" style="padding:0" >
+            <span style="display:inline-block; padding:20px; padding-top:35px" class="location-list-address" ng-show="reverseBidding.allowed">{{'DESIRECREATE_REVERSE_BIDDING_SHORT' | translate}}</span>
+            <label class=" item-input item-floating-label" ng-show="!reverseBidding.allowed">
               <span class="input-label">{{ 'DESIRECREATE_PRICE' | translate }}</span>
               <input type="tel" maxlength = "3" ng-model="desire.price" placeholder="{{ 'DESIRECREATE_PRICE' | translate }}">
             </label>

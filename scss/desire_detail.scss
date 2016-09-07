@@ -164,6 +164,7 @@
 
 .desire-detail-haver-list .name-wapper{
   padding-bottom: 10px;
+  position: relative;
 }
 
 .haver-row-wrapper{
@@ -184,9 +185,12 @@
 }
 
 .desire-detail .bid {
-  padding-left: 100px;
-  padding-top: 50px;
-  color: $primary;
+  /* padding-left: 100px; */
+  /* padding-top: 60px; */
+  color: #FF6C17;
+  position: absolute;
+  right: 25px;
+  top: 15px;
 }
 
 .item.item-divider {

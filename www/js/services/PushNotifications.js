@@ -70,7 +70,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
                     if(tmp.length > 0){
                         msg = msg.replace(tmp[0]+": ","");
                     }
-                    $rootScope.showNotification(data.additionalData[CloudMessageSubject.NEWMESSAGE_SENDER], msg, resp.data.image.lowRes);
+                    $rootScope.showNotification(resp.data.name, msg, resp.data.image.lowRes);
                 });
             }
          }else{
