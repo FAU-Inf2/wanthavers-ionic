@@ -1,5 +1,5 @@
-wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state', '$ionicPopup', '$http', '$stateParams', 'CloudMessageSubject', 'Chat', 'Auth',
-   function ($rootScope, $cordovaPushV5, $state, $ionicPopup, $http, CloudMessageSubject, Chat, Auth, $stateParams) {
+wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state', '$ionicPopup', '$http', '$stateParams', 'CloudMessageSubject', 'Chat', 'Auth', 'User', 'Desire',
+   function ($rootScope, $cordovaPushV5, $state, $ionicPopup, $http, CloudMessageSubject, Chat, Auth, $stateParams, User, Desire) {
 
     return {
       token: "",
@@ -84,83 +84,143 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
          desireId = data.additionalData[CloudMessageSubject.DESIRECOMPLETE_DESIREID];
 
          if(data.additionalData.foreground){
-            if($state.current.name == "app.desiredetail"){
-               console.log("polling");
-               $rootScope.loadMessages();
+            if($state.current.name == "app.desiredetail" && $stateParams.desireId == desireId){
+                $state.go($state.current, {}, {reload: true});
+            }else{
+                Desire.getDetail(desireId).then(function(resp){
+                    var msg = data.message;
+                    var tmp = msg.split(" ");
+                    var header = "";
+                    if(tmp.length > 0){
+                        header = tmp[0];
+                        msg = msg.replace(tmp[0]+": ","");
+                    }
+                    $rootScope.showNotification(header, msg, resp.data.image.lowRes);
+                });
             }
-         }else
-            // Open desire
-            $state.go('app.desiredetail', {desireId: desireId});
+         }else {
+             $state.go('app.desiredetail', {desireId: desireId});
+         }
       },
 
       // CloudMessageSubject.HAVERACCEPTED
       HaverAccepted: function(data) {
          desireId = data.additionalData[CloudMessageSubject.HAVERACCEPTED_DESIREID];
 
-         if(data.additionalData.foreground){
-            if($state.current.name == "app.desiredetail"){
-               console.log("polling");
-               $rootScope.loadMessages();
-            }
-         }else
-            // Open desire
-            $state.go('app.desiredetail', {desireId: desireId});
+          if(data.additionalData.foreground){
+              if($state.current.name == "app.desiredetail" && $stateParams.desireId == desireId){
+                  $state.go($state.current, {}, {reload: true});
+              }else{
+                  Desire.getDetail(desireId).then(function(resp){
+                      var msg = data.message;
+                      var tmp = msg.split(" ");
+                      var header = "";
+                      if(tmp.length > 0){
+                          header = tmp[0];
+                          msg = msg.replace(tmp[0]+": ","");
+                      }
+                      $rootScope.showNotification(header, msg, resp.data.image.lowRes);
+                  });
+              }
+          }else {
+              $state.go('app.desiredetail', {desireId: desireId});
+          }
       },
 
       // CloudMessageSubject.HAVERREJECTED
       HaverRejected: function(data) {
          desireId = data.additionalData[CloudMessageSubject.HAVERREJECTED_DESIREID];
 
-         if(data.additionalData.foreground){
-            if($state.current.name == "app.desiredetail"){
-               console.log("polling");
-               $rootScope.loadMessages();
-            }
-         }else
-            // Open desire
-            $state.go('app.desiredetail', {desireId: desireId});
+          if(data.additionalData.foreground){
+              if($state.current.name == "app.desiredetail" && $stateParams.desireId == desireId){
+                  $state.go($state.current, {}, {reload: true});
+              }else{
+                  Desire.getDetail(desireId).then(function(resp){
+                      var msg = data.message;
+                      var tmp = msg.split(" ");
+                      var header = "";
+                      if(tmp.length > 0){
+                          header = tmp[0];
+                          msg = msg.replace(tmp[0]+": ","");
+                      }
+                      $rootScope.showNotification(header, msg, resp.data.image.lowRes);
+                  });
+              }
+          }else {
+              $state.go('app.desiredetail', {desireId: desireId});
+          }
       },
 
       // CloudMessageSubject.NEWHAVER
       NewHaver: function(data) {
          desireId = data.additionalData[CloudMessageSubject.NEWHAVER_DESIREID];
 
-         if(data.additionalData.foreground){
-            if($state.current.name == "app.desiredetail"){
-               console.log("polling");
-               $rootScope.loadMessages();
-            }
-         }else
-            // Open desire
-            $state.go('app.desiredetail', {desireId: desireId});
+          if(data.additionalData.foreground){
+              if($state.current.name == "app.desiredetail" && $stateParams.desireId == desireId){
+                  $state.go($state.current, {}, {reload: true});
+              }else{
+                  Desire.getDetail(desireId).then(function(resp){
+                      var msg = data.message;
+                      var tmp = msg.split(" ");
+                      var header = "";
+                      if(tmp.length > 0){
+                          header = tmp[0];
+                          msg = msg.replace(tmp[0]+": ","");
+                      }
+                      $rootScope.showNotification(header, msg, resp.data.image.lowRes);
+                  });
+              }
+          }else {
+              $state.go('app.desiredetail', {desireId: desireId});
+          }
       },
 
       // CloudMessageSubject.HAVERUNACCEPTED
       HaverUnaccepted: function(data) {
          desireId = data.additionalData[CloudMessageSubject.HAVERUNACCEPTED_DESIREID];
 
-         if(data.additionalData.foreground){
-            if($state.current.name == "app.desiredetail"){
-               console.log("polling");
-               $rootScope.loadMessages();
-            }
-         }else
-            // Open desire
-            $state.go('app.desiredetail', {desireId: desireId});
+          if(data.additionalData.foreground){
+              if($state.current.name == "app.desiredetail" && $stateParams.desireId == desireId){
+                  $state.go($state.current, {}, {reload: true});
+              }else{
+                  Desire.getDetail(desireId).then(function(resp){
+                      var msg = data.message;
+                      var tmp = msg.split(" ");
+                      var header = "";
+                      if(tmp.length > 0){
+                          header = tmp[0];
+                          msg = msg.replace(tmp[0]+": ","");
+                      }
+                      $rootScope.showNotification(header, msg, resp.data.image.lowRes);
+                  });
+              }
+          }else {
+              $state.go('app.desiredetail', {desireId: desireId});
+          }
       },
 
       // CloudMessageSubject.HAVERUNACCEPTED
       HaverUnaccepted: function(data) {
          desireId = data.additionalData[CloudMessageSubject.WANTERUNACCEPTED_DESIREID];
 
-         if(data.additionalData.foreground){
-            if($state.current.name == "app.desiredetail"){
-               console.log("polling");
-               $rootScope.loadMessages();
-            }
-         }else
-            // Open desire
-            $state.go('app.desiredetail', {desireId: desireId});
+          if(data.additionalData.foreground){
+              if($state.current.name == "app.desiredetail" && $stateParams.desireId == desireId){
+                  $state.go($state.current, {}, {reload: true});
+              }else{
+                  Desire.getDetail(desireId).then(function(resp){
+                      var msg = data.message;
+                      var tmp = msg.split(" ");
+                      var header = "";
+                      if(tmp.length > 0){
+                          header = tmp[0];
+                          msg = msg.replace(tmp[0]+": ","");
+                      }
+                      $rootScope.showNotification(header, msg, resp.data.image.lowRes);
+                  });
+              }
+          }else {
+              $state.go('app.desiredetail', {desireId: desireId});
+          }
       },
 
    };
