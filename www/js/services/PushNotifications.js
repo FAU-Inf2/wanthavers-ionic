@@ -68,7 +68,7 @@ wanthaver.factory('PushNotifications', ['$rootScope', '$cordovaPushV5', '$state'
                     var msg = data.message;
                     var tmp = msg.split(" ");
                     if(tmp.length > 0){
-                        msg = msg.replace(tmp[0]+": ","");
+                        msg = msg.replace(tmp[0]+" ","");
                     }
                     $rootScope.showNotification(resp.data.name, msg, resp.data.image.lowRes);
                 });
