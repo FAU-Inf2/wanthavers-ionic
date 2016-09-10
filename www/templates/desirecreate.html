@@ -21,7 +21,7 @@
 
 
         <div class="desire-validTimespan" >{{'DESIRECREATE_DATE' | translate}} <span>{{ 'DESIRECREATE_EXPIRE' | translate }} {{dateSlider.date}} {{dateSlider.name}}</span></div>
-        <div class="item range range-positive">
+        <div class="item range range-positive" style="border:none;">
           <input type="range" name="volume" min="1" max="13" ng-model="dateSlider.number" ng-change="validTimespanChanged()">
         </div>
 

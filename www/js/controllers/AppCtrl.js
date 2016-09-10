@@ -166,10 +166,19 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
                     $rootScope.mapModal = modal;
                     $rootScope.pos.lat = lat;
                     $rootScope.pos.lng = lng;
+                    if(lat == undefined){
+                        $rootScope.pos.lat = undefined;
+                        $rootScope.pos.lng = undefined;
+                    }
+
                     modal.show();
                 });
             }else{
                 $rootScope.mapModal.show();
+                if(lat == undefined){
+                    $rootScope.pos.lat = undefined;
+                    $rootScope.pos.lng = undefined;
+                }
                 $rootScope.readyMap(lat, lng);
             }
         }

@@ -319,3 +319,31 @@ button.button-icon.round-overlay-button {
   animation-duration: 750ms;
 }
 
+input[type=text], .escape-euro{
+  font-family: "Helvetica Neue" !important;
+}
+
+.bid-popup-input{
+  width: 100px !important;
+  height: 40px !important;
+  /*padding: 5px 5px 5px 20px !important;*/
+  padding-right: 45px;
+  padding-top:10px !important;
+  display:inline-block !important;
+  font-size: 30px !important;
+  text-align: center !important;
+  background-color: $primary !important;
+  color: #fff !important;
+}
+
+.popup-currency{
+  font-size: 18px;
+  display: inline-block;
+  margin-left: -45px;
+  padding-top: 10px;
+  color: #eee;
+}
+
+.popup-body{
+  text-align: center;
+}

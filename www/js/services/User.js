@@ -2,7 +2,9 @@ wanthaver.factory('User', ['$http', 'Auth', function ($http, Auth, $httpParamSer
     return {
 
         getCurrentUser: function(){
-            return $http.get(server+'/v1/login', Auth.getHeaderObject());
+            var tmp = Auth.getHeaderObject();
+            tmp["timeout"] = 2000;
+            return $http.get(server+'/v1/login', tmp);
         },
 
         getById: function(id){

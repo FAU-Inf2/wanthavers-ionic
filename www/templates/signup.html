@@ -20,14 +20,14 @@
         <div class="row" style="padding:0;padding-right:20px" >
           <div class="col col-50" style="padding:0">
             <label class="item item-input item-floating-label">
-              <span class="input-label">Your Firstname</span>
-              <input type="text" ng-model="signupData.firstName" placeholder="Your Firstname">
+              <span class="input-label">Your First Name</span>
+              <input type="text" ng-model="signupData.firstName" placeholder="Your First Name">
             </label>
           </div>
           <div class="col col-50" style="padding:0">
             <label class="item item-input item-floating-label">
-              <span class="input-label">Your Lastname</span>
-              <input type="text" ng-model="signupData.lastName" placeholder="Your Lastname">
+              <span class="input-label">Your Last Name</span>
+              <input type="text" ng-model="signupData.lastName" placeholder="Your Last Name">
             </label>
           </div>
         </div>
@@ -36,6 +36,7 @@
           <span class="input-label">Date of Birth</span>
           <input type="date" ng-model="signupData.birthday" placeholder="Date of Birth" ng-class="{'date-not-empty': signupData.birthday != undefined}">
         </label>
+
         <div class="out-terms-wrapper">
           <label class="item terms-check">
             <ion-checkbox ng-model="agree">I agree with the</ion-checkbox>

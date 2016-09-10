@@ -108,8 +108,8 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
 
     $rootScope.readyMap = function (lat, lng) {
         mapReady = true;
-        if ((lat != undefined && lng != undefined) || ($rootScope.pos.lng != undefined && $rootScope.pos.lat != undefined) ) {
 
+        if ((lat != undefined && lng != undefined) || ($rootScope.pos.lng != undefined && $rootScope.pos.lat != undefined) ) {
             if(lat == undefined || lng == undefined){
                 lat = $rootScope.pos.lat;
                 lng = $rootScope.pos.lng;
@@ -118,11 +118,11 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
             POS = new plugin.google.maps.LatLng(lat, lng);
             $scope.showButtons = false;
         }else{
-
+            $scope.showButtons = true;
             if($rootScope.currentPosition != undefined){
-                console.log("YYYY"+ $rootScope.currentPosition)
                 POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
-                $scope.showButtons = true;
+            }else{
+                POS = new plugin.google.maps.LatLng(49.573840, 11.027730);
             }
         }
 
@@ -177,7 +177,7 @@ controllers.controller('MapCtrl', function ($scope, $state, Auth, User, $rootSco
     ionic.DomUtil.ready(function () {
         $rootScope.cordovaReady(function () {
             if ($rootScope.currentPosition == undefined) {
-                POS = new plugin.google.maps.LatLng(37.422476, -122.08425);
+                POS = new plugin.google.maps.LatLng(49.573840, 11.027730);
             } else {
                 POS = new plugin.google.maps.LatLng($rootScope.currentPosition.latitude, $rootScope.currentPosition.longitude);
             }

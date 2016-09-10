@@ -1,6 +1,7 @@
 <ion-modal-view ng-controller="MapCtrl" class="map-view" cache-view="false">
     <ion-header-bar>
-        <h1 class="title">{{ 'MAP_TITLE' | translate }}</h1>
+        <h1 class="title" ng-show="showButtons">{{ 'MAP_TITLE' | translate }}</h1>
+        <h1 class="title" ng-show="!showButtons">{{ 'MAP_TITLE2' | translate }}</h1>
         <button class="button button-clear button-positive" ng-click="finish(false)">
             {{ 'MAP_CLOSE_BUTTON' | translate }}
         </button>

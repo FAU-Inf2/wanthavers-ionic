@@ -7,10 +7,22 @@
         </div>
 
         <div class="list reset-form padding">
-            <label class="username item-input item-floating-label">
-                <span class="input-label">{{ 'SETTINGS_NAME' | translate }}</span>
-                <input type="text" ng-model="user.name">
-            </label>
+
+            <div class="row" style="padding:0;padding-right:20px" >
+                <div class="col col-50" style="padding:0">
+                    <label class=" item-input item-floating-label">
+                        <span class="input-label">{{ 'SETTINGS_FIRSTNAME' | translate }}</span>
+                        <input type="text" ng-model="user.firstName" placeholder="{{ 'SETTINGS_NAME' | translate }}">
+                    </label>
+                </div>
+                <div class="col col-50" style="padding:0">
+                    <label class=" item-input item-floating-label">
+                        <span class="input-label">{{ 'SETTINGS_LASTNAME' | translate }}</span>
+                        <input type="text" ng-model="user.lastName" placeholder="{{ 'SETTINGS_LASTNAME' | translate }}">
+                    </label>
+                </div>
+            </div>
+
             <label class="email item-input item-floating-label">
                 <span class="input-label">{{ 'SETTINGS_EMAIL' | translate }}</span>
                 <input type="email" ng-model="user.email">

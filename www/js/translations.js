@@ -24,6 +24,8 @@ wanthaver.config(function ($translateProvider) {
 
         /** SETTINGS**/
         SETTINGS_NAME: 'Name',
+        SETTINGS_FIRSTNAME: 'First Name',
+        SETTINGS_LASTNAME: 'Last Name',
         SETTINGS_EMAIL: 'Email',
         SETTINGS_PWRESET_TITLE: 'Password Reset',
         SETTINGS_PWRESET_MESSAGE:'You will get an email to reset your password.',
@@ -51,7 +53,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_EXPIRE_HOURS: 'Set in Hours',
         DESIRECREATE_DIFFERENT_LOCATION: 'Choose Location on Map',
         DESIRECREATE_PUBLISH: 'Publish',
-        DESIRECREATE_LOCATION_HEADER: 'Select Dropzone',
+        DESIRECREATE_LOCATION_HEADER: 'Dropzone',
         DESIRECREATE_NO_LOCATIONS: "You don't have any saved locations.",
         DESIRECREATE_TAP_CHANGE_IMAGE: 'Tap to change image',
         DESIRECREATE_REVERSEDBIDDING_POPUP_TITLE: 'About Reversed Bidding in WantHaver',
@@ -106,6 +108,8 @@ wanthaver.config(function ($translateProvider) {
         DESIRE_DETAIL_ACCEPTEDHAVER: "Congratulations, you've been accepted by the creator.",
         DESIRE_DETAIL_FINISH_INFO: "Has your Desire been fulfilled?",
         DESIRE_DETAIL_FINISH: "Finish Desire",
+        BID_PLACEHOLDER1: "Your Bid",
+        BID_PLACEHOLDER2: "",
 
         /** RATING **/
         RATING_BAR_TITLE: 'Rating',
@@ -137,6 +141,7 @@ wanthaver.config(function ($translateProvider) {
         MAP_PROMPT_TITLE: 'Enter Custom Location',
         MAP_BUTTON: 'Set As Location',
         MAP_TITLE: 'Choose a Location',
+        MAP_TITLE2: 'Drop-off Location',
         MAP_CLOSE_BUTTON: 'Cancel',
 
         /** ABOUT **/
@@ -171,6 +176,8 @@ wanthaver.config(function ($translateProvider) {
 
         /** SETTINGS**/
         SETTINGS_NAME: 'Name',
+        SETTINGS_FIRSTNAME: 'Vorname',
+        SETTINGS_LASTNAME: 'Nachname',
         SETTINGS_EMAIL: 'Email',
         SETTINGS_PWRESET_TITLE: 'Passwort-Zurücksetzen',
         SETTINGS_PWRESET_MESSAGE:'Du erhältst eine E-Mail zum Ändern des Passworts.',
@@ -198,7 +205,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRECREATE_EXPIRE_HOURS: 'Stunden wählen',
         DESIRECREATE_DIFFERENT_LOCATION: 'Ort auf Karte auswählen',
         DESIRECREATE_PUBLISH: 'Veröffentlichen',
-        DESIRECREATE_LOCATION_HEADER: 'Dropzone auswählen',
+        DESIRECREATE_LOCATION_HEADER: 'Dropzone',
         DESIRECREATE_NO_LOCATIONS: "Du hast noch keine gespeicherten Orte.",
         DESIRECREATE_TAP_CHANGE_IMAGE: 'Tippe um ein anderes Bild zu wählen',
         DESIRECREATE_REVERSEDBIDDING_POPUP_TITLE: 'Über Reversed Bidding in WantHaver',
@@ -252,6 +259,8 @@ wanthaver.config(function ($translateProvider) {
         DESIRE_DETAIL_ACCEPTEDHAVER: "Glückwunsch, du wurdest vom Ersteller akzeptiert!",
         DESIRE_DETAIL_FINISH_INFO: "Wurde dein Auftrag erfüllt?",
         DESIRE_DETAIL_FINISH: "Auftrag abschließen",
+        BID_PLACEHOLDER1: "",
+        BID_PLACEHOLDER2: "ein",
 
         /** RATING **/
         RATING_BAR_TITLE: 'Bewertung',
@@ -283,6 +292,7 @@ wanthaver.config(function ($translateProvider) {
         MAP_PROMPT_TITLE: 'Adresse eingeben',
         MAP_BUTTON: 'Als Ort setzen',
         MAP_TITLE: 'Ort auswählen',
+        MAP_TITLE2: 'Übergabeort',
         MAP_CLOSE_BUTTON: 'Abbrechen',
 
 

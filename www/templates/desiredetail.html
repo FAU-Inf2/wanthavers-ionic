@@ -122,15 +122,15 @@
             </div>
             <div class="item item-text-wrap">
                 <div class="desire-detail-accepted-haver" >
-                    <div class="row">
+                    <div class="row haver-row-wrapper">
                         <div class="col">
                             <img class="haver-img" ng-src="{{acceptedHaver.user.image.lowRes}}">
                         </div>
-                        <div class="col col-67  name-wapper">
+                        <div class="col col-67  name-wapper" style="position:relative">
                             <span class="haver-name">{{acceptedHaver.user.name}}</span>
-                        <span class="bid" ng-if="desire.biddingAllowed">
-                            <span class="price-note">{{acceptedHaver.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></span>
-                        </span>
+                            <span class="bid" ng-if="desire.biddingAllowed">
+                                <span class="price-note">{{acceptedHaver.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></span>
+                            </span>
                             <br>
                             <span ng-bind-html="acceptedHaver.user.rating | rating | unsafe"></span>
                         </div>
@@ -138,10 +138,14 @@
                             <button class="button button-small desire-detail-button" ng-if="desireInProgress" ng-click="showWanterUnacceptPopup()">
                                 <i class="icon ion-android-close unaccept-icon"></i>
                             </button>
-                            <button class="button button-small desire-detail-button" ng-if="wanterCanRate" ng-click="openRating(desire, acceptedHaver)">
+                        </div>
+                        <div class="col col-10" ng-if="wanterCanRate">
+                            <button class="button button-small desire-detail-button"  ng-click="openRating(desire, acceptedHaver)">
                                 <i class="icon ion-android-star rate-icon"></i>
                             </button>
-                            <button class="button button-small inactive-desire-detail-button" ng-if="!wanterCanRate && desireDone">
+                        </div>
+                        <div class="col col-10" ng-if="!wanterCanRate && desireDone">
+                            <button class="button button-small inactive-desire-detail-button" >
                                 <i class="icon ion-android-star rate-icon"></i>
                             </button>
                         </div>

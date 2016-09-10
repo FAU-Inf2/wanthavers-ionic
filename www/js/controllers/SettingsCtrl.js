@@ -69,6 +69,7 @@ controllers.controller('SettingsCtrl', function($scope, $rootScope, $state ,$ion
 
 
     $scope.changeUserNameAndEmail = function(){
+        $scope.user.name = $scope.user.firstName;
         User.updateUser($scope.user).then(function(resp){
             $rootScope.currentUser = resp.data;
             $ionicPopup.alert({
