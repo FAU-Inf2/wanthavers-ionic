@@ -16,8 +16,10 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
     }
 
     $rootScope.goToNotification = function(){
+        console.log($scope.notification.state)
         if($scope.notification.state != undefined){
             $state.go($scope.notification.state, $scope.notification.params);
+            $scope.notification.show = false;
         }
     }
 
@@ -33,7 +35,11 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
         }, 2000);
     }
 
-    //$rootScope.showNotification("Jon Doe", "Hi dies ist eine Nachricht", "img/default.png");
+    /*
+    $timeout(function(){
+        $rootScope.showNotification("Jon Doe", "Hi didcdffdfddes ist eine Nachrichtc", "img/default.png", "app.chatmessages", {chatId: "bjgMW2c0yO"});
+    }, 2000);
+    */
 
     $rootScope.getMapLicense = function(){
        return window.mapLicense;

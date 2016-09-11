@@ -110,6 +110,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRE_DETAIL_FINISH: "Finish Desire",
         BID_PLACEHOLDER1: "Your Bid",
         BID_PLACEHOLDER2: "",
+        SHOW_ON_MAP: "show on map",
 
         /** RATING **/
         RATING_BAR_TITLE: 'Rating',
@@ -261,6 +262,7 @@ wanthaver.config(function ($translateProvider) {
         DESIRE_DETAIL_FINISH: "Auftrag abschließen",
         BID_PLACEHOLDER1: "",
         BID_PLACEHOLDER2: "ein",
+        SHOW_ON_MAP: "Auf Karte anzeigen",
 
         /** RATING **/
         RATING_BAR_TITLE: 'Bewertung',

@@ -63,7 +63,9 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
 
                 Location.getLocationByCoords(pos.coords.latitude, pos.coords.longitude).then(function (resp) {
                     $timeout(function () {
-                        $scope.obj.location = resp.data.cityName;
+                        if(resp.data.cityName != "" && resp.data.cityName != undefined && resp.data.cityName != " "){
+                            $scope.obj.location = resp.data.cityName;
+                        }
                     }, 2000);
                 });
             }, function (error) {

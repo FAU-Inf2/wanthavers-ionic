@@ -174,7 +174,7 @@
             </div>
             <div class="item item-text-wrap">
                 <b>{{bidder.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></b>
-                <span class="desire-image-upload-text">&nbsp;&nbsp;({{ 'DESIRE_DETAIL_REV_BIDDING_MODIFY_TITLE' | translate }})</span>
+                <span class="desire-image-upload-text">&nbsp;&nbsp;{{ 'DESIRE_DETAIL_REV_BIDDING_MODIFY_TITLE' | translate }}</span>
 
             </div>
         </div>
@@ -193,7 +193,8 @@
                 {{ 'DESIREDETAIL_LOCATION' | translate }}
             </div>
             <div class="item item-text-wrap">
-                {{desire.dropzone_string}}
+                {{desire.dropzone_string}}<br><br>
+                <span class="desire-image-upload-text">{{ 'SHOW_ON_MAP' | translate }}</span>
             </div>
         </div>
 
