@@ -168,35 +168,6 @@
             </div>
         </div>
 
-        <!--
-        <div class="desire-detail-box">
-            <h4>{{ 'DESIREDETAIL_DESCRIPTION' | translate }}</h4>
-            <p>{{desire.description}}</p>
-        </div>-->
-
-        <div class="card">
-            <div class="item item-divider">
-                {{ 'DESIREDETAIL_DESCRIPTION' | translate }}
-            </div>
-            <div class="item item-text-wrap">
-                <span>{{desire.description}}</span>
-            </div>
-        </div>
-
-        <!--
-        <div class="desire-detail-price-box" ng-if="!desire.biddingAllowed">
-            <h4>{{ 'DESIREDETAIL_PRICE' | translate }}</h4>
-            <p class="price-note">{{desire.price}}<span class="currency-symbol">{{desire.currency | currency}}</span></p>
-        </div>-->
-
-
-        <!--
-        <div class="desire-detail-price-box" ng-if="(isHaver || isAcceptedHaver) && desire.biddingAllowed" ng-disable="!desireOpen" ng-click="updateRequestedPrice()">
-            <h4>{{ 'DESIREDETAIL_BID' | translate }}</h4>
-            <p class="price-note">{{bidder.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></p>
-        </div>
-        -->
-
         <div class="card" ng-show="(isHaver || isAcceptedHaver) && desire.biddingAllowed" ng-disable="!desireOpen" ng-click="updateRequestedPrice()">
             <div class="item item-divider">
                 {{ 'DESIREDETAIL_BID' | translate }}
@@ -208,11 +179,14 @@
             </div>
         </div>
 
-        <!--
-        <div class="desire-detail-box">
-            <h4>{{ 'DESIREDETAIL_LOCATION' | translate }}</h4>
-            <p>{{desire.dropzone_string}}</p>
-        </div>-->
+        <div class="card">
+            <div class="item item-divider">
+                {{ 'DESIREDETAIL_DESCRIPTION' | translate }}
+            </div>
+            <div class="item item-text-wrap">
+                <span>{{desire.description}}</span>
+            </div>
+        </div>
 
         <div class="card" ng-click="showAddress()">
             <div class="item item-divider">

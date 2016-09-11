@@ -11,13 +11,23 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
 
     $scope.notification = {};
 
+    $rootScope.hideNotification = function () {
+        $scope.notification.show = false;
+    }
 
+    $rootScope.goToNotification = function(){
+        if($scope.notification.state != undefined){
+            $state.go($scope.notification.state, $scope.notification.params);
+        }
+    }
 
-    $rootScope.showNotification = function(header, msg, img){
+    $rootScope.showNotification = function(header, msg, img, state, params){
         $scope.notification.header = header;
         $scope.notification.msg = msg;
         $scope.notification.img = img;
         $scope.notification.show = true;
+        $scope.notification.state = state;
+        $scope.notification.params = params;
         $timeout(function(){
             $scope.notification.show = false;
         }, 2000);
@@ -84,6 +94,8 @@ controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $ion
                     }
                     $scope.setI18n(code);
                 }
+            }, function(){
+                $scope.logout();
             });
         }
     });

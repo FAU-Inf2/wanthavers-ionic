@@ -58,7 +58,7 @@
   </ion-side-menu>
 </ion-side-menus>
 
-<div class="notification-banner slide-in" ng-if="notification.show">
+<div class="notification-banner slide-in" ng-if="notification.show" on-swipe-up="hideNotification()" ng-click="goToNotification()">
   <div class="row">
     <div class="col col-20">
       <img class="notification-img" ng-src="{{notification.img}}">

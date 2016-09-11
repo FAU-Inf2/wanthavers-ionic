@@ -1,9 +1,25 @@
-controllers.controller('LoginCtrl', function($scope, $state, Auth, User, $rootScope, $ionicHistory, $ionicPopup, $ionicSideMenuDelegate) {
+controllers.controller('LoginCtrl', function($scope, $timeout, $state, Auth, User, $rootScope, $ionicHistory, $ionicPopup, $ionicSideMenuDelegate) {
 
     $scope.loginData = {};
     $scope.signupData = {};
 
     $ionicSideMenuDelegate.canDragContent(false);
+
+
+    $scope.$on('$ionicView.enter', function() {
+        //$rootScope.cordovaReady(function() {
+            $timeout(function(){
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+            }, 1000);
+
+    });
+
+    $scope.$on('$ionicView.leave', function() {
+        $rootScope.cordovaReady(function() {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        });
+    });
+
 
     $scope.doLogin = function() {
         Auth.setCredentials($scope.loginData.username, $scope.loginData.password);

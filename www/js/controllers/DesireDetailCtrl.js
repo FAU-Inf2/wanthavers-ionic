@@ -133,7 +133,7 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
         $scope.data = {};
 
         var myPopup = $ionicPopup.show({
-            template: '<input type="number" maxlength="3"  ng-model="data.bid" autofocus>',
+            template: "<input maxlength='3' class=\"bid-popup-input\" type=\"tel\" ng-model=\"data.bid\" autofocus > <span class='escape-euro popup-currency'>{{desire.currency}}</span>",
             title: $scope.revBiddingModifyTitle,
             subTitle: $scope.revBiddingSubtitle,
             scope: $scope,
@@ -147,7 +147,9 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
                             //don't allow the user to close unless he enters bid
                             e.preventDefault();
                         } else {
-                            Haver.updateRequestedPrice($stateParams.desireId, $rootScope.currentUserId, $scope.data.bid);
+                            Haver.updateRequestedPrice($stateParams.desireId, $rootScope.currentUserId, $scope.data.bid).then(function(){
+                                $state.go($state.current, {}, {reload: true});
+                            });
                         }
                     }
                 }
