@@ -111,6 +111,8 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
         Desire.list(undefined, $stateParams.mode, Auth.getUserId()).then(function(resp){
             if(resp.data.length == 0){
                 $scope.reachedEnd = true;
+            }else{
+                $scope.reachedEnd = false;
             }
             $scope.feed = resp.data;
             $scope.$broadcast('scroll.refreshComplete');
