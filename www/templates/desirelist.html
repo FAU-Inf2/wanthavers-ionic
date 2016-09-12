@@ -1,6 +1,6 @@
 <ion-view>
   <ion-nav-title><img ng-if="obj.location == ''" src="img/logo_white.png">{{obj.location}}</ion-nav-title>
-  <ion-content overflow-scroll="true">
+  <ion-content>
     <ion-refresher
             on-refresh="loadDesires()">
     </ion-refresher>
