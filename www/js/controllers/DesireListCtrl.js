@@ -53,6 +53,10 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     });
 
     $scope.getPosition = function(loadDesires){
+        if($rootScope.currentPosition != undefined && FilterSetting.getLat() != $rootScope.currentPosition.latitude){
+            return;
+        }
+
         $rootScope.cordovaReady(function() {
             navigator.geolocation.getCurrentPosition(function (pos) {
                 console.log(pos.coords.latitude);
@@ -84,6 +88,11 @@ controllers.controller('DesireListCtrl', function($scope, Desire, $state, Locati
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         if (fromState.url == "/filtersetting" || fromState.url == "/desirecreate") {
             $scope.loadDesires();
+            Location.getLocationByCoords(FilterSetting.getLat(), FilterSetting.getLon()).then(function (resp) {
+                if(resp.data.cityName != "" && resp.data.cityName != undefined && resp.data.cityName != " "){
+                    $scope.obj.location = resp.data.cityName;
+                }
+            });
         }
     })
 
