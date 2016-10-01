@@ -5,15 +5,15 @@
 
         <div class="row desire-detail-creator" ng-if="!isWanter">
             <div class="col">
-                <div class="creator-img"><img ng-src="{{desire.creator.image.lowRes}}"></div>
+                <div class="creator-img" ng-click="openUserProfile(desire.creator)"><img ng-src="{{desire.creator.image.lowRes}}"></div>
             </div>
             <div class="col col-67">
                 <div class="row">
                     <div class="col col-50">
-                        <span class="creator-name">{{desire.creator.name}}</span>
+                        <span class="creator-name" ng-click="openUserProfile(desire.creator)">{{desire.creator.name}}</span>
                     </div>
                     <div class="col col-50">
-                        <span ng-bind-html="desire.creator.rating | rating | unsafe"></span>
+                        <span ng-bind-html="desire.creator.rating | rating | unsafe" ng-click="openUserProfile(desire.creator)"></span>
                     </div>
                 </div>
             </div>
@@ -89,15 +89,15 @@
                 <div class="desire-detail-haver-list" ng-repeat="haver in list">
                     <div class="row haver-row-wrapper">
                         <div class="col">
-                            <img class="haver-img" ng-src="{{haver.user.image.lowRes}}">
+                            <img class="haver-img" ng-src="{{haver.user.image.lowRes}}" ng-click="openUserProfile(haver.user)">
                         </div>
                         <div class="col col-67  name-wapper">
-                            <span class="haver-name">{{haver.user.name}}</span>
+                            <span class="haver-name" ng-click="openUserProfile(haver.user)">{{haver.user.name}}</span>
                             <span class="bid" ng-if="desire.biddingAllowed" >
                                 <span class="price-note">{{haver.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></span>
                             </span>
                             <br>
-                            <span ng-bind-html="haver.user.rating | rating | unsafe"></span>
+                            <span ng-bind-html="haver.user.rating | rating | unsafe" ng-click="openUserProfile(haver.user)"></span>
                         </div>
                         <div class="col col-10">
                             <button class="button button-small desire-detail-button" ng-click="openChat(haver)">
@@ -124,15 +124,15 @@
                 <div class="desire-detail-accepted-haver" >
                     <div class="row haver-row-wrapper">
                         <div class="col">
-                            <img class="haver-img" ng-src="{{acceptedHaver.user.image.lowRes}}">
+                            <img class="haver-img" ng-src="{{acceptedHaver.user.image.lowRes}}" ng-click="openUserProfile(acceptedHaver.user)">
                         </div>
                         <div class="col col-67  name-wapper" style="position:relative">
-                            <span class="haver-name">{{acceptedHaver.user.name}}</span>
+                            <span class="haver-name" ng-click="openUserProfile(acceptedHaver.user)">{{acceptedHaver.user.name}}</span>
                             <span class="bid" ng-if="desire.biddingAllowed">
                                 <span class="price-note">{{acceptedHaver.requestedPrice}}<span class="currency-symbol">{{desire.currency | currency}}</span></span>
                             </span>
                             <br>
-                            <span ng-bind-html="acceptedHaver.user.rating | rating | unsafe"></span>
+                            <span ng-bind-html="acceptedHaver.user.rating | rating | unsafe" ng-click="openUserProfile(acceptedHaver.user)"></span>
                         </div>
                         <div class="col col-10">
                             <button class="button button-small desire-detail-button" ng-if="desireInProgress" ng-click="showWanterUnacceptPopup()">

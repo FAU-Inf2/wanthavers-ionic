@@ -1,0 +1,70 @@
+.userprofile .username{
+  margin-top: 20px;
+}
+
+.userprofile .item{
+  margin-top: -10px;
+}
+
+.userprofile .user-name{
+  text-align: center;
+  font-size: 30px;
+  color: $primary;
+
+}
+
+.userprofile img {
+  margin-left: 27.5%;
+  margin-top: 20px;
+  width: 45%;
+  height: 45%;
+  border-radius: 50%;
+}
+
+.userprofile .ion-trophy{
+  color: $primary;
+  margin-right: 5px;
+}
+
+.userprofile .ion-close-circled{
+  color: $primary;
+  margin-right: 5px;
+}
+
+.userprofile .canceledDesires{
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.userprofile .successfulDesires{
+  font-size: 20px;
+}
+
+.userprofile .user-rating{
+  //margin-left: 32%;
+  font-size: 30px;
+  display:table;
+  margin:0 auto;
+}
+
+
+.userprofile .wide-as-needed {
+  overflow: scroll;
+  white-space: nowrap;
+}
+.userprofile .scroll {
+  min-width: 100%;
+}
+
+.userprofile .divider1{
+  padding-top: 15px;
+  padding-bottom: 17px;
+}
+
+
+.userprofile .divider2{
+  padding-top: 15px;
+  padding-bottom: 17px;
+}
+
+

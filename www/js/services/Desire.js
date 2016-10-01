@@ -23,6 +23,8 @@ wanthaver.factory('Desire', ['$http', 'Auth', 'FilterSetting', function ($http, 
                 p.status = [1,2,3];
             }
 
+            console.log(p);
+
             return $http.get(server+'/v1/desires', {
                 params: p
             });
@@ -55,6 +57,57 @@ wanthaver.factory('Desire', ['$http', 'Auth', 'FilterSetting', function ($http, 
 
         updateDesireStatus: function(id, status) {
             return $http.put(server+'/v1/desires/'+id+'/status?status='+status, {}, Auth.getHeaderObject(true));
+        },
+
+        getSuccessfulDesires: function(user_id){
+
+            var limit = 2147483647;
+            var p = {
+                category: null,
+                limit : limit,
+                status: 3,
+                creator_id:  user_id,
+                haver_id: user_id
+            };
+            console.log(p);
+
+            return $http.get(server+'/v1/desires', {
+                params: p
+            });
+        },
+
+
+        getCanceledDesires: function(user_id){
+
+            var limit = 2147483647 ;
+            var p = {
+                category: null,
+                limit : limit,
+                status: [0,1,2,3,4],
+                haver_id: user_id,
+                haver_status: 3
+            };
+            console.log(p);
+
+            return $http.get(server+'/v1/desires', {
+                params: p
+            });
+        },
+
+        getDesireByUserId: function(user_id){
+            var limit = 2147483647 ;
+            var p = {
+                category: null,
+                limit : limit,
+                status: [0,1,2,3,4],
+                creator_id: user_id,
+                haver_id: user_id,
+            };
+            console.log(p);
+
+            return $http.get(server+'/v1/desires', {
+                params: p
+            });
         }
 
     };

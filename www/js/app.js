@@ -218,6 +218,16 @@ wanthaver.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvide
       }
   })
 
+  .state('app.userprofile', {
+      url: '/userprofile',
+      params: { user: null },
+      views: {
+         'menuContent': {
+             templateUrl: 'templates/userprofile.html',
+             controller: 'UserProfileCtrl'
+         }
+      }
+  })
 
     if(window.localStorage.getItem("username") == null){
         $urlRouterProvider.otherwise('/app/startup');

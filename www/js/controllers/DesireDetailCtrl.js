@@ -205,6 +205,10 @@ controllers.controller('DesireDetailCtrl', function($scope, $rootScope, $ionicHi
 
     $scope.openRating = function(desire, haver) {
         $state.go("app.rating", {desire: desire, haver: haver});
+    };
+
+    $scope.openUserProfile = function(user) {
+        $state.go("app.userprofile", {user: user});
     }
 
     $ionicPopover.fromTemplateUrl('templates/report.html', {

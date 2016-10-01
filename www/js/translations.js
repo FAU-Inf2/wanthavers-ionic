@@ -150,7 +150,17 @@ wanthaver.config(function ($translateProvider) {
         /** ABOUT **/
         ABOUT_WEBSITE: 'Our Website www.wanthaver.com',
         ABOUT_AGB: 'Terms of Use',
-        ABOUT_LICENSES: 'Software-Licenses'
+        ABOUT_LICENSES: 'Software-Licenses',
+
+
+        /** USER PROFILE **/
+        USER_PROFILE_BAR_TITLE: 'User Profile',
+        USER_PROFILE_STATISTICS: 'Statistics',
+        USER_PROFILE_DESIRE_HISTORY: 'Desire History',
+        USER_PROFILE__SUCCESSFUL_DESIRE: 'Successfully finished desires',
+        USER_PROFILE__CANCELED_DESIRE: 'Canceled desires',
+        USER_PROFILE_MEMBER_SINCE: 'Member since:'
+
     });
     $translateProvider.translations('de', {
         CURRENT_LOCATION: 'Momentaner Standort',
@@ -305,7 +315,16 @@ wanthaver.config(function ($translateProvider) {
         /** ABOUT **/
         ABOUT_WEBSITE: 'Unsere Webseite www.wanthaver.com',
         ABOUT_AGB: 'AGB',
-        ABOUT_LICENSES: 'Software-Lizenzen'
+        ABOUT_LICENSES: 'Software-Lizenzen',
+
+        /** USER PROFILE **/
+        USER_PROFILE_BAR_TITLE: 'Benutzer Profil',
+        USER_PROFILE_STATISTICS: 'Statistiken',
+        USER_PROFILE_DESIRE_HISTORY: 'Auftragsverlauf',
+        USER_PROFILE__SUCCESSFUL_DESIRE: 'Erfolgreich abgeschlossene Aufträge',
+        USER_PROFILE__CANCELED_DESIRE: 'Abgebrochene Aufträge',
+        USER_PROFILE_MEMBER_SINCE: 'Mitglied seit:'
+
     });
     $translateProvider.preferredLanguage('en');
     $translateProvider.forceAsyncReload(true);
