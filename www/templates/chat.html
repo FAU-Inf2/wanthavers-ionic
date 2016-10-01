@@ -1,4 +1,8 @@
-<ion-view view-title="{{otherUser.name}}">
+<ion-view >
+  <ion-nav-title class="header-title">
+    <img class="header-user-img" src="{{otherUser.image.lowRes}}">
+    <span>{{otherUser.name}}</span>
+  </ion-nav-title>
   <ion-content delegate-handle="msgList" class="chat-list">
     <ion-refresher
             on-refresh="loadMore()">

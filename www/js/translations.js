@@ -9,6 +9,8 @@ wanthaver.config(function ($translateProvider) {
         NO_DESIRES_TITLE: 'Whoops, nothing found',
         NO_DESIRES_DESC: 'Be the first to create a desire or change your location in the filter settings.',
         NO_MY_DESIRES_DESC: "Create or fulfill your first desire and you'll find it here",
+        FLAG_USER: 'Block User',
+        FLAG_USER_CONFIRM: 'Are you sure, you want to block this user permanently?',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'All Desires',
@@ -160,6 +162,8 @@ wanthaver.config(function ($translateProvider) {
         NO_DESIRES_TITLE: 'Oops, nichts gefunden',
         NO_DESIRES_DESC: 'Sei der Erste und erstelle einen Auftrag oder ändere deinen Ort in den Filtereinstellungen. ',
         NO_MY_DESIRES_DESC: 'Erstelle oder erfülle deinen ersten Auftrag und du findest ihn hier wieder.',
+        FLAG_USER: 'Benutzer blockieren',
+        FLAG_USER_CONFIRM: 'Sind Sie sicher, dass Sie diesen Benutzer dauerhaft blockieren wollen?',
 
         /** MENU **/
         MENU_ALL_DESIRES: 'Alle Aufträge',

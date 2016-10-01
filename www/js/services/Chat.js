@@ -19,6 +19,7 @@ wanthaver.factory('Chat', ['$http', 'Auth', function ($http, Auth) {
         },
 
         getOtherUserByChatId: function(chatId){
+            console.log("xxxxxxxxx");
             return $http.get(server+'/v1/chat/'+chatId+'/otheruser', Auth.getHeaderObject());
         },
 

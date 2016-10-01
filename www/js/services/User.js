@@ -23,6 +23,10 @@ wanthaver.factory('User', ['$http', 'Auth', function ($http, Auth, $httpParamSer
 
         updateUser: function(user){
             return $http.put(server+'/v1/users', user, Auth.getHeaderObject());
+        },
+
+        block: function(id){
+            return $http.post(server+'/v1/users/'+id+'/flag', {}, Auth.getHeaderObject(true));
         }
 
     };

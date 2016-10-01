@@ -1,5 +1,62 @@
-controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, User, $stateParams, $ionicScrollDelegate) {
+controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, User, $stateParams, $ionicScrollDelegate, $ionicActionSheet, $translate, $ionicPopup) {
     $scope.messages = [];
+
+    $translate('CANCEL').then(function (translation) {
+        $scope.CANCEL = translation;
+    });
+
+    $translate('FLAG_USER').then(function (translation) {
+        $scope.FLAG_USER = translation;
+    });
+
+    $translate('FLAG_USER_CONFIRM').then(function (translation) {
+        $scope.FLAG_USER_CONFIRM = translation;
+    });
+
+    $scope.$parent.addButtons([
+        {
+            icon: "ion-ios-more",
+            name: "",
+            show: true,
+            action: function(){
+                var btns = [{ text: $scope.FLAG_USER }];
+
+                var options = {
+                    buttons: [],
+                    destructiveText: $scope.FLAG_USER,
+                    titleText: '',
+                    cancelText: $scope.CANCEL,
+                    cancel: function() {
+                        return true;
+                    },
+                    buttonClicked: function(index) {
+                        return true;
+                    },
+                    destructiveButtonClicked: function(){
+                        $scope.blockUserConfirm();
+                        return true;
+                    }
+                };
+
+                $ionicActionSheet.show(options);
+            }
+        }
+    ]);
+
+    $scope.blockUserConfirm = function() {
+        var confirmPopup = $ionicPopup.confirm({
+            title:  $scope.FLAG_USER,
+            template: $scope.FLAG_USER_CONFIRM
+        });
+
+        confirmPopup.then(function(res) {
+            if(res) {
+                User.block($scope.otherUser.id);
+            } else {
+                //nothing
+            }
+        });
+    }
 
     window.addEventListener('native.keyboardshow', function(){
         document.body.scrollTop = 0;
@@ -16,15 +73,19 @@ controllers.controller('ChatMessagesCtrl', function($scope, $rootScope, Chat, Us
             $ionicScrollDelegate.$getByHandle('msgList').scrollBottom();
         });
 
-        Chat.getOtherUserByChatId($stateParams.chatId).then(function(resp){
-            $scope.otherUser = resp.data;
-        });
+
     }
 
     $scope.$on('$ionicView.enter', function() {
         document.body.scrollTop = 0;
-        cordova.plugins.Keyboard.disableScroll(true);
+        if(typeof(cordova) != "undefined"){
+            cordova.plugins.Keyboard.disableScroll(true);
+        }
         $rootScope.loadMessages();
+
+        Chat.getOtherUserByChatId($stateParams.chatId).then(function(resp){
+            $scope.otherUser = resp.data;
+        });
     });
 
     $scope.loadMore = function(){

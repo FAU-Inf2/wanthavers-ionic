@@ -350,3 +350,15 @@ input[type=text], .escape-euro{
 .popup-body{
   text-align: center;
 }
+
+img.header-user-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  display: inline-block;
+}
+
+.header-title span {
+  display:inline-block;
+  vertical-align: super;
+}
