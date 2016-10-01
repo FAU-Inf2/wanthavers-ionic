@@ -1,0 +1,56 @@
+<ion-view view-title="{{ 'USER_PROFILE_BAR_TITLE' | translate }}">
+    <ion-content class="userprofile">
+        <div class="user-image">
+            <img ng-src="{{(user.image != undefined)? user.image.lowRes : 'img/default.png'}}">
+        </div>
+
+        <div class="list reset-form padding">
+            <h4 class="user-name">
+                {{(user.firstName != undefined) ? (user.firstName + " " + user.lastName) : (user.name)}}
+            </h4>
+
+            <span class="user-rating" ng-bind-html="user.rating | rating | unsafe"></span>
+
+
+            <div class="card">
+                <div class="item item-divider divider1">
+                    {{ 'USER_PROFILE_STATISTICS' | translate }}
+                </div>
+                <div class="item item-text-wrap">
+
+
+                    <h2 class="successfulDesires">
+                        <i class="ion-trophy"></i> {{user.successfulDesires}} {{ 'USER_PROFILE__SUCCESSFUL_DESIRE' | translate }}
+                    </h2>
+
+                    <h2 class="canceledDesires">
+                        <i class="ion-close-circled"></i> {{user.canceledDesires}} {{ 'USER_PROFILE__CANCELED_DESIRE' | translate }}
+                    </h2>
+                </div>
+            </div>
+
+            <div class="card" ng-show="false"> <!--"desires.length != 0"-->
+                <div class="item item-divider divider2">
+                    {{ 'USER_PROFILE_DESIRE_HISTORY' | translate }}
+                </div>
+
+
+                <div class="item item-text-wrap">
+                    <ion-scroll direction="x" class="wide-as-needed">
+                        <a class="button inline-button">Desire 1</a>
+                        <a class="button">Desire 2</a>
+                        <a class="button">Desire 3</a>
+                        <a class="button">Desire 4</a>
+                        <a class="button">Desire 5</a>
+                        <a class="button">Desire 6</a>
+                        <a class="button">Desire 7</a>
+                        <a class="button">Desire 8</a>
+                        <a class="button">Desire 9</a>
+                        <a class="button">Desire 10</a>
+
+                    </ion-scroll>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
