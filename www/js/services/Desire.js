@@ -94,14 +94,13 @@ wanthaver.factory('Desire', ['$http', 'Auth', 'FilterSetting', function ($http, 
             });
         },
 
-        getDesireByUserId: function(user_id){
+        getDesiresByUserId: function(user_id){
             var limit = 2147483647 ;
             var p = {
                 category: null,
                 limit : limit,
                 status: [0,1,2,3,4],
                 creator_id: user_id,
-                haver_id: user_id,
             };
             console.log(p);
 

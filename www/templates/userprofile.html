@@ -29,12 +29,12 @@
                 </div>
             </div>
 
-            <div class="card" ng-show="false"> <!--"desires.length != 0"-->
+            <div class="card" ng-show="desires.length != 0">
                 <div class="item item-divider divider2">
                     {{ 'USER_PROFILE_DESIRE_HISTORY' | translate }}
                 </div>
 
-
+                <!--
                 <div class="item item-text-wrap">
                     <ion-scroll direction="x" class="wide-as-needed">
                         <a class="button inline-button">Desire 1</a>
@@ -50,6 +50,16 @@
 
                     </ion-scroll>
                 </div>
+                -->
+
+                <ion-list>
+                    <ion-item class="list-item item-text-wrap" ng-repeat="desire in desires">
+
+                        <div class="desire-img desire-history-img"><img hires="{{desire.image.lowRes}}" ng-src="img/default.png"></div>
+                        <h1 class="desire-history-title">{{desire.title}}</h1>
+
+                    </ion-item>
+                </ion-list>
             </div>
         </div>
     </ion-content>

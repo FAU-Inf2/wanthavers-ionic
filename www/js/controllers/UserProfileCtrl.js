@@ -25,8 +25,8 @@ controllers.controller('UserProfileCtrl', function($rootScope, $scope, $statePar
     };
 
     $scope.loadUsersDesires = function () {
-        Desire.getDesireByUserId($scope.user.id).then(function(resp){
-            $scope.desires = $scope.desires.concat(resp.data);
+        Desire.getDesiresByUserId($scope.user.id).then(function(resp){
+            $scope.desires = resp.data;
         });
 
     }
